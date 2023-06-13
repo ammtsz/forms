@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { Input, Text } from "@chakra-ui/react"
-import { TextFormProps } from "../../../types/form.types"
-import { useForm } from "../../../store/form"
+import { TextFormProps } from "../../types/form.types"
+import { useForm } from "../../store/form"
 
 const TextForm: React.FC<TextFormProps> = ({
     id,
@@ -39,8 +39,6 @@ const TextForm: React.FC<TextFormProps> = ({
             setVisible(true)
         }
     }, [dependsOn, getField, requiredField])
-
-    console.log({ description })
 
     return (
         isVisible

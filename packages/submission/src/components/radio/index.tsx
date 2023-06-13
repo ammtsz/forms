@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { RadioGroup, Radio, Text, RadioGroupProps, RadioProps } from "@chakra-ui/react"
 
-import { OptionsFormProps } from "../../../types/form.types"
-import { useForm } from "../../../store/form"
+import { OptionsFormProps } from "../../types/form.types"
+import { useForm } from "../../store/form"
 
 const RadioSelect: React.FC<OptionsFormProps> = ({
     id,

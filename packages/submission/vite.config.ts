@@ -11,10 +11,10 @@ export default defineConfig({
   plugins: [
     react(),
     moduleFederation({
-        name: 'marketing',
+        name: 'form-submission',
         filename: 'remoteEntry.js',
         exposes: {
-            './Forms': './src/bootstrap'
+            './FormSubmission': './src/bootstrap'
         },
         shared: packageJson.dependencies,
     }),

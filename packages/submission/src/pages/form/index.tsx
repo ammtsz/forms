@@ -5,9 +5,9 @@ import { form as formSettings, initialValues } from "../../config/forms/registra
 import { TextFormProps, OptionsFormProps } from "../../types/form.types"
 import { useForm } from "../../store/form"
 
-import TextForm from "../fields/text"
-import SelectForm from "../fields/select"
-import RadioForm from "../fields/radio"
+import TextForm from "../../components/text"
+import SelectForm from "../../components/select"
+import RadioForm from "../../components/radio"
 
 import useSubmitForm from "../../hooks/useSubmitForm"
 
@@ -21,7 +21,7 @@ const fieldComponents = ( props: TextFormProps | OptionsFormProps ): FieldCompon
     radio: <RadioForm {...props as OptionsFormProps} key={props.id}/>,
 })
 
-const Form = () => {
+const FormPage = () => {
     const { setFields, fieldsIds, getField, setFieldsInitialValues } = useForm()
 
     const { handleSubmit } = useSubmitForm()
@@ -48,4 +48,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default FormPage
