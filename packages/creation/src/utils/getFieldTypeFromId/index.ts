@@ -1,0 +1,1 @@
+export const getFieldTypeFromId = (id: string) => id.split("--")[0]
