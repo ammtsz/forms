@@ -16,6 +16,10 @@ export interface DependsOnProps {
 
 export interface OptionsFormProps extends TextFormProps {
     options: OptionProps[]
+    optionOther: {
+        isVisible: boolean
+        placeholder: string
+    }
 }
 
 export interface OptionProps {

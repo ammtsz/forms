@@ -1,67 +1,67 @@
-import React, { useCallback, useEffect, useState } from "react"
-import { Select, Text } from "@chakra-ui/react"
+import React from "react"
+import { Flex, Button, Switch } from "@chakra-ui/react"
+import { useSelect } from "../hooks/useSelect"
+import SelectOptions from "./Options"
+import SelectHeader from "./Header"
 
-import { OptionsFormProps } from "../../../types/form.types"
-import { useForm } from "../../../store/form"
-
-const FormSelect: React.FC<OptionsFormProps> = ({
-    id,
-    label,
-    placeholder,
-    required,
-    options,
-    dependsOn,
-    description,
-    value: intitialValue
-}) => {
-    const [value, setValue] = useState('')
-    const [isVisible, setVisible] = useState(false)
-
-    const { setFieldValue, getField } = useForm()
-
-    const handleChange: React.ChangeEventHandler<HTMLSelectElement> = useCallback((event) => {
-        setValue(event.target.value)
-        setFieldValue(id, event.target.value)
-    }, [id, setFieldValue])
-
-    const requiredField = dependsOn && getField(dependsOn.fieldId)
-
-    useEffect(() => {
-        if(intitialValue && intitialValue.length) {
-            setValue(intitialValue)
-        }
-    }, [intitialValue])
-
-    useEffect(() => {
-        if(requiredField) {            
-            const isValidValue = dependsOn.optionsId.some((validOption) => requiredField.value?.includes(validOption))
-
-            setVisible(isValidValue)
-        } else {
-            setVisible(true)
-        }
-    }, [dependsOn, getField, requiredField])
+const SelectCreation: React.FC<{id: string}> = ({ id }) => {
+    const {
+        handleInputChange,
+        handleCheckbox,
+        handleDelete,
+        handleSave,
+        handleAddOption,
+        handleOptionChange,
+        handleDeleteOption,
+        toggleOtherOption,
+        handleOtherOption,
+        value,
+        isSaved
+    } = useSelect({id})
     
     return (
-        isVisible 
-            ? <React.Fragment>
-                <Text>{label}</Text>
-                <Text fontSize="sm">{description}</Text>
-                <Select
-                    required={required}
-                    placeholder={placeholder}
-                    onChange={handleChange}
-                    value={value}
-                >
-                    <React.Fragment>
-                        {options?.map((option) => 
-                            <option key={option.value} value={option.value}>{option.label}</option>
-                        )}
-                    </React.Fragment>
-                </Select>
-            </React.Fragment>
-            : null
+        <Flex
+            direction="column"
+            py="12"
+            px="8"
+            my="10"
+            bg="blackAlpha.100"
+            borderRadius="10"
+            width="80vw"
+        >
+            <SelectHeader 
+                handleInputChange={handleInputChange}
+                handleDelete={handleDelete}
+                value={value}
+            />
+            <SelectOptions
+                handleAddOption={handleAddOption}
+                handleOptionChange={handleOptionChange}
+                handleDeleteOption={handleDeleteOption}
+                toggleOtherOption={toggleOtherOption}
+                handleOtherOption={handleOtherOption}
+                value={value}
+            />
+            <Switch
+                mt="5"
+                mr="auto"
+                onChange={handleCheckbox}
+            >
+                Campo obrigatório
+            </Switch>
+            <Button
+                m="auto"
+                mt="3"
+                bg="cyan.500"
+                color="white"
+                onClick={handleSave}
+                isDisabled={isSaved}
+            >
+                Salvar alterações
+            </Button>
+            
+        </Flex>
     )
 }
 
-export default FormSelect
+export default SelectCreation
