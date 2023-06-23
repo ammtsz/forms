@@ -17,12 +17,12 @@ const FormSelect: React.FC<OptionsFormProps> = ({
     const [value, setValue] = useState('')
     const [isVisible, setVisible] = useState(false)
 
-    const { setFieldValue, getField } = useForm()
+    const { updateFieldValue, getField } = useForm()
 
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = useCallback((event) => {
         setValue(event.target.value)
-        setFieldValue(id, event.target.value)
-    }, [id, setFieldValue])
+        updateFieldValue(id, event.target.value)
+    }, [id, updateFieldValue])
 
     const requiredField = dependsOn && getField(dependsOn.fieldId)
 

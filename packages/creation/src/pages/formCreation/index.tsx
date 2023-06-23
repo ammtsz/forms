@@ -1,5 +1,5 @@
-import React, { ReactElement, useCallback } from "react"
-import { Input, Flex, Box } from "@chakra-ui/react"
+import React, { useCallback } from "react"
+import { Input, Flex, Box, Button } from "@chakra-ui/react"
 
 import TextForm from "../../components/fields/Text"
 import TextAreaForm from "../../components/fields/Textarea"
@@ -7,42 +7,65 @@ import SelectForm from "../../components/fields/Select"
 import AddFieldButton from "../../components/AddFieldButton"
 import { useFormCreation } from "../../store/formCreation"
 import { getPrefixFromString } from "../../utils/getPrefixFromString"
+import { Fields } from "../../constants/fields"
 
-interface FieldComponentsReturn {
-    [key: string]: ReactElement
+const fieldComponents = {
+    [Fields.text]: TextForm,
+    [Fields.textarea]: TextAreaForm,
+    [Fields.select]: SelectForm,
+    [Fields.radio]: SelectForm,
 }
 
-const fieldComponents = (fieldId: string): FieldComponentsReturn => ({
-    text: <TextForm key={fieldId} id={fieldId}/>,
-    textarea: <TextAreaForm key={fieldId} id={fieldId}/>,
-    select: <SelectForm key={fieldId} id={fieldId}/>,
-    radio: <TextForm key={fieldId} id={fieldId}/>,
-})
-
 const FormCreationPage = () => {
-    const { fieldsIds } = useFormCreation()
+    const { fieldsIds, createForm, updateTitle, title } = useFormCreation()
+    
+    const handleSubmit: React.FormEventHandler = useCallback((event) => {
+        event.preventDefault()
+        createForm()
+    }, [createForm])
+
+    const handleTitle: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+        updateTitle(event.target.value)
+    }, [updateTitle])
 
     return (
         <Box>
-            <form>
-                <Flex p="4">
-                    <Input
-                        variant='unstyled'
-                        size="lg"
-                        color="blackAlpha.900"
-                        _placeholder={{ color: 'inherit' }}
-                        placeholder='Adicione um título'
-                        textAlign="center"
-                        fontSize="2xl"
-                    />
-                </Flex>
-                <React.Fragment>
-                    {fieldsIds.map(( fieldId ) => {
-                        return fieldComponents(fieldId)[getPrefixFromString(fieldId)]
-                    })}
-                </React.Fragment>
-                <AddFieldButton />
-            </form>
+            <Flex>
+                <form onSubmit={handleSubmit}>
+                    <Flex p="4">
+                        <Input
+                            variant='unstyled'
+                            size="lg"
+                            color="blackAlpha.900"
+                            _placeholder={{ color: 'inherit' }}
+                            placeholder='Adicione um título'
+                            textAlign="center"
+                            fontSize="2xl"
+                            onChange={handleTitle}
+                            value={title}
+                        />
+                    </Flex>
+                    <React.Fragment>
+                        {fieldsIds.map(( fieldId ) => {
+                            const Component = fieldComponents[getPrefixFromString(fieldId)]
+                            return (
+                                <Flex key={fieldId} p={4}>
+                                    <Component id={fieldId} />
+                                </Flex>
+                            )
+                        })}
+                    </React.Fragment>
+                    <AddFieldButton />
+                    <Button
+                        type="submit"
+                        bg="cyan.700"
+                        color="white"
+                        w="80vw"
+                    >
+                        Criar formulário
+                    </Button>
+                </form>
+            </Flex>
         </Box>
     )
 }

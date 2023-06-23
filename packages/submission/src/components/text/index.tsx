@@ -15,12 +15,12 @@ const TextForm: React.FC<TextFormProps> = ({
     const [value, setValue] = useState('')
     const [isVisible, setVisible] = useState(true)
 
-    const { setFieldValue, getField } = useForm()
+    const { updateFieldValue, getField } = useForm()
     
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
         setValue(event.target.value)
-        setFieldValue(id, event.target.value)
-    }, [id, setFieldValue])
+        updateFieldValue(id, event.target.value)
+    }, [id, updateFieldValue])
 
     const requiredField = dependsOn && getField(dependsOn.fieldId)
 

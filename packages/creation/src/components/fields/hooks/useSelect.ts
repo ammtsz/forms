@@ -6,6 +6,7 @@ interface SelectProps {
     id: string
 }
 
+// TODO: fix performance - stop calling saveUpdates for all updates
 const useSelect = ({ id }: SelectProps) => {
     const [value, setValue] = useState({
         label: "",
@@ -14,32 +15,10 @@ const useSelect = ({ id }: SelectProps) => {
         options: [{label: "", value: ""}],
         optionOther: {isVisible: false, placeholder: ""}
     })
-    const [isSaved, setSaved] = useState(true)
-
+    
     const { deleteField, updateField } = useFormCreation()
     
-    const handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = useCallback((event) => {
-        setValue(prev => ({
-            ...prev,
-            [event.target.name]: event.target.value
-        }))
-        setSaved(false)
-    }, [])
-
-    const handleCheckbox = useCallback(() => {
-        setValue((prev) => ({
-            ...prev,
-            isRequired: !prev.isRequired
-        }))
-        setSaved(false)
-    }, [])
-
-    const handleDelete = useCallback(() => {
-        deleteField(id)
-        setSaved(false)
-    }, [deleteField, id])
-
-    const handleSave: React.MouseEventHandler<HTMLButtonElement> = useCallback(() => {
+    const saveUpdates = useCallback(() => {
         // handleClearEmptyFields()
         updateField({
             id,
@@ -50,8 +29,28 @@ const useSelect = ({ id }: SelectProps) => {
             options: value.options,
             optionOther: value.optionOther,
         })
-        setSaved(true)
-    }, [id, updateField, value.description, value.isRequired, value.optionOther, value.options, value.label])
+    }, [updateField, id, value.label, value.description, value.isRequired, value.options, value.optionOther])
+
+
+    const handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = useCallback((event) => {
+        setValue(prev => ({
+            ...prev,
+            [event.target.name]: event.target.value
+        }))
+        saveUpdates()
+    }, [saveUpdates])
+
+    const handleCheckbox = useCallback(() => {
+        setValue((prev) => ({
+            ...prev,
+            isRequired: !prev.isRequired
+        }))
+        saveUpdates()
+    }, [saveUpdates])
+
+    const handleDelete = useCallback(() => {
+        deleteField(id)
+    }, [deleteField, id])
 
     const handleAddOption: React.MouseEventHandler<HTMLButtonElement>= useCallback(() => {
         setValue(prev => ({
@@ -61,7 +60,8 @@ const useSelect = ({ id }: SelectProps) => {
                 value: "",
             }]
         }))
-    }, [])
+        saveUpdates()
+    }, [saveUpdates])
 
     const handleOptionChange: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
         const options = [...value.options]
@@ -74,8 +74,8 @@ const useSelect = ({ id }: SelectProps) => {
             ...prev,
             options
         }))
-        setSaved(false)
-    }, [value.options])
+        saveUpdates()
+    }, [saveUpdates, value.options])
 
     const handleDeleteOption: React.MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
         const index = Number(event.currentTarget.getAttribute('data-index'))
@@ -85,8 +85,8 @@ const useSelect = ({ id }: SelectProps) => {
             ...prev,
             options
         }))
-        setSaved(false)
-    }, [value.options])
+        saveUpdates()
+    }, [saveUpdates, value.options])
 
     const toggleOtherOption = useCallback(() => {
             setValue(prev => ({
@@ -96,8 +96,8 @@ const useSelect = ({ id }: SelectProps) => {
                     isVisible: !prev.optionOther.isVisible
                 }
             }))
-        setSaved(false)
-    }, [])
+        saveUpdates()
+    }, [saveUpdates])
 
     const handleOtherOption: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
         setValue(prev => ({
@@ -107,20 +107,19 @@ const useSelect = ({ id }: SelectProps) => {
                 placeholder: event.target.value
             }
         }))
-        setSaved(false)
-    }, [])
+        saveUpdates()
+    }, [saveUpdates])
 
     return {
         handleInputChange,
         handleCheckbox,
         handleDelete,
-        handleSave,
+        saveUpdates,
         handleAddOption,
         handleOptionChange,
         handleDeleteOption,
         toggleOtherOption,
         handleOtherOption,
-        isSaved,
         value
     }
 }

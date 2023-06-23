@@ -1,13 +1,13 @@
 import React from "react"
 import { Textarea, Input, Flex, Box } from "@chakra-ui/react"
 
-const TextareaForm: React.FC<{id: string}> = ({ id }) => {
+const TextareaForm: React.FC<{id: string}> = () => {
     // const [value, setValue] = useState('')
     
     // const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
     //     setValue(event.target.value)
-    //     setFieldValue(id, event.target.value)
-    // }, [id, setFieldValue])
+    //     updateFieldValue(id, event.target.value)
+    // }, [id, updateFieldValue])
 
     return (
         <Flex

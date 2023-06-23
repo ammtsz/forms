@@ -1,4 +1,4 @@
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 import { Button, Accordion, AccordionItem, AccordionButton, AccordionPanel } from "@chakra-ui/react"
 import { v4 as uuid } from "uuid"
 
@@ -33,6 +33,8 @@ const FIELD_BUTTONS = [
 ]
 
 const AddFieldButton = () => {
+    const [accordionIndex, setAccordionIndex] = useState<number[]>([])
+    
     const { addField } = useFormCreation()
 
     const handleNewFieldClick = useCallback((type: string) => {
@@ -42,6 +44,7 @@ const AddFieldButton = () => {
             type,
 
         })
+        setAccordionIndex([])
     }, [addField])
 
     const renderButton = (label: string, value: string) => (
@@ -56,7 +59,7 @@ const AddFieldButton = () => {
     )
 
     return (
-        <Accordion allowMultiple borderColor="transparent">
+        <Accordion index={accordionIndex} allowMultiple borderColor="transparent" mt="3">
                 <AccordionItem>
                     <AccordionButton
                         as={Button}
@@ -65,6 +68,7 @@ const AddFieldButton = () => {
                         color="white"
                         height="10"
                         width="80vw"
+                        onClick={() => setAccordionIndex([0])}
                     >
                         Adicionar campo
                     </AccordionButton>

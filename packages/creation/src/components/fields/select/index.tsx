@@ -1,24 +1,26 @@
 import React from "react"
-import { Flex, Button, Switch } from "@chakra-ui/react"
+import { Flex, Switch } from "@chakra-ui/react"
 import { useSelect } from "../hooks/useSelect"
 import SelectOptions from "./Options"
 import SelectHeader from "./Header"
 
-const SelectCreation: React.FC<{id: string}> = ({ id }) => {
+interface SelectProps {
+    id: string
+}
+
+const SelectCreation: React.FC<SelectProps> = ({ id }) => {
     const {
         handleInputChange,
         handleCheckbox,
         handleDelete,
-        handleSave,
         handleAddOption,
         handleOptionChange,
         handleDeleteOption,
         toggleOtherOption,
         handleOtherOption,
         value,
-        isSaved
     } = useSelect({id})
-    
+
     return (
         <Flex
             direction="column"
@@ -49,17 +51,6 @@ const SelectCreation: React.FC<{id: string}> = ({ id }) => {
             >
                 Campo obrigatório
             </Switch>
-            <Button
-                m="auto"
-                mt="3"
-                bg="cyan.500"
-                color="white"
-                onClick={handleSave}
-                isDisabled={isSaved}
-            >
-                Salvar alterações
-            </Button>
-            
         </Flex>
     )
 }

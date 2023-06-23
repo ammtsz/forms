@@ -1,21 +1,21 @@
 import { useForm } from "../store/form"
+import { FormResponse } from "../store/form/types"
 
 const useSubmitForm = () => {
-    const { fieldsIds, fields } = useForm()
+    const { submitForm, fields } = useForm()
 
-    // const validateForm = () => {
+    const handleSubmit = async () => {
+        const formResponse = {} as FormResponse
 
-    // }
-
-    const handleSubmit = () => {
-        const formResponse = fieldsIds.map(fieldId => {
-            return ({
-                id: fields[fieldId].id,
-                value: fields[fieldId].value
-            })
+        fields.forEach(field => {
+            formResponse[field.id] = {
+                id: field.id,
+                value: field.value
+            }
         })
 
         console.log({ formResponse })
+        await submitForm(formResponse)
     }
 
     return ({

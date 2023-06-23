@@ -1,0 +1,22 @@
+{
+  "name": "forms",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "manager",
+    "creation",
+    "submission"
+  ],
+  "scripts": {
+    "build": "pnpm  --parallel --filter \"./**\" build",
+    "serve": "pnpm  --parallel --filter \"./**\" preview",
+    "build:manager": "pnpm --parallel --filter \"./packages/manager\" build",
+    "serve:manager": "pnpm --parallel --filter \"./packages/manager\" serve",
+    "dev:manager": "pnpm --filter \"./packages/manager\" dev",
+    "stop": "kill-port --port 3000,3001,3002"
+  },
+  "devDependencies": {
+    "kill-port": "^2.0.1"
+  }
+}

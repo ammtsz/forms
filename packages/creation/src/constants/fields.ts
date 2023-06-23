@@ -1,4 +1,4 @@
-const Fields = {
+export const Fields = {
     text: "text",
     textarea: "textarea",
     select: "select",

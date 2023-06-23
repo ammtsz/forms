@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect } from "react"
-import { Button, Text } from "@chakra-ui/react"
+import { useLocation } from "react-router-dom"
+import { Button, Flex, Text } from "@chakra-ui/react"
 
 import { form as formSettings, initialValues } from "../../config/forms/registration" 
 import { TextFormProps, OptionsFormProps } from "../../types/form.types"
@@ -7,7 +8,6 @@ import { useForm } from "../../store/form"
 
 import TextForm from "../../components/text"
 import SelectForm from "../../components/select"
-import RadioForm from "../../components/radio"
 
 import useSubmitForm from "../../hooks/useSubmitForm"
 
@@ -16,35 +16,44 @@ interface FieldComponentsReturn {
 }
 
 const fieldComponents = ( props: TextFormProps | OptionsFormProps ): FieldComponentsReturn => ({
-    text: <TextForm {...props} key={props.id}/>,
-    select: <SelectForm {...props as OptionsFormProps} key={props.id}/>,
-    radio: <RadioForm {...props as OptionsFormProps} key={props.id}/>,
+    text: <TextForm {...props}/>,
+    select: <SelectForm {...props as OptionsFormProps}/>,
 })
 
 const FormPage = () => {
-    const { setFields, fieldsIds, getField, setFieldsInitialValues } = useForm()
+    const { getForm, fields, setFieldsInitialValues } = useForm()
 
     const { handleSubmit } = useSubmitForm()
 
+    const { search } = useLocation()
+    const id = new URLSearchParams(search).get('id');
+
     useEffect(() => {
-        setFields(formSettings.fields)
-        
+        if(id) {
+            getForm(id)
+        }
+    }, [getForm, setFieldsInitialValues, id])
+
+    useEffect(() => {
         if(initialValues) {
             setFieldsInitialValues(initialValues)
         }
-    }, [setFields, setFieldsInitialValues])
+    }, [getForm, setFieldsInitialValues, id])
 
     return (
-        <form>
-            <Text>{ formSettings.title }</Text>
-            <React.Fragment>
-                {fieldsIds.map(( fieldId ) => {
-                    const field = getField(fieldId)
-                    return fieldComponents(field)[field.type]
-                })}
-            </React.Fragment>
-            <Button onClick={handleSubmit}>Enviar</Button>
-        </form>
+        <Flex>
+            <form>
+                <Text>{ formSettings.title }</Text>
+                <React.Fragment>
+                    {fields.map(( field ) => (
+                        <Flex key={field.id} p={4} direction="column">
+                            {fieldComponents(field)[field.type]}
+                        </Flex>
+                    ))}
+                </React.Fragment>
+                <Button onClick={handleSubmit}>Enviar</Button>
+            </form>
+        </Flex>
     )
 }
 
