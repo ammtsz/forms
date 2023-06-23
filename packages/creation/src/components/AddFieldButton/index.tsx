@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import { Button, Accordion, AccordionItem, AccordionButton, AccordionPanel } from "@chakra-ui/react"
+import { Button, Flex } from "@chakra-ui/react"
 import { v4 as uuid } from "uuid"
 
 import { useFormCreation } from "../../store/formCreation"
@@ -33,7 +33,7 @@ const FIELD_BUTTONS = [
 ]
 
 const AddFieldButton = () => {
-    const [accordionIndex, setAccordionIndex] = useState<number[]>([])
+    const [isSelected, setSelected] = useState<boolean>(false)
     
     const { addField } = useFormCreation()
 
@@ -44,7 +44,7 @@ const AddFieldButton = () => {
             type,
 
         })
-        setAccordionIndex([])
+        setSelected(false)
     }, [addField])
 
     const renderButton = (label: string, value: string) => (
@@ -59,24 +59,30 @@ const AddFieldButton = () => {
     )
 
     return (
-        <Accordion index={accordionIndex} allowMultiple borderColor="transparent" mt="3">
-                <AccordionItem>
-                    <AccordionButton
-                        as={Button}
-                        bg="blackAlpha.700"
-                        _hover={{bg: "blackAlpha.800"}}
-                        color="white"
-                        height="10"
-                        width="80vw"
-                        onClick={() => setAccordionIndex([0])}
-                    >
-                        Adicionar campo
-                    </AccordionButton>
-                    <AccordionPanel pb={4} display="flex" flexDir="column" bg="blackAlpha.500">
-                        {FIELD_BUTTONS.map(( {label, value }) => renderButton(label, value))}
-                    </AccordionPanel>
-                </AccordionItem>
-            </Accordion>
+        isSelected
+            ? <Flex
+                bg="blackAlpha.100"
+                direction={"column"}
+                p={8}
+                borderRadius={10}
+                mt="4"
+                mb="16"
+            >
+                {FIELD_BUTTONS.map(( {label, value }) => renderButton(label, value))}
+            </Flex>
+            : <Button
+                bg="blackAlpha.100"
+                w={"100%"}
+                h={60}
+                _hover={{bg: "blackAlpha.300"}}
+                color="white"
+                fontSize={"lg"}
+                onClick={() => setSelected(true)}
+                mt="4"
+                mb="16"
+            >
+                + Adicionar campo
+            </Button>
     )
 }
 

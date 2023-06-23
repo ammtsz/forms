@@ -52,7 +52,7 @@ const TextCreation: React.FC<{id: string}> = ({ id }) => {
             direction="column"
             py="12"
             px="8"
-            my="10"
+            my="4"
             bg="blackAlpha.100"
             borderRadius="10"
             width="80vw"
@@ -64,6 +64,7 @@ const TextCreation: React.FC<{id: string}> = ({ id }) => {
                     py="3"
                     color="red.500"
                     bg="transparent"
+                    _hover={{ backgroundColor: "transparent", color: "red.700" }}
                 >
                     <TrashIcon />
                 </Button>

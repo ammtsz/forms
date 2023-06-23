@@ -43,13 +43,15 @@ const TextForm: React.FC<TextFormProps> = ({
     return (
         isVisible
             ? <React.Fragment>
-                <Text>{label}</Text>
-                <Text fontSize="sm">{description}</Text>
+                <Text fontSize="lg">{label}</Text>
+                <Text fontSize="sm" mb={2} color={"gray"}>{description}</Text>
                 <Input
                     required={required}
                     placeholder={placeholder}
                     onChange={handleChange}
                     value={value}
+                    bg={"white"}
+                    boxShadow={"inner"}
                 />
             </React.Fragment>
             : null

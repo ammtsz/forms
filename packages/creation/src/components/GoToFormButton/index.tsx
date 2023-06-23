@@ -15,7 +15,12 @@ const GoToFormButton: React.FC<GoToFormButtonProps> = ({ title, id }) => {
     }, [id, navigation])
 
     return (
-        <Button m={3} onClick={handleRedirect} height={40} width={80}>
+        <Button
+            onClick={handleRedirect}
+            minH={40}
+            minW={80}
+            boxShadow={"md"}
+        >
             {title || <i>Sem título</i>}
         </Button>
     )

@@ -1,8 +1,8 @@
 import React, { ReactElement, useEffect } from "react"
 import { useLocation } from "react-router-dom"
-import { Button, Flex, Text } from "@chakra-ui/react"
+import { Button, Flex, FormControl, Heading } from "@chakra-ui/react"
 
-import { form as formSettings, initialValues } from "../../config/forms/registration" 
+import { initialValues } from "../../config/forms/registration" 
 import { TextFormProps, OptionsFormProps } from "../../types/form.types"
 import { useForm } from "../../store/form"
 
@@ -10,6 +10,8 @@ import TextForm from "../../components/text"
 import SelectForm from "../../components/select"
 
 import useSubmitForm from "../../hooks/useSubmitForm"
+
+import { Container, Form, Field } from "./styles"
 
 interface FieldComponentsReturn {
     [key: string]: ReactElement
@@ -21,7 +23,7 @@ const fieldComponents = ( props: TextFormProps | OptionsFormProps ): FieldCompon
 })
 
 const FormPage = () => {
-    const { getForm, fields, setFieldsInitialValues } = useForm()
+    const { getForm, setFieldsInitialValues, fields, title } = useForm()
 
     const { handleSubmit } = useSubmitForm()
 
@@ -34,26 +36,26 @@ const FormPage = () => {
         }
     }, [getForm, setFieldsInitialValues, id])
 
-    useEffect(() => {
-        if(initialValues) {
-            setFieldsInitialValues(initialValues)
-        }
-    }, [getForm, setFieldsInitialValues, id])
+    // useEffect(() => {
+    //     if(initialValues) {
+    //         setFieldsInitialValues(initialValues)
+    //     }
+    // }, [getForm, setFieldsInitialValues, id])
 
     return (
-        <Flex>
-            <form>
-                <Text>{ formSettings.title }</Text>
+        <Container>
+            <Form as="form" onSubmit={handleSubmit}>
+                <Heading as="h1" fontSize={"lg"}>{title.toUpperCase()}</Heading>
                 <React.Fragment>
                     {fields.map(( field ) => (
-                        <Flex key={field.id} p={4} direction="column">
+                        <Field key={field.id}>
                             {fieldComponents(field)[field.type]}
-                        </Flex>
+                        </Field>
                     ))}
                 </React.Fragment>
-                <Button onClick={handleSubmit}>Enviar</Button>
-            </form>
-        </Flex>
+                <Button mt={10} type={"submit"} bg={"black"} color={"white"}>Enviar</Button>
+            </Form>
+        </Container>
     )
 }
 

@@ -7,6 +7,7 @@ const INITIAL_STATE: FormCreationState = {
   isLoading: false,
   errors: null,
   title: "",
+  description: "",
   fields: [],
   fieldsIds: [],
 }
@@ -15,11 +16,16 @@ const store = create<FormCreationStore>((set, get) => ({
   isLoading: INITIAL_STATE.isLoading,
   errors: INITIAL_STATE.errors,
   title: INITIAL_STATE.title,
+  description: INITIAL_STATE.description,
   fields: INITIAL_STATE.fields,
   fieldsIds: INITIAL_STATE.fieldsIds,
 
   updateTitle: (title: string) => {
     set({ title })
+  },
+
+  updateDescription: (description: string) => {
+    set({ description })
   },
 
   addField: (field: FieldProps) => {

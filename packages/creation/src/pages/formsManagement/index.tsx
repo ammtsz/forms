@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import { Box, Button } from "@chakra-ui/react"
+import { Button, Flex } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
 
 import { useFormsManagement } from "../../store/formsManagement"
@@ -24,10 +24,22 @@ const FormCreationPage = () => {
     }, [loadForms])
 
     return (
-        <Box>
-            {formsNames.map((form) => <GoToFormButton key={form.id} {...form} />)}
-            <Button onClick={() => navigate("/create")}>Criar Form</Button>
-        </Box>
+        <Flex gap={4} direction={"column"} maxWidth={"1200px"} margin={"auto"}>
+            <Flex justifyContent={"center"} gap={4} flexWrap={"wrap"}>
+                <Button
+                    onClick={() => navigate("/create")}
+                    minH={40}
+                    minW={80}
+                    bg={"blackAlpha.800"}
+                    color={"white"}
+                    _hover={{bg: "whiteAlpha.800", color: "inherit"}}
+                    boxShadow={"md"}
+                >
+                    + Criar novo formulário
+                </Button>
+                {formsNames.map((form) => <GoToFormButton key={form.id} {...form} />)}
+            </Flex>
+        </Flex>
     )
 }
 

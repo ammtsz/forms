@@ -26,7 +26,7 @@ const SelectCreation: React.FC<SelectProps> = ({ id }) => {
             direction="column"
             py="12"
             px="8"
-            my="10"
+            my="4"
             bg="blackAlpha.100"
             borderRadius="10"
             width="80vw"

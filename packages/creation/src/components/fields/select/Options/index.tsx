@@ -40,6 +40,7 @@ const SelectOptions: React.FC<SelectOptionsProps> = ({
                         color="blackAlpha.700"
                         bg="transparent"
                         data-index={index}
+                        _hover={{ backgroundColor: "transparent", color: "red.700" }}
                     >
                         <TrashIcon />
                     </Button>

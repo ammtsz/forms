@@ -25,6 +25,7 @@ const SelectHeader: React.FC<SelectHeaderProps> = ({
                     py="3"
                     color="red.500"
                     bg="transparent"
+                    _hover={{ backgroundColor: "transparent", color: "red.700" }}
                 >
                     <TrashIcon />
                 </Button>
