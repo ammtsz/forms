@@ -18,7 +18,16 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Relative paths */
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": ["./*"],
+      "@container/*": ["../../container/src/*"],
+      "@submission/*": ["../../submission/src/*"],
+      "@view/*": ["../../view/src/*"],
+    }
   },
   "include": ["src", "../container/src/components/GoToFormButton"],
   "references": [{ "path": "./tsconfig.node.json" }]
