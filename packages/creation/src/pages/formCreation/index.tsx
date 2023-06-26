@@ -10,7 +10,7 @@ import SelectForm from "@app/components/fields/Select"
 import AddFieldButton from "@app/components/AddFieldButton"
 
 import { useFormCreation } from "@app/store/formCreation"
-import { Fields } from "@app/constants/fields"
+import { Fields } from "@app/constants"
 
 import { Container, Form } from "./styles"
 
