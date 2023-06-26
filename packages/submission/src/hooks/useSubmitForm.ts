@@ -4,7 +4,9 @@ import { FormResponse } from "../store/form/types"
 const useSubmitForm = () => {
     const { submitForm, fields } = useForm()
 
-    const handleSubmit = async () => {
+    const handleSubmit: React.FormEventHandler = async (event) => {
+        event.preventDefault()
+
         const formResponse = {} as FormResponse
 
         fields.forEach(field => {

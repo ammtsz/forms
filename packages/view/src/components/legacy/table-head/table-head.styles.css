@@ -1,0 +1,43 @@
+th{
+  height: 25px;
+}
+
+.table__head--row th{
+  border-top: none;
+}
+
+.table__thead--column-name {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.table__thead--checkbox {
+  opacity: 0;
+  transform: translate(4px, 1px);
+  cursor: pointer;
+  z-index: 1;
+}
+.table__thead--check-icon {
+  transform: translate(-8px, 3px);
+}
+
+.table__head--filter-icon,
+.table__head--copy-icon {
+  cursor: pointer;
+  &:hover {
+    color: darkcyan
+  }
+}
+
+.table__frozen--head {
+  color: lightgray;
+  background-color: rgba(darkcyan, 0.2);
+}
+
+.table__head--row {
+  
+  color: lightcyan;
+  background-color: rgba(darkcyan, 0.5);
+}
+

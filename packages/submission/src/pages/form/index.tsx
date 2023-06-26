@@ -28,7 +28,7 @@ const FormPage = () => {
     const { handleSubmit } = useSubmitForm()
 
     const { search } = useLocation()
-    const id = new URLSearchParams(search).get('id');
+    const id = new URLSearchParams(search).get('id')
 
     useEffect(() => {
         if(id) {
