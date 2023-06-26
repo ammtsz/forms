@@ -1,8 +1,8 @@
 import React from "react"
-import { Textarea, Input, Flex, Button } from "@chakra-ui/react"
 import { Trash as TrashIcon } from "react-feather"
+import { Textarea, Input, Flex, Button } from "@chakra-ui/react"
 
-import { OptionsFormProps } from "../../../../types/formCreation.types"
+import { OptionsFormProps } from "@app/types"
 
 interface SelectHeaderProps {
     handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>

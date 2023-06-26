@@ -1,16 +1,17 @@
 import React, { useCallback } from "react"
+import { useNavigate } from "react-router-dom"
 import { Input, Flex, Box, Textarea, Button } from "@chakra-ui/react"
 
-import TextForm from "../../components/fields/Text"
-import TextAreaForm from "../../components/fields/Textarea"
-import SelectForm from "../../components/fields/Select"
-import AddFieldButton from "../../components/AddFieldButton"
-import { useFormCreation } from "../../store/formCreation"
-import { getPrefixFromString } from "../../utils/getPrefixFromString"
-import { Fields } from "../../constants/fields"
+import TextForm from "@app/components/fields/Text"
+import TextAreaForm from "@app/components/fields/Textarea"
+import SelectForm from "@app/components/fields/Select"
+import AddFieldButton from "@app/components/AddFieldButton"
+
+import { useFormCreation } from "@app/store/formCreation"
+import { getPrefixFromString } from "@app/utils/getPrefixFromString"
+import { Fields } from "@app/constants/fields"
 
 import { Container, Form } from "./styles"
-import { useNavigate } from "react-router-dom"
 
 const fieldComponents = {
     [Fields.text]: TextForm,

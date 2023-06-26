@@ -1,3 +1,3 @@
-import FormSubmissionPage from "../../../../submission/src/pages/formSubmission";
+import FormSubmissionPage from "@submission/pages/formSubmission";
 
 export default FormSubmissionPage

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { getFormResponses as getFormResponsesFromDb, getForm as getFormFromDb} from '../../api/services/forms' 
-import { FormViewState, FormViewStore, FieldProps } from './types'
+import { FormViewState, FormViewStore } from './types'
 
 const INITIAL_STATE: FormViewState = {
   isLoading: false,

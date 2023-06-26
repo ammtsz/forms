@@ -1,21 +1,4 @@
-import { TextFormProps, OptionsFormProps } from "../../types/formCreation.types"
-
-export type FieldProps = TextFormProps | OptionsFormProps
-
-export interface FieldResponse {
-  id: string
-  value?: string
-}
-
-export interface FormResponse {
-  [key: string]: FieldResponse
-}
-
-export interface FormProps {
-  id: string
-  title: string
-  fields: FieldProps[]
-}
+import { FieldProps, FormValuesProps, FormProps } from "@container/types"
 
 export interface FormViewState {
   isLoading: boolean
@@ -23,11 +6,11 @@ export interface FormViewState {
   id: string
   title: string
   fields: FieldProps[]
-  responses: FormResponse[]
+  responses: FormValuesProps[]
 }
 
 export interface FormViewStore extends FormViewState {
-  getFormResponses: (formId: string) => Promise<FormResponse[]>
+  getFormResponses: (formId: string) => Promise<FormValuesProps[]>
   getForm: (formId: string) => Promise<FormProps>
   reset: () => void
 }

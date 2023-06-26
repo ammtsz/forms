@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { Input, Text } from "@chakra-ui/react"
-import { TextFormProps } from "../../types/form.types"
-import { useFormSubmission } from "../../store/formSubmission"
+
+import { TextFormProps } from "@container/types"
+import { useFormSubmission } from "@app/store/formSubmission"
 
 const TextForm: React.FC<TextFormProps> = ({
     id,

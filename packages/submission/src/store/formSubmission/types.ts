@@ -1,21 +1,5 @@
-import { TextFormProps, OptionsFormProps, FormValuesProps } from "../../types/form.types"
-
-export type FieldProps = TextFormProps | OptionsFormProps
-
-export interface FormProps {
-  id: string
-  title: string
-  fields: FieldProps[]
-}
-
-export interface FieldResponse {
-  id: string
-  value?: string
-}
-
-export interface FormResponse {
-  [key: string]: FieldResponse
-}  
+import { FieldProps, FormProps } from "@container/types"
+import { FormValuesProps } from "@app/types"
 
 export interface FormSubmissionState {
   isLoading: boolean
@@ -32,6 +16,6 @@ export interface FormSubmissionStore extends FormSubmissionState {
   updateFieldValue: (fieldId: string, fieldValue: string) => void
   setFieldsInitialValues: (intialValues: FormValuesProps) => void
   getField: (fieldId: string) => FieldProps
-  submitForm: (formResponse: FormResponse) => Promise<void>
+  submitForm: (formResponse: FormValuesProps) => Promise<void>
   reset: () => void
 }

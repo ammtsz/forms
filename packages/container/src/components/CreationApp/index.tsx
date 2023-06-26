@@ -1,4 +1,4 @@
-import FormCreationPage from "../../../../creation/src/pages/formCreation";
+import FormCreationPage from "@creation/pages/formCreation";
 
 export default FormCreationPage
 

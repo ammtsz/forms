@@ -1,7 +1,8 @@
 import { create } from 'zustand'
-import { postForm } from '../../api/services/forms' 
-import { FormCreationState, FormCreationStore, FieldProps } from './types'
 import { v4 as uuid } from 'uuid'
+
+import { postForm } from '@app/api/services/forms' 
+import { FormCreationState, FormCreationStore, FieldProps } from './types'
 
 const INITIAL_STATE: FormCreationState = {
   isLoading: false,

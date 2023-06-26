@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from "react"
-import { Textarea, Input, Flex, Button, Switch } from "@chakra-ui/react"
 import { Trash as TrashIcon } from "react-feather"
-import { useFormCreation } from "../../../store/formCreation"
+import { Textarea, Input, Flex, Button, Switch } from "@chakra-ui/react"
+
+import { useFormCreation } from "@app/store/formCreation"
 
 const TextCreation: React.FC<{id: string}> = ({ id }) => {
     const [value, setValue] = useState({

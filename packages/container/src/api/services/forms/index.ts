@@ -1,6 +1,7 @@
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
-import { firestore } from '../../firebase'
-import { FormProps } from "../../../store/formsManagement/types"
+import { FormProps } from "@app/types"
+
+import { firestore } from '@app/api/firebase'
 
 export const postForm = async (form: FormProps, docId: string) => {
     await setDoc(doc(firestore, "forms", docId), form)

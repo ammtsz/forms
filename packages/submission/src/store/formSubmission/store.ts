@@ -1,8 +1,11 @@
 import { create } from 'zustand'
 import { v4 as uuid } from 'uuid'
-import { FormSubmissionState, FormSubmissionStore, FormProps, FieldProps } from './types'
-import { FormValuesProps } from "../../types/form.types"
-import { getForm as getFormFromDb, postForm } from '../../api/services/forms'
+import { FormProps, FieldProps } from '@container/types'
+
+import { getForm as getFormFromDb, postForm } from '@app/api/services/forms'
+import { FormValuesProps } from "@app/types"
+
+import { FormSubmissionState, FormSubmissionStore } from './types'
 
 const INITIAL_STATE: FormSubmissionState = {
   isLoading: false,

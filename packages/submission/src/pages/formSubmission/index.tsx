@@ -2,13 +2,14 @@ import React, { ReactElement, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { Button, Heading } from "@chakra-ui/react"
 
-import { TextFormProps, OptionsFormProps } from "../../types/form.types"
-import { useFormSubmission } from "../../store/formSubmission"
+import { TextFormProps, OptionsFormProps } from "@container/types"
 
-import TextForm from "../../components/text"
-import SelectForm from "../../components/select"
+import { useFormSubmission } from "@app/store/formSubmission"
 
-import useSubmitForm from "../../hooks/useSubmitForm"
+import TextForm from "@app/components/text"
+import SelectForm from "@app/components/select"
+
+import useSubmitForm from "@app/hooks/useSubmitForm"
 
 import { Container, Form, Field } from "./styles"
 

@@ -1,4 +1,4 @@
-import { TextFormProps, OptionsFormProps } from "../../types/formCreation.types"
+import { TextFormProps, OptionsFormProps } from "../../types"
 
 export type FieldProps = TextFormProps | OptionsFormProps
 
