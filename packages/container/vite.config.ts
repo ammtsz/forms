@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'url'
 // import moduleFederation from '@originjs/vite-plugin-federation'
 // import packageJson from './package.json'
 
@@ -28,5 +29,13 @@ export default defineConfig({
   //   target: 'esnext',
   //   minify: false,
   //   cssCodeSplit: false
-  // }
+  // },
+  resolve: {
+    alias: [
+      { find: '@app', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+      { find: '@creation', replacement: fileURLToPath(new URL('../../creation/src', import.meta.url)) },
+      { find: '@submission', replacement: fileURLToPath(new URL('../../submission/src', import.meta.url)) },
+      { find: '@view', replacement: fileURLToPath(new URL('../../view/src', import.meta.url)) },
+    ],
+  },
 })
