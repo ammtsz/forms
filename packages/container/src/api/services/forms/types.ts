@@ -5,9 +5,3 @@ export interface PostForm {
     title: string
     fields: FieldProps[]
 }  
-
-export interface FormProps {
-  id: string
-  title: string
-  fields: FieldProps[]
-}

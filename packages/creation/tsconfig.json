@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "../container/src/components/GoToFormButton"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

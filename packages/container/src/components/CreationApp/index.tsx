@@ -1,7 +1,11 @@
-import { useRef, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import FormCreationPage from "../../../../creation/src/pages/formCreation";
 
-import { mount } from "../../../../creation/src/main"
+export default FormCreationPage
+
+// import { useRef, useEffect } from "react";
+// import { useNavigate, useLocation } from "react-router-dom";
+
+// import { mount } from "../../../../creation/src/main"
 
 // interface Root {
 //     render: (element: React.ReactElement) => void;
@@ -11,29 +15,29 @@ import { mount } from "../../../../creation/src/main"
 // root: Root;
 // }
   
-export const FormCreation: React.FC = () => {
-    const ref = useRef(null)
-    const navigate = useNavigate()
-    const location = useLocation()
+// export const FormCreation: React.FC = () => {
+//     const ref = useRef(null)
+//     const navigate = useNavigate()
+//     const location = useLocation()
 
-    useEffect(() => {
-        if(ref.current) {
-            const { onParentNavigate } = mount( ref.current, {
-                initialPath: location.pathname,
-                onNavigate: ( { location: {pathname: nextPathname} }) => {
-                    const { pathname } = location
+//     useEffect(() => {
+//         if(ref.current) {
+//             const { onParentNavigate } = mount( ref.current, {
+//                 initialPath: location.pathname,
+//                 onNavigate: ( { location: {pathname: nextPathname} }) => {
+//                     const { pathname } = location
                     
-                    if(pathname !== nextPathname) {
-                        navigate(location)
-                    }
-                },
-            })
+//                     if(pathname !== nextPathname) {
+//                         navigate(location)
+//                     }
+//                 },
+//             })
             
-            onParentNavigate({pathname: location.pathname})
-        }
-    }, [location, navigate])
+//             onParentNavigate({pathname: location.pathname})
+//         }
+//     }, [location, navigate])
 
-    return ref.current ? <div ref={ref} /> : <div>CREATION</div>
-}
+//     return ref.current ? <div ref={ref} /> : <div>CREATION</div>
+// }
 
-export default FormCreation
+// export default FormCreation
