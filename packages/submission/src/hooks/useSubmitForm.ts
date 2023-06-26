@@ -1,8 +1,8 @@
-import { useForm } from "../store/form"
-import { FormResponse } from "../store/form/types"
+import { useFormSubmission } from "../store/formSubmission"
+import { FormResponse } from "../store/formSubmission/types"
 
 const useSubmitForm = () => {
-    const { submitForm, fields } = useForm()
+    const { submitForm, fields } = useFormSubmission()
 
     const handleSubmit: React.FormEventHandler = async (event) => {
         event.preventDefault()

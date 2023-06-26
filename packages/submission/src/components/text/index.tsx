@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { Input, Text } from "@chakra-ui/react"
 import { TextFormProps } from "../../types/form.types"
-import { useForm } from "../../store/form"
+import { useFormSubmission } from "../../store/formSubmission"
 
 const TextForm: React.FC<TextFormProps> = ({
     id,
@@ -15,7 +15,7 @@ const TextForm: React.FC<TextFormProps> = ({
     const [value, setValue] = useState('')
     const [isVisible, setVisible] = useState(true)
 
-    const { updateFieldValue, getField } = useForm()
+    const { updateFieldValue, getField } = useFormSubmission()
     
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
         setValue(event.target.value)

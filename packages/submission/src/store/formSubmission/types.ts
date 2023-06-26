@@ -17,7 +17,7 @@ export interface FormResponse {
   [key: string]: FieldResponse
 }  
 
-export interface FormState {
+export interface FormSubmissionState {
   isLoading: boolean
   errors: string[] | null
   formType: string
@@ -26,7 +26,7 @@ export interface FormState {
   title: string
 }
 
-export interface FormStore extends FormState {
+export interface FormSubmissionStore extends FormSubmissionState {
   getForm: (id: string) => Promise<FormProps>
   setForm: (form: FormProps) => void
   updateFieldValue: (fieldId: string, fieldValue: string) => void

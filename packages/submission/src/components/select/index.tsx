@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react"
 import { Select, Text } from "@chakra-ui/react"
 
 import { OptionsFormProps } from "../../types/form.types"
-import { useForm } from "../../store/form"
+import { useFormSubmission } from "../../store/formSubmission"
 
 const FormSelect: React.FC<OptionsFormProps> = ({
     id,
@@ -17,7 +17,7 @@ const FormSelect: React.FC<OptionsFormProps> = ({
     const [value, setValue] = useState('')
     const [isVisible, setVisible] = useState(false)
 
-    const { updateFieldValue, getField } = useForm()
+    const { updateFieldValue, getField } = useFormSubmission()
 
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = useCallback((event) => {
         setValue(event.target.value)

@@ -1,6 +1,6 @@
 import { Routes , Route, BrowserRouter,  } from 'react-router-dom'
 import './App.css'
-import FormPage from "./pages/form"
+import FormPage from "./pages/formSubmission"
 
 function App() {
   return (

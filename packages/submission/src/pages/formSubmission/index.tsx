@@ -1,10 +1,9 @@
 import React, { ReactElement, useEffect } from "react"
 import { useLocation } from "react-router-dom"
-import { Button, Flex, FormControl, Heading } from "@chakra-ui/react"
+import { Button, Heading } from "@chakra-ui/react"
 
-import { initialValues } from "../../config/forms/registration" 
 import { TextFormProps, OptionsFormProps } from "../../types/form.types"
-import { useForm } from "../../store/form"
+import { useFormSubmission } from "../../store/formSubmission"
 
 import TextForm from "../../components/text"
 import SelectForm from "../../components/select"
@@ -23,7 +22,7 @@ const fieldComponents = ( props: TextFormProps | OptionsFormProps ): FieldCompon
 })
 
 const FormPage = () => {
-    const { getForm, setFieldsInitialValues, fields, title } = useForm()
+    const { getForm, setFieldsInitialValues, fields, title } = useFormSubmission()
 
     const { handleSubmit } = useSubmitForm()
 
@@ -35,12 +34,6 @@ const FormPage = () => {
             getForm(id)
         }
     }, [getForm, setFieldsInitialValues, id])
-
-    // useEffect(() => {
-    //     if(initialValues) {
-    //         setFieldsInitialValues(initialValues)
-    //     }
-    // }, [getForm, setFieldsInitialValues, id])
 
     return (
         <Container>

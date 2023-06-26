@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 import { v4 as uuid } from 'uuid'
-import { FormState, FormStore, FormProps, FieldProps } from './types'
+import { FormSubmissionState, FormSubmissionStore, FormProps, FieldProps } from './types'
 import { FormValuesProps } from "../../types/form.types"
 import { getForm as getFormFromDb, postForm } from '../../api/services/forms'
 
-const INITIAL_STATE: FormState = {
+const INITIAL_STATE: FormSubmissionState = {
   isLoading: false,
   errors: null,
   formType: "",
@@ -13,7 +13,7 @@ const INITIAL_STATE: FormState = {
   title: "",
 }
 
-const store = create<FormStore>((set, get) => ({
+const store = create<FormSubmissionStore>((set, get) => ({
   isLoading: INITIAL_STATE.isLoading,
   errors: INITIAL_STATE.errors,
   fields: INITIAL_STATE.fields,
