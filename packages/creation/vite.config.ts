@@ -35,9 +35,9 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@app', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
-      { find: '@container', replacement: fileURLToPath(new URL('../../container/src', import.meta.url)) },
-      { find: '@submission', replacement: fileURLToPath(new URL('../../submission/src', import.meta.url)) },
-      { find: '@view', replacement: fileURLToPath(new URL('../../view/src', import.meta.url)) },
+      { find: '@container', replacement: fileURLToPath(new URL('../container/src', import.meta.url)) },
+      { find: '@submission', replacement: fileURLToPath(new URL('../submission/src', import.meta.url)) },
+      { find: '@view', replacement: fileURLToPath(new URL('../view/src', import.meta.url)) },
     ],
   },
 })
