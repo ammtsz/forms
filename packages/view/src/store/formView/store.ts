@@ -11,7 +11,7 @@ const INITIAL_STATE: FormViewState = {
   responses: [],
 }
 
-const store = create<FormViewStore>((set, get) => ({
+const store = create<FormViewStore>((set) => ({
   isLoading: INITIAL_STATE.isLoading,
   errors: INITIAL_STATE.errors,
   id: INITIAL_STATE.id,

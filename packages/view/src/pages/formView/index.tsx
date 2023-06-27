@@ -1,9 +1,12 @@
-import { Container } from "./styles"
-import Table from "../../components/Table";
-
-import { useFormView } from "../../store/formView";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { ColumnShape } from "react-base-table";
+
+import Table from "../../components/Table";
+import { useFormView } from "../../store/formView";
+
+import { Container } from "./styles"
+
+import { TextFormProps } from "../../types";
 
 interface ColumnProps {
     title: string
@@ -18,21 +21,20 @@ interface ColumnProps {
 
 const FormViewPage = () => {
     const { getFormResponses, getForm } = useFormView()
-    const [columns, setColumns] = useState<ColumnProps[]>()
-    const [data, setData] = useState<DataProps[]>()
 
+    const columns = useRef<ColumnProps[]>()
+    const data = useRef<DataProps[]>()
     
     const getData = useCallback(async () => {
-        if(columns?.length) {
+        if(columns.current) {
             const responses = await getFormResponses("4d822f21-836e-4fdf-8632-4b92ff728b0a")
-            setData(
-                responses.map(response => {
+            data.current = responses.map(response => {
                     const tableData = {} as DataProps
                     
-                    columns.forEach(column => tableData[column.dataKey] = response[column.dataKey].value as string)
+                    columns.current?.forEach(column => tableData[column.dataKey] = response[column.dataKey].value as string)
 
                     return tableData
-                })
+                }
             )
 
         }
@@ -40,14 +42,14 @@ const FormViewPage = () => {
 
     const getColumns = useCallback(async () => {
         const col = await getForm("4d822f21-836e-4fdf-8632-4b92ff728b0a")
-        setColumns(col.fields.map(column => ({
+        columns.current = col.fields.map((column: TextFormProps) => ({
             title: column.label,
             dataKey: column.id,
             key: column.id,
             width: 300
-        })))
+        }))
 
-        getData()        
+        getData()
     }, [getData, getForm])
 
     useEffect(() => {
@@ -56,7 +58,7 @@ const FormViewPage = () => {
 
     return (
         <Container>
-            <Table columns={columns as ColumnShape[]} data={data}/>
+            <Table columns={columns.current as ColumnShape[]} data={data.current}/>
         </Container>
     )
 }

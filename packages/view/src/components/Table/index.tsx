@@ -1,4 +1,4 @@
-import BaseTable, { Column, ColumnShape } from 'react-base-table'
+import BaseTable, { ColumnShape } from 'react-base-table'
 import 'react-base-table/styles.css'
 
 interface TableProps {

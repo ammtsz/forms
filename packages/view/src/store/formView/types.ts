@@ -1,4 +1,4 @@
-import { FieldProps, FormValuesProps, FormProps } from "@container/types"
+import { FieldProps, FormValuesProps, FormProps } from "../../types"
 
 export interface FormViewState {
   isLoading: boolean

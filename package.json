@@ -4,17 +4,19 @@
   "version": "1.0.0",
   "description": "",
   "workspaces": [
-    "manager",
+    "container",
     "creation",
-    "submission"
+    "submission",
+    "view"
   ],
   "scripts": {
+    "dev": "pnpm  --parallel --filter \"./**\" dev",
     "build": "pnpm  --parallel --filter \"./**\" build",
     "serve": "pnpm  --parallel --filter \"./**\" preview",
-    "build:manager": "pnpm --parallel --filter \"./packages/manager\" build",
-    "serve:manager": "pnpm --parallel --filter \"./packages/manager\" serve",
-    "dev:manager": "pnpm --filter \"./packages/manager\" dev",
-    "stop": "kill-port --port 3000,3001,3002"
+    "build:container": "pnpm --parallel --filter \"./packages/container\" build",
+    "serve:container": "pnpm --parallel --filter \"./packages/container\" serve",
+    "dev:container": "pnpm --filter \"./packages/container\" dev",
+    "stop": "kill-port --port 3000,3001,3002,3003"
   },
   "devDependencies": {
     "kill-port": "^2.0.1"

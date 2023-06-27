@@ -24,6 +24,7 @@
     "baseUrl": "./src",
     "paths": {
       "@app/*": ["./*"],
+      "@view/*": ["./*"],
       "@container/*": ["../../container/src/*"],
       "@creation/*": ["../../creation/src/*"],
       "@submission/*": ["../../submission/src/*"],

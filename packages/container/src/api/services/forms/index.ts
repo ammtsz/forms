@@ -1,16 +1,18 @@
-import { collection, doc, getDocs, setDoc } from "firebase/firestore";
-import { FormProps } from "@app/types"
+import { collection, getDocs } from "firebase/firestore";
+import { FormProps } from "../../../types"
 
-import { firestore } from '@app/api/firebase'
-
-export const postForm = async (form: FormProps, docId: string) => {
-    await setDoc(doc(firestore, "forms", docId), form)
-}
+import { firestore } from '../../../api/firebase'
 
 export const getForms = async () => {
+    try {
+        const formsRef = collection(firestore, "forms")
+        const querySnapshot = await getDocs(formsRef);
+        console.error("firebase | container | getForms")
+    
+        return querySnapshot.docs.map(doc => doc.data()) as FormProps[]
+    } catch (err) {
+        console.error(err)
 
-    const formsRef = collection(firestore, "forms")
-    const querySnapshot = await getDocs(formsRef);
-
-    return querySnapshot.docs.map(doc => doc.data()) as FormProps[]
+        return [] as FormProps[]
+    }
 }

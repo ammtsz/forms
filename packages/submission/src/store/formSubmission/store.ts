@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 import { v4 as uuid } from 'uuid'
-import { FormProps, FieldProps } from '@container/types'
+import { FormProps, FieldProps } from '../../types'
 
-import { getForm as getFormFromDb, postForm } from '@app/api/services/forms'
-import { FormValuesProps } from "@app/types"
+import { getForm as getFormFromDb, postForm } from '../../api/services/forms'
+import { FormValuesProps } from "../../types"
 
 import { FormSubmissionState, FormSubmissionStore } from './types'
 

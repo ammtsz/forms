@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { Flex, theme } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 
 
 // TODO: configure chakra theme to use with emotion

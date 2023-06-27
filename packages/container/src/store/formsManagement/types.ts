@@ -1,4 +1,4 @@
-import { FormProps } from '@app/types'
+import { FormProps } from '../../types'
 
 export interface FormsManagementState {
   isLoading: boolean

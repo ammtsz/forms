@@ -1,5 +1,5 @@
-import { FieldProps, FormProps } from "@container/types"
-import { FormValuesProps } from "@app/types"
+import { FieldProps, FormProps } from "../../types"
+import { FormValuesProps } from "../../types"
 
 export interface FormSubmissionState {
   isLoading: boolean

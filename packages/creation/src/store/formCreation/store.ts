@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { v4 as uuid } from 'uuid'
 
-import { postForm } from '@app/api/services/forms' 
+import { postForm } from '../../api/services/forms' 
 import { FormCreationState, FormCreationStore, FieldProps } from './types'
 
 const INITIAL_STATE: FormCreationState = {

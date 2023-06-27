@@ -1,5 +1,5 @@
-import { useFormSubmission } from "@app/store/formSubmission"
-import { FormValuesProps } from "@app/types"
+import { useFormSubmission } from "../store/formSubmission"
+import { FormValuesProps } from "../types"
 
 const useSubmitForm = () => {
     const { submitForm, fields } = useFormSubmission()

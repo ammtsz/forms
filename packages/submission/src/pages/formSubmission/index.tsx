@@ -2,14 +2,14 @@ import React, { ReactElement, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { Button, Heading } from "@chakra-ui/react"
 
-import { TextFormProps, OptionsFormProps } from "@container/types"
+import { TextFormProps, OptionsFormProps } from "../../types"
 
-import { useFormSubmission } from "@app/store/formSubmission"
+import { useFormSubmission } from "../../store/formSubmission"
 
-import TextForm from "@app/components/text"
-import SelectForm from "@app/components/select"
+import TextForm from "../../components/text"
+import SelectForm from "../../components/select"
 
-import useSubmitForm from "@app/hooks/useSubmitForm"
+import useSubmitForm from "../../hooks/useSubmitForm"
 
 import { Container, Form, Field } from "./styles"
 
@@ -22,13 +22,13 @@ const fieldComponents = ( props: TextFormProps | OptionsFormProps ): FieldCompon
     select: <SelectForm {...props as OptionsFormProps}/>,
 })
 
-const FormPage = () => {
+const FormSubmissionPage = () => {
     const { getForm, setFieldsInitialValues, fields, title } = useFormSubmission()
 
     const { handleSubmit } = useSubmitForm()
 
     const { search } = useLocation()
-    const id = new URLSearchParams(search).get('id')
+    const id = new URLSearchParams(search).get('id') || "4d822f21-836e-4fdf-8632-4b92ff728b0a"
 
     useEffect(() => {
         if(id) {
@@ -53,4 +53,4 @@ const FormPage = () => {
     )
 }
 
-export default FormPage
+export default FormSubmissionPage

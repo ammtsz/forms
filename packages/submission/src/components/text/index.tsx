@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react"
+// import React, { useCallback, useEffect, useState } from "react"
+import React from "react"
 import { Input, Text } from "@chakra-ui/react"
 
-import { TextFormProps } from "@container/types"
-import { useFormSubmission } from "@app/store/formSubmission"
+import { TextFormProps } from "../../types"
+import { useFormSubmission } from "../../store/formSubmission"
 
 const TextForm: React.FC<TextFormProps> = ({
     id,
@@ -13,25 +14,25 @@ const TextForm: React.FC<TextFormProps> = ({
     value: intitialValue,
     description
 }) => {
-    const [value, setValue] = useState('')
-    const [isVisible, setVisible] = useState(true)
+    const [value, setValue] = React.useState('')
+    const [isVisible, setVisible] = React.useState(true)
 
     const { updateFieldValue, getField } = useFormSubmission()
     
-    const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
+    const handleChange: React.ChangeEventHandler<HTMLInputElement> = React.useCallback((event) => {
         setValue(event.target.value)
         updateFieldValue(id, event.target.value)
     }, [id, updateFieldValue])
 
     const requiredField = dependsOn && getField(dependsOn.fieldId)
 
-    useEffect(() => {
+    React.useEffect(() => {
         if(intitialValue && intitialValue.length) {
             setValue(intitialValue)
         }
     }, [intitialValue])
 
-    useEffect(() => {
+    React.useEffect(() => {
         if(requiredField) {
             const isValidValue = dependsOn.optionsId.some((validOption) => requiredField.value?.includes(validOption))
 

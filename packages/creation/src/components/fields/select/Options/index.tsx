@@ -2,7 +2,7 @@ import React from "react"
 import { Trash as TrashIcon } from "react-feather"
 import { Input, Flex, Button, Text } from "@chakra-ui/react"
 
-import { OptionsFormProps } from "@app/types"
+import { OptionsFormProps } from "../../../../types"
 
 interface SelectOptionsProps {
     handleAddOption: React.MouseEventHandler<HTMLButtonElement>
