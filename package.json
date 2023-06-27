@@ -10,11 +10,11 @@
     "view"
   ],
   "scripts": {
-    "start": "pnpm --parallel --filter \"./**\" start",
-    "build": "pnpm --parallel --filter \"./**\" build",
-    "serve": "pnpm --parallel --filter \"./**\" preview",
-    "build:container": "pnpm --parallel --filter \"./packages/container\" build",
-    "serve:container": "pnpm --parallel --filter \"./packages/container\" serve",
+    "start": "pnpm --parallel --filter \"./packages/apps/**\" start",
+    "build": "pnpm --parallel --filter \"./packages/apps/**\" build",
+    "serve": "pnpm --parallel --filter \"./packages/apps/**\" preview",
+    "build:container": "pnpm --parallel --filter \"./packages/apps/container\" build",
+    "serve:container": "pnpm --parallel --filter \"./packages/apps/container\" serve",
     "dev:container": "pnpm --filter \"./packages/container\" dev",
     "stop": "kill-port --port 3000,3001,3002,3003"
   },
