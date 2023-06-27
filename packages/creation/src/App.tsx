@@ -1,5 +1,5 @@
 import { BrowserRouter , Route, Routes } from 'react-router-dom'
-import FormCreationPage from "./pages/formCreation"
+import FormCreationPage from "./pages/FormCreation"
 import './App.css'
 
 function App() {

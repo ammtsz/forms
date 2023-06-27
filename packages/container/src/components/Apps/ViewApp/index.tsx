@@ -1,3 +1,3 @@
-import FormViewPage from "view/FormView";
+import FormViewPage from "view/ViewPage";
 
 export default FormViewPage

@@ -10,9 +10,9 @@
     "view"
   ],
   "scripts": {
-    "dev": "pnpm  --parallel --filter \"./**\" dev",
-    "build": "pnpm  --parallel --filter \"./**\" build",
-    "serve": "pnpm  --parallel --filter \"./**\" preview",
+    "start": "pnpm --parallel --filter \"./**\" start",
+    "build": "pnpm --parallel --filter \"./**\" build",
+    "serve": "pnpm --parallel --filter \"./**\" preview",
     "build:container": "pnpm --parallel --filter \"./packages/container\" build",
     "serve:container": "pnpm --parallel --filter \"./packages/container\" serve",
     "dev:container": "pnpm --filter \"./packages/container\" dev",
