@@ -2,7 +2,9 @@
     "name": "@forms/types",
     "version": "0.1.0",
     "files": [
-        "interfaces"
+        "interfaces",
+        "declarations",
+        "global"
       ],
     "scripts": {},
     "devDependencies": {}

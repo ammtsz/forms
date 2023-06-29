@@ -25,7 +25,8 @@
     "target": "ES6"
   },
   "include": [
-    "./src"
+    "./src",
+    "../types"
   ],
   "exclude": [
     "**/*.spec.ts",

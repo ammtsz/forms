@@ -1,3 +1,5 @@
+import { FieldsType } from "../constants/fields"
+
 export type FieldProps = TextFormProps | OptionsFormProps
 
 export interface OptionsFormProps extends TextFormProps {
@@ -16,7 +18,7 @@ export interface OptionProps {
 export interface TextFormProps {
   id: string
   label: string
-  type: string
+  type: FieldsType
   required?: boolean
   placeholder?: string
   value?: string

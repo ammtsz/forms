@@ -8,5 +8,3 @@ export const Fields = {
 }
 
 export type FieldsType = ConstantValues<typeof Fields>
-
-type ConstantValues<T> = T[keyof T]
