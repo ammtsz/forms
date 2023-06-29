@@ -4,12 +4,12 @@ import { Button, Heading } from "@chakra-ui/react"
 
 import { TextFormProps, OptionsFormProps } from "@forms/types/interfaces/field"
 
-import { useFormSubmission } from "../../store/formSubmission"
+import { useFormSubmission } from "@app/store/formSubmission"
 
-import TextForm from "../../components/text"
-import SelectForm from "../../components/select"
+import TextForm from "@app/components/text"
+import SelectForm from "@app/components/select"
 
-import useSubmitForm from "../../hooks/useSubmitForm"
+import useSubmitForm from "@app/hooks/useSubmitForm"
 
 import { Container, Form, Field } from "./styles"
 

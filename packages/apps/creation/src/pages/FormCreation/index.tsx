@@ -4,14 +4,14 @@ import { Input, Flex, Box, Textarea, Button } from "@chakra-ui/react"
 
 import { getPrefixFromString } from "@forms/utils"
 
-import TextForm from "../../components/fields/Text"
-import TextAreaForm from "../../components/fields/Textarea"
-import SelectForm from "../../components/fields/Select"
-import AddFieldButton from "../../components/AddFieldButton"
+import TextForm from "@app/components/fields/Text"
+import TextAreaForm from "@app/components/fields/Textarea"
+import SelectForm from "@app/components/fields/Select"
+import AddFieldButton from "@app/components/AddFieldButton"
 
-import { Fields } from "../../constants/fields"
+import { Fields } from "@app/constants/fields"
 
-import { useFormCreation } from "../../store/formCreation"
+import { useFormCreation } from "@app/store/formCreation"
 
 import { Container, Form } from "./styles"
 

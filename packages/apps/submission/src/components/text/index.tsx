@@ -4,7 +4,7 @@ import { Input, Text } from "@chakra-ui/react"
 
 import { TextFormProps } from "@forms/types/interfaces/field"
 
-import { useFormSubmission } from "../../store/formSubmission"
+import { useFormSubmission } from "@app/store/formSubmission"
 
 const TextForm: React.FC<TextFormProps> = ({
     id,

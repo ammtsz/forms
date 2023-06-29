@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react"
 import { getPrefixFromString } from "@forms/utils"
-import { useFormCreation } from "../../../store/formCreation"
+import { useFormCreation } from "@app/store/formCreation"
 
 interface SelectProps { 
     id: string

@@ -4,7 +4,7 @@ import { FormProps } from '@forms/types/interfaces/form'
 import { FieldProps } from '@forms/types/interfaces/field'
 import { FormValuesProps } from "@forms/types/interfaces/formResponse"
 
-import { getForm as getFormFromDb, postForm } from '../../api/services/forms'
+import { getForm as getFormFromDb, postForm } from '@app/api/services/forms'
 
 import { FormSubmissionState, FormSubmissionStore } from './types'
 

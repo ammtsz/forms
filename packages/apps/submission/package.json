@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "set PORT=3001 & react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test"
+    "start": "set PORT=3001 & craco start",
+    "build": "craco build",
+    "test": "craco test"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.7.1",
+    "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@forms/types": "*",

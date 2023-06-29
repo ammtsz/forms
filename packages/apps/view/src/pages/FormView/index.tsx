@@ -3,8 +3,8 @@ import { ColumnShape } from "react-base-table";
 
 import { TextFormProps } from "@forms/types/interfaces/field"
 
-import Table from "../../components/Table";
-import { useFormView } from "../../store/formView";
+import Table from "@app/components/Table";
+import { useFormView } from "@app/store/formView";
 
 import { Container } from "./styles"
 

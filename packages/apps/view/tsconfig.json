@@ -23,5 +23,7 @@
   "include": [
     "src",
     "../../commons/types"
-  ]
+  ],
+  "exclude": ["node_modules"],
+  "extends": "./tsconfig.paths.json"
 }

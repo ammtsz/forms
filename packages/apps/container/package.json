@@ -3,19 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "set PORT=3000 & react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test"
+    "start": "set PORT=3000 & craco start",
+    "build": "craco build",
+    "test": "craco test"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.7.1",
+    "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@forms/creation-app": "*",
     "@forms/submission-app": "*",
-    "@forms/view-app": "*",
     "@forms/types": "*",
     "@forms/utils": "*",
+    "@forms/view-app": "*",
     "firebase": "^9.23.0",
     "framer-motion": "^10.12.16",
     "history": "^5.3.0",
