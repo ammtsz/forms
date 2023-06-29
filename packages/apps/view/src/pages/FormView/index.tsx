@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef } from "react";
 import { ColumnShape } from "react-base-table";
 
+import { TextFormProps } from "@forms/types/interfaces/field"
+
 import Table from "../../components/Table";
 import { useFormView } from "../../store/formView";
 
 import { Container } from "./styles"
 
-import { TextFormProps } from "../../types";
 
 interface ColumnProps {
     title: string

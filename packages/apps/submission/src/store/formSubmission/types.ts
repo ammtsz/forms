@@ -1,5 +1,6 @@
-import { FieldProps, FormProps } from "../../types"
-import { FormValuesProps } from "../../types"
+import { FieldProps } from "@forms/types/interfaces/field";
+import { FormProps } from "@forms/types/interfaces/form";
+import { FormValuesProps } from "@forms/types/interfaces/formResponse"
 
 export interface FormSubmissionState {
   isLoading: boolean

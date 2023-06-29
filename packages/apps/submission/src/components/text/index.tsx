@@ -2,7 +2,8 @@
 import React from "react"
 import { Input, Text } from "@chakra-ui/react"
 
-import { TextFormProps } from "../../types"
+import { TextFormProps } from "@forms/types/interfaces/field"
+
 import { useFormSubmission } from "../../store/formSubmission"
 
 const TextForm: React.FC<TextFormProps> = ({

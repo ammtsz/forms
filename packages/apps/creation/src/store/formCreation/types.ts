@@ -1,6 +1,4 @@
-import { TextFormProps, OptionsFormProps } from "../../types"
-
-export type FieldProps = TextFormProps | OptionsFormProps
+import { FieldProps } from "@forms/types/interfaces/field"
 
 export interface FormCreationState {
   isLoading: boolean

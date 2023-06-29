@@ -1,9 +1,10 @@
 import { create } from 'zustand'
 import { v4 as uuid } from 'uuid'
-import { FormProps, FieldProps } from '../../types'
+import { FormProps } from '@forms/types/interfaces/form'
+import { FieldProps } from '@forms/types/interfaces/field'
+import { FormValuesProps } from "@forms/types/interfaces/formResponse"
 
 import { getForm as getFormFromDb, postForm } from '../../api/services/forms'
-import { FormValuesProps } from "../../types"
 
 import { FormSubmissionState, FormSubmissionStore } from './types'
 

@@ -1,0 +1,9 @@
+{
+    "name": "@forms/types",
+    "version": "0.1.0",
+    "files": [
+        "interfaces"
+      ],
+    "scripts": {},
+    "devDependencies": {}
+}

@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { Button, Heading } from "@chakra-ui/react"
 
-import { TextFormProps, OptionsFormProps } from "../../types"
+import { TextFormProps, OptionsFormProps } from "@forms/types/interfaces/field"
 
 import { useFormSubmission } from "../../store/formSubmission"
 

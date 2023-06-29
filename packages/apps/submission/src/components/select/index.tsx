@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { Select, Text } from "@chakra-ui/react"
-import { OptionsFormProps } from "../../types"
+import { OptionsFormProps } from "@forms/types/interfaces/field"
 
 import { useFormSubmission } from "../../store/formSubmission"
 

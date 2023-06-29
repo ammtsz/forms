@@ -1,5 +1,5 @@
 {
-  "name": "host",
+  "name": "@forms/container-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,6 +11,11 @@
     "@chakra-ui/react": "^2.7.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@forms/creation-app": "*",
+    "@forms/submission-app": "*",
+    "@forms/view-app": "*",
+    "@forms/types": "*",
+    "@forms/utils": "*",
     "firebase": "^9.23.0",
     "framer-motion": "^10.12.16",
     "history": "^5.3.0",

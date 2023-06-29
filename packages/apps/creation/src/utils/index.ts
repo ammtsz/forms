@@ -1,1 +1,1 @@
-export * from "./getPrefixFromString"
+export { getPrefixFromString } from "@forms/utils"

@@ -3,22 +3,22 @@
   "private": true,
   "version": "1.0.0",
   "description": "",
-  "workspaces": [
-    "container",
-    "creation",
-    "submission",
-    "view"
-  ],
   "scripts": {
-    "start": "pnpm --parallel --filter \"./packages/apps/**\" start",
-    "build": "pnpm --parallel --filter \"./packages/apps/**\" build",
-    "serve": "pnpm --parallel --filter \"./packages/apps/**\" preview",
-    "build:container": "pnpm --parallel --filter \"./packages/apps/container\" build",
-    "serve:container": "pnpm --parallel --filter \"./packages/apps/container\" serve",
-    "dev:container": "pnpm --filter \"./packages/container\" dev",
+    "start": "npx lerna run start",
+    "build": "npx lerna run build",
+    "start:container": "npx lerna run start --scope=@forms/container-app",
+    "build:container": "npx lerna run build --scope=@forms/container-app",
+    "start:creation": "npx lerna run start --scope=@forms/creation-app",
+    "build:creation": "npx lerna run build --scope=@forms/creation-app",
+    "start:submission": "npx lerna run start --scope=@forms/submission-app",
+    "build:submission": "npx lerna run build --scope=@forms/submission-app",
+    "start:view": "npx lerna run start --scope=@forms/view-app",
+    "build:view": "npx lerna run build --scope=@forms/view-app",
     "stop": "kill-port --port 3000,3001,3002,3003"
   },
   "devDependencies": {
-    "kill-port": "^2.0.1"
-  }
+    "kill-port": "^2.0.1",
+    "lerna": "^7.1.0"
+  },
+  "dependencies": {}
 }

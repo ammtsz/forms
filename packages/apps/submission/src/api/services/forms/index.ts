@@ -1,6 +1,6 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { FormProps } from "../../../types"
-import { FormValuesProps } from "../../../types"
+import { FormProps } from "@forms/types/interfaces/form"
+import { FormValuesProps } from "@forms/types/interfaces/formResponse"
 import { firestore } from '../../../api/firebase'
 
 export const postForm = async (form: FormValuesProps, formId:string , formType: string) => {

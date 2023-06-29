@@ -1,6 +1,8 @@
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
+import { FormProps } from "@forms/types/interfaces/form"
+import { FormValuesProps } from "@forms/types/interfaces/formResponse"
+
 import { firestore } from '../../firebase'
-import { FormValuesProps, FormProps } from "../../../types"
 
 export const getFormResponses = async (formId: string) => {
     try {

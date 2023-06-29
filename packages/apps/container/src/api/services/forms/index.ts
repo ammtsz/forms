@@ -1,5 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
-import { FormProps } from "../../../types"
+import { FormProps } from "@forms/types/interfaces/form"
 
 import { firestore } from '../../../api/firebase'
 
