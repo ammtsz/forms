@@ -1,64 +1,68 @@
 // import React, { useCallback, useEffect, useState } from "react"
-import React from "react"
-import { Input, Text } from "@chakra-ui/react"
-
-import { TextFormProps } from "@forms/types/interfaces/field"
-
-import { useFormSubmission } from "@app/store/formSubmission"
+import { useFormSubmission } from "@app/store/formSubmission";
+import { Input, Text } from "@chakra-ui/react";
+import { TextFormProps } from "@forms/types/interfaces/field";
+import React from "react";
 
 const TextForm: React.FC<TextFormProps> = ({
-    id,
-    label,
-    placeholder,
-    required,
-    dependsOn,
-    value: intitialValue,
-    description
+  id,
+  label,
+  placeholder,
+  required,
+  dependsOn,
+  value: intitialValue,
+  description,
 }) => {
-    const [value, setValue] = React.useState('')
-    const [isVisible, setVisible] = React.useState(true)
+  const [value, setValue] = React.useState("");
+  const [isVisible, setVisible] = React.useState(true);
 
-    const { updateFieldValue, getField } = useFormSubmission()
-    
-    const handleChange: React.ChangeEventHandler<HTMLInputElement> = React.useCallback((event) => {
-        setValue(event.target.value)
-        updateFieldValue(id, event.target.value)
-    }, [id, updateFieldValue])
+  const { updateFieldValue, getField } = useFormSubmission();
 
-    const requiredField = dependsOn && getField(dependsOn.fieldId)
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> =
+    React.useCallback(
+      (event) => {
+        setValue(event.target.value);
+        updateFieldValue(id, event.target.value);
+      },
+      [id, updateFieldValue]
+    );
 
-    React.useEffect(() => {
-        if(intitialValue && intitialValue.length) {
-            setValue(intitialValue)
-        }
-    }, [intitialValue])
+  const requiredField = dependsOn && getField(dependsOn.fieldId);
 
-    React.useEffect(() => {
-        if(requiredField) {
-            const isValidValue = dependsOn.optionsId.some((validOption) => requiredField.value?.includes(validOption))
+  React.useEffect(() => {
+    if (intitialValue && intitialValue.length) {
+      setValue(intitialValue);
+    }
+  }, [intitialValue]);
 
-            setVisible(isValidValue)
-        } else {
-            setVisible(true)
-        }
-    }, [dependsOn, getField, requiredField])
+  React.useEffect(() => {
+    if (requiredField) {
+      const isValidValue = dependsOn.optionsId.some((validOption) =>
+        requiredField.value?.includes(validOption)
+      );
 
-    return (
-        isVisible
-            ? <React.Fragment>
-                <Text fontSize="lg">{label}</Text>
-                <Text fontSize="sm" mb={2} color={"gray"}>{description}</Text>
-                <Input
-                    required={required}
-                    placeholder={placeholder}
-                    onChange={handleChange}
-                    value={value}
-                    bg={"white"}
-                    boxShadow={"inner"}
-                />
-            </React.Fragment>
-            : null
-    )
-}
+      setVisible(isValidValue);
+    } else {
+      setVisible(true);
+    }
+  }, [dependsOn, getField, requiredField]);
 
-export default TextForm
+  return isVisible ? (
+    <React.Fragment>
+      <Text fontSize="lg">{label}</Text>
+      <Text fontSize="sm" mb={2} color={"gray"}>
+        {description}
+      </Text>
+      <Input
+        required={required}
+        placeholder={placeholder}
+        onChange={handleChange}
+        value={value}
+        bg={"white"}
+        boxShadow={"inner"}
+      />
+    </React.Fragment>
+  ) : null;
+};
+
+export default TextForm;

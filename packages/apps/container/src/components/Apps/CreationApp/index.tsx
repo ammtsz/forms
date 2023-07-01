@@ -1,6 +1,6 @@
 import FormCreationPage from "creation/CreationPage";
 
-export default FormCreationPage
+export default FormCreationPage;
 
 // import { useRef, useEffect } from "react";
 // import { useNavigate, useLocation } from "react-router-dom";
@@ -10,11 +10,11 @@ export default FormCreationPage
 // interface Root {
 //     render: (element: React.ReactElement) => void;
 //   }
-  
+
 // interface FormCreationProps {
 // root: Root;
 // }
-  
+
 // export const FormCreation: React.FC = () => {
 //     const ref = useRef(null)
 //     const navigate = useNavigate()
@@ -26,13 +26,13 @@ export default FormCreationPage
 //                 initialPath: location.pathname,
 //                 onNavigate: ( { location: {pathname: nextPathname} }) => {
 //                     const { pathname } = location
-                    
+
 //                     if(pathname !== nextPathname) {
 //                         navigate(location)
 //                     }
 //                 },
 //             })
-            
+
 //             onParentNavigate({pathname: location.pathname})
 //         }
 //     }, [location, navigate])

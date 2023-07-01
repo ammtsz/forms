@@ -1,8 +1,8 @@
-import { shallow } from 'zustand/shallow'
+import { shallow } from "zustand/shallow";
 
-import { FormsManagementStore as Store } from './types'
-import store from './store'
+import store from "./store";
+import { FormsManagementStore as Store } from "./types";
 
 export const useFormsManagement = (): Store => {
-  return store((state) => state, shallow)
-}
+  return store((state) => state, shallow);
+};

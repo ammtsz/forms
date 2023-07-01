@@ -1,3 +1,3 @@
-declare module "submission/SubmissionPage"
-declare module "creation/CreationPage"
-declare module "view/ViewPage"
+declare module "submission/SubmissionPage";
+declare module "creation/CreationPage";
+declare module "view/ViewPage";

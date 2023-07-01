@@ -1,11 +1,14 @@
-import { lazy, Suspense } from 'react'
-import { Route, Routes, BrowserRouter } from 'react-router-dom'
-// import { createBrowserHistory } from 'history'
-import FormManagementPage from "./pages/formsManagement"
+import { lazy, Suspense } from "react";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-const FormCreationPage = lazy(() => import("./components/Apps/CreationApp"))
-const FormSubmissionPage = lazy(() => import("./components/Apps/SubmissionApp"))
-const FormViewPage = lazy(() => import("./components/Apps/ViewApp"))
+// import { createBrowserHistory } from 'history'
+import FormManagementPage from "./pages/formsManagement";
+
+const FormCreationPage = lazy(() => import("./components/Apps/CreationApp"));
+const FormSubmissionPage = lazy(
+  () => import("./components/Apps/SubmissionApp")
+);
+const FormViewPage = lazy(() => import("./components/Apps/ViewApp"));
 
 // const history = createBrowserHistory()
 
@@ -23,7 +26,7 @@ const App = () => {
         </Suspense>
       </div>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;

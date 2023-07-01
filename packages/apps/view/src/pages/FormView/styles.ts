@@ -1,12 +1,9 @@
-import styled from '@emotion/styled'
-
-import { Flex } from '@chakra-ui/react'
-
+import { Flex } from "@chakra-ui/react";
+import styled from "@emotion/styled";
 
 // TODO: configure chakra theme to use with emotion
 
-export const Container = styled(Flex)`
-`
+export const Container = styled(Flex)``;
 // box-shadow: ${theme.shadows['dark-lg']};
 // padding: ${theme.space[12]};
 // border-radius: ${theme.space[4]};

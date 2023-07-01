@@ -1,1 +1,1 @@
-export * from "./getPrefixFromString"
+export * from "./getPrefixFromString";

@@ -6,6 +6,8 @@
   "scripts": {
     "start": "npx lerna run start",
     "build": "npx lerna run build",
+    "lint": "npx lerna run lint",
+    "lint:fix": "npx lerna run lint:fix",
     "start:container": "npx lerna run start --scope=@forms/container-app",
     "build:container": "npx lerna run build --scope=@forms/container-app",
     "start:creation": "npx lerna run start --scope=@forms/creation-app",

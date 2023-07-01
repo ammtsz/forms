@@ -1,10 +1,10 @@
-import { create } from 'zustand'
 import {
   getFormResponses as getFormResponsesFromDb,
-  getForm as getFormFromDb
-} from '@app/api/services/forms'
+  getForm as getFormFromDb,
+} from "@app/api/services/forms";
+import { create } from "zustand";
 
-import { FormViewState, FormViewStore } from './types'
+import { FormViewState, FormViewStore } from "./types";
 
 const INITIAL_STATE: FormViewState = {
   isLoading: false,
@@ -13,7 +13,7 @@ const INITIAL_STATE: FormViewState = {
   title: "",
   fields: [],
   responses: [],
-}
+};
 
 const store = create<FormViewStore>((set) => ({
   isLoading: INITIAL_STATE.isLoading,
@@ -25,9 +25,9 @@ const store = create<FormViewStore>((set) => ({
 
   getFormResponses: async (formId) => {
     const responses = await getFormResponsesFromDb(formId);
-    set({ responses })
+    set({ responses });
 
-    return responses
+    return responses;
   },
 
   getForm: async (formId) => {
@@ -36,12 +36,12 @@ const store = create<FormViewStore>((set) => ({
       id: form.id,
       title: form.title,
       fields: form.fields,
-    })
+    });
 
-    return form
+    return form;
   },
 
-  reset: () => set(state => ({ ...state, ...INITIAL_STATE }))
-}))
+  reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),
+}));
 
-export default store
+export default store;
