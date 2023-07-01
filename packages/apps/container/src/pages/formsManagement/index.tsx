@@ -1,8 +1,9 @@
-import GoToFormButton from "@app/components/GoToFormButton";
-import { useFormsManagement } from "@app/store/formsManagement";
 import { Button, Flex } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import GoToFormButton from "@app/components/GoToFormButton";
+import { useFormsManagement } from "@app/store/formsManagement";
 
 const FormCreationPage = () => {
   const [formsNames, setFormsNames] = useState<{ title: string; id: string }[]>(

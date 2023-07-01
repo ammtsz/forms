@@ -1,8 +1,10 @@
-import Table from "@app/components/Table";
-import { useFormView } from "@app/store/formView";
-import { TextFormProps } from "@forms/types/interfaces/field";
 import { useCallback, useEffect, useRef } from "react";
 import { ColumnShape } from "react-base-table";
+
+import { TextFormProps } from "@forms/types/interfaces/field";
+
+import Table from "@app/components/Table";
+import { useFormView } from "@app/store/formView";
 
 import { Container } from "./styles";
 

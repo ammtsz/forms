@@ -1,8 +1,10 @@
 // import React, { useCallback, useEffect, useState } from "react"
-import { useFormSubmission } from "@app/store/formSubmission";
 import { Input, Text } from "@chakra-ui/react";
-import { TextFormProps } from "@forms/types/interfaces/field";
 import React from "react";
+
+import { TextFormProps } from "@forms/types/interfaces/field";
+
+import { useFormSubmission } from "@app/store/formSubmission";
 
 const TextForm: React.FC<TextFormProps> = ({
   id,

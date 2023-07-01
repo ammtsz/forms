@@ -1,13 +1,15 @@
+import { Input, Flex, Box, Textarea, Button } from "@chakra-ui/react";
+import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { getPrefixFromString } from "@forms/utils";
+
 import AddFieldButton from "@app/components/AddFieldButton";
 import SelectForm from "@app/components/fields/Select";
 import TextForm from "@app/components/fields/Text";
 import TextAreaForm from "@app/components/fields/Textarea";
 import { Fields } from "@app/constants/fields";
 import { useFormCreation } from "@app/store/formCreation";
-import { Input, Flex, Box, Textarea, Button } from "@chakra-ui/react";
-import { getPrefixFromString } from "@forms/utils";
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Container, Form } from "./styles";
 

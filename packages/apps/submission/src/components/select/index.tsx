@@ -1,7 +1,9 @@
-import { useFormSubmission } from "@app/store/formSubmission";
 import { Select, Text } from "@chakra-ui/react";
-import { OptionsFormProps } from "@forms/types/interfaces/field";
 import React, { useCallback, useEffect, useState } from "react";
+
+import { OptionsFormProps } from "@forms/types/interfaces/field";
+
+import { useFormSubmission } from "@app/store/formSubmission";
 
 const FormSelect: React.FC<OptionsFormProps> = ({
   id,
