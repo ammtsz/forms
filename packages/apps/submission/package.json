@@ -5,7 +5,8 @@
 	"scripts": {
 		"start": "set PORT=3001 & craco start",
 		"build": "craco build",
-		"test": "craco test",
+		"test": "jest -u -i --colors --logHeapUsage --passWithNoTests",
+    "test:coverage": "jest -u -i --colors --silent --collectCoverage --passWithNoTests",
 		"lint": "tsc --noEmit && eslint src/**/*.ts{,x} --cache --max-warnings=0",
     "lint:fix": "eslint src/**/*.ts{,x} --fix"
 	},
@@ -30,6 +31,7 @@
 	},
 	"devDependencies": {
 		"@forms/eslint-config": "*",
+    "@forms/test": "*",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",

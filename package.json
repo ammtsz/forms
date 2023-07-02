@@ -8,6 +8,8 @@
     "build": "npx lerna run build",
     "lint": "npx lerna run lint",
     "lint:fix": "npx lerna run lint:fix",
+    "test": "npx lerna run test",
+    "test:coverage": "npx lerna run test:coverage",
     "start:container": "npx lerna run start --scope=@forms/container-app",
     "build:container": "npx lerna run build --scope=@forms/container-app",
     "start:creation": "npx lerna run start --scope=@forms/creation-app",

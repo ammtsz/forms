@@ -7,9 +7,9 @@ module.exports = {
   ignorePatterns: [
     ".eslintrc.js",
     "jest.config.js",
-    "/**/*.test.js",
-    "/**/*.test.ts",
-    "/**/*.test.tsx",
+    "/**/*.spec.js",
+    "/**/*.spec.ts",
+    "/**/*.spec.tsx",
     "dist",
     "types",
     "/**/types",
