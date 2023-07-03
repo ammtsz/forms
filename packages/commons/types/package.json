@@ -1,11 +1,5 @@
 {
     "name": "@forms/types",
     "version": "0.1.0",
-    "files": [
-        "interfaces",
-        "declarations",
-        "global"
-      ],
-    "scripts": {},
-    "devDependencies": {}
+    "private": true
 }

@@ -1,6 +1,7 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
-import { v4 as uuid } from "uuid";
+
+import { uuid } from "@forms/utils";
 
 import { useFormCreation } from "@app/store/formCreation";
 

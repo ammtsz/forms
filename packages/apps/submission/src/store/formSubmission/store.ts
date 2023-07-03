@@ -1,9 +1,9 @@
-import { v4 as uuid } from "uuid";
 import { create } from "zustand";
 
 import { FieldProps } from "@forms/types/interfaces/field";
 import { FormProps } from "@forms/types/interfaces/form";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
+import { uuid } from "@forms/utils";
 
 import { getForm as getFormFromDb, postForm } from "@app/api/services/forms";
 
