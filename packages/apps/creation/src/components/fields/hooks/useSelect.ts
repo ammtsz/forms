@@ -20,26 +20,30 @@ const useSelect = ({ id }: SelectProps) => {
 
   const { deleteField, updateField } = useFormCreation();
 
-  const saveUpdates = useCallback(() => {
-    // handleClearEmptyFields()
-    updateField({
+  const saveUpdates = useCallback(
+    (props = {}) => {
+      // handleClearEmptyFields()
+      updateField({
+        id,
+        type: getPrefixFromString(id),
+        label: value.label,
+        description: value.description,
+        required: value.isRequired,
+        options: value.options,
+        optionOther: value.optionOther,
+        ...props,
+      });
+    },
+    [
+      updateField,
       id,
-      type: getPrefixFromString(id),
-      label: value.label,
-      description: value.description,
-      required: value.isRequired,
-      options: value.options,
-      optionOther: value.optionOther,
-    });
-  }, [
-    updateField,
-    id,
-    value.label,
-    value.description,
-    value.isRequired,
-    value.options,
-    value.optionOther,
-  ]);
+      value.label,
+      value.description,
+      value.isRequired,
+      value.options,
+      value.optionOther,
+    ]
+  );
 
   const handleInputChange: React.ChangeEventHandler<
     HTMLTextAreaElement | HTMLInputElement
@@ -49,18 +53,21 @@ const useSelect = ({ id }: SelectProps) => {
         ...prev,
         [event.target.name]: event.target.value,
       }));
-      saveUpdates();
+      saveUpdates({ [event.target.name]: event.target.value });
     },
     [saveUpdates]
   );
 
   const handleCheckbox = useCallback(() => {
+    const isRequired = !value.isRequired;
+
     setValue((prev) => ({
       ...prev,
-      isRequired: !prev.isRequired,
+      isRequired,
     }));
-    saveUpdates();
-  }, [saveUpdates]);
+
+    saveUpdates({ isRequired });
+  }, [saveUpdates, value.isRequired]);
 
   const handleDelete = useCallback(() => {
     deleteField(id);
@@ -94,7 +101,7 @@ const useSelect = ({ id }: SelectProps) => {
           ...prev,
           options,
         }));
-        saveUpdates();
+        saveUpdates({ options });
       },
       [saveUpdates, value.options]
     );
@@ -109,35 +116,41 @@ const useSelect = ({ id }: SelectProps) => {
           ...prev,
           options,
         }));
-        saveUpdates();
+        saveUpdates({ options });
       },
       [saveUpdates, value.options]
     );
 
   const toggleOtherOption = useCallback(() => {
+    const optionOther = {
+      ...value.optionOther,
+      isVisible: !value.optionOther.isVisible,
+    };
+
     setValue((prev) => ({
       ...prev,
-      optionOther: {
-        ...prev.optionOther,
-        isVisible: !prev.optionOther.isVisible,
-      },
+      optionOther,
     }));
-    saveUpdates();
-  }, [saveUpdates]);
+
+    saveUpdates({ optionOther });
+  }, [saveUpdates, value.optionOther]);
 
   const handleOtherOption: React.ChangeEventHandler<HTMLInputElement> =
     useCallback(
       (event) => {
+        const optionOther = {
+          ...value.optionOther,
+          placeholder: event.target.value,
+        };
+
         setValue((prev) => ({
           ...prev,
-          optionOther: {
-            ...prev.optionOther,
-            placeholder: event.target.value,
-          },
+          optionOther,
         }));
-        saveUpdates();
+
+        saveUpdates({ optionOther });
       },
-      [saveUpdates]
+      [saveUpdates, value.optionOther]
     );
 
   return {
