@@ -26,7 +26,8 @@
   },
   "include": [
     "./src",
-    "../types"
+    "../types",
+    "../../config/environments/environments.d.ts"
   ],
   "exclude": [
     "**/*.spec.ts",

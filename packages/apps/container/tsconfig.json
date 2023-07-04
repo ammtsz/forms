@@ -1,7 +1,8 @@
 {
   "include": [
     "src",
-    "../../commons/types"
+    "../../configs/environments/environments.d.ts",
+    "../../commons/types",
   ],
   "extends": "./tsconfig.paths.json"
 }

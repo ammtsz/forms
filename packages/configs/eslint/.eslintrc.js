@@ -14,7 +14,8 @@ module.exports = {
     "types",
     "/**/types",
     "build",
-    "craco.config.js"
+    "craco.config.js",
+    "environments"
   ],
   extends: [
     "standard",

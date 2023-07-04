@@ -20,7 +20,8 @@
   },
   "include": [
     "./src",
-    "../../commons/types"
+    "../../commons/types",
+    "../environments/environments.d.ts"
   ],
   "exclude": [
     "**/*.spec.ts",

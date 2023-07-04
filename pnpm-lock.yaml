@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': ^17.6.6
       '@commitlint/config-conventional': ^17.6.6
+      '@forms/environments': '*'
       '@forms/eslint-config': '*'
       '@forms/test': '*'
       '@forms/tsconfig': '*'
@@ -21,6 +22,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.6.6
       '@commitlint/config-conventional': 17.6.6
+      '@forms/environments': link:packages/configs/environments
       '@forms/eslint-config': link:packages/configs/eslint
       '@forms/test': link:packages/configs/test
       '@forms/tsconfig': link:packages/configs/tsconfig
@@ -233,6 +235,14 @@ importers:
       '@types/uuid': 9.0.2
       rollup: 3.25.3
       rollup-plugin-typescript2: 0.35.0_rollup@3.25.3
+
+  packages/configs/environments:
+    specifiers:
+      dotenv: ^16.3.1
+      dotenv-expand: ^10.0.0
+    dependencies:
+      dotenv: 16.3.1
+      dotenv-expand: 10.0.0
 
   packages/configs/eslint:
     specifiers:
@@ -7593,12 +7603,22 @@ packages:
       is-obj: 2.0.0
     dev: true
 
+  /dotenv-expand/10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
+    dev: false
+
   /dotenv-expand/5.1.0:
     resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
 
   /dotenv/10.0.0:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
+
+  /dotenv/16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
