@@ -1,1 +1,1 @@
-export const getPrefixFromString = (id: string) => id.split("--")[0]
+export const getPrefixFromString = (id: string) => id.split("--")[0];

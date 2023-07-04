@@ -6,6 +6,8 @@
   "scripts": {
     "start": "npx lerna run start",
     "build": "npx lerna run build",
+    "prepare": "husky install",
+    "commit": "git-cz",
     "lint": "npx lerna run lint",
     "lint:fix": "npx lerna run lint:fix",
     "test": "npx lerna run test",
@@ -22,15 +24,25 @@
     "stop": "kill-port --port 3000,3001,3002,3003"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
     "@forms/eslint-config": "*",
     "@forms/test": "*",
     "@forms/tsconfig": "*",
     "@forms/types": "*",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.37",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
     "kill-port": "^2.0.1",
     "lerna": "^7.1.0",
     "typescript": "5.0.4"
   },
-  "packageManager": "pnpm@7.0.0-rc.9"
+  "packageManager": "pnpm@7.0.0-rc.9",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
