@@ -15,6 +15,8 @@ export interface TableDataState {
   formId: string;
   isLoading: boolean;
   responses: FormValuesProps[];
+  searchData: string[][];
+  searchTerm: string;
   sortBy: SortBy;
   tab: TabsTypes;
   tableData: TableData[];
@@ -25,10 +27,11 @@ export interface TableDataStore extends TableDataState {
   loadForm: (formId: string) => Promise<void>;
   loadFormResponses: (formId: string) => Promise<void>;
   generateTableData: () => void;
-  filterByTab: (tab?: TabsTypes) => void;
+  filterTableData: (props: { tab?: TabsTypes; searchTerm?: string }) => void;
   filterColumns: (columnsIds: string[]) => void;
   sortResponses: (key: string, order: SortOrderTypes) => void;
   setSortBy: (key: string, order: SortOrderTypes) => void;
+  setSearchTerm: (searchTerm: string) => void;
   getFieldsColumns: () => ColumnShape[];
   getSortBy: () => SortBy;
   getFields: () => FieldProps[];

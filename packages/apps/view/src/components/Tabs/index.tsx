@@ -9,26 +9,28 @@ interface TabProps {
   id: string;
 }
 
-interface TabsProps {
-  tabs: TabProps[];
-}
+const TABS = [
+  { name: "Todos", id: "all" },
+  { name: "Principal", id: "main" },
+  { name: "Novos", id: "new" },
+] as TabProps[];
 
-const Tabs: React.FC<TabsProps> = ({ tabs }: TabsProps) => {
-  const { filterByTab } = useTableData();
+const Tabs: React.FC = () => {
+  const { filterTableData } = useTableData();
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
       const id = event.currentTarget.getAttribute("data-id") as TabsTypes;
 
-      return filterByTab(id);
+      return filterTableData({ tab: id });
     },
-    [filterByTab]
+    [filterTableData]
   );
 
   return (
     <ChakraTabs size="sm" variant="enclosed">
       <TabList>
-        {tabs.map((tab) => (
+        {TABS.map((tab) => (
           <Tab
             key={tab.name}
             bg="gray.200"

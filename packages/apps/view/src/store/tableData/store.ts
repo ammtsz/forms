@@ -6,9 +6,10 @@ import {
   getForm as getFormFromDb,
 } from "@app/api/services/forms";
 import { SortOrder } from "@app/constants/order";
-import { TableData } from "@app/types";
+import { Tabs } from "@app/constants/tabs";
 
 import { TableDataState, TableDataStore } from "./types";
+import { filterBySearchTerm, filterByTab, processResponsesData } from "./utils";
 
 const INITIAL_STATE: TableDataState = {
   errors: null,
@@ -18,6 +19,8 @@ const INITIAL_STATE: TableDataState = {
   formId: "",
   isLoading: false,
   responses: [],
+  searchData: [],
+  searchTerm: "",
   sortBy: {
     key: "",
     order: SortOrder.asc,
@@ -35,6 +38,8 @@ const store = create<TableDataStore>((set, get) => ({
   formId: INITIAL_STATE.formId,
   isLoading: INITIAL_STATE.isLoading,
   responses: INITIAL_STATE.responses,
+  searchData: INITIAL_STATE.searchData,
+  searchTerm: INITIAL_STATE.searchTerm,
   sortBy: INITIAL_STATE.sortBy,
   tab: INITIAL_STATE.tab,
   tableData: INITIAL_STATE.tableData,
@@ -45,7 +50,7 @@ const store = create<TableDataStore>((set, get) => ({
 
     const fields = [
       ...form.fields,
-      { id: "created-at", label: "Criado em", type: "text" },
+      { id: "created-at", label: "Criado em", type: "date" },
     ];
 
     set({
@@ -66,19 +71,10 @@ const store = create<TableDataStore>((set, get) => ({
     const { responses, fields } = get();
 
     if (responses.length && fields.length) {
-      const tableData = responses.map((response, index) => {
-        const responseData = { id: String(index) };
+      const { tableData, searchData } = processResponsesData(responses, fields);
+      set({ tableData, searchData });
 
-        fields.forEach(
-          (field) => (responseData[field.id] = response[field.id]?.value || "")
-        );
-
-        return { ...responseData, status: response.status?.value || "new" };
-      }) as TableData[];
-
-      set({ tableData });
-
-      get().filterByTab();
+      get().filterTableData({ tab: Tabs.all });
     }
   },
 
@@ -116,15 +112,22 @@ const store = create<TableDataStore>((set, get) => ({
 
   setSortBy: (key, order) => set(() => ({ sortBy: { key, order } })),
 
-  filterByTab: (tab) => {
-    set(({ tableData }) => ({
-      filteredTableData: tableData.filter((data) =>
-        tab ? data.status === tab : true
-      ),
+  setSearchTerm: (searchTerm) => set(() => ({ searchTerm })),
+
+  filterTableData: ({ tab: newTab, searchTerm: newSearchTerm }) => {
+    const { tableData, searchData, resetSortBy } = get();
+    const tab = newTab || get().tab;
+    const searchTerm =
+      typeof newSearchTerm === "string" ? newSearchTerm : get().searchTerm;
+
+    set(() => ({
+      filteredTableData: searchTerm
+        ? filterBySearchTerm(searchTerm, searchData, tableData, tab)
+        : filterByTab(tab, tableData),
+      searchTerm,
       tab,
     }));
-
-    get().resetSortBy();
+    resetSortBy();
   },
 
   filterColumns: (columnsIds) => {

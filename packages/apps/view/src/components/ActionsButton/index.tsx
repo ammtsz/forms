@@ -10,7 +10,6 @@ const ActionsButton = () => {
         color="white"
         _hover={{ bg: "cyan.900" }}
         rightIcon={<ChevronDownIcon size={"1rem"} />}
-        size={"sm"}
         ml={"auto"}
       >
         Actions

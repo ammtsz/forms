@@ -9,9 +9,11 @@
     },
     "dependencies": {
         "date-fns": "^2.30.0",
+        "lodash.debounce": "^4.0.8",
         "uuid": "^9.0.0"
     },
     "devDependencies": {
+        "@types/lodash.debounce": "^4.0.7",
         "@types/uuid": "^9.0.2",
         "rollup": "^3.25.3",
         "rollup-plugin-typescript2": "^0.35.0"

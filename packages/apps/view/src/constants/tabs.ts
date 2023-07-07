@@ -1,4 +1,5 @@
 export const Tabs = {
+  all: "all",
   new: "new",
   main: "main",
   deleted: "deleted",

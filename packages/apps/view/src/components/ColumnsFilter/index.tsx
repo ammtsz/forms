@@ -30,7 +30,6 @@ const ColumnsFilter = () => {
         color="white"
         onClick={handleOpen}
         rightIcon={<FilterIcon size={"1rem"} />}
-        size={"sm"}
         width={"auto"}
         _hover={{ bg: "cyan.900" }}
       >
