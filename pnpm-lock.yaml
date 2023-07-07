@@ -226,10 +226,12 @@ importers:
   packages/commons/utils:
     specifiers:
       '@types/uuid': ^9.0.2
+      date-fns: ^2.30.0
       rollup: ^3.25.3
       rollup-plugin-typescript2: ^0.35.0
       uuid: ^9.0.0
     dependencies:
+      date-fns: 2.30.0
       uuid: 9.0.0
     devDependencies:
       '@types/uuid': 9.0.2
@@ -7289,6 +7291,13 @@ packages:
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
     dev: true
+
+  /date-fns/2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
+    engines: {node: '>=0.11'}
+    dependencies:
+      '@babel/runtime': 7.22.5
+    dev: false
 
   /dateformat/3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}

@@ -1,68 +1,41 @@
-import { useCallback, useEffect, useRef } from "react";
-import { ColumnShape } from "react-base-table";
+import { Flex } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-import { TextFormProps } from "@forms/types/interfaces/field";
-
+import ActionsButton from "@app/components/ActionsButton";
+import ColumnsFilter from "@app/components/ColumnsFilter";
 import Table from "@app/components/Table";
-import { useFormView } from "@app/store/formView";
+import Tabs from "@app/components/Tabs";
+import { useTableData } from "@app/store/tableData";
 
 import { Container } from "./styles";
-
-interface ColumnProps {
-  title: string;
-  dataKey: string;
-  key: string;
-  width: number;
-}
-
-interface DataProps {
-  [key: string]: string;
-}
-
 const FormViewPage = () => {
-  const { getFormResponses, getForm } = useFormView();
+  const { loadFormResponses, loadForm, filterByTab } = useTableData();
 
-  const columns = useRef<ColumnProps[]>();
-  const data = useRef<DataProps[]>();
-
-  const getData = useCallback(async () => {
-    if (columns.current) {
-      const responses = await getFormResponses(
-        "4d822f21-836e-4fdf-8632-4b92ff728b0a"
-      );
-      data.current = responses.map((response) => {
-        const tableData = {} as DataProps;
-
-        columns.current?.forEach(
-          (column) =>
-            (tableData[column.dataKey] = response[column.dataKey]
-              .value as string)
-        );
-
-        return tableData;
-      });
-    }
-  }, [columns, getFormResponses]);
-
-  const getColumns = useCallback(async () => {
-    const col = await getForm("4d822f21-836e-4fdf-8632-4b92ff728b0a");
-    columns.current = col.fields.map((column: TextFormProps) => ({
-      title: column.label,
-      dataKey: column.id,
-      key: column.id,
-      width: 300,
-    }));
-
-    getData();
-  }, [getData, getForm]);
+  const { search } = useLocation();
+  const id =
+    new URLSearchParams(search).get("id") ||
+    "7e7a952f-c85a-442a-92a9-7ee7cd15776f";
 
   useEffect(() => {
-    getColumns();
-  }, [getColumns]);
+    loadForm(id);
+    loadFormResponses(id);
+  }, [filterByTab, id, loadForm, loadFormResponses]);
 
   return (
     <Container>
-      <Table columns={columns.current as ColumnShape[]} data={data.current} />
+      <Flex pb={4} gap={2}>
+        <ActionsButton />
+        <ColumnsFilter />
+      </Flex>
+      <Tabs
+        tabs={[
+          { name: "Todos", id: "" },
+          { name: "Principal", id: "main" },
+          { name: "Novos", id: "new" },
+        ]}
+      />
+      <Table />
     </Container>
   );
 };

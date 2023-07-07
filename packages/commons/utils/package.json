@@ -8,10 +8,11 @@
         "build": "rollup -c"
     },
     "dependencies": {
+        "date-fns": "^2.30.0",
         "uuid": "^9.0.0"
     },
     "devDependencies": {
-		"@types/uuid": "^9.0.2",
+        "@types/uuid": "^9.0.2",
         "rollup": "^3.25.3",
         "rollup-plugin-typescript2": "^0.35.0"
     }

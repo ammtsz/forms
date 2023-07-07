@@ -3,10 +3,14 @@ import styled from "@emotion/styled";
 
 // TODO: configure chakra theme to use with emotion
 
-export const Container = styled(Flex)``;
-// box-shadow: ${theme.shadows['dark-lg']};
-// padding: ${theme.space[12]};
-// border-radius: ${theme.space[4]};
-// background-color: ${theme.colors.whiteAlpha[900]};
-// max-width: 1200px;
-// margin: ${theme.space[10]} auto;
+export const Container = styled(Flex)`
+  justify-content: center;
+  flex-direction: column;
+  align-items: top;
+  min-height: 100%;
+  padding: 1rem;
+`;
+
+export const TableContainer = styled(Flex)`
+  flex-direction: columns;
+`;

@@ -17,8 +17,17 @@ const useSubmitForm = () => {
       };
     });
 
-    console.log({ formResponse });
-    await submitForm(formResponse);
+    await submitForm({
+      ...formResponse,
+      "created-at": {
+        id: "created-at",
+        value: new Date().toISOString(),
+      },
+      status: {
+        id: "status",
+        value: "new",
+      },
+    });
   };
 
   return {
