@@ -7,13 +7,13 @@ import { firestore } from "@app/api/firebase";
 
 export const postForm = async (
   form: FormValuesProps,
-  formId: string,
-  formType: string
+  responseId: string,
+  formId: string
 ) => {
   try {
-    await setDoc(doc(firestore, formType, formId), form);
+    await setDoc(doc(firestore, formId, responseId), form);
 
-    console.log("fireabase | submission | postForms");
+    console.log("firebase | submission | postForms");
   } catch (error) {
     console.error(error);
   }
@@ -24,7 +24,7 @@ export const getForm = async (id: string) => {
     const form = (
       await getDoc(doc(firestore, "forms", id.trim()))
     ).data() as FormProps;
-    console.log("fireabase | submission | getForm");
+    console.log("firebase | submission | getForm");
 
     return form;
   } catch (error) {

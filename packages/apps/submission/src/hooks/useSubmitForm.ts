@@ -1,4 +1,5 @@
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
+import { uuid } from "@forms/utils";
 
 import { useFormSubmission } from "@app/store/formSubmission";
 
@@ -13,7 +14,7 @@ const useSubmitForm = () => {
     fields.forEach((field) => {
       formResponse[field.id] = {
         id: field.id,
-        value: field.value as string,
+        value: field.value || "",
       };
     });
 
@@ -26,6 +27,10 @@ const useSubmitForm = () => {
       status: {
         id: "status",
         value: "new",
+      },
+      id: {
+        id: "id",
+        value: uuid(),
       },
     });
   };

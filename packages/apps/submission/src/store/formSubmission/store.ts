@@ -3,7 +3,6 @@ import { create } from "zustand";
 import { FieldProps } from "@forms/types/interfaces/field";
 import { FormProps } from "@forms/types/interfaces/form";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
-import { uuid } from "@forms/utils";
 
 import { getForm as getFormFromDb, postForm } from "@app/api/services/forms";
 
@@ -12,8 +11,7 @@ import { FormSubmissionState, FormSubmissionStore } from "./types";
 const INITIAL_STATE: FormSubmissionState = {
   isLoading: false,
   errors: null,
-  formType: "",
-  id: "",
+  formId: "",
   fields: [],
   title: "",
 };
@@ -22,8 +20,7 @@ const store = create<FormSubmissionStore>((set, get) => ({
   isLoading: INITIAL_STATE.isLoading,
   errors: INITIAL_STATE.errors,
   fields: INITIAL_STATE.fields,
-  id: INITIAL_STATE.id,
-  formType: INITIAL_STATE.formType,
+  formId: INITIAL_STATE.formId,
   title: INITIAL_STATE.title,
 
   getForm: async (id: string) => {
@@ -37,7 +34,7 @@ const store = create<FormSubmissionStore>((set, get) => ({
     set(() => ({
       fields: form.fields,
       title: form.title,
-      formType: form.id,
+      formId: form.id,
     }));
   },
 
@@ -61,9 +58,8 @@ const store = create<FormSubmissionStore>((set, get) => ({
     get().fields.find((field) => field.id === fieldId) as FieldProps,
 
   submitForm: async (formResponse) => {
-    const { id, formType } = get();
-    const formId = id || uuid();
-    await postForm(formResponse, formId, formType);
+    const { formId } = get();
+    await postForm(formResponse, formResponse.id.value, formId);
   },
 
   reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),

@@ -5,8 +5,7 @@ import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 export interface FormSubmissionState {
   isLoading: boolean;
   errors: string[] | null;
-  formType: string;
-  id: string;
+  formId: string;
   fields: FieldProps[];
   title: string;
 }
