@@ -1,12 +1,15 @@
 import { ColumnShape } from "react-base-table";
 import { create } from "zustand";
 
+import { FormValuesProps } from "@forms/types/interfaces/formResponse";
+
 import {
   getFormResponses as getFormResponsesFromDb,
   getForm as getFormFromDb,
+  updateResponse,
 } from "@app/api/services/forms";
 import { SortOrder } from "@app/constants/order";
-import { Tabs } from "@app/constants/tabs";
+import { Status } from "@app/constants/status";
 
 import { TableDataState, TableDataStore } from "./types";
 import { filterBySearchTerm, filterByTab, processResponsesData } from "./utils";
@@ -63,18 +66,22 @@ const store = create<TableDataStore>((set, get) => ({
 
   loadFormResponses: async (formId) => {
     const responses = await getFormResponsesFromDb(formId);
-    set({ responses });
+    const availableResponses = responses.filter(
+      (response) => !response.status || response.status.value !== Status.deleted
+    );
+
+    set({ responses: availableResponses });
     get().generateTableData();
   },
 
   generateTableData: () => {
-    const { responses, fields } = get();
+    const { responses, fields, tab } = get();
 
     if (responses.length && fields.length) {
       const { tableData, searchData } = processResponsesData(responses, fields);
       set({ tableData, searchData });
 
-      get().filterTableData({ tab: Tabs.all });
+      get().filterTableData({ tab: tab || "all" });
     }
   },
 
@@ -146,17 +153,28 @@ const store = create<TableDataStore>((set, get) => ({
 
   getSortBy: () => get().sortBy,
 
-  // sortResponses: (columnKey, order) => {
+  updateResponseStatus: async (responseIds, status) => {
+    const { responses, formId, loadFormResponses } = get();
 
-  // },
+    responseIds.forEach(async (responseId) => {
+      const response = responses.find(
+        (response) => response.id.value === responseId
+      ) as FormValuesProps;
 
-  // deleteResponses: (responses) => {
+      response.status = {
+        value: status,
+        id: "status",
+      };
 
-  // },
+      await updateResponse(formId, responseId, response);
+    });
 
-  // updateResponses: (responses) => {
+    loadFormResponses(formId);
+  },
 
-  // },
+  updateResponses: (updatedResponse) => {
+    console.log(updatedResponse);
+  },
 
   resetSortBy: () => set(() => ({ sortBy: INITIAL_STATE.sortBy })),
 

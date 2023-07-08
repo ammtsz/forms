@@ -25,10 +25,10 @@ const FormViewPage = () => {
 
   return (
     <Container>
-      <Flex pb={4} gap={2}>
+      <Flex pb={5} gap={2}>
         <SearchBar />
-        <ActionsButton />
         <ColumnsFilter />
+        <ActionsButton />
       </Flex>
       <Tabs />
       <Table />

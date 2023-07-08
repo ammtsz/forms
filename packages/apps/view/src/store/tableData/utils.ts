@@ -2,16 +2,17 @@ import { FieldProps } from "@forms/types/interfaces/field";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 import { formatDateAndHour } from "@forms/utils";
 
-import { Tabs, TabsTypes } from "@app/constants/tabs";
 import { TableData } from "@app/types";
+
+import { TabTypes } from "./types";
 
 export const processResponsesData = (
   responses: FormValuesProps[],
   fields: FieldProps[]
 ) => {
   const searchData: string[][] = [];
-  const tableData = responses.map((response, index) => {
-    const id = String(index);
+  const tableData = responses.map((response) => {
+    const id = response.id.value;
     const responseData = { id };
     const responseSearchData: string[] = [id];
 
@@ -51,20 +52,20 @@ export const filterBySearchTerm = (
   searchTerm: string,
   searchData: string[][],
   tableData: TableData[],
-  tab: TabsTypes
+  tab: TabTypes
 ) => {
   const filteredIds = getFilteredDataIds(searchTerm, searchData);
 
   return tableData.filter((data) => {
     return (
-      (tab === Tabs.all || data.status === tab) &&
+      (tab === "all" || data.status === tab) &&
       filteredIds.some((id) => id === data.id)
     );
   });
 };
 
-export const filterByTab = (tab: TabsTypes, tableData: TableData[]) => {
+export const filterByTab = (tab: TabTypes, tableData: TableData[]) => {
   return tableData.filter((data) =>
-    tab !== Tabs.all ? data.status === tab : true
+    tab !== "all" ? data.status === tab : true
   );
 };

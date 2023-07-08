@@ -27,13 +27,19 @@ const DrawerBody: React.FC<DrawerBodyProps> = ({
   return (
     <ChakraDrawerBody>
       <Flex direction={"column"} py={4} gap={4}>
-        <Checkbox onChange={handleToggleAll} mb={4} isChecked={isAllChecked()}>
+        <Checkbox
+          onChange={handleToggleAll}
+          colorScheme="blackAlpha"
+          mb={4}
+          isChecked={isAllChecked()}
+        >
           <Text as={"b"} lineHeight={"125%"}>
             Todas
           </Text>
         </Checkbox>
         {fields.map((field, index) => (
           <Checkbox
+            colorScheme="cyan"
             key={field.id}
             data-id={field.id}
             disabled={!index}

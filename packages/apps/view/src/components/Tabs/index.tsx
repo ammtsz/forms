@@ -1,7 +1,7 @@
 import { Tabs as ChakraTabs, TabList, Tab } from "@chakra-ui/react";
 import { useCallback } from "react";
 
-import { TabsTypes } from "@app/constants/tabs";
+import { StatusTypes } from "@app/constants/status";
 import { useTableData } from "@app/store/tableData";
 
 interface TabProps {
@@ -20,7 +20,7 @@ const Tabs: React.FC = () => {
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      const id = event.currentTarget.getAttribute("data-id") as TabsTypes;
+      const id = event.currentTarget.getAttribute("data-id") as StatusTypes;
 
       return filterTableData({ tab: id });
     },

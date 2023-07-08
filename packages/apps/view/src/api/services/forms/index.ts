@@ -1,4 +1,4 @@
-import { collection, getDocs, getDoc, doc } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc, setDoc } from "firebase/firestore";
 
 import { FormProps } from "@forms/types/interfaces/form";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
@@ -31,5 +31,19 @@ export const getForm = async (id: string) => {
   } catch (error) {
     console.error(error);
     return {} as FormProps;
+  }
+};
+
+export const updateResponse = async (
+  formId: string,
+  responseId: string,
+  response: FormValuesProps
+) => {
+  try {
+    await setDoc(doc(firestore, formId.trim(), responseId.trim()), response);
+
+    console.log("fireabase | view | updateResponse");
+  } catch (error) {
+    console.error(error);
   }
 };

@@ -4,9 +4,10 @@ import { FieldProps } from "@forms/types/interfaces/field";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 
 import { SortOrderTypes } from "@app/constants/order";
-import { TabsTypes } from "@app/constants/tabs";
+import { StatusTypes } from "@app/constants/status";
 import { SortBy, TableData } from "@app/types";
 
+export type TabTypes = StatusTypes | "all";
 export interface TableDataState {
   errors: string[] | null;
   fields: FieldProps[];
@@ -18,7 +19,7 @@ export interface TableDataState {
   searchData: string[][];
   searchTerm: string;
   sortBy: SortBy;
-  tab: TabsTypes;
+  tab: TabTypes;
   tableData: TableData[];
   title: string;
 }
@@ -27,7 +28,7 @@ export interface TableDataStore extends TableDataState {
   loadForm: (formId: string) => Promise<void>;
   loadFormResponses: (formId: string) => Promise<void>;
   generateTableData: () => void;
-  filterTableData: (props: { tab?: TabsTypes; searchTerm?: string }) => void;
+  filterTableData: (props: { tab?: TabTypes; searchTerm?: string }) => void;
   filterColumns: (columnsIds: string[]) => void;
   sortResponses: (key: string, order: SortOrderTypes) => void;
   setSortBy: (key: string, order: SortOrderTypes) => void;
@@ -36,6 +37,10 @@ export interface TableDataStore extends TableDataState {
   getSortBy: () => SortBy;
   getFields: () => FieldProps[];
   getFilteredTableData: () => TableData[];
+  updateResponseStatus: (responsesIds: string[], status: StatusTypes) => void;
+  updateResponses: (
+    updatedResponses: { id: string; response: Partial<FormValuesProps> }[]
+  ) => void;
   resetSortBy: () => void;
   reset: () => void;
 }

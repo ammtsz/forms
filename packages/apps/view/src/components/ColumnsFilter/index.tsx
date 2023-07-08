@@ -28,6 +28,7 @@ const ColumnsFilter = () => {
       <Button
         bg="cyan.800"
         color="white"
+        ml={"auto"}
         onClick={handleOpen}
         rightIcon={<FilterIcon size={"1rem"} />}
         width={"auto"}
