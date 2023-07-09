@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ActionsButton from "@app/components/ActionsButton";
@@ -11,6 +11,8 @@ import { useTableData } from "@app/store/tableData";
 
 import { Container } from "./styles";
 const FormViewPage = () => {
+  const [isLoading, setLoading] = useState(false);
+
   const { loadFormResponses, loadForm } = useTableData();
 
   const { search } = useLocation();
@@ -18,10 +20,16 @@ const FormViewPage = () => {
     new URLSearchParams(search).get("id") ||
     "7e7a952f-c85a-442a-92a9-7ee7cd15776f";
 
-  useEffect(() => {
-    loadForm(id);
-    loadFormResponses(id);
+  const loadData = useCallback(async () => {
+    setLoading(true);
+    await loadForm(id);
+    await loadFormResponses(id);
+    setLoading(false);
   }, [id, loadForm, loadFormResponses]);
+
+  useEffect(() => {
+    loadData();
+  }, [id, loadData, loadForm, loadFormResponses]);
 
   return (
     <Container>
@@ -31,7 +39,7 @@ const FormViewPage = () => {
         <ActionsButton />
       </Flex>
       <Tabs />
-      <Table />
+      <Table isLoading={isLoading} />
     </Container>
   );
 };
