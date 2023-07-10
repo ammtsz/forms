@@ -12,13 +12,14 @@ export interface TableProps {
 }
 
 const Table: React.FC<TableProps> = ({ isLoading = false }: TableProps) => {
-  const { filteredTableData, getSortBy } = useTableData();
+  const { filteredTableData, formId, getSortBy } = useTableData();
 
   const { handleColumnSort, columns, hasFrozenColumn, rowHeight, tableHeight } =
     useTable(isLoading);
 
   return (
     <Container
+      id={formId}
       height={`${tableHeight}px`}
       maxHeight={`${tableHeight}px`}
       minHeight={`${rowHeight}px`}
