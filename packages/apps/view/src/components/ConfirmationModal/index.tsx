@@ -50,13 +50,19 @@ const ConfirmationModal = ({
         <ModalBody>{texts.message}</ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="gray" mr={3} onClick={onClose}>
+          <Button
+            aria-label="Cancelar ação"
+            colorScheme="gray"
+            mr={3}
+            onClick={onClose}
+          >
             Cancelar
           </Button>
           <Button
-            onClick={handleConfirmation}
-            color="white"
+            aria-label={`${texts.mainButton} respostas`}
             bg={texts.isDanger ? "red.700" : "cyan.700"}
+            color="white"
+            onClick={handleConfirmation}
             _hover={{ bg: texts.isDanger ? "red.900" : "cyan.900" }}
           >
             {texts.mainButton}

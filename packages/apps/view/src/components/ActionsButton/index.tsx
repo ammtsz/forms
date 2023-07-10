@@ -6,7 +6,7 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
-import { MouseEventHandler, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { ChevronDown as ChevronDownIcon } from "react-feather";
 
 import { StatusTypes } from "@app/constants/status";
@@ -25,7 +25,7 @@ const ActionsButton = () => {
 
   const { updateResponseStatus } = useTableData();
 
-  const handleAction: MouseEventHandler<HTMLButtonElement> = useCallback(
+  const handleAction: React.MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
       const action = event.currentTarget.getAttribute("data-action");
 

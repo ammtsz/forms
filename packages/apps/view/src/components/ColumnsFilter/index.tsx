@@ -26,9 +26,9 @@ const ColumnsFilter = () => {
   return (
     <>
       <Button
+        aria-label="Filtrar colunas"
         bg="cyan.800"
         color="white"
-        ml={"auto"}
         onClick={handleOpen}
         rightIcon={<FilterIcon size={"1rem"} />}
         width={"auto"}
@@ -48,7 +48,11 @@ const ColumnsFilter = () => {
             isAllChecked={isAllChecked}
           />
           <DrawerFooter borderTopWidth="1px">
-            <Button colorScheme="blue" onClick={handleSave}>
+            <Button
+              colorScheme="blue"
+              onClick={handleSave}
+              aria-label="Salvar alterações"
+            >
               Salvar
             </Button>
           </DrawerFooter>

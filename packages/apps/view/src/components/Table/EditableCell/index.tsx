@@ -43,14 +43,14 @@ const EditableCell: React.FC<EditableCellProps> = ({ rowData }) => {
         {isEditing ? (
           <Button
             {...getSubmitButtonProps()}
-            size="sm"
-            p={0}
             aria-label="salvar"
+            p={0}
+            size="sm"
           >
             <CheckIcon height="0.75rem" />
           </Button>
         ) : (
-          <Button {...getEditButtonProps()} size="sm" p={0} aria-label="editar">
+          <Button {...getEditButtonProps()} aria-label="editar" p={0} size="sm">
             <EditIcon height="0.75rem" />
           </Button>
         )}
