@@ -75,6 +75,7 @@ export const Container = styled(Box)`
 `;
 
 export const TableCell = styled(Flex)`
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 `;

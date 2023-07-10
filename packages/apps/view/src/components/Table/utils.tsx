@@ -4,6 +4,7 @@ import { CellProps } from "@app/types";
 
 import CheckboxCell from "./CheckboxCell";
 import CheckboxHeaderCell from "./CheckboxHeaderCell";
+import EditableCell from "./EditableCell";
 
 export const getColumns = (fieldsColumns: ColumnShape[]): ColumnShape[] => [
   {
@@ -18,5 +19,17 @@ export const getColumns = (fieldsColumns: ColumnShape[]): ColumnShape[] => [
       <CheckboxCell rowData={props.rowData} />
     ),
   } as ColumnShape,
-  ...fieldsColumns,
+  ...fieldsColumns.map((column) => {
+    if (column.key === "notes") {
+      return {
+        ...column,
+        width: 250,
+        cellRenderer: (props: CellProps) => (
+          <EditableCell rowData={props.rowData} />
+        ),
+      } as ColumnShape;
+    }
+
+    return { ...column } as ColumnShape;
+  }),
 ];

@@ -38,9 +38,7 @@ export interface TableDataStore extends TableDataState {
   getFields: () => FieldProps[];
   getFilteredTableData: () => TableData[];
   updateResponseStatus: (responsesIds: string[], status: StatusTypes) => void;
-  updateResponses: (
-    updatedResponses: { id: string; response: Partial<FormValuesProps> }[]
-  ) => void;
+  updateResponseNote: (notes: string, id: string) => void;
   resetSortBy: () => void;
   reset: () => void;
 }

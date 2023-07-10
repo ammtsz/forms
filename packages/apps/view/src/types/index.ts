@@ -9,7 +9,6 @@ export interface TableData {
 }
 
 export type CellProps = {
-  rowData: { id: string; contentFormatType: string };
-  cellData: string;
+  rowData: { id: string; notes: string };
   column: ColumnShape;
 };

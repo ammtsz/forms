@@ -50,9 +50,12 @@ const store = create<TableDataStore>((set, get) => ({
 
   loadForm: async (formId) => {
     const form = await getFormFromDb(formId);
+    const frozenColumn = form.fields[0];
 
     const fields = [
-      ...form.fields,
+      frozenColumn,
+      { id: "notes", label: "Anotações", type: "textarea" },
+      ...form.fields.splice(1),
       { id: "created-at", label: "Criado em", type: "date" },
     ];
 
@@ -93,7 +96,7 @@ const store = create<TableDataStore>((set, get) => ({
         title: column.label,
         dataKey: column.id,
         key: column.id,
-        width: index ? 200 : 100,
+        width: index ? 200 : 150,
         resizable: true,
         sortable: true,
         ...frozen,
@@ -172,8 +175,19 @@ const store = create<TableDataStore>((set, get) => ({
     loadFormResponses(formId);
   },
 
-  updateResponses: (updatedResponse) => {
-    console.log(updatedResponse);
+  updateResponseNote: async (notes, id) => {
+    const { responses, formId } = get();
+
+    const response = responses.find(
+      (resp) => resp.id.value === id
+    ) as FormValuesProps;
+
+    response.notes = {
+      id: "notes",
+      value: notes,
+    };
+
+    updateResponse(formId, id, response);
   },
 
   resetSortBy: () => set(() => ({ sortBy: INITIAL_STATE.sortBy })),
