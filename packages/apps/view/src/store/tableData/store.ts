@@ -10,6 +10,7 @@ import {
 } from "@app/api/services/forms";
 import { SortOrder } from "@app/constants/order";
 import { Status } from "@app/constants/status";
+import { PAGE_SIZE } from "@app/constants/table";
 
 import { TableDataState, TableDataStore } from "./types";
 import { filterBySearchTerm, filterByTab, processResponsesData } from "./utils";
@@ -21,6 +22,7 @@ const INITIAL_STATE: TableDataState = {
   filteredTableData: [],
   formId: "",
   isLoading: false,
+  page: 1,
   responses: [],
   searchData: [],
   searchTerm: "",
@@ -40,6 +42,7 @@ const store = create<TableDataStore>((set, get) => ({
   filteredTableData: INITIAL_STATE.filteredTableData,
   formId: INITIAL_STATE.formId,
   isLoading: INITIAL_STATE.isLoading,
+  page: INITIAL_STATE.page,
   responses: INITIAL_STATE.responses,
   searchData: INITIAL_STATE.searchData,
   searchTerm: INITIAL_STATE.searchTerm,
@@ -125,15 +128,16 @@ const store = create<TableDataStore>((set, get) => ({
   setSearchTerm: (searchTerm) => set(() => ({ searchTerm })),
 
   filterTableData: ({ tab: newTab, searchTerm: newSearchTerm }) => {
-    const { tableData, searchData, resetSortBy } = get();
+    const { tableData, searchData, page, resetSortBy } = get();
     const tab = newTab || get().tab;
     const searchTerm =
       typeof newSearchTerm === "string" ? newSearchTerm : get().searchTerm;
 
     set(() => ({
-      filteredTableData: searchTerm
+      filteredTableData: (searchTerm
         ? filterBySearchTerm(searchTerm, searchData, tableData, tab)
-        : filterByTab(tab, tableData),
+        : filterByTab(tab, tableData)
+      ).splice(0, page * PAGE_SIZE),
       searchTerm,
       tab,
     }));
@@ -189,6 +193,13 @@ const store = create<TableDataStore>((set, get) => ({
 
     updateResponse(formId, id, response);
   },
+
+  incrementPage: () => {
+    set(() => ({ page: get().page + 1 }));
+    get().filterTableData({});
+  },
+
+  resetPage: () => set(() => ({ page: INITIAL_STATE.page })),
 
   resetSortBy: () => set(() => ({ sortBy: INITIAL_STATE.sortBy })),
 

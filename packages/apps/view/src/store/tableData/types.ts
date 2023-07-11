@@ -15,6 +15,7 @@ export interface TableDataState {
   filteredTableData: TableData[];
   formId: string;
   isLoading: boolean;
+  page: number;
   responses: FormValuesProps[];
   searchData: string[][];
   searchTerm: string;
@@ -39,6 +40,8 @@ export interface TableDataStore extends TableDataState {
   getFilteredTableData: () => TableData[];
   updateResponseStatus: (responsesIds: string[], status: StatusTypes) => void;
   updateResponseNote: (notes: string, id: string) => void;
+  incrementPage: () => void;
+  resetPage: () => void;
   resetSortBy: () => void;
   reset: () => void;
 }

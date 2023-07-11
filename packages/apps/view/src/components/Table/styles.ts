@@ -8,6 +8,25 @@ export const Container = styled(Box)`
     box-shadow: none;
   }
 
+  .BaseTable__body {
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+    &::-webkit-scrollbar-track {
+      background: ${theme.colors.blackAlpha[100]};
+      box-shadow: inset 0 0 5px ${theme.colors.blackAlpha[300]};
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: ${theme.colors.blackAlpha[300]};
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: ${theme.colors.blackAlpha[500]};
+    }
+  }
+
   .BaseTable__table-main {
     outline: none;
   }

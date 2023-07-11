@@ -14,8 +14,14 @@ export interface TableProps {
 const Table: React.FC<TableProps> = ({ isLoading = false }: TableProps) => {
   const { filteredTableData, formId, getSortBy } = useTableData();
 
-  const { handleColumnSort, columns, hasFrozenColumn, rowHeight, tableHeight } =
-    useTable(isLoading);
+  const {
+    handleColumnSort,
+    handleNextPage,
+    columns,
+    hasFrozenColumn,
+    rowHeight,
+    tableHeight,
+  } = useTable(isLoading);
 
   return (
     <Container
@@ -34,6 +40,8 @@ const Table: React.FC<TableProps> = ({ isLoading = false }: TableProps) => {
             headerHeight={rowHeight}
             height={height}
             onColumnSort={handleColumnSort}
+            onEndReached={handleNextPage}
+            onEndReachedThreshold={100}
             rowHeight={rowHeight}
             sortBy={getSortBy()}
             width={width}

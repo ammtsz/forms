@@ -1,9 +1,10 @@
 import { useCallback } from "react";
 import { ColumnShape, SortOrder } from "react-base-table";
 
+import { HEADER_HEIGHT } from "@app/constants/table";
 import { useTableData } from "@app/store/tableData";
 
-import { getColumns } from "../utils";
+import { getColumns, getScrollbarWidth } from "../utils";
 
 interface TablePropsReturn {
   handleColumnSort: (args: {
@@ -11,6 +12,7 @@ interface TablePropsReturn {
     key: React.Key;
     order: SortOrder;
   }) => void;
+  handleNextPage: () => void;
   columns: ColumnShape[];
   hasFrozenColumn: boolean;
   rowHeight: number;
@@ -18,14 +20,19 @@ interface TablePropsReturn {
 }
 
 const useTable = (isLoading: boolean): TablePropsReturn => {
-  const { filteredTableData, setSortBy, sortResponses, getFieldsColumns } =
-    useTableData();
+  const {
+    filteredTableData,
+    setSortBy,
+    sortResponses,
+    getFieldsColumns,
+    incrementPage,
+  } = useTableData();
 
   const rowHeight = 48;
   const fieldsColumns = getFieldsColumns();
   const columns = getColumns(fieldsColumns);
   const hasFrozenColumn = columns && columns.some(({ frozen }) => !!frozen);
-  const scrollbarWidth = 0;
+  const scrollbarWidth = getScrollbarWidth();
 
   const handleColumnSort = useCallback(
     ({ key, order }) => {
@@ -43,12 +50,21 @@ const useTable = (isLoading: boolean): TablePropsReturn => {
     return hasFrozenColumn ? rowsHeight + scrollbarWidth : rowsHeight;
   };
 
+  const getTableMaxHeight = () => {
+    return window.innerHeight - HEADER_HEIGHT;
+  };
+
+  const handleNextPage = useCallback(() => {
+    incrementPage();
+  }, [incrementPage]);
+
   return {
     handleColumnSort,
+    handleNextPage,
     columns,
     hasFrozenColumn,
     rowHeight,
-    tableHeight: getTableHeight(),
+    tableHeight: Math.min(getTableHeight(), getTableMaxHeight()),
   };
 };
 
