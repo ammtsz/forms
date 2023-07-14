@@ -13,7 +13,7 @@ const FormSelect: React.FC<OptionsFormProps> = ({
   options,
   dependsOn,
   description,
-  value: intitialValue,
+  value: initialValue,
 }) => {
   const [value, setValue] = useState("");
   const [isVisible, setVisible] = useState(false);
@@ -31,10 +31,10 @@ const FormSelect: React.FC<OptionsFormProps> = ({
   const requiredField = dependsOn && getField(dependsOn.fieldId);
 
   useEffect(() => {
-    if (intitialValue && intitialValue.length) {
-      setValue(intitialValue);
+    if (initialValue && initialValue.length) {
+      setValue(initialValue);
     }
-  }, [intitialValue]);
+  }, [initialValue]);
 
   useEffect(() => {
     if (requiredField) {

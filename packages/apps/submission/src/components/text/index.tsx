@@ -12,7 +12,7 @@ const TextForm: React.FC<TextFormProps> = ({
   placeholder,
   required,
   dependsOn,
-  value: intitialValue,
+  value: initialValue,
   description,
 }) => {
   const [value, setValue] = React.useState("");
@@ -32,10 +32,10 @@ const TextForm: React.FC<TextFormProps> = ({
   const requiredField = dependsOn && getField(dependsOn.fieldId);
 
   React.useEffect(() => {
-    if (intitialValue && intitialValue.length) {
-      setValue(intitialValue);
+    if (initialValue && initialValue.length) {
+      setValue(initialValue);
     }
-  }, [intitialValue]);
+  }, [initialValue]);
 
   React.useEffect(() => {
     if (requiredField) {

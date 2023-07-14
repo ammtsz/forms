@@ -1,4 +1,6 @@
-import { FieldsType } from "../constants/fields"
+import { Fields } from "../../utils/src/constants/fields";
+
+export type FieldsType = ConstantValues<typeof Fields>;
 
 export type FieldProps = TextFormProps | OptionsFormProps
 
