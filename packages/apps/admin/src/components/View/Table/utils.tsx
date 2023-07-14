@@ -1,6 +1,6 @@
 import { ColumnShape } from "react-base-table";
 
-import { CellProps } from "@app/types";
+import { CellProps } from "@app/components/View/Table/types";
 
 import CheckboxCell from "./CheckboxCell";
 import CheckboxHeaderCell from "./CheckboxHeaderCell";

@@ -2,12 +2,12 @@ import { Flex } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import ActionsButton from "@app/components/ActionsButton";
-import ColumnsFilter from "@app/components/ColumnsFilter";
-import CopyButton from "@app/components/CopyButton";
-import SearchBar from "@app/components/SearchBar";
-import Table from "@app/components/Table";
-import Tabs from "@app/components/Tabs";
+import ActionsButton from "@app/components/View/ActionsButton";
+import ColumnsFilter from "@app/components/View/ColumnsFilter";
+import CopyButton from "@app/components/View/CopyButton";
+import SearchBar from "@app/components/View/SearchBar";
+import Table from "@app/components/View/Table";
+import Tabs from "@app/components/View/Tabs";
 import { useTableData } from "@app/store/tableData";
 
 import { Container } from "./styles";

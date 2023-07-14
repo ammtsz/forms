@@ -59,7 +59,7 @@ const ConfirmationModal = ({
             Cancelar
           </Button>
           <Button
-            aria-label={`${texts.mainButton} respostas`}
+            aria-label={texts.mainButton}
             bg={texts.isDanger ? "red.700" : "cyan.700"}
             color="white"
             onClick={handleConfirmation}

@@ -2,9 +2,7 @@ import { FieldProps } from "@forms/types/interfaces/field";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 import { formatDateAndHour } from "@forms/utils";
 
-import { TableData } from "@app/types";
-
-import { TabTypes } from "./types";
+import { TabTypes, TableData } from "./types";
 
 export const processResponsesData = (
   responses: FormValuesProps[],

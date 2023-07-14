@@ -2,7 +2,7 @@ import { Button, Flex } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import GoToFormButton from "@app/components/GoToFormButton";
+import GoToFormButton from "@app/components/Home/GoToFormButton";
 import { useFormsManagement } from "@app/store/formsManagement";
 
 const FormCreationPage = () => {

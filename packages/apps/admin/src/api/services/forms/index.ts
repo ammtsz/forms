@@ -5,6 +5,21 @@ import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 
 import { firestore } from "@app/api/firebase";
 
+export const getForm = async (id: string) => {
+  try {
+    const form = (
+      await getDoc(doc(firestore, "forms", id.trim()))
+    ).data() as FormProps;
+
+    console.log("fireabase | admin | getForm");
+
+    return form;
+  } catch (error) {
+    console.error(error);
+    return {} as FormProps;
+  }
+};
+
 export const getForms = async () => {
   try {
     const formsRef = collection(firestore, "forms");
@@ -19,21 +34,12 @@ export const getForms = async () => {
   }
 };
 
-export const postForm = async (form: FormProps, docId: string) => {
-  try {
-    await setDoc(doc(firestore, "forms", docId), form);
-    console.log("fireabase | admin | postForm");
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 export const getFormResponses = async (formId: string) => {
   try {
     const formResponseRef = collection(firestore, formId);
     const querySnapshot = await getDocs(formResponseRef);
 
-    console.log("fireabase | view | getFormResponses");
+    console.log("fireabase | admin | getFormResponses");
 
     return querySnapshot.docs.map((doc) => doc.data()) as FormValuesProps[];
   } catch (error) {
@@ -42,18 +48,12 @@ export const getFormResponses = async (formId: string) => {
   }
 };
 
-export const getForm = async (id: string) => {
+export const postForm = async (form: FormProps, docId: string) => {
   try {
-    const form = (
-      await getDoc(doc(firestore, "forms", id.trim()))
-    ).data() as FormProps;
-
-    console.log("fireabase | view | getForm");
-
-    return form;
+    await setDoc(doc(firestore, "forms", docId), form);
+    console.log("fireabase | admin | postForm");
   } catch (error) {
     console.error(error);
-    return {} as FormProps;
   }
 };
 
@@ -65,7 +65,7 @@ export const updateResponse = async (
   try {
     await setDoc(doc(firestore, formId.trim(), responseId.trim()), response);
 
-    console.log("fireabase | view | updateResponse");
+    console.log("fireabase | admin | updateResponse");
   } catch (error) {
     console.error(error);
   }

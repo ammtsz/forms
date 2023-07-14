@@ -1,6 +1,6 @@
 import { Status, StatusTypes } from "@app/constants/status";
 
-import { ConfirmationTexts } from "../ConfirmationModal";
+import { ConfirmationTexts } from "../../ConfirmationModal";
 
 export const ACTIONS = [
   {

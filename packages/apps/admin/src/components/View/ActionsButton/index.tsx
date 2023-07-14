@@ -13,7 +13,7 @@ import { StatusTypes } from "@app/constants/status";
 import { useCheckedRows } from "@app/store/checkedRows";
 import { useTableData } from "@app/store/tableData";
 
-import ConfirmationModal, { ConfirmationTexts } from "../ConfirmationModal";
+import ConfirmationModal, { ConfirmationTexts } from "../../ConfirmationModal";
 import { ACTIONS, getConfirmationTexts } from "./utils";
 
 const ActionsButton = () => {

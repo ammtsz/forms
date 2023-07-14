@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import { Fields, getPrefixFromString } from "@forms/utils";
 
-import AddFieldButton from "@app/components/AddFieldButton";
-import SelectForm from "@app/components/Fields/Select";
-import TextForm from "@app/components/Fields/Text";
-import TextAreaForm from "@app/components/Fields/Textarea";
+import AddFieldButton from "@app/components/Creation/AddFieldButton";
+import SelectForm from "@app/components/Creation/Fields/Select";
+import TextForm from "@app/components/Creation/Fields/Text";
+import TextAreaForm from "@app/components/Creation/Fields/Textarea";
 import { useFormCreation } from "@app/store/formCreation";
 
 import { Container, Form } from "./styles";

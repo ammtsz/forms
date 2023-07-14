@@ -2,10 +2,10 @@ import { lazy, Suspense } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 // import { createBrowserHistory } from 'history'
-import FormManagementPage from "./pages/formsManagement";
+import FormManagementPage from "./pages/Home";
 
-const FormCreationPage = lazy(() => import("./pages/FormCreation"));
-const FormViewPage = lazy(() => import("./pages/FormView"));
+const FormCreationPage = lazy(() => import("./pages/Creation"));
+const FormViewPage = lazy(() => import("./pages/View"));
 
 // const history = createBrowserHistory()
 
