@@ -6,10 +6,7 @@ export type FieldProps = TextFormProps | OptionsFormProps
 
 export interface OptionsFormProps extends TextFormProps {
     options: OptionProps[]
-    optionOther: {
-        isVisible: boolean
-        placeholder: string
-    }
+    optionOther: OptionOtherProps
 }
 
 export interface OptionProps {
@@ -17,11 +14,16 @@ export interface OptionProps {
     value: string
 }  
 
+export interface OptionOtherProps {
+  isVisible: boolean
+  placeholder: string
+}
+
 export interface TextFormProps {
   id: string
   label: string
   type: FieldsType
-  required?: boolean
+  isRequired?: boolean
   placeholder?: string
   value?: string
   dependsOn?: DependsOnProps

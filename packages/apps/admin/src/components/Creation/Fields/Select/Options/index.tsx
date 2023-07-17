@@ -2,7 +2,9 @@ import { Input, Flex, Button, Text } from "@chakra-ui/react";
 import React from "react";
 import { Trash as TrashIcon } from "react-feather";
 
-import { OptionsFormProps } from "@forms/types/interfaces/field";
+import { OptionOtherProps, OptionProps } from "@forms/types/interfaces/field";
+
+import { ValueProps } from "../../hooks/useFieldsBase";
 
 interface SelectOptionsProps {
   handleAddOption: React.MouseEventHandler<HTMLButtonElement>;
@@ -10,7 +12,7 @@ interface SelectOptionsProps {
   handleDeleteOption: React.MouseEventHandler<HTMLButtonElement>;
   toggleOtherOption: React.MouseEventHandler<HTMLButtonElement>;
   handleOtherOption: React.FormEventHandler<HTMLInputElement>;
-  value: Omit<OptionsFormProps, "id" | "type">;
+  value: ValueProps;
 }
 
 const SelectOptions: React.FC<SelectOptionsProps> = ({
@@ -23,7 +25,7 @@ const SelectOptions: React.FC<SelectOptionsProps> = ({
 }) => {
   return (
     <>
-      {value.options.map(({ label }, index) => (
+      {(value.options as OptionProps[]).map(({ label }, index) => (
         <Flex key={index}>
           <Input
             variant="flushed"
@@ -49,7 +51,7 @@ const SelectOptions: React.FC<SelectOptionsProps> = ({
       <Button mt="3" mr="auto" bg="transparent" onClick={handleAddOption}>
         + Adicionar opção
       </Button>
-      {value.optionOther.isVisible ? (
+      {(value.optionOther as OptionOtherProps).isVisible ? (
         <>
           <Text mt="3" ml="1" mr="auto">
             Outros
@@ -62,7 +64,7 @@ const SelectOptions: React.FC<SelectOptionsProps> = ({
               mt="1"
               placeholder="Adicione um placeholder para o campo outros (opcional)"
               onChange={handleOtherOption}
-              value={value.optionOther.placeholder}
+              value={(value.optionOther as OptionOtherProps).placeholder}
             />
             <Button
               onClick={toggleOtherOption}

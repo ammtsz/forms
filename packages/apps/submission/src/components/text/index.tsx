@@ -10,7 +10,7 @@ const TextForm: React.FC<TextFormProps> = ({
   id,
   label,
   placeholder,
-  required,
+  isRequired,
   dependsOn,
   value: initialValue,
   description,
@@ -56,7 +56,7 @@ const TextForm: React.FC<TextFormProps> = ({
         {description}
       </Text>
       <Input
-        required={required}
+        required={isRequired}
         placeholder={placeholder}
         onChange={handleChange}
         value={value}

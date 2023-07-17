@@ -30,7 +30,7 @@ const SelectCreation: React.FC<SelectProps> = ({ id }) => {
       my="4"
       bg="blackAlpha.100"
       borderRadius="10"
-      width="80vw"
+      width="100%"
     >
       <SelectHeader
         handleInputChange={handleInputChange}

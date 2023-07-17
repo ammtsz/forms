@@ -9,7 +9,7 @@ const FormSelect: React.FC<OptionsFormProps> = ({
   id,
   label,
   placeholder,
-  required,
+  isRequired,
   options,
   dependsOn,
   description,
@@ -55,7 +55,7 @@ const FormSelect: React.FC<OptionsFormProps> = ({
         {description}
       </Text>
       <Select
-        required={required}
+        required={isRequired}
         placeholder={placeholder}
         onChange={handleChange}
         value={value}

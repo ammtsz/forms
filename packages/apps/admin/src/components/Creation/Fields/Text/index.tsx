@@ -1,123 +1,47 @@
-import { Textarea, Input, Flex, Button, Switch } from "@chakra-ui/react";
-import React, { useCallback, useState } from "react";
-import { Trash as TrashIcon } from "react-feather";
+import { Input, Flex, Switch } from "@chakra-ui/react";
+import React, { useState } from "react";
 
-import { useFormCreation } from "../../../../store/formCreation";
+import FieldHeader from "../FieldHeader";
+import { useFieldsBase, ValueProps } from "../hooks/useFieldsBase";
 
 const TextCreation: React.FC<{ id: string }> = ({ id }) => {
-  const [value, setValue] = useState({
-    title: "",
+  const [value, setValue] = useState<ValueProps>({
+    label: "",
     description: "",
     placeholder: "",
     isRequired: false,
   });
 
-  const { deleteField, updateField } = useFormCreation();
-
-  const handleChange: React.ChangeEventHandler<
-    HTMLTextAreaElement | HTMLInputElement
-  > = useCallback(
-    (event) => {
-      setValue((prev) => ({
-        ...prev,
-        [event.target.name]: event.target.value,
-      }));
-      updateField({
-        id,
-        type: "text",
-        label: value.title,
-        placeholder: value.placeholder,
-        description: value.description,
-        required: value.isRequired,
-      });
-    },
-    [
-      id,
-      updateField,
-      value.description,
-      value.isRequired,
-      value.placeholder,
-      value.title,
-    ]
-  );
-
-  const handleCheckbox = useCallback(() => {
-    setValue((prev) => ({
-      ...prev,
-      isRequired: !prev.isRequired,
-    }));
-    updateField({
-      id,
-      type: "text",
-      label: value.title,
-      placeholder: value.placeholder,
-      description: value.description,
-      required: value.isRequired,
-    });
-  }, [
+  const { handleInputChange, handleDelete, handleCheckbox } = useFieldsBase({
     id,
-    updateField,
-    value.description,
-    value.isRequired,
-    value.placeholder,
-    value.title,
-  ]);
-
-  const handleDelete = useCallback(() => {
-    deleteField(id);
-  }, [deleteField, id]);
+    value,
+    setValue,
+  });
 
   return (
     <Flex
-      direction="column"
-      py="12"
-      px="8"
-      my="4"
       bg="blackAlpha.100"
       borderRadius="10"
-      width="80vw"
+      direction="column"
+      my="4"
+      px="8"
+      py="12"
+      width="100%"
     >
-      <Flex flexDir="row-reverse">
-        <Button
-          onClick={handleDelete}
-          ml="auto"
-          py="3"
-          color="red.500"
-          bg="transparent"
-          _hover={{ backgroundColor: "transparent", color: "red.700" }}
-        >
-          <TrashIcon />
-        </Button>
-        <Input
-          name="title"
-          variant="unstyled"
-          color="blackAlpha.900"
-          _placeholder={{ color: "inherit" }}
-          placeholder="Adicione uma pergunta"
-          mr="3"
-          onChange={handleChange}
-          value={value.title}
-        />
-      </Flex>
-      <Textarea
-        name="description"
-        variant="unstyled"
-        color="blackAlpha.600"
-        _placeholder={{ color: "inherit" }}
-        size="sm"
-        placeholder="Adicione uma decrição"
-        onChange={handleChange}
-        value={value.description}
+      <FieldHeader
+        handleDelete={handleDelete}
+        handleInputChange={handleInputChange}
+        value={value}
       />
       <Input
-        name="placeholder"
-        color="blackAlpha.500"
-        _placeholder={{ color: "inherit" }}
         bg="white"
         border="none"
+        color="blackAlpha.500"
         mt="3"
+        name="placeholder"
+        onChange={handleInputChange}
         placeholder="Adicione um placeholder (opcional)"
-        onChange={handleChange}
+        _placeholder={{ color: "inherit" }}
         value={value.placeholder}
       />
       <Switch mt="5" mr="auto" onChange={handleCheckbox}>

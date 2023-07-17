@@ -2,17 +2,17 @@ import { Textarea, Input, Flex, Button } from "@chakra-ui/react";
 import React from "react";
 import { Trash as TrashIcon } from "react-feather";
 
-import { ValueProps } from "../../hooks/useFieldsBase";
+import { OptionsFormProps } from "@forms/types/interfaces/field";
 
-interface SelectHeaderProps {
+interface FieldHeaderProps {
   handleInputChange: React.ChangeEventHandler<
     HTMLTextAreaElement | HTMLInputElement
   >;
   handleDelete: React.MouseEventHandler<HTMLButtonElement>;
-  value: ValueProps;
+  value: Partial<OptionsFormProps>;
 }
 
-const SelectHeader: React.FC<SelectHeaderProps> = ({
+const FieldHeader: React.FC<FieldHeaderProps> = ({
   handleInputChange,
   handleDelete,
   value,
@@ -55,4 +55,4 @@ const SelectHeader: React.FC<SelectHeaderProps> = ({
   );
 };
 
-export default SelectHeader;
+export default FieldHeader;

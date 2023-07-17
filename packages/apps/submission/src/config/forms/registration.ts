@@ -6,21 +6,21 @@ export const form = {
       label: "Nome (nome social)",
       placeholder: "Nome completo",
       type: "text",
-      required: true,
+      isRequired: true,
     },
     "001": {
       id: "001",
       label: "Email",
       placeholder: "exemplo@email.com",
       type: "text",
-      required: true,
+      isRequired: true,
     },
     "005": {
       id: "005",
       label: "Nivel de Escolaridade",
       placeholder: "---",
       type: "select",
-      required: true,
+      isRequired: true,
       description: "conte-nos mais sobre sua vida academica",
       options: [
         {
@@ -42,7 +42,7 @@ export const form = {
       label: "Curso ou Área de Atuação",
       placeholder: "---",
       type: "text",
-      required: true,
+      isRequired: true,
       dependsOn: {
         fieldId: "005",
         optionsId: ["opt3"],
@@ -52,7 +52,7 @@ export const form = {
       id: "007",
       label: "Grupo Externo",
       type: "radio",
-      required: true,
+      isRequired: true,
       description: "conte-nos mais sobre sua vida academica",
       options: [
         {
@@ -70,7 +70,7 @@ export const form = {
       label: "Quais",
       placeholder: "Grupos externos",
       type: "text",
-      required: true,
+      isRequired: true,
       dependsOn: {
         fieldId: "007",
         optionsId: ["yes"],

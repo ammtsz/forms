@@ -28,7 +28,7 @@ const FormCreationPage = () => {
     <Flex gap={4} direction={"column"} maxWidth={"1200px"} margin={"auto"}>
       <Flex justifyContent={"center"} gap={4} flexWrap={"wrap"}>
         <Button
-          onClick={() => navigate("/form")}
+          onClick={() => navigate("/create")}
           minH={40}
           minW={80}
           bg={"blackAlpha.800"}

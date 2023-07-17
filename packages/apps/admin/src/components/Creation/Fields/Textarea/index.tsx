@@ -1,13 +1,22 @@
-import { Textarea, Input, Flex, Box } from "@chakra-ui/react";
-import React from "react";
+import { Textarea, Flex, Switch } from "@chakra-ui/react";
+import React, { useState } from "react";
 
-const TextareaForm: React.FC<{ id: string }> = () => {
-  // const [value, setValue] = useState('')
+import FieldHeader from "../FieldHeader";
+import { ValueProps, useFieldsBase } from "../hooks/useFieldsBase";
 
-  // const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
-  //     setValue(event.target.value)
-  //     updateFieldValue(id, event.target.value)
-  // }, [id, updateFieldValue])
+const TextareaCreation: React.FC<{ id: string }> = ({ id }) => {
+  const [value, setValue] = useState<ValueProps>({
+    label: "",
+    description: "",
+    placeholder: "",
+    isRequired: false,
+  });
+
+  const { handleInputChange, handleDelete, handleCheckbox } = useFieldsBase({
+    id,
+    value,
+    setValue,
+  });
 
   return (
     <Flex
@@ -17,30 +26,29 @@ const TextareaForm: React.FC<{ id: string }> = () => {
       my="10"
       bg="blackAlpha.100"
       borderRadius="10"
-      width="80vw"
+      width="100%"
     >
-      <Input
-        variant="unstyled"
-        color="blackAlpha.900"
-        _placeholder={{ color: "inherit" }}
-        placeholder="Adicione uma pergunta"
+      <FieldHeader
+        handleDelete={handleDelete}
+        handleInputChange={handleInputChange}
+        value={value}
       />
       <Textarea
-        variant="unstyled"
-        color="blackAlpha.600"
+        bg="white"
+        border="none"
+        color="blackAlpha.500"
+        mt="3"
+        name="placeholder"
+        onChange={handleInputChange}
+        placeholder="Adicione um placeholder (opcional)"
         _placeholder={{ color: "inherit" }}
-        size="sm"
-        placeholder="Adicione uma decrição"
+        value={value.placeholder}
       />
-      <Box
-        mt="2"
-        borderRadius="5"
-        width="100%"
-        height="48"
-        bg="whiteAlpha.700"
-      />
+      <Switch mt="5" mr="auto" onChange={handleCheckbox}>
+        Campo obrigatório
+      </Switch>
     </Flex>
   );
 };
 
-export default TextareaForm;
+export default TextareaCreation;
