@@ -1,8 +1,8 @@
-import { FieldProps } from "@forms/types/interfaces/field";
+import { FieldProps, FieldErrors } from "@forms/types/interfaces/field";
 
 export interface FormCreationState {
   isLoading: boolean;
-  errors: string[] | null;
+  errors: FieldErrors | null;
   title: string;
   description?: string;
   fields: FieldProps[];
@@ -16,6 +16,7 @@ export interface FormCreationStore extends FormCreationState {
   deleteField: (fieldId: string) => void;
   updateField: (field: FieldProps) => void;
   getField: (fieldId: string) => FieldProps;
-  createForm: () => Promise<void>;
+  createForm: () => Promise<{ hasError: boolean }>;
+  setErrors: (errors: FieldErrors) => void;
   reset: () => void;
 }

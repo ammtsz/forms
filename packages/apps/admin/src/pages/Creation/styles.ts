@@ -10,6 +10,9 @@ export const Container = styled(Flex)`
   background-color: ${theme.colors.whiteAlpha[900]};
   max-width: 1200px;
   margin: ${theme.space[10]} auto;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
 `;
 
 export const Form = styled(Flex)`

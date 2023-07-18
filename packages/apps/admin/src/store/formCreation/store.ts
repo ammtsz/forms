@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { FieldProps } from "@forms/types/interfaces/field";
+import { FieldErrors, FieldProps } from "@forms/types/interfaces/field";
 import { uuid } from "@forms/utils";
 
 import { postForm } from "@app/api/services/forms";
@@ -60,13 +60,17 @@ const store = create<FormCreationStore>((set, get) => ({
   createForm: async () => {
     const { fields, title } = get();
     const id = uuid();
-    await postForm({ title, id, fields }, id);
+    const error = await postForm({ title, id, fields }, id);
+
+    return { hasError: !!error };
   },
 
   getField: (fieldId: string): FieldProps => {
     const index = get().fieldsIds.indexOf(fieldId);
     return get().fields[index];
   },
+
+  setErrors: (errors: FieldErrors) => set(() => ({ errors })),
 
   reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),
 }));

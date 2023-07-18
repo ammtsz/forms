@@ -3,15 +3,18 @@ import React from "react";
 
 interface FeedbackProps {
   isLoading: boolean;
+  message?: string;
 }
 
-const Feedback: React.FC<FeedbackProps> = ({ isLoading }) => {
+const Feedback: React.FC<FeedbackProps> = ({ isLoading, message }) => {
   return (
     <Flex justifyContent={"center"} alignItems={"center"}>
       {isLoading ? (
         <Spinner size={"xl"} />
       ) : (
-        <Text fontSize={"xl"}>Nenhuma resposta encontrada</Text>
+        <Text fontSize={"xl"}>
+          {message || "Não foi possível carregar a página. Tente novamente."}
+        </Text>
       )}
     </Flex>
   );

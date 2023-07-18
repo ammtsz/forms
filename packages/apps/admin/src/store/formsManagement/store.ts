@@ -17,7 +17,7 @@ const store = create<FormsManagementStore>((set, get) => ({
 
   getForms: async () => {
     if (get().forms.length) return get().forms;
-    // TODO: stop calling forms from db in both management and submission pages
+
     const forms = await getFormsFromDb();
     set({ forms });
 

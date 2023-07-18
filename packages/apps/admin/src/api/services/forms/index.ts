@@ -11,7 +11,7 @@ export const getForm = async (id: string) => {
       await getDoc(doc(firestore, "forms", id.trim()))
     ).data() as FormProps;
 
-    console.log("fireabase | admin | getForm");
+    console.log("firebase | admin | getForm");
 
     return form;
   } catch (error) {
@@ -27,8 +27,8 @@ export const getForms = async () => {
     console.error("firebase | admin | getForms");
 
     return querySnapshot.docs.map((doc) => doc.data()) as FormProps[];
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
 
     return [] as FormProps[];
   }
@@ -39,7 +39,7 @@ export const getFormResponses = async (formId: string) => {
     const formResponseRef = collection(firestore, formId);
     const querySnapshot = await getDocs(formResponseRef);
 
-    console.log("fireabase | admin | getFormResponses");
+    console.log("firebase | admin | getFormResponses");
 
     return querySnapshot.docs.map((doc) => doc.data()) as FormValuesProps[];
   } catch (error) {
@@ -53,7 +53,7 @@ export const postForm = async (form: FormProps, docId: string) => {
     await setDoc(doc(firestore, "forms", docId), form);
     console.log("fireabase | admin | postForm");
   } catch (error) {
-    console.error(error);
+    return error;
   }
 };
 
@@ -65,7 +65,7 @@ export const updateResponse = async (
   try {
     await setDoc(doc(firestore, formId.trim(), responseId.trim()), response);
 
-    console.log("fireabase | admin | updateResponse");
+    console.log("firebase | admin | updateResponse");
   } catch (error) {
     console.error(error);
   }

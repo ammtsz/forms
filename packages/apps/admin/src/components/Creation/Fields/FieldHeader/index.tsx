@@ -1,4 +1,10 @@
-import { Textarea, Input, Flex, Button } from "@chakra-ui/react";
+import {
+  Input,
+  Flex,
+  Button,
+  FormControl,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 import React from "react";
 import { Trash as TrashIcon } from "react-feather";
 
@@ -9,14 +15,18 @@ interface FieldHeaderProps {
     HTMLTextAreaElement | HTMLInputElement
   >;
   handleDelete: React.MouseEventHandler<HTMLButtonElement>;
+  fieldErrors: string[] | null;
   value: Partial<OptionsFormProps>;
 }
 
 const FieldHeader: React.FC<FieldHeaderProps> = ({
   handleInputChange,
   handleDelete,
+  fieldErrors,
   value,
 }) => {
+  const hasLabelError = !!(fieldErrors && fieldErrors.includes("label"));
+
   return (
     <>
       <Flex flexDir="row-reverse">
@@ -30,27 +40,35 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
         >
           <TrashIcon />
         </Button>
-        <Input
-          name="label"
-          variant="unstyled"
-          color="blackAlpha.900"
-          _placeholder={{ color: "inherit" }}
-          placeholder="Adicione uma pergunta"
-          mr="3"
-          onChange={handleInputChange}
-          value={value.label}
-        />
+        <FormControl isInvalid={hasLabelError} mb={hasLabelError ? 2 : 0}>
+          <Input
+            color="blackAlpha.900"
+            mr="3"
+            name="label"
+            onChange={handleInputChange}
+            placeholder="Adicione uma pergunta"
+            _placeholder={{ color: "inherit" }}
+            value={value.label}
+            variant={hasLabelError ? "flushed" : "unstyled"}
+          />
+          {hasLabelError && (
+            <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
+          )}
+        </FormControl>
       </Flex>
-      <Textarea
-        name="description"
-        variant="unstyled"
-        color="blackAlpha.600"
-        _placeholder={{ color: "inherit" }}
-        size="sm"
-        placeholder="Adicione uma decrição"
-        onChange={handleInputChange}
-        value={value.description}
-      />
+      <FormControl mt={0}>
+        <Input
+          name="description"
+          variant={"unstyled"}
+          color="blackAlpha.600"
+          _placeholder={{ color: "inherit" }}
+          size="sm"
+          placeholder="Adicione uma decrição (opcional)"
+          onChange={handleInputChange}
+          value={value.description}
+        />
+        <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
+      </FormControl>
     </>
   );
 };

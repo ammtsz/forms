@@ -1,5 +1,12 @@
-import { Input, Flex, Button, Text } from "@chakra-ui/react";
-import React from "react";
+import {
+  Input,
+  Flex,
+  Button,
+  Text,
+  FormControl,
+  FormErrorMessage,
+} from "@chakra-ui/react";
+import React, { useCallback } from "react";
 import { Trash as TrashIcon } from "react-feather";
 
 import { OptionOtherProps, OptionProps } from "@forms/types/interfaces/field";
@@ -12,6 +19,7 @@ interface SelectOptionsProps {
   handleDeleteOption: React.MouseEventHandler<HTMLButtonElement>;
   toggleOtherOption: React.MouseEventHandler<HTMLButtonElement>;
   handleOtherOption: React.FormEventHandler<HTMLInputElement>;
+  fieldErrors: string[] | null;
   value: ValueProps;
 }
 
@@ -21,20 +29,35 @@ const SelectOptions: React.FC<SelectOptionsProps> = ({
   handleDeleteOption,
   toggleOtherOption,
   handleOtherOption,
+  fieldErrors,
   value,
 }) => {
+  const getOptionError = useCallback(
+    (index: number) =>
+      !!(fieldErrors && fieldErrors.includes(`options--${index}`)),
+    [fieldErrors]
+  );
+
   return (
     <>
       {(value.options as OptionProps[]).map(({ label }, index) => (
         <Flex key={index}>
-          <Input
-            variant="flushed"
-            name={`${index}--option`}
-            mt="3"
-            placeholder="Adicione uma opção"
-            onChange={handleOptionChange}
-            value={label}
-          />
+          <FormControl
+            isInvalid={getOptionError(index)}
+            mb={getOptionError(index) ? 2 : 0}
+          >
+            <Input
+              variant="flushed"
+              name={`${index}--option`}
+              mt="3"
+              placeholder="Adicione uma opção"
+              onChange={handleOptionChange}
+              value={label}
+            />
+            {getOptionError(index) && (
+              <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
+            )}
+          </FormControl>
           <Button
             onClick={handleDeleteOption}
             ml="auto"

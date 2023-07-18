@@ -1,6 +1,8 @@
 import { Input, Flex, Switch } from "@chakra-ui/react";
 import React, { useState } from "react";
 
+import { useFormCreation } from "@app/store/formCreation";
+
 import FieldHeader from "../FieldHeader";
 import { useFieldsBase, ValueProps } from "../hooks/useFieldsBase";
 
@@ -18,6 +20,8 @@ const TextCreation: React.FC<{ id: string }> = ({ id }) => {
     setValue,
   });
 
+  const { errors } = useFormCreation();
+
   return (
     <Flex
       bg="blackAlpha.100"
@@ -31,13 +35,14 @@ const TextCreation: React.FC<{ id: string }> = ({ id }) => {
       <FieldHeader
         handleDelete={handleDelete}
         handleInputChange={handleInputChange}
+        fieldErrors={errors && errors[id]}
         value={value}
       />
       <Input
         bg="white"
         border="none"
         color="blackAlpha.500"
-        mt="3"
+        mt="8"
         name="placeholder"
         onChange={handleInputChange}
         placeholder="Adicione um placeholder (opcional)"

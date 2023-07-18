@@ -4,6 +4,8 @@ export type FieldsType = ConstantValues<typeof Fields>;
 
 export type FieldProps = TextFormProps | OptionsFormProps
 
+export type FieldErrors = { [key: string]: string[] };
+
 export interface OptionsFormProps extends TextFormProps {
     options: OptionProps[]
     optionOther: OptionOtherProps

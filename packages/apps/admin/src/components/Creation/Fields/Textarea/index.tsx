@@ -1,6 +1,8 @@
 import { Textarea, Flex, Switch } from "@chakra-ui/react";
 import React, { useState } from "react";
 
+import { useFormCreation } from "@app/store/formCreation";
+
 import FieldHeader from "../FieldHeader";
 import { ValueProps, useFieldsBase } from "../hooks/useFieldsBase";
 
@@ -18,6 +20,8 @@ const TextareaCreation: React.FC<{ id: string }> = ({ id }) => {
     setValue,
   });
 
+  const { errors } = useFormCreation();
+
   return (
     <Flex
       direction="column"
@@ -31,6 +35,7 @@ const TextareaCreation: React.FC<{ id: string }> = ({ id }) => {
       <FieldHeader
         handleDelete={handleDelete}
         handleInputChange={handleInputChange}
+        fieldErrors={errors && errors[id]}
         value={value}
       />
       <Textarea

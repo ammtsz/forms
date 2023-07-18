@@ -1,8 +1,10 @@
 import { Flex, Switch } from "@chakra-ui/react";
 import React from "react";
 
+import { useFormCreation } from "@app/store/formCreation";
+
+import SelectHeader from "../FieldHeader";
 import { useSelect } from "../hooks/useSelect";
-import SelectHeader from "./Header";
 import SelectOptions from "./Options";
 
 interface SelectProps {
@@ -22,6 +24,8 @@ const SelectCreation: React.FC<SelectProps> = ({ id }) => {
     value,
   } = useSelect({ id });
 
+  const { errors } = useFormCreation();
+
   return (
     <Flex
       direction="column"
@@ -35,6 +39,7 @@ const SelectCreation: React.FC<SelectProps> = ({ id }) => {
       <SelectHeader
         handleInputChange={handleInputChange}
         handleDelete={handleDelete}
+        fieldErrors={errors && errors[id]}
         value={value}
       />
       <SelectOptions
@@ -43,6 +48,7 @@ const SelectCreation: React.FC<SelectProps> = ({ id }) => {
         handleDeleteOption={handleDeleteOption}
         toggleOtherOption={toggleOtherOption}
         handleOtherOption={handleOtherOption}
+        fieldErrors={errors && errors[id]}
         value={value}
       />
       <Switch mt="5" mr="auto" onChange={handleCheckbox}>

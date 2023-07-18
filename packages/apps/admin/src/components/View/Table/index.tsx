@@ -3,7 +3,7 @@ import "react-base-table/styles.css";
 
 import { useTableData } from "@app/store/tableData";
 
-import Feedback from "./Feedback";
+import Feedback from "../../Feedback";
 import useTable from "./hooks/useTable";
 import { Container } from "./styles";
 
@@ -35,7 +35,12 @@ const Table: React.FC<TableProps> = ({ isLoading = false }: TableProps) => {
           <BaseTable
             columns={columns}
             data={isLoading ? [] : filteredTableData}
-            emptyRenderer={<Feedback isLoading={isLoading} />}
+            emptyRenderer={
+              <Feedback
+                isLoading={isLoading}
+                message="Nenhuma resposta encontrada"
+              />
+            }
             fixed={hasFrozenColumn}
             headerHeight={rowHeight}
             height={height}
