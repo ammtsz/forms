@@ -2,36 +2,10 @@ import { Button, Flex } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";
-import { uuid, Fields } from "@forms/utils";
+import { uuid } from "@forms/utils";
 
+import { FIELDS_LABEL } from "@app/constants/fieldsLabels";
 import { useFormCreation } from "@app/store/formCreation";
-
-const FIELD_BUTTONS = [
-  {
-    label: "Texto curto",
-    value: Fields.text,
-  },
-  {
-    label: "Texto longo",
-    value: Fields.textarea,
-  },
-  {
-    label: "Seleção de lista",
-    value: Fields.select,
-  },
-  {
-    label: "Radio",
-    value: Fields.radio,
-  },
-  {
-    label: "Checkbox",
-    value: Fields.checkbox,
-  },
-  {
-    label: "Switch",
-    value: Fields.switch,
-  },
-];
 
 const AddFieldButton = () => {
   const [isSelected, setSelected] = useState<boolean>(false);
@@ -70,7 +44,9 @@ const AddFieldButton = () => {
       mt="4"
       mb="16"
     >
-      {FIELD_BUTTONS.map(({ label, value }) => renderButton(label, value))}
+      {Object.keys(FIELDS_LABEL).map((type) =>
+        renderButton(FIELDS_LABEL[type], type)
+      )}
     </Flex>
   ) : (
     <Button

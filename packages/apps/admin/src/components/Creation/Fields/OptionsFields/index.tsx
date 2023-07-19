@@ -1,17 +1,22 @@
-import { Flex, Switch } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import React from "react";
+
+import { FieldsType } from "@forms/types/interfaces/field";
+import { getPrefixFromString } from "@forms/utils";
 
 import { useFormCreation } from "@app/store/formCreation";
 
-import SelectHeader from "../FieldHeader";
-import { useSelect } from "../hooks/useSelect";
-import SelectOptions from "./Options";
+import FieldBase from "../FieldBase";
+import FieldFooter from "../FieldFooter";
+import FieldHeader from "../FieldHeader";
+import { useOptions } from "../hooks/useOptions";
+import Options from "./Options";
 
 interface SelectProps {
   id: string;
 }
 
-const SelectCreation: React.FC<SelectProps> = ({ id }) => {
+const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
   const {
     handleInputChange,
     handleCheckbox,
@@ -22,40 +27,40 @@ const SelectCreation: React.FC<SelectProps> = ({ id }) => {
     toggleOtherOption,
     handleOtherOption,
     value,
-  } = useSelect({ id });
+  } = useOptions({ id });
 
   const { errors } = useFormCreation();
 
   return (
     <Flex
       direction="column"
-      py="12"
+      pt="8"
+      pb="12"
       px="8"
       my="4"
       bg="blackAlpha.100"
       borderRadius="10"
       width="100%"
     >
-      <SelectHeader
+      <FieldHeader handleDelete={handleDelete} type={getPrefixFromString(id)} />
+      <FieldBase
         handleInputChange={handleInputChange}
-        handleDelete={handleDelete}
         fieldErrors={errors && errors[id]}
         value={value}
       />
-      <SelectOptions
+      <Options
         handleAddOption={handleAddOption}
         handleOptionChange={handleOptionChange}
         handleDeleteOption={handleDeleteOption}
         toggleOtherOption={toggleOtherOption}
         handleOtherOption={handleOtherOption}
         fieldErrors={errors && errors[id]}
+        type={getPrefixFromString(id) as FieldsType}
         value={value}
       />
-      <Switch mt="5" mr="auto" onChange={handleCheckbox}>
-        Campo obrigatório
-      </Switch>
+      <FieldFooter handleCheckbox={handleCheckbox} />
     </Flex>
   );
 };
 
-export default SelectCreation;
+export default OptionsFieldsCreation;

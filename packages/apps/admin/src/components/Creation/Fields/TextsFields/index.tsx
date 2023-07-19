@@ -1,12 +1,17 @@
-import { Textarea, Flex, Switch } from "@chakra-ui/react";
+import { Textarea, Flex, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
+
+import { FieldsType } from "@forms/types/interfaces/field";
+import { Fields, getPrefixFromString } from "@forms/utils";
 
 import { useFormCreation } from "@app/store/formCreation";
 
+import FieldBase from "../FieldBase";
+import FieldFooter from "../FieldFooter";
 import FieldHeader from "../FieldHeader";
 import { ValueProps, useFieldsBase } from "../hooks/useFieldsBase";
 
-const TextareaCreation: React.FC<{ id: string }> = ({ id }) => {
+const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
   const [value, setValue] = useState<ValueProps>({
     label: "",
     description: "",
@@ -22,23 +27,27 @@ const TextareaCreation: React.FC<{ id: string }> = ({ id }) => {
 
   const { errors } = useFormCreation();
 
+  const type = getPrefixFromString(id) as FieldsType;
+  const Text = type === Fields.textarea ? Textarea : Input;
+
   return (
     <Flex
       direction="column"
-      py="12"
+      pt="8"
+      pb="12"
       px="8"
       my="10"
       bg="blackAlpha.100"
       borderRadius="10"
       width="100%"
     >
-      <FieldHeader
-        handleDelete={handleDelete}
+      <FieldHeader handleDelete={handleDelete} type={getPrefixFromString(id)} />
+      <FieldBase
         handleInputChange={handleInputChange}
         fieldErrors={errors && errors[id]}
         value={value}
       />
-      <Textarea
+      <Text
         bg="white"
         border="none"
         color="blackAlpha.500"
@@ -49,11 +58,9 @@ const TextareaCreation: React.FC<{ id: string }> = ({ id }) => {
         _placeholder={{ color: "inherit" }}
         value={value.placeholder}
       />
-      <Switch mt="5" mr="auto" onChange={handleCheckbox}>
-        Campo obrigatório
-      </Switch>
+      <FieldFooter handleCheckbox={handleCheckbox} />
     </Flex>
   );
 };
 
-export default TextareaCreation;
+export default TextsFieldsCreation;

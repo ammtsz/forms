@@ -36,7 +36,7 @@ const useCreationPage = () => {
       }
 
       toastIdRef.current = toast({
-        duration: null,
+        duration: 10000,
         isClosable: true,
         variant: "subtle",
         ...props,
@@ -46,6 +46,7 @@ const useCreationPage = () => {
   );
 
   const validateOptions = useCallback((options: OptionProps[]) => {
+    console.log({ options });
     const isEmpty = !options || options.length === 0;
     if (isEmpty) return { optionsError: ["options--0"] };
 
@@ -54,6 +55,8 @@ const useCreationPage = () => {
     options.forEach((option, index) => {
       if (!option.value) optionsError.push(`options--${index}`);
     });
+
+    console.log(optionsError);
 
     return { optionsError };
   }, []);
@@ -77,7 +80,11 @@ const useCreationPage = () => {
         fieldErrors[field.id] = ["label"];
       }
 
-      if (field.type === Fields.select) {
+      if (
+        field.type === Fields.select ||
+        field.type === Fields.radio ||
+        field.type === Fields.checkboxes
+      ) {
         const { optionsError } = validateOptions(
           (field as OptionsFormProps).options
         );
@@ -114,12 +121,12 @@ const useCreationPage = () => {
           openToast({
             description: "Formulário criado com sucesso",
             status: "success",
-            duration: 9000,
           });
         } else {
           openToast({
             description: "Erro ao criar o formulário. Tente novamente.",
             status: "error",
+            duration: null,
           });
         }
       } else {

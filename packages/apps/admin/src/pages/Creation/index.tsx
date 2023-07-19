@@ -12,19 +12,23 @@ import React from "react";
 import { Fields, getPrefixFromString } from "@forms/utils";
 
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
-import SelectForm from "@app/components/Creation/Fields/Select";
-import TextForm from "@app/components/Creation/Fields/Text";
-import TextAreaForm from "@app/components/Creation/Fields/Textarea";
+import Options from "@app/components/Creation/Fields/OptionsFields";
+import Texts from "@app/components/Creation/Fields/TextsFields";
+import Toggles from "@app/components/Creation/Fields/ToggleFields";
 import useCreationPage from "@app/hooks/useCreationPage";
 import { useFormCreation } from "@app/store/formCreation";
 
 import { Container, Form } from "./styles";
 
 const fieldComponents = {
-  [Fields.text]: TextForm,
-  [Fields.textarea]: TextAreaForm,
-  [Fields.select]: SelectForm,
-  [Fields.radio]: SelectForm,
+  [Fields.text]: Texts,
+  [Fields.textarea]: Texts,
+  [Fields.select]: Options,
+  [Fields.radio]: Options,
+  [Fields.checkboxes]: Options,
+  [Fields.checkbox]: Toggles,
+  [Fields.switch]: Toggles,
+  [Fields.date]: Texts,
 };
 
 const FormCreationPage = () => {

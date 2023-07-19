@@ -5,15 +5,21 @@ import {
   Text,
   FormControl,
   FormErrorMessage,
+  Tooltip,
 } from "@chakra-ui/react";
 import React, { useCallback } from "react";
-import { Trash as TrashIcon } from "react-feather";
+import { X as XIcon } from "react-feather";
 
-import { OptionOtherProps, OptionProps } from "@forms/types/interfaces/field";
+import {
+  FieldsType,
+  OptionOtherProps,
+  OptionProps,
+} from "@forms/types/interfaces/field";
 
+import FieldIcon from "../../FieldIcon";
 import { ValueProps } from "../../hooks/useFieldsBase";
 
-interface SelectOptionsProps {
+interface FieldOptionsProps {
   handleAddOption: React.MouseEventHandler<HTMLButtonElement>;
   handleOptionChange: React.FormEventHandler<HTMLInputElement>;
   handleDeleteOption: React.MouseEventHandler<HTMLButtonElement>;
@@ -21,15 +27,17 @@ interface SelectOptionsProps {
   handleOtherOption: React.FormEventHandler<HTMLInputElement>;
   fieldErrors: string[] | null;
   value: ValueProps;
+  type: FieldsType;
 }
 
-const SelectOptions: React.FC<SelectOptionsProps> = ({
+const FieldOptions: React.FC<FieldOptionsProps> = ({
   handleAddOption,
   handleOptionChange,
   handleDeleteOption,
   toggleOtherOption,
   handleOtherOption,
   fieldErrors,
+  type,
   value,
 }) => {
   const getOptionError = useCallback(
@@ -41,34 +49,42 @@ const SelectOptions: React.FC<SelectOptionsProps> = ({
   return (
     <>
       {(value.options as OptionProps[]).map(({ label }, index) => (
-        <Flex key={index}>
+        <Flex key={index} alignItems="center">
+          <FieldIcon type={type} />
           <FormControl
             isInvalid={getOptionError(index)}
             mb={getOptionError(index) ? 2 : 0}
           >
             <Input
-              variant="flushed"
-              name={`${index}--option`}
               mt="3"
-              placeholder="Adicione uma opção"
+              name={`${index}--option`}
               onChange={handleOptionChange}
+              placeholder="Adicione uma opção"
               value={label}
+              variant="flushed"
             />
             {getOptionError(index) && (
               <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
             )}
           </FormControl>
-          <Button
-            onClick={handleDeleteOption}
-            ml="auto"
-            py="3"
-            color="blackAlpha.700"
-            bg="transparent"
-            data-index={index}
-            _hover={{ backgroundColor: "transparent", color: "red.700" }}
+          <Tooltip
+            bg="gray.200"
+            color="black"
+            fontWeight={400}
+            label="Apagar opção"
           >
-            <TrashIcon />
-          </Button>
+            <Button
+              bg="transparent"
+              color="blackAlpha.700"
+              data-index={index}
+              ml="auto"
+              onClick={handleDeleteOption}
+              py="3"
+              _hover={{ backgroundColor: "transparent", color: "red.700" }}
+            >
+              <XIcon />
+            </Button>
+          </Tooltip>
         </Flex>
       ))}
       <Button mt="3" mr="auto" bg="transparent" onClick={handleAddOption}>
@@ -76,28 +92,39 @@ const SelectOptions: React.FC<SelectOptionsProps> = ({
       </Button>
       {(value.optionOther as OptionOtherProps).isVisible ? (
         <>
-          <Text mt="3" ml="1" mr="auto">
-            Outros
-          </Text>
+          <Flex alignItems="center">
+            <FieldIcon type={type} />
+            <Text mt="3" mr="auto">
+              Outros
+            </Text>
+          </Flex>
           <Flex>
             <Input
-              name="optionOther"
               bg="white"
               border="none"
               mt="1"
-              placeholder="Adicione um placeholder para o campo outros (opcional)"
+              name="optionOther"
               onChange={handleOtherOption}
+              placeholder="Adicione um placeholder para o campo outros (opcional)"
               value={(value.optionOther as OptionOtherProps).placeholder}
             />
-            <Button
-              onClick={toggleOtherOption}
-              ml="auto"
-              py="3"
-              color="blackAlpha.700"
-              bg="transparent"
+            <Tooltip
+              bg="gray.200"
+              color="black"
+              fontWeight={400}
+              label="Apagar opção"
             >
-              <TrashIcon />
-            </Button>
+              <Button
+                bg="transparent"
+                color="blackAlpha.700"
+                ml="auto"
+                onClick={toggleOtherOption}
+                py="3"
+                _hover={{ backgroundColor: "transparent", color: "red.700" }}
+              >
+                <XIcon />
+              </Button>
+            </Tooltip>
           </Flex>
         </>
       ) : (
@@ -109,4 +136,4 @@ const SelectOptions: React.FC<SelectOptionsProps> = ({
   );
 };
 
-export default SelectOptions;
+export default FieldOptions;

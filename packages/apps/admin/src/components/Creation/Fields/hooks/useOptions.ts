@@ -10,7 +10,7 @@ interface SelectProps {
 }
 
 // TODO: fix performance - stop calling saveUpdates for all updates
-const useSelect = ({ id }: SelectProps) => {
+const useOptions = ({ id }: SelectProps) => {
   const [value, setValue] = useState<ValueProps>({
     label: "",
     description: "",
@@ -119,4 +119,4 @@ const useSelect = ({ id }: SelectProps) => {
   };
 };
 
-export { useSelect };
+export { useOptions };
