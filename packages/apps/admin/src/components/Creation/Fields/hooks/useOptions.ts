@@ -9,7 +9,6 @@ interface SelectProps {
   id: string;
 }
 
-// TODO: fix performance - stop calling saveUpdates for all updates
 const useOptions = ({ id }: SelectProps) => {
   const [value, setValue] = useState<ValueProps>({
     label: "",

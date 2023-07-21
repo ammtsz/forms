@@ -5,12 +5,12 @@ import {
   Flex,
   Button,
   Textarea,
-  Tooltip,
   useEditableControls,
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { Check as CheckIcon, Edit as EditIcon } from "react-feather";
 
+import Tooltip from "@app/components/Tooltip/Tooltip";
 import { useTableData } from "@app/store/tableData";
 
 import { TableCell } from "../styles";
@@ -73,13 +73,7 @@ const EditableCell: React.FC<EditableCellProps> = ({ rowData }) => {
         justifyContent={"space-between"}
         w="100%"
       >
-        <Tooltip
-          bg="gray.200"
-          color="black"
-          fontWeight={400}
-          hasArrow
-          label={text}
-        >
+        <Tooltip hasArrow label={text}>
           <EditablePreview color={text ? "black" : "blackAlpha.500"} />
         </Tooltip>
         <Textarea

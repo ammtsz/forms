@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 
 import { MakeOptional } from "@forms/types/global/makeOptional";
 import { OptionsFormProps } from "@forms/types/interfaces/field";
-import { Fields, getPrefixFromString } from "@forms/utils";
+import { getPrefixFromString } from "@forms/utils";
 
 import { useFormCreation } from "@app/store/formCreation";
 
@@ -17,7 +17,6 @@ interface FieldsBaseProps {
   setValue: React.Dispatch<React.SetStateAction<ValueProps>>;
 }
 
-// TODO: fix performance - stop calling saveUpdates for all updates
 const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
   const { deleteField, updateField } = useFormCreation();
 
@@ -25,32 +24,14 @@ const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
     (props = {}) => {
       const type = getPrefixFromString(id);
 
-      const optionsFields =
-        type === Fields.select
-          ? { options: value.options, optionOther: value.optionOther }
-          : {};
-
-      // handleClearEmptyFields()
-
       updateField({
         id,
         type,
-        label: value.label,
-        description: value.description,
-        isRequired: value.isRequired,
-        ...optionsFields,
+        ...value,
         ...props,
       });
     },
-    [
-      updateField,
-      id,
-      value.label,
-      value.description,
-      value.isRequired,
-      value.options,
-      value.optionOther,
-    ]
+    [id, value, updateField]
   );
 
   const handleInputChange: React.ChangeEventHandler<
@@ -62,6 +43,19 @@ const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
         [event.target.name]: event.target.value || "",
       }));
       saveUpdates({ [event.target.name]: event.target.value });
+    },
+    [saveUpdates, setValue]
+  );
+
+  const handleLimitsChange = useCallback(
+    (max = "", min = "") => {
+      setValue((prev) => ({
+        ...prev,
+        max,
+        min,
+      }));
+
+      saveUpdates({ max, min });
     },
     [saveUpdates, setValue]
   );
@@ -82,9 +76,10 @@ const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
   }, [deleteField, id]);
 
   return {
-    handleInputChange,
     handleCheckbox,
     handleDelete,
+    handleInputChange,
+    handleLimitsChange,
     saveUpdates,
     value,
   };

@@ -30,6 +30,8 @@ export interface TextFormProps {
   value?: string
   dependsOn?: DependsOnProps
   description?: string
+  max?: string
+  min?: string
 }
 
 export interface DependsOnProps {

@@ -5,7 +5,6 @@ import {
   Text,
   FormControl,
   FormErrorMessage,
-  Tooltip,
 } from "@chakra-ui/react";
 import React, { useCallback } from "react";
 import { X as XIcon } from "react-feather";
@@ -15,6 +14,8 @@ import {
   OptionOtherProps,
   OptionProps,
 } from "@forms/types/interfaces/field";
+
+import Tooltip from "@app/components/Tooltip/Tooltip";
 
 import FieldIcon from "../../FieldIcon";
 import { ValueProps } from "../../hooks/useFieldsBase";
@@ -67,12 +68,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
             )}
           </FormControl>
-          <Tooltip
-            bg="gray.200"
-            color="black"
-            fontWeight={400}
-            label="Apagar opção"
-          >
+          <Tooltip label="Apagar opção">
             <Button
               bg="transparent"
               color="blackAlpha.700"
@@ -108,12 +104,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               placeholder="Adicione um placeholder para o campo outros (opcional)"
               value={(value.optionOther as OptionOtherProps).placeholder}
             />
-            <Tooltip
-              bg="gray.200"
-              color="black"
-              fontWeight={400}
-              label="Apagar opção"
-            >
+            <Tooltip label="Apagar opção">
               <Button
                 bg="transparent"
                 color="blackAlpha.700"

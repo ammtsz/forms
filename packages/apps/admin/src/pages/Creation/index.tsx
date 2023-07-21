@@ -12,6 +12,7 @@ import React from "react";
 import { Fields, getPrefixFromString } from "@forms/utils";
 
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
+import Date from "@app/components/Creation/Fields/DateFields";
 import Options from "@app/components/Creation/Fields/OptionsFields";
 import Texts from "@app/components/Creation/Fields/TextsFields";
 import Toggles from "@app/components/Creation/Fields/ToggleFields";
@@ -28,7 +29,7 @@ const fieldComponents = {
   [Fields.checkboxes]: Options,
   [Fields.checkbox]: Toggles,
   [Fields.switch]: Toggles,
-  [Fields.date]: Texts,
+  [Fields.date]: Date,
 };
 
 const FormCreationPage = () => {
