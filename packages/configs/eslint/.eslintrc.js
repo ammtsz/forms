@@ -24,7 +24,6 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
   ],
   overrides: [],
   parser: "@typescript-eslint/parser",
@@ -37,7 +36,6 @@ module.exports = {
   },
   plugins: [
     "react",
-    "react-hooks",
     "import",
     "@typescript-eslint",
     "prettier",
