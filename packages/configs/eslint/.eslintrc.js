@@ -14,6 +14,7 @@ module.exports = {
     "types",
     "/**/types",
     "build",
+    "admin-old",
     "craco.config.js",
     "environments"
   ],
