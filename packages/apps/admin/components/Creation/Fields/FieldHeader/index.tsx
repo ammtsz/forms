@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
+import { FIELDS_LABEL } from "@/constants/fieldsLabels";
 import { Flex, Button, Text } from "@chakra-ui/react";
 import React from "react";
 import { Trash as TrashIcon } from "react-feather";
 
 import { FieldsType } from "@forms/types/interfaces/field";
-
-import { FIELDS_LABEL } from "@/constants/fieldsLabels";
 
 interface FieldHeaderProps {
   handleDelete: React.MouseEventHandler<HTMLButtonElement>;

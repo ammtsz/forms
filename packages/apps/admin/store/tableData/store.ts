@@ -1,8 +1,3 @@
-import { ColumnShape } from "react-base-table";
-import { create } from "zustand";
-
-import { FormValuesProps } from "@forms/types/interfaces/formResponse";
-
 import {
   getFormResponses as getFormResponsesFromDb,
   getForm as getFormFromDb,
@@ -11,6 +6,10 @@ import {
 import { SortOrder } from "@/constants/order";
 import { Status } from "@/constants/status";
 import { PAGE_SIZE } from "@/constants/table";
+import { ColumnShape } from "react-base-table";
+import { create } from "zustand";
+
+import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 
 import { TableDataState, TableDataStore } from "./types";
 import { filterBySearchTerm, filterByTab, processResponsesData } from "./utils";

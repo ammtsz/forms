@@ -1,5 +1,6 @@
 "use client";
 
+import Tooltip from "@/components/Tooltip/Tooltip";
 import {
   Input,
   Flex,
@@ -16,8 +17,6 @@ import {
   OptionOtherProps,
   OptionProps,
 } from "@forms/types/interfaces/field";
-
-import Tooltip from "@/components/Tooltip/Tooltip";
 
 import FieldIcon from "../../FieldIcon";
 import { ValueProps } from "../../hooks/useFieldsBase";
@@ -122,7 +121,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
         </>
       ) : (
         <Button mt="3" mr="auto" bg="transparent" onClick={toggleOtherOption}>
-          + Adicionar campo "outros"
+          + Adicionar campo &quot outros &quot
         </Button>
       )}
     </>

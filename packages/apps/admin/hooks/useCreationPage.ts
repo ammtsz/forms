@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
+import { useFormCreation } from "@/store/formCreation";
 import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
-import React, { useCallback, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import React, { useCallback, useRef, useState } from "react";
 
 import {
   FieldErrors,
@@ -10,8 +11,6 @@ import {
   OptionsFormProps,
 } from "@forms/types/interfaces/field";
 import { Fields } from "@forms/utils";
-
-import { useFormCreation } from "@/store/formCreation";
 
 const useCreationPage = () => {
   const [isLoading, setLoading] = useState(false);

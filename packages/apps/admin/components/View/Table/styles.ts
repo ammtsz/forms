@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Box, Flex, theme } from "@chakra-ui/react";
-import styled from "@emotion/styled";
+import { Box, BoxProps, Flex, FlexProps, theme } from "@chakra-ui/react";
+import styled, { StyledComponent } from "@emotion/styled";
 
 export const Container = styled(Box)`
   width: 100%;
@@ -93,10 +93,10 @@ export const Container = styled(Box)`
       background: ${theme.colors.cyan[800]};
     }
   }
-`;
+` as StyledComponent<BoxProps>;
 
 export const TableCell = styled(Flex)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-`;
+` as StyledComponent<FlexProps>;

@@ -1,10 +1,8 @@
-import { ColumnShape } from "react-base-table";
-
+import CheckboxCell from "@/components/View/Table/CheckboxCell";
+import CheckboxHeaderCell from "@/components/View/Table/CheckboxHeaderCell";
+import EditableCell from "@/components/View/Table/EditableCell";
 import { CellProps } from "@/components/View/Table/types";
-
-import CheckboxCell from "../../../components/View/Table/CheckboxCell";
-import CheckboxHeaderCell from "../../../components/View/Table/CheckboxHeaderCell";
-import EditableCell from "../../../components/View/Table/EditableCell";
+import { ColumnShape } from "react-base-table";
 
 export const getColumns = (fieldsColumns: ColumnShape[]): ColumnShape[] => [
   {

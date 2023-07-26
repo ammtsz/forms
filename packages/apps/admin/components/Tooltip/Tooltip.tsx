@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Tooltip as ChakraTooltip } from "@chakra-ui/react";
 import React from "react";

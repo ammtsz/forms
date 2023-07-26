@@ -1,10 +1,9 @@
+import { SortOrderTypes } from "@/constants/order";
+import { StatusTypes } from "@/constants/status";
 import { ColumnShape, SortOrder } from "react-base-table";
 
 import { FieldProps } from "@forms/types/interfaces/field";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
-
-import { SortOrderTypes } from "@/constants/order";
-import { StatusTypes } from "@/constants/status";
 
 export interface SortBy {
   key: string;

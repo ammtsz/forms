@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
+import { useFormCreation } from "@/store/formCreation";
 import { Flex } from "@chakra-ui/react";
 import React from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
-
-import { useFormCreation } from "@/store/formCreation";
 
 import FieldBase from "../FieldBase";
 import FieldFooter from "../FieldFooter";

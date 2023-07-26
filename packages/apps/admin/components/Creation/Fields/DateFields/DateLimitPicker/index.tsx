@@ -1,5 +1,6 @@
-"use client"
+"use client";
 
+import Tooltip from "@/components/Tooltip/Tooltip";
 import {
   Input,
   Flex,
@@ -19,10 +20,8 @@ import {
 import React from "react";
 import { X as XIcon } from "react-feather";
 
-import Tooltip from "@/components/Tooltip/Tooltip";
-
-import { useDateLimitPicker } from "./hooks/useDateLimitPicker";
 import { GRID_AREAS, INPUT_PROPS, LABELS, getLimit } from "../utils";
+import { useDateLimitPicker } from "./hooks/useDateLimitPicker";
 
 interface DateLimitPickerProps {
   min?: string;

@@ -1,10 +1,9 @@
-"use client"
-
-import { Tabs as ChakraTabs, TabList, Tab } from "@chakra-ui/react";
-import { useCallback } from "react";
+"use client";
 
 import { StatusTypes } from "@/constants/status";
 import { useTableData } from "@/store/tableData";
+import { Tabs as ChakraTabs, TabList, Tab } from "@chakra-ui/react";
+import { useCallback } from "react";
 
 interface TabProps {
   name: string;

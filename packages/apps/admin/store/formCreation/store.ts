@@ -1,9 +1,8 @@
+import { postForm } from "@/api/services/forms";
 import { create } from "zustand";
 
 import { FieldErrors, FieldProps } from "@forms/types/interfaces/field";
 import { uuid } from "@forms/utils";
-
-import { postForm } from "@/api/services/forms";
 
 import { FormCreationState, FormCreationStore } from "./types";
 

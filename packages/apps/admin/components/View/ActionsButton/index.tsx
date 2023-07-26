@@ -1,5 +1,8 @@
 "use client";
 
+import { StatusTypes } from "@/constants/status";
+import { useCheckedRows } from "@/store/checkedRows";
+import { useTableData } from "@/store/tableData";
 import {
   Menu,
   MenuButton,
@@ -10,10 +13,6 @@ import {
 } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
 import { ChevronDown as ChevronDownIcon } from "react-feather";
-
-import { StatusTypes } from "@/constants/status";
-import { useCheckedRows } from "@/store/checkedRows";
-import { useTableData } from "@/store/tableData";
 
 import ConfirmationModal, { ConfirmationTexts } from "../../ConfirmationModal";
 import { ACTIONS, getConfirmationTexts } from "./utils";

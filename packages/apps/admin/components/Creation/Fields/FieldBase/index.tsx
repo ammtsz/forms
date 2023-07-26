@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Input, FormControl, FormErrorMessage } from "@chakra-ui/react";
 import React from "react";

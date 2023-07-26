@@ -1,7 +1,8 @@
-import BaseTable, { AutoResizer } from "react-base-table";
-import "react-base-table/styles.css";
+"use client";
 
 import { useTableData } from "@/store/tableData";
+import BaseTable, { AutoResizer } from "react-base-table";
+import "react-base-table/styles.css";
 
 import Feedback from "../../Feedback";
 import useTable from "./hooks/useTable";

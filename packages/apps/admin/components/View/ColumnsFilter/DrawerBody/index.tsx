@@ -1,13 +1,12 @@
-"use client"
+"use client";
 
+import { useTableData } from "@/store/tableData";
 import {
   DrawerBody as ChakraDrawerBody,
   Checkbox,
   Flex,
   Text,
 } from "@chakra-ui/react";
-
-import { useTableData } from "@/store/tableData";
 
 interface DrawerBodyProps {
   checkedColumns: { [key: string]: boolean };

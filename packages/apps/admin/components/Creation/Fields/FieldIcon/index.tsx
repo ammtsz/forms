@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Box, BoxProps, SwitchProps } from "@chakra-ui/react";
 
@@ -43,7 +43,7 @@ const FieldIcon: React.FC<FieldIconProps> = ({ type }) => {
     <Switch
       mr="0.5rem"
       transform={"translateY(8px)"}
-      disabled={true}
+      isDisabled
       _hover={{ cursor: "default" }}
       {...props}
     />

@@ -1,10 +1,9 @@
 "use client";
 
+import { useTableData } from "@/store/tableData";
 import { Button } from "@chakra-ui/react";
 import { useCallback } from "react";
 import { Copy as CopyIcon } from "react-feather";
-
-import { useTableData } from "@/store/tableData";
 
 const CopyButton: React.FC = () => {
   const { formId } = useTableData();

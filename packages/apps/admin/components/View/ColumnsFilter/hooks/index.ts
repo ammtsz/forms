@@ -1,9 +1,8 @@
-"use client"
-
-import { useDisclosure } from "@chakra-ui/react";
-import { useCallback, useState } from "react";
+"use client";
 
 import { useTableData } from "@/store/tableData";
+import { useDisclosure } from "@chakra-ui/react";
+import { useCallback, useState } from "react";
 
 const useColumnsFilter = () => {
   const [checkedColumns, setCheckedColumns] = useState<{

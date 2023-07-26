@@ -1,5 +1,5 @@
-import { Flex, theme } from "@chakra-ui/react";
-import styled from "@emotion/styled";
+import { Flex, theme, FlexProps } from "@chakra-ui/react";
+import styled, { StyledComponent } from "@emotion/styled";
 
 // TODO: configure chakra theme to use with emotion
 
@@ -13,11 +13,11 @@ export const Container = styled(Flex)`
   justify-content: center;
   align-items: center;
   min-height: 600px;
-`;
+` as StyledComponent<FlexProps>;
 
 export const Form = styled(Flex)`
   flex-direction: column;
   width: 100%;
   max-width: 800px;
   margin: ${theme.space[16]} auto;
-`;
+` as StyledComponent<FlexProps>;

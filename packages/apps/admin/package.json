@@ -6,7 +6,8 @@
     "start": "set PORT=3000 & next dev",
     "build": "next build",
     "preview": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "eslint ./**/*.ts{,x} --fix"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.1.5",

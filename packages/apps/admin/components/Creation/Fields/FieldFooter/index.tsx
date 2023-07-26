@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Switch } from "@chakra-ui/react";
 import React from "react";
