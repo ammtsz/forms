@@ -1,8 +1,28 @@
 {
+  "compilerOptions": {
+    "allowJs": true,
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
   "include": [
-    "src",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "./src",
     "../../configs/environments/environments.d.ts",
     "../../commons/types",
   ],
+  "exclude": ["node_modules"],
   "extends": "./tsconfig.paths.json"
 }
