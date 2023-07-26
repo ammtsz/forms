@@ -1,9 +1,9 @@
 {
-  "name": "@forms/admin-app",
+  "name": "@forms/admin-old",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "set PORT=3000 & craco start",
+    "start": "set PORT=3002 & craco start",
     "build": "craco build",
     "test": "jest -u -i --colors --logHeapUsage --passWithNoTests",
     "test:coverage": "jest -u -i --colors --silent --collectCoverage --passWithNoTests",

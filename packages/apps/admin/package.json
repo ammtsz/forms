@@ -1,9 +1,9 @@
 {
-  "name": "@forms/admin-next",
+  "name": "@forms/admin-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "set PORT=3002 & next dev",
+    "start": "set PORT=3000 & next dev",
     "build": "next build",
     "preview": "next start",
     "lint": "next lint"
