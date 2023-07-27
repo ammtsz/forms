@@ -20,7 +20,12 @@ const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
     isRequired: false,
   });
 
-  const { handleInputChange, handleDelete, handleCheckbox } = useFieldsBase({
+  const {
+    handleCheckbox,
+    handleDelete,
+    handleDependsOnChange,
+    handleInputChange,
+  } = useFieldsBase({
     id,
     value,
     setValue,
@@ -41,7 +46,12 @@ const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
       borderRadius="10"
       width="100%"
     >
-      <FieldHeader handleDelete={handleDelete} type={getPrefixFromString(id)} />
+      <FieldHeader
+        fieldId={id}
+        handleDelete={handleDelete}
+        handleDependsOn={handleDependsOnChange}
+        type={getPrefixFromString(id)}
+      />
       <Flex flexDir={"row"}>
         <FieldIcon type={type} />
         <Flex flexDir={"column"} width={"100%"}>

@@ -25,6 +25,7 @@ const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
     handleAddOption,
     handleOptionChange,
     handleDeleteOption,
+    handleDependsOnChange,
     toggleOtherOption,
     handleOtherOption,
     value,
@@ -43,7 +44,12 @@ const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
       borderRadius="10"
       width="100%"
     >
-      <FieldHeader handleDelete={handleDelete} type={getPrefixFromString(id)} />
+      <FieldHeader
+        fieldId={id}
+        handleDelete={handleDelete}
+        handleDependsOn={handleDependsOnChange}
+        type={getPrefixFromString(id)}
+      />
       <FieldBase
         handleInputChange={handleInputChange}
         fieldErrors={errors && errors[id]}

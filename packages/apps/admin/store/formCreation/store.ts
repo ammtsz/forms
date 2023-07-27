@@ -1,8 +1,12 @@
 import { postForm } from "@/api/services/forms";
 import { create } from "zustand";
 
-import { FieldErrors, FieldProps } from "@forms/types/interfaces/field";
-import { uuid } from "@forms/utils";
+import {
+  FieldErrors,
+  FieldProps,
+  OptionsFormProps,
+} from "@forms/types/interfaces/field";
+import { isOptionTypeField, isToggleTypeField, uuid } from "@forms/utils";
 
 import { FormCreationState, FormCreationStore } from "./types";
 
@@ -13,6 +17,7 @@ const INITIAL_STATE: FormCreationState = {
   description: "",
   fields: [],
   fieldsIds: [],
+  dependsOnOptions: {},
 };
 
 const store = create<FormCreationStore>((set, get) => ({
@@ -22,6 +27,7 @@ const store = create<FormCreationStore>((set, get) => ({
   description: INITIAL_STATE.description,
   fields: INITIAL_STATE.fields,
   fieldsIds: INITIAL_STATE.fieldsIds,
+  dependsOnOptions: INITIAL_STATE.dependsOnOptions,
 
   updateTitle: (title: string) => {
     set({ title });
@@ -41,9 +47,13 @@ const store = create<FormCreationStore>((set, get) => ({
   deleteField: (fieldId: string) => {
     const { fields, fieldsIds } = get();
 
+    const dependsOnOptions = { ...get().dependsOnOptions };
+    delete dependsOnOptions[fieldId];
+
     set(() => ({
       fields: fields.filter((field) => field.id !== fieldId),
       fieldsIds: fieldsIds.filter((field) => field !== fieldId),
+      dependsOnOptions,
     }));
   },
 
@@ -54,6 +64,7 @@ const store = create<FormCreationStore>((set, get) => ({
     fields[index >= 0 ? index : fieldsIds.length] = field;
 
     set(() => ({ fields }));
+    get().setDependsOnOptions(field);
   },
 
   createForm: async () => {
@@ -67,6 +78,26 @@ const store = create<FormCreationStore>((set, get) => ({
   getField: (fieldId: string): FieldProps => {
     const index = get().fieldsIds.indexOf(fieldId);
     return get().fields[index];
+  },
+
+  setDependsOnOptions: (field) => {
+    const hasOptions =
+      isOptionTypeField(field.type) &&
+      (field as OptionsFormProps).options[0].label;
+
+    if (isToggleTypeField(field.type) || hasOptions) {
+      set(({ dependsOnOptions }) => ({
+        dependsOnOptions: {
+          ...dependsOnOptions,
+          [field.id]: {
+            id: field.id,
+            label: field.label,
+            type: field.type,
+            options: hasOptions ? (field as OptionsFormProps).options : [],
+          },
+        },
+      }));
+    }
   },
 
   setErrors: (errors: FieldErrors) => set(() => ({ errors })),

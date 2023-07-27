@@ -21,6 +21,11 @@ export interface OptionOtherProps {
   placeholder: string
 }
 
+export interface DependsOnProps {
+  fieldId: string
+  optionsValues: string[]
+}
+
 export interface TextFormProps {
   id: string
   label: string
@@ -32,9 +37,4 @@ export interface TextFormProps {
   description?: string
   max?: string
   min?: string
-}
-
-export interface DependsOnProps {
-  fieldId: string
-  optionsId: string[]
 }

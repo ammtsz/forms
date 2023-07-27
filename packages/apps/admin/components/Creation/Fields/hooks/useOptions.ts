@@ -20,12 +20,17 @@ const useOptions = ({ id }: SelectProps) => {
     optionOther: { isVisible: false, placeholder: "" },
   });
 
-  const { handleInputChange, handleDelete, handleCheckbox, saveUpdates } =
-    useFieldsBase({
-      id,
-      value,
-      setValue,
-    });
+  const {
+    handleInputChange,
+    handleDelete,
+    handleDependsOnChange,
+    handleCheckbox,
+    saveUpdates,
+  } = useFieldsBase({
+    id,
+    value,
+    setValue,
+  });
 
   const handleAddOption: React.MouseEventHandler<HTMLButtonElement> =
     useCallback(() => {
@@ -112,6 +117,7 @@ const useOptions = ({ id }: SelectProps) => {
     handleCheckbox,
     handleDelete,
     handleDeleteOption,
+    handleDependsOnChange,
     handleInputChange,
     handleOptionChange,
     handleOtherOption,

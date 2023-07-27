@@ -4,7 +4,10 @@ import { useFormCreation } from "@/store/formCreation";
 import React, { useCallback } from "react";
 
 import { MakeOptional } from "@forms/types/global/makeOptional";
-import { OptionsFormProps } from "@forms/types/interfaces/field";
+import {
+  DependsOnProps,
+  OptionsFormProps,
+} from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
 export type ValueProps = MakeOptional<
@@ -72,6 +75,17 @@ const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
     saveUpdates({ isRequired });
   }, [saveUpdates, setValue, value.isRequired]);
 
+  const handleDependsOnChange = useCallback(
+    (dependsOn?: DependsOnProps) => {
+      setValue((prev) => ({
+        ...prev,
+        dependsOn,
+      }));
+      saveUpdates({ dependsOn });
+    },
+    [saveUpdates, setValue]
+  );
+
   const handleDelete = useCallback(() => {
     deleteField(id);
   }, [deleteField, id]);
@@ -79,6 +93,7 @@ const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
   return {
     handleCheckbox,
     handleDelete,
+    handleDependsOnChange,
     handleInputChange,
     handleLimitsChange,
     saveUpdates,

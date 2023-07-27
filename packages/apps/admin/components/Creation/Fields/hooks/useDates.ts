@@ -26,6 +26,7 @@ const useDates = ({ id }: FieldsBaseProps) => {
     handleInputChange,
     handleCheckbox,
     handleDelete,
+    handleDependsOnChange,
     handleLimitsChange,
   } = useFieldsBase({
     id,
@@ -37,6 +38,7 @@ const useDates = ({ id }: FieldsBaseProps) => {
     handleInputChange,
     handleCheckbox,
     handleDelete,
+    handleDependsOnChange,
     handleLimitsChange,
     value,
   };
