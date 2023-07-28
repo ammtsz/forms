@@ -77,7 +77,7 @@ const useDateLimitPicker = ({
     [handleInputChange]
   );
 
-  const handleCleanData = useCallback(() => {
+  const handleCleanDate = useCallback(() => {
     setDateType("");
   }, []);
 
@@ -93,7 +93,7 @@ const useDateLimitPicker = ({
   return {
     handleInputChange,
     handleDaysChange,
-    handleCleanData,
+    handleCleanDate,
     handleRadio,
     handleDateChange,
     dateType,
