@@ -39,7 +39,7 @@ const TextForm: React.FC<TextFormProps> = ({
 
   React.useEffect(() => {
     if (requiredField) {
-      const isValidValue = dependsOn.optionsId.some((validOption) =>
+      const isValidValue = dependsOn.optionsValues.some((validOption) =>
         requiredField.value?.includes(validOption)
       );
 

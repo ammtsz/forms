@@ -56,6 +56,7 @@ const FormCreationPage = () => {
         <Box mb={8}>
           <FormControl isInvalid={hasTitleError} mb={8}>
             <Input
+              id="create-title"
               variant={hasTitleError ? "flushed" : "unstyled"}
               size="lg"
               color="blackAlpha.900"

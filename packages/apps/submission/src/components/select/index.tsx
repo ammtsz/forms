@@ -38,7 +38,7 @@ const FormSelect: React.FC<OptionsFormProps> = ({
 
   useEffect(() => {
     if (requiredField) {
-      const isValidValue = dependsOn.optionsId.some((validOption) =>
+      const isValidValue = dependsOn.optionsValues.some((validOption) =>
         requiredField.value?.includes(validOption)
       );
 
