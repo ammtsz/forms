@@ -34,11 +34,13 @@ const FormViewPage: React.FC = () => {
 
   return (
     <Container>
-      <Flex pb={5} gap={2}>
+      <Flex pb={5} gap={4} direction={["column", "column", "row"]} mb={8}>
         <SearchBar />
-        <CopyButton />
-        <ColumnsFilter />
-        <ActionsButton />
+        <Flex justifyContent={"space-between"} gap={"0.5rem"} ml={"auto"}>
+          <CopyButton />
+          <ColumnsFilter />
+          <ActionsButton />
+        </Flex>
       </Flex>
       <Tabs />
       <Table isLoading={isLoading} />

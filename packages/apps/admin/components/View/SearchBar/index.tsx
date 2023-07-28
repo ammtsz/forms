@@ -28,7 +28,7 @@ const SearchBar: React.FC = () => {
   );
 
   return (
-    <InputGroup size="md" maxW={"800px"} ml={"auto"}>
+    <InputGroup size="md" w={"100%"}>
       <InputLeftAddon>
         <SearchIcon />
       </InputLeftAddon>

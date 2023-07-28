@@ -27,7 +27,6 @@ const CopyButton: React.FC = () => {
       aria-label="copiar tabela"
       bg={"cyan.800"}
       color="white"
-      ml="auto"
       onClick={handleCopy}
       _hover={{ bg: "cyan.900" }}
     >
