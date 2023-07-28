@@ -32,7 +32,11 @@ const SearchBar: React.FC = () => {
       <InputLeftAddon>
         <SearchIcon />
       </InputLeftAddon>
-      <Input placeholder="Buscar" onChange={handleSearch} />
+      <Input
+        placeholder="Buscar"
+        onChange={handleSearch}
+        fontSize={["sm", "sm", "md"]}
+      />
     </InputGroup>
   );
 };

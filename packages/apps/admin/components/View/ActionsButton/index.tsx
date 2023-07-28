@@ -47,6 +47,7 @@ const ActionsButton: React.FC = () => {
           color="white"
           isDisabled={!checkedRows.length}
           rightIcon={<ChevronDownIcon size={"1rem"} />}
+          size={["sm", "sm", "md"]}
           _hover={{ bg: "cyan.900" }}
         >
           Ações
@@ -57,6 +58,7 @@ const ActionsButton: React.FC = () => {
               key={action}
               data-action={action}
               onClick={handleAction}
+              fontSize={["sm", "sm", "md"]}
               isDisabled={!checkedRows.length}
             >
               {label}

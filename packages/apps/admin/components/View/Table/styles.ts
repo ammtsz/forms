@@ -44,7 +44,7 @@ export const Container = styled(Box)`
   .BaseTable__header-cell {
     color: ${theme.colors.white};
     font-size: ${theme.fontSizes.md};
-    font-weight: ${theme.fontWeights.semibold};
+    font-weight: ${theme.fontWeights.medium};
     line-height: ${theme.lineHeights.base};
     padding: ${`0 ${theme.sizes["4"]}`};
     text-align: center;

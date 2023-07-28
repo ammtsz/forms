@@ -98,7 +98,7 @@ const store = create<TableDataStore>((set, get) => ({
         title: column.label,
         dataKey: column.id,
         key: column.id,
-        width: index ? 200 : 150,
+        width: index ? 200 : 125,
         resizable: true,
         sortable: true,
         ...frozen,

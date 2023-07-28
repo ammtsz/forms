@@ -33,6 +33,7 @@ const ColumnsFilter: React.FC = () => {
         color="white"
         onClick={handleOpen}
         rightIcon={<FilterIcon size={"1rem"} />}
+        size={["sm", "sm", "md"]}
         width={"auto"}
         _hover={{ bg: "cyan.900" }}
       >

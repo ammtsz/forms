@@ -1,3 +1,3 @@
-export const HEADER_HEIGHT = 125;
+export const HEADER_HEIGHT = 50;
 
 export const PAGE_SIZE = 20;

@@ -28,9 +28,10 @@ const CopyButton: React.FC = () => {
       bg={"cyan.800"}
       color="white"
       onClick={handleCopy}
+      size={["sm", "sm", "md"]}
       _hover={{ bg: "cyan.900" }}
     >
-      <CopyIcon />
+      <CopyIcon height={"1.25rem"} />
     </Button>
   );
 };
