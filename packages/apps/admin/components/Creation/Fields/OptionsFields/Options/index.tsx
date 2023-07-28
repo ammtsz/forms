@@ -59,6 +59,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
           >
             <Input
               mt="3"
+              fontSize={["sm", "sm", "md"]}
               name={`${index}--option`}
               onChange={handleOptionChange}
               placeholder="Adicione uma opção"
@@ -66,7 +67,9 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               variant="flushed"
             />
             {getOptionError(index) && (
-              <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
+              <FormErrorMessage mt={0} fontSize={["xs", "xs", "sm"]}>
+                Campo obrigatório
+              </FormErrorMessage>
             )}
           </FormControl>
           <Tooltip label="Apagar opção">
@@ -84,14 +87,20 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
           </Tooltip>
         </Flex>
       ))}
-      <Button mt="3" mr="auto" bg="transparent" onClick={handleAddOption}>
+      <Button
+        bg="transparent"
+        fontSize={["sm", "sm", "md"]}
+        mr="auto"
+        mt="3"
+        onClick={handleAddOption}
+      >
         + Adicionar opção
       </Button>
       {(value.optionOther as OptionOtherProps).isVisible ? (
         <>
           <Flex alignItems="center">
             <FieldIcon type={type} />
-            <Text mt="3" mr="auto">
+            <Text mt="3" mr="auto" fontSize={["xs", "xs", "sm"]}>
               Outros
             </Text>
           </Flex>
@@ -99,6 +108,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
             <Input
               bg="white"
               border="none"
+              fontSize={["sm", "sm", "md"]}
               mt="1"
               name="optionOther"
               onChange={handleOtherOption}
@@ -120,8 +130,14 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
           </Flex>
         </>
       ) : (
-        <Button mt="3" mr="auto" bg="transparent" onClick={toggleOtherOption}>
-          + Adicionar campo &quot outros &quot
+        <Button
+          bg="transparent"
+          fontSize={["sm", "sm", "md"]}
+          mr="auto"
+          mt={[1, 1, 3]}
+          onClick={toggleOtherOption}
+        >
+          {"+ Adicionar campo \u0022outros\u0022"}
         </Button>
       )}
     </>

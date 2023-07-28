@@ -9,7 +9,13 @@ interface FieldFooterProps {
 
 const FieldFooter: React.FC<FieldFooterProps> = ({ handleCheckbox }) => {
   return (
-    <Switch mt="10" mr="auto" size={"sm"} onChange={handleCheckbox}>
+    <Switch
+      fontSize={["sm", "sm", "md"]}
+      mt="10"
+      mr="auto"
+      size={"sm"}
+      onChange={handleCheckbox}
+    >
       Campo obrigatório
     </Switch>
   );

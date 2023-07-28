@@ -25,6 +25,7 @@ const FieldBase: React.FC<FieldBaseProps> = ({
       <FormControl isInvalid={hasLabelError} mb={0}>
         <Input
           color="blackAlpha.900"
+          fontSize={["sm", "sm", "md"]}
           mr="3"
           name="label"
           onChange={handleInputChange}
@@ -34,21 +35,22 @@ const FieldBase: React.FC<FieldBaseProps> = ({
           variant={hasLabelError ? "flushed" : "unstyled"}
         />
         {hasLabelError && (
-          <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
+          <FormErrorMessage fontSize={["xs", "xs", "sm"]} mt={0}>
+            Campo obrigatório
+          </FormErrorMessage>
         )}
       </FormControl>
       <FormControl mt={0}>
         <Input
-          name="description"
-          variant={"unstyled"}
           color="blackAlpha.600"
-          _placeholder={{ color: "inherit" }}
-          size="sm"
-          placeholder="Adicione uma decrição (opcional)"
+          fontSize={["xs", "xs", "sm"]}
+          name="description"
           onChange={handleInputChange}
+          placeholder="Adicione uma decrição (opcional)"
+          _placeholder={{ color: "inherit" }}
           value={value.description}
+          variant={"unstyled"}
         />
-        <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
       </FormControl>
     </>
   );

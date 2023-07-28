@@ -31,16 +31,7 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
   const type = getPrefixFromString(id) as FieldsType;
 
   return (
-    <Flex
-      direction="column"
-      pt="8"
-      pb="12"
-      px="8"
-      my="10"
-      bg="blackAlpha.100"
-      borderRadius="10"
-      width="100%"
-    >
+    <>
       <FieldHeader
         fieldId={id}
         handleDelete={handleDelete}
@@ -55,14 +46,19 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
             fieldErrors={errors && errors[id]}
             value={value}
           />
-          <Text mt={8} mb={2} color={"blackAlpha.600"}>
+          <Text
+            color={"blackAlpha.600"}
+            fontSize={["sm", "sm", "md"]}
+            mb={2}
+            mt={8}
+          >
             Opcional
           </Text>
           <Flex
             justifyContent={"space-around"}
             bg={"whiteAlpha.700"}
             borderRadius={8}
-            p={8}
+            p={[2, 2, 8]}
           >
             <DateLimitPicker
               max={value.max}
@@ -74,7 +70,7 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         </Flex>
       </Flex>
       <FieldFooter handleCheckbox={handleCheckbox} />
-    </Flex>
+    </>
   );
 };
 

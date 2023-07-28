@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormCreation } from "@/store/formCreation";
-import { Textarea, Flex, Input } from "@chakra-ui/react";
+import { Textarea, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";
@@ -37,16 +37,7 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
   const Text = type === Fields.textarea ? Textarea : Input;
 
   return (
-    <Flex
-      direction="column"
-      pt="8"
-      pb="12"
-      px="8"
-      my="10"
-      bg="blackAlpha.100"
-      borderRadius="10"
-      width="100%"
-    >
+    <>
       <FieldHeader
         handleDelete={handleDelete}
         type={getPrefixFromString(id)}
@@ -62,6 +53,7 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         bg="white"
         border="none"
         color="blackAlpha.500"
+        fontSize={["sm", "sm", "md"]}
         mt="3"
         name="placeholder"
         onChange={handleInputChange}
@@ -70,7 +62,7 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         value={value.placeholder}
       />
       <FieldFooter handleCheckbox={handleCheckbox} />
-    </Flex>
+    </>
   );
 };
 

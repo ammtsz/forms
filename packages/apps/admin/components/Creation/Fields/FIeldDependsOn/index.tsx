@@ -46,7 +46,10 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
   const renderOptions = () => {
     if (isToggleType()) {
       return (
-        <RadioGroup onChange={(e) => handleOptionsSelect(true, e)}>
+        <RadioGroup
+          size={["sm", "sm", "md"]}
+          onChange={(e) => handleOptionsSelect(true, e)}
+        >
           <Radio value="yes">Sim</Radio>
           <Radio value="no" ml={4}>
             No
@@ -62,6 +65,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
     return options?.map((option) => (
       <Checkbox
         key={option.value}
+        size={["sm", "sm", "md"]}
         value={option.value}
         onChange={(e) => handleOptionsSelect(e.target.checked, option.value)}
       >
@@ -73,26 +77,34 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
   return visible ? (
     <>
       <Flex>
-        <Text mt={8} mb={2} color={"blackAlpha.600"}>
+        <Text
+          fontSize={["xs", "xs", "sm"]}
+          mt={8}
+          mb={2}
+          color={"blackAlpha.600"}
+        >
           Dependência
         </Text>
       </Flex>
       <Flex
         bg={"whiteAlpha.700"}
         borderRadius={8}
-        p={8}
+        p={[4, 4, 8]}
         mb={12}
         direction={"column"}
       >
         <FormControl>
-          <FormLabel>Visível apenas quando:</FormLabel>
+          <FormLabel fontSize={["sm", "sm", "md"]}>
+            Visível apenas quando:
+          </FormLabel>
           <Select
-            name="dependsOnField"
-            placeholder="Selecione uma pergunta"
-            onChange={handleFieldSelect}
             bg={"white"}
             boxShadow={"inner"}
+            fontSize={["sm", "sm", "md"]}
             mb={4}
+            name="dependsOnField"
+            onChange={handleFieldSelect}
+            placeholder="Selecione uma pergunta"
           >
             {dependsOnOptions &&
               Object.keys(dependsOnOptions).map((id) => {
@@ -110,7 +122,12 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
           </Select>
         </FormControl>
         {selectedField && <Flex direction={"column"}>{renderOptions()}</Flex>}
-        <Button onClick={handleCancel} m="auto">
+        <Button
+          onClick={handleCancel}
+          m="auto"
+          mt={4}
+          size={["sm", "sm", "md"]}
+        >
           Cancelar
         </Button>
       </Flex>

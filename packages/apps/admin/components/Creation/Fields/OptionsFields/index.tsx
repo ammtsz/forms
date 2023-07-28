@@ -1,7 +1,6 @@
 "use client";
 
 import { useFormCreation } from "@/store/formCreation";
-import { Flex } from "@chakra-ui/react";
 import React from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";
@@ -34,16 +33,7 @@ const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
   const { errors } = useFormCreation();
 
   return (
-    <Flex
-      direction="column"
-      pt="8"
-      pb="12"
-      px="8"
-      my="4"
-      bg="blackAlpha.100"
-      borderRadius="10"
-      width="100%"
-    >
+    <>
       <FieldHeader
         fieldId={id}
         handleDelete={handleDelete}
@@ -66,7 +56,7 @@ const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
         value={value}
       />
       <FieldFooter handleCheckbox={handleCheckbox} />
-    </Flex>
+    </>
   );
 };
 

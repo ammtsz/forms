@@ -27,10 +27,11 @@ const AddFieldButton: React.FC = () => {
 
   const renderButton = (label: string, value: FieldsType) => (
     <Button
+      key={value}
       bg="whiteAlpha.900"
+      fontSize={["sm", "sm", "md"]}
       my="1"
       onClick={() => handleNewFieldClick(value)}
-      key={value}
     >
       {label}
     </Button>

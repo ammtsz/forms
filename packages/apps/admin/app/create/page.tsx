@@ -45,7 +45,13 @@ const FormCreationPage = () => {
   } = useCreationPage();
 
   return (
-    <Container>
+    <Container
+      borderRadius={["none", "none", "2xl"]}
+      mx={[0, 5, 10, 10, "auto"]}
+      my={[0, 0, 10]}
+      boxShadow={["none", "none", "dark-lg"]}
+      p={[6, 8, 12]}
+    >
       <Form as={"form"} onSubmit={handleSubmit}>
         <Box mb={8}>
           <FormControl isInvalid={hasTitleError} mb={8}>
@@ -55,7 +61,7 @@ const FormCreationPage = () => {
               color="blackAlpha.900"
               placeholder="Adicione um título"
               textAlign="center"
-              fontSize="2xl"
+              fontSize={["lg", "xl", "2xl"]}
               onChange={handleTitle}
               value={title}
             />
@@ -64,11 +70,12 @@ const FormCreationPage = () => {
             )}
           </FormControl>
           <Textarea
-            color="blackAlpha.900"
-            placeholder="Adicione uma descrição (opcional)"
-            onChange={handleDescription}
-            value={description}
             bg={"white"}
+            color="blackAlpha.900"
+            fontSize={["sm", "sm", "md"]}
+            onChange={handleDescription}
+            placeholder="Adicione uma descrição (opcional)"
+            value={description}
           />
         </Box>
         <React.Fragment>
@@ -76,7 +83,17 @@ const FormCreationPage = () => {
             const Component = fieldComponents[getPrefixFromString(fieldId)];
 
             return (
-              <Flex key={fieldId}>
+              <Flex
+                key={fieldId}
+                direction="column"
+                pt={[4, 6, 8]}
+                pb={[8, 8, 12]}
+                px={[4, 6, 8]}
+                my={[4, 6, 8]}
+                bg="blackAlpha.100"
+                borderRadius="10"
+                width="100%"
+              >
                 <Component id={fieldId} />
               </Flex>
             );

@@ -51,7 +51,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
           >
             <MoreIcon size="20px" />
           </MenuButton>
-          <MenuList>
+          <MenuList fontSize={["sm", "md"]}>
             <MenuItem onClick={() => setVisible(true)}>Dependência</MenuItem>
             <MenuDivider />
             <MenuItem onClick={handleDelete} color="red.500">

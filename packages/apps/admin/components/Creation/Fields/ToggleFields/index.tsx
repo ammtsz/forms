@@ -36,16 +36,7 @@ const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
   const type = getPrefixFromString(id) as FieldsType;
 
   return (
-    <Flex
-      direction="column"
-      pt="8"
-      pb="12"
-      px="8"
-      my="10"
-      bg="blackAlpha.100"
-      borderRadius="10"
-      width="100%"
-    >
+    <>
       <FieldHeader
         fieldId={id}
         handleDelete={handleDelete}
@@ -63,7 +54,7 @@ const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         </Flex>
       </Flex>
       <FieldFooter handleCheckbox={handleCheckbox} />
-    </Flex>
+    </>
   );
 };
 
