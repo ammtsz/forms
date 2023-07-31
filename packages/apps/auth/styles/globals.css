@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.black_btn {
+  @apply rounded-lg border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center font-medium flex items-center justify-center;
+}
+
+.primary_btn {
+  @apply rounded-lg border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center font-medium flex items-center justify-center;
+}
