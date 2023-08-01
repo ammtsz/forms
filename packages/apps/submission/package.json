@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"start": "set PORT=3001 & craco start",
+		"dev": "set PORT=3001 & craco start",
 		"build": "craco build",
 		"test": "jest -u -i --colors --logHeapUsage --passWithNoTests",
     "test:coverage": "jest -u -i --colors --silent --collectCoverage --passWithNoTests",

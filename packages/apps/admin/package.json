@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "set PORT=3000 & next dev",
+    "dev": "set PORT=3000 & next dev",
     "build": "next build",
-    "preview": "next start",
+    "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint ./**/*.ts{,x} --fix"
   },
@@ -15,6 +15,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@forms/utils": "*",
+    "@module-federation/nextjs-mf": "^6.0.1",
     "@types/node": "20.4.5",
     "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",

@@ -45,6 +45,7 @@ importers:
       '@emotion/react': ^11.11.1
       '@emotion/styled': ^11.11.0
       '@forms/utils': '*'
+      '@module-federation/nextjs-mf': ^6.0.1
       '@types/node': 20.4.5
       '@types/react': 18.2.16
       '@types/react-dom': 18.2.7
@@ -67,6 +68,7 @@ importers:
       '@emotion/react': 11.11.1_l2ddciyqa7ein2jypfx2higwqu
       '@emotion/styled': 11.11.0_3p6jhguztwcfbjidczm7dwrg74
       '@forms/utils': link:../../commons/utils
+      '@module-federation/nextjs-mf': 6.7.1_54ux7fu2vrztxgcjbkegvwjefy
       '@types/node': 20.4.5
       '@types/react': 18.2.16
       '@types/react-dom': 18.2.7
@@ -86,6 +88,7 @@ importers:
 
   packages/apps/auth:
     specifiers:
+      '@module-federation/nextjs-mf': ^6.0.1
       '@types/node': 20.4.5
       '@types/react': 18.2.17
       '@types/react-dom': 18.2.7
@@ -101,6 +104,7 @@ importers:
       tailwindcss: 3.3.3
       typescript: 5.1.6
     dependencies:
+      '@module-federation/nextjs-mf': 6.7.1_54ux7fu2vrztxgcjbkegvwjefy
       '@types/node': 20.4.5
       '@types/react': 18.2.17
       '@types/react-dom': 18.2.7
@@ -4554,6 +4558,73 @@ packages:
       - supports-color
     dev: true
 
+  /@module-federation/nextjs-mf/6.7.1_54ux7fu2vrztxgcjbkegvwjefy:
+    resolution: {integrity: sha512-uxE8D7Vcvl63syv8pa2Gt6LVaTYJIOjS1m+/Pa5KgSFFmGcX8sZ7BCpXJ3MQxNxFD2AA0QsHmX969Le/h6zKIw==}
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^17 || ^18
+      react-dom: ^17 || ^18
+      styled-jsx: '*'
+      webpack: ^5.40.0
+    peerDependenciesMeta:
+      styled-jsx:
+        optional: true
+    dependencies:
+      '@module-federation/node': 0.16.2_54ux7fu2vrztxgcjbkegvwjefy
+      '@module-federation/utilities': 1.9.1_54ux7fu2vrztxgcjbkegvwjefy
+      encoding: 0.1.13
+      eventemitter3: 5.0.1
+      fast-glob: 3.3.0
+      next: 13.4.12_biqbaboplfbrettd7655fr4n2y
+      node-fetch: 2.6.9_encoding@0.1.13
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      webpack-sources: 3.2.3
+    dev: false
+
+  /@module-federation/node/0.16.2_54ux7fu2vrztxgcjbkegvwjefy:
+    resolution: {integrity: sha512-9zyB1D76lKsoSHcpaM5V+ifNqS2wevCQQgbw3Q7/C9JhoBM2GFhXkKXR2FxTlWdPZz4dmkN+jC5ZYW/w8v+mEA==}
+    peerDependencies:
+      next: ^12||^13
+      react: ^16||^17||^18
+      react-dom: ^16||^17||^18
+      webpack: ^5.40.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@module-federation/utilities': 1.9.1_54ux7fu2vrztxgcjbkegvwjefy
+      encoding: 0.1.13
+      next: 13.4.12_biqbaboplfbrettd7655fr4n2y
+      node-fetch: 2.6.9_encoding@0.1.13
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@module-federation/utilities/1.9.1_54ux7fu2vrztxgcjbkegvwjefy:
+    resolution: {integrity: sha512-EVPV90TSK+tSG6R7Kw65w7pRuI2phff8YFIazzGWNViZPRlTYS3c9pZWVPYGiwIz1+96P+yeNp/WQZrkyS8kpA==}
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+      webpack: ^5.40.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      next: 13.4.12_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /@next/env/13.4.12:
     resolution: {integrity: sha512-RmHanbV21saP/6OEPBJ7yJMuys68cIf8OBBWd7+uj40LdpmswVAwe1uzeuFyUsd6SfeITWT3XnQfn6wULeKwDQ==}
 
@@ -8097,8 +8168,6 @@ packages:
     requiresBuild: true
     dependencies:
       iconv-lite: 0.6.3
-    dev: true
-    optional: true
 
   /end-of-stream/1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
@@ -9082,6 +9151,10 @@ packages:
 
   /eventemitter3/4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
+
+  /eventemitter3/5.0.1:
+    resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
+    dev: false
 
   /events/3.3.0:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
@@ -12701,6 +12774,19 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
+
+  /node-fetch/2.6.9_encoding@0.1.13:
+    resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      encoding: 0.1.13
+      whatwg-url: 5.0.0
+    dev: false
 
   /node-forge/1.3.1:
     resolution: {integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==}

@@ -17,8 +17,8 @@ module.exports = {
       add: [new ModuleFederationPlugin(
         (module.exports = {
           name: "submission",
-          exposes: {
-            "./SubmissionPage": "./src/pages/FormSubmission",
+          remotes: {
+            auth: "auth@http://localhost:3002/remoteEntry.js",
           },
           filename: "remoteEntry.js",
           shared: {

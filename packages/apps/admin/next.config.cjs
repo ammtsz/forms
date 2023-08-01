@@ -4,19 +4,17 @@ const NextFederationPlugin = require("@module-federation/nextjs-mf");
 const { dependencies } = require("./package.json");
 
 module.exports = {
-  webpack(config, options) {
-    if (!options.isServer) {
+  webpack(config, { isServer }) {
+    if (!isServer) {
       config.plugins.push(
         new NextFederationPlugin({
-          name: "auth",
+          name: "admin",
           filename: "static/chunks/remoteEntry.js",
           remotes: {
-            admin:
-              "admin@http://localhost:3000/_next/static/chunks/remoteEntry.js",
-            submission: "submission@http://localhost:3001/remoteEntry.js",
+            auth: "auth@http://localhost:3002/_next/static/chunks/remoteEntry.js",
           },
           exposes: {
-            "./Navbar": "./components/Navbar/index.tsx",
+            "./components": "./components/ConfirmationModal/index.tsx",
           },
           shared: {
             ...dependencies,
@@ -39,8 +37,6 @@ module.exports = {
 
     config.reactStrictMode = true;
 
-    config.images = {
-      domains: ["lh3.googleusercontent.com"],
-    };
+    return config;
   },
 };

@@ -1,9 +1,10 @@
 import "./globals.css";
 import Providers from "@/components/Providers";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+// import { lazy } from "react";
+// const Navbar = lazy(() => import("auth/Navbar"));
+// import dynamic from "next/dynamic";
+// const Navbar = dynamic(import("auth/Navbar"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +16,8 @@ const RootLayout: React.FC<{
 }> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
+        {/* <Navbar /> */}
         <Providers>{children}</Providers>
       </body>
     </html>
