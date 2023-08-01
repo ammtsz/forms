@@ -15,7 +15,7 @@ const RootLayout: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body>
         {/* <Navbar /> */}
         <Providers>{children}</Providers>
