@@ -47,7 +47,7 @@ const AddFieldButton: React.FC = () => {
       mb="16"
     >
       {Object.keys(FIELDS_LABEL).map((type) =>
-        renderButton(FIELDS_LABEL[type], type)
+        renderButton(FIELDS_LABEL[type], type as FieldsType)
       )}
     </Flex>
   ) : (

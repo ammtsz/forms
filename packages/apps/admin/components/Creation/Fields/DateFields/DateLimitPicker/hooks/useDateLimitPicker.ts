@@ -2,11 +2,6 @@
 
 import React, { useCallback, useState } from "react";
 
-import { MakeOptional } from "@forms/types/global/makeOptional";
-import { TextFormProps } from "@forms/types/interfaces/field";
-
-export type ValueProps = MakeOptional<TextFormProps, "id" | "type">;
-
 interface FieldsBaseProps {
   handleInputChange: React.ChangeEventHandler<HTMLInputElement>;
   handleLimitsChange: (max: string, min: string) => void;

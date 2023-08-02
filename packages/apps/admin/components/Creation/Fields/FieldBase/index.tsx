@@ -3,14 +3,14 @@
 import { Input, FormControl, FormErrorMessage } from "@chakra-ui/react";
 import React from "react";
 
-import { OptionsFormProps } from "@forms/types/interfaces/field";
+import { FieldProps } from "@forms/types/interfaces/field";
 
 interface FieldBaseProps {
   handleInputChange: React.ChangeEventHandler<
     HTMLTextAreaElement | HTMLInputElement
   >;
   fieldErrors: string[] | null;
-  value: Partial<OptionsFormProps>;
+  value: Partial<FieldProps>;
 }
 
 const FieldBase: React.FC<FieldBaseProps> = ({

@@ -1,16 +1,42 @@
-import { Fields } from "../../utils/src/constants/fields";
+type OptionsType = "select" | "radio" | "checkboxes";
+type BasicType = "text" | "textarea" | "switch" | "checkbox";
+type DateType = "date";
 
-export type FieldsType = ConstantValues<typeof Fields>;
+export type FieldsType = OptionsType | BasicType | DateType;
 
-export type FieldProps = TextFormProps | OptionsFormProps
+export type FieldProps = FormBase & (BasicForm | OptionsForm | DateForm);
+
+export interface DateFormProps extends DateForm, FormBase {};
+export interface BasicFormProps extends BasicForm, FormBase {};
+export interface OptionsFormProps extends OptionsForm, FormBase {};
+
+interface DateForm {
+  type: DateType
+  max?: string
+  min?: string
+}
+
+interface OptionsForm {
+  type: OptionsType
+  options?: OptionProps[]
+  optionOther?: OptionOtherProps
+}
+
+interface BasicForm {
+  type: BasicType;
+}
+
+interface FormBase {
+  id: string
+  label: string
+  isRequired?: boolean
+  placeholder?: string
+  dependsOn?: DependsOnProps
+  description?: string
+  value?: string
+}
 
 export type FieldErrors = { [key: string]: string[] };
-
-export interface OptionsFormProps extends TextFormProps {
-    options: OptionProps[]
-    optionOther: OptionOtherProps
-    value?: string[]
-}
 
 export interface OptionProps {
     label: string
@@ -25,17 +51,4 @@ export interface OptionOtherProps {
 export interface DependsOnProps {
   fieldId: string
   optionsValues: string[]
-}
-
-export interface TextFormProps {
-  id: string
-  label: string
-  type: FieldsType
-  isRequired?: boolean
-  placeholder?: string
-  value?: string
-  dependsOn?: DependsOnProps
-  description?: string
-  max?: string
-  min?: string
 }

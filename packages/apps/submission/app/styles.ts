@@ -20,6 +20,5 @@ export const Form = styled(Flex)`
 export const Field = styled(Flex)`
   flex-direction: column;
   width: 100%;
-  margin: ${theme.space[4]} auto;
   text-align: left;
 ` as StyledComponent<FlexProps>;

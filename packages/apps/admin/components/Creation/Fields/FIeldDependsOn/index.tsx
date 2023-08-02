@@ -50,8 +50,8 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
           size={["sm", "sm", "md"]}
           onChange={(e) => handleOptionsSelect(true, e)}
         >
-          <Radio value="yes">Sim</Radio>
-          <Radio value="no" ml={4}>
+          <Radio value="true">Sim</Radio>
+          <Radio value="false" ml={4}>
             No
           </Radio>
         </RadioGroup>

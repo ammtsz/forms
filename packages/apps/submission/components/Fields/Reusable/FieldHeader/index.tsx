@@ -7,12 +7,14 @@ interface FieldHeaderProps {
   description?: string;
   hasError?: boolean;
   label: string;
+  mt?: number;
 }
 
 const FieldHeader: React.FC<FieldHeaderProps> = ({
   description,
   hasError,
   label,
+  mt,
 }) => {
   return (
     <React.Fragment>
@@ -20,17 +22,24 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
         fontSize="lg"
         fontWeight="semibold"
         color={hasError ? "#E53E3E" : "inherit"}
+        mb={description || hasError ? 0 : 2}
+        mt={mt ?? 16}
       >
         {label}
       </Text>
-      {description && (
-        <Text fontSize="sm" mb={2} color="gray">
-          {description}
+      {hasError && (
+        <Text
+          fontSize="sm"
+          color="#E53E3E"
+          mb={description ? 0 : 2}
+          fontWeight="normal"
+        >
+          Campo obrigatório
         </Text>
       )}
-      {hasError && (
-        <Text fontSize="sm" color="#E53E3E" mb={1}>
-          Campo obrigatório
+      {description && (
+        <Text fontSize="sm" mb={2} color="gray" fontWeight="normal">
+          {description}
         </Text>
       )}
     </React.Fragment>

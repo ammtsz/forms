@@ -1,6 +1,6 @@
 "use client";
 
-import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
+import { FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 import { BasicFormProps } from "@forms/types/interfaces/field";
@@ -9,7 +9,7 @@ import useInitFields from "../hooks/useInitFields";
 import useTexts from "../hooks/useTexts";
 import FieldHeader from "../Reusable/FieldHeader";
 
-const Text: React.FC<BasicFormProps> = ({
+const TextareaField: React.FC<BasicFormProps> = ({
   id,
   label,
   placeholder,
@@ -38,7 +38,7 @@ const Text: React.FC<BasicFormProps> = ({
     <React.Fragment>
       <FieldHeader description={description} label={label} />
       <FormControl isInvalid={hasError}>
-        <Input
+        <Textarea
           placeholder={placeholder}
           onChange={handleChange}
           value={value}
@@ -53,4 +53,4 @@ const Text: React.FC<BasicFormProps> = ({
   ) : null;
 };
 
-export default Text;
+export default TextareaField;

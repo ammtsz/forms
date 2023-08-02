@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 
 interface MultiOptionsProps {
   id: string;
-  initialValue?: string[];
+  initialValue?: string;
 }
 
 interface MultiOptionsReturn {
@@ -36,10 +36,13 @@ const useMultiOptions = ({
           [value]: event.target.checked,
         };
 
-        updateFieldValue(id, [
-          ...getChecked(updatedCheckboxes),
-          ...(prev.others ? [others] : []),
-        ]);
+        updateFieldValue(
+          id,
+          JSON.stringify([
+            ...getChecked(updatedCheckboxes),
+            ...(prev.others ? [others] : []),
+          ])
+        );
 
         if (value === "others" && !event.target.checked) {
           setOthers("");
@@ -55,19 +58,22 @@ const useMultiOptions = ({
     useCallback(
       (event) => {
         setOthers(`outros: ${event.target.value}`);
-        updateFieldValue(id, [
-          ...getChecked(items),
-          `outros: ${event.target.value}`,
-        ]);
+        updateFieldValue(
+          id,
+          JSON.stringify([
+            ...getChecked(items),
+            `outros: ${event.target.value}`,
+          ])
+        );
       },
       [items, id, updateFieldValue]
     );
 
   useEffect(() => {
-    if (initialValue && Array.isArray(initialValue)) {
+    if (initialValue && initialValue.length) {
       const initialValueObject = {};
 
-      initialValue.forEach((value) => {
+      JSON.parse(initialValue).forEach((value: string) => {
         initialValueObject[value] = true;
       });
 

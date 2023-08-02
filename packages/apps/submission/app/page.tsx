@@ -1,16 +1,23 @@
 "use client";
 
-import Checkboxes from "@/components/Fields/Checkboxes";
-import DropdownList from "@/components/Fields/DropdownList";
-import Radio from "@/components/Fields/Radio";
-import TextForm from "@/components/Fields/Text";
+import CheckboxField from "@/components/Fields/Checkbox";
+import CheckboxesField from "@/components/Fields/Checkboxes";
+import DropdownListField from "@/components/Fields/DropdownList";
+import RadioField from "@/components/Fields/Radio";
+import SwitchField from "@/components/Fields/Switch";
+import TextField from "@/components/Fields/Text";
+import TextareaField from "@/components/Fields/Textarea";
 import useSubmitForm from "@/hooks/useSubmitForm";
 import { useFormSubmission } from "@/store/formSubmission";
 import { Button, Heading, Text } from "@chakra-ui/react";
 import { useSearchParams } from "next/navigation";
 import React, { ReactElement, useEffect } from "react";
 
-import { TextFormProps, OptionsFormProps } from "@forms/types/interfaces/field";
+import {
+  BasicFormProps,
+  FieldProps,
+  OptionsFormProps,
+} from "@forms/types/interfaces/field";
 import { Fields } from "@forms/utils";
 
 import { Container, Form, Field } from "./styles";
@@ -19,14 +26,15 @@ interface FieldComponentsReturn {
   [key: string]: ReactElement;
 }
 
-const fieldComponents = (
-  props: TextFormProps | OptionsFormProps
-): FieldComponentsReturn => ({
-  [Fields.text]: <TextForm {...props} />,
-  [Fields.textarea]: <TextForm {...props} />,
-  [Fields.select]: <DropdownList {...(props as OptionsFormProps)} />,
-  [Fields.checkboxes]: <Checkboxes {...(props as OptionsFormProps)} />,
-  [Fields.radio]: <Radio {...(props as OptionsFormProps)} />,
+const fieldComponents = (props: FieldProps): FieldComponentsReturn => ({
+  [Fields.text]: <TextField {...(props as BasicFormProps)} />,
+  [Fields.textarea]: <TextareaField {...(props as BasicFormProps)} />,
+  [Fields.select]: <DropdownListField {...(props as OptionsFormProps)} />,
+  [Fields.checkboxes]: <CheckboxesField {...(props as OptionsFormProps)} />,
+  [Fields.radio]: <RadioField {...(props as OptionsFormProps)} />,
+  [Fields.checkbox]: <CheckboxField {...(props as BasicFormProps)} />,
+  [Fields.switch]: <SwitchField {...(props as BasicFormProps)} />,
+  [Fields.date]: <SwitchField {...(props as BasicFormProps)} />,
 });
 
 const FormSubmissionPage = () => {
@@ -54,9 +62,7 @@ const FormSubmissionPage = () => {
         <Text>{description}</Text>
         <React.Fragment>
           {fields.map((field) => (
-            <Field mt={8} key={field.id}>
-              {fieldComponents(field)[field.type]}
-            </Field>
+            <Field key={field.id}>{fieldComponents(field)[field.type]}</Field>
           ))}
         </React.Fragment>
         <Button mt={10} type="submit" bg="black" color="white">

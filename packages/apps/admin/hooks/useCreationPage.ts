@@ -5,6 +5,7 @@ import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useRef, useState } from "react";
 
+import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
   FieldErrors,
   OptionProps,
@@ -87,7 +88,7 @@ const useCreationPage = () => {
         field.type === Fields.checkboxes
       ) {
         const { optionsError } = validateOptions(
-          (field as OptionsFormProps).options
+          (field as MakeRequired<OptionsFormProps, "options">).options
         );
 
         if (optionsError.length > 0) {

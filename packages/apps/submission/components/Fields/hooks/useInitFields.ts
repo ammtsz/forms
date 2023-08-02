@@ -1,6 +1,8 @@
-import { DependsOnProps } from "@/../../commons/types/interfaces/field";
 import { useFormSubmission } from "@/store/formSubmission";
 import { useEffect } from "react";
+
+import { DependsOnProps } from "@forms/types/interfaces/field";
+import { isOptionTypeField } from "@forms/utils/build";
 
 interface InitFieldsProps {
   dependsOn?: DependsOnProps;
@@ -8,10 +10,16 @@ interface InitFieldsProps {
 }
 
 const useInitFields = ({ dependsOn, setVisible }: InitFieldsProps) => {
-  const { getField } = useFormSubmission();
+  const { getField, fields } = useFormSubmission();
 
   useEffect(() => {
     const requiredField = dependsOn && getField(dependsOn.fieldId);
+
+    if (requiredField) {
+      if (isOptionTypeField(requiredField?.type)) {
+        console.log(requiredField?.value);
+      }
+    }
 
     if (requiredField) {
       const isValidValue = dependsOn.optionsValues.some((option) =>
@@ -22,7 +30,7 @@ const useInitFields = ({ dependsOn, setVisible }: InitFieldsProps) => {
     } else {
       setVisible(true);
     }
-  }, [dependsOn, getField, setVisible]);
+  }, [dependsOn, fields, getField, setVisible]);
 };
 
 export default useInitFields;

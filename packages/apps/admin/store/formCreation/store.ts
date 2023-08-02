@@ -1,6 +1,7 @@
 import { postForm } from "@/api/services/forms";
 import { create } from "zustand";
 
+import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
   FieldErrors,
   FieldProps,
@@ -83,7 +84,7 @@ const store = create<FormCreationStore>((set, get) => ({
   setDependsOnOptions: (field) => {
     const hasOptions =
       isOptionTypeField(field.type) &&
-      (field as OptionsFormProps).options[0].label;
+      (field as MakeRequired<OptionsFormProps, "options">).options[0].label;
 
     if (isToggleTypeField(field.type) || hasOptions) {
       set(({ dependsOnOptions }) => ({

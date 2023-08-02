@@ -3,6 +3,7 @@
 import { Checkbox, Stack } from "@chakra-ui/react";
 import React, { useState } from "react";
 
+import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFormProps } from "@forms/types/interfaces/field";
 
 import useInitFields from "../hooks/useInitFields";
@@ -10,7 +11,9 @@ import useMultiOptions from "../hooks/useMultiOptions";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
 
-const CheckboxesField: React.FC<OptionsFormProps> = ({
+const CheckboxesField: React.FC<
+  MakeRequired<OptionsFormProps, "options" | "optionOther">
+> = ({
   dependsOn,
   description,
   id,

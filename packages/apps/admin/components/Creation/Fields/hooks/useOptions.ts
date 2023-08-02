@@ -2,11 +2,17 @@
 
 import React, { useCallback, useState } from "react";
 
-import { OptionProps, OptionOtherProps } from "@forms/types/interfaces/field";
+import { MakeOptional } from "@forms/types/global/makeOptional";
+import {
+  OptionProps,
+  OptionOtherProps,
+  OptionsFormProps,
+} from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
-import { useFieldsBase, ValueProps } from "./useFieldsBase";
+import { useFieldsBase } from "./useFieldsBase";
 
+export type ValueProps = MakeOptional<OptionsFormProps, "id" | "type">;
 interface SelectProps {
   id: string;
 }

@@ -1,10 +1,10 @@
 "use client";
 
-import { isToggleTypeField } from "@/../../commons/utils/build";
 import { useFormCreation } from "@/store/formCreation";
 import { useCallback, useState } from "react";
 
 import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
+import { isToggleTypeField } from "@forms/utils/build";
 
 interface FieldDependsOnProps {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;

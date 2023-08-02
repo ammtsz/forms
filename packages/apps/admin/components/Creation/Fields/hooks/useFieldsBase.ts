@@ -6,14 +6,12 @@ import React, { useCallback } from "react";
 import { MakeOptional } from "@forms/types/global/makeOptional";
 import {
   DependsOnProps,
-  OptionsFormProps,
+  FieldsType,
+  FieldProps,
 } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
-export type ValueProps = MakeOptional<
-  OptionsFormProps,
-  "id" | "type" | "options" | "optionOther"
->;
+export type ValueProps = MakeOptional<FieldProps, "id" | "type">;
 
 interface FieldsBaseProps {
   id: string;
@@ -26,7 +24,7 @@ const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
 
   const saveUpdates = useCallback(
     (props = {}) => {
-      const type = getPrefixFromString(id);
+      const type = getPrefixFromString(id) as FieldsType;
 
       updateField({
         id,
