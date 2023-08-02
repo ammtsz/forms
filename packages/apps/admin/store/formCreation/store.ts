@@ -68,9 +68,9 @@ const store = create<FormCreationStore>((set, get) => ({
   },
 
   createForm: async () => {
-    const { fields, title } = get();
+    const { fields, title, description } = get();
     const id = uuid();
-    const error = await postForm({ title, id, fields }, id);
+    const error = await postForm({ title, id, fields, description }, id);
 
     return { hasError: !!error };
   },

@@ -4,4 +4,5 @@ export interface FormProps {
   id: string
   title: string
   fields: FieldProps[]
+  description?: string;
 }

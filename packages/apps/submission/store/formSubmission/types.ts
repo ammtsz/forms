@@ -8,12 +8,13 @@ export interface FormSubmissionState {
   formId: string;
   fields: FieldProps[];
   title: string;
+  description: string;
 }
 
 export interface FormSubmissionStore extends FormSubmissionState {
   getForm: (id: string) => Promise<FormProps>;
   setForm: (form: FormProps) => void;
-  updateFieldValue: (fieldId: string, fieldValue: string) => void;
+  updateFieldValue: (fieldId: string, fieldValue: string | string[]) => void;
   setFieldsInitialValues: (intialValues: FormValuesProps) => void;
   getField: (fieldId: string) => FieldProps;
   submitForm: (formResponse: FormValuesProps) => Promise<void>;

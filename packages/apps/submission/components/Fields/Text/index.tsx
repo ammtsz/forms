@@ -1,11 +1,10 @@
 "use client";
 
+import { useFormSubmission } from "@/store/formSubmission";
 import { Input, Text } from "@chakra-ui/react";
 import React from "react";
 
 import { TextFormProps } from "@forms/types/interfaces/field";
-
-import { useFormSubmission } from "@/store/formSubmission";
 
 const TextForm: React.FC<TextFormProps> = ({
   id,
@@ -34,9 +33,10 @@ const TextForm: React.FC<TextFormProps> = ({
 
   React.useEffect(() => {
     if (initialValue && initialValue.length) {
-      setValue(initialValue);
+      setValue(initialValue as string);
     }
-  }, [initialValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   React.useEffect(() => {
     if (requiredField) {
@@ -53,9 +53,11 @@ const TextForm: React.FC<TextFormProps> = ({
   return isVisible ? (
     <React.Fragment>
       <Text fontSize="lg">{label}</Text>
-      <Text fontSize="sm" mb={2} color={"gray"}>
-        {description}
-      </Text>
+      {description && (
+        <Text fontSize="sm" mb={2} color={"gray"}>
+          {description}
+        </Text>
+      )}
       <Input
         required={isRequired}
         placeholder={placeholder}

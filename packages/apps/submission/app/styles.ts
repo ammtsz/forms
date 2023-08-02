@@ -1,7 +1,5 @@
 import { Flex, FlexProps, theme } from "@chakra-ui/react";
-import styled, { StyledComponent }  from "@emotion/styled";
-
-// TODO: configure chakra theme to use with emotion
+import styled, { StyledComponent } from "@emotion/styled";
 
 export const Container = styled(Flex)`
   box-shadow: ${theme.shadows["dark-lg"]};
@@ -17,11 +15,11 @@ export const Form = styled(Flex)`
   width: 100%;
   max-width: 800px;
   margin: ${theme.space[16]} auto;
-  ` as StyledComponent<FlexProps>;
+` as StyledComponent<FlexProps>;
 
 export const Field = styled(Flex)`
   flex-direction: column;
   width: 100%;
   margin: ${theme.space[4]} auto;
   text-align: left;
-  ` as StyledComponent<FlexProps>;
+` as StyledComponent<FlexProps>;

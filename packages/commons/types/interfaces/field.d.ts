@@ -32,7 +32,7 @@ export interface TextFormProps {
   type: FieldsType
   isRequired?: boolean
   placeholder?: string
-  value?: string
+  value?: string | string[]
   dependsOn?: DependsOnProps
   description?: string
   max?: string

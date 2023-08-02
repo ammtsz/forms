@@ -1,10 +1,7 @@
+import { getForm as getFormFromDb, postForm } from "@/api/services/forms";
 import { create } from "zustand";
 
 import { FieldProps } from "@forms/types/interfaces/field";
-import { FormProps } from "@forms/types/interfaces/form";
-import { FormValuesProps } from "@forms/types/interfaces/formResponse";
-
-import { getForm as getFormFromDb, postForm } from "@/api/services/forms";
 
 import { FormSubmissionState, FormSubmissionStore } from "./types";
 
@@ -14,6 +11,7 @@ const INITIAL_STATE: FormSubmissionState = {
   formId: "",
   fields: [],
   title: "",
+  description: "",
 };
 
 const store = create<FormSubmissionStore>((set, get) => ({
@@ -22,6 +20,7 @@ const store = create<FormSubmissionStore>((set, get) => ({
   fields: INITIAL_STATE.fields,
   formId: INITIAL_STATE.formId,
   title: INITIAL_STATE.title,
+  description: INITIAL_STATE.description,
 
   getForm: async (id: string) => {
     const dbForm = await getFormFromDb(id);
@@ -30,15 +29,16 @@ const store = create<FormSubmissionStore>((set, get) => ({
     return dbForm;
   },
 
-  setForm: (form: FormProps) => {
+  setForm: (form) => {
     set(() => ({
       fields: form.fields,
       title: form.title,
+      description: form.description,
       formId: form.id,
     }));
   },
 
-  updateFieldValue: (fieldId: string, fieldValue: string) => {
+  updateFieldValue: (fieldId, fieldValue) => {
     const fields = get().fields;
 
     set(() => ({
@@ -48,13 +48,13 @@ const store = create<FormSubmissionStore>((set, get) => ({
     }));
   },
 
-  setFieldsInitialValues: (initialValues: FormValuesProps) => {
+  setFieldsInitialValues: (initialValues) => {
     get().fields.forEach((field) =>
       get().updateFieldValue(field.id, initialValues[field.id].value)
     );
   },
 
-  getField: (fieldId: string): FieldProps =>
+  getField: (fieldId) =>
     get().fields.find((field) => field.id === fieldId) as FieldProps,
 
   submitForm: async (formResponse) => {

@@ -1,15 +1,17 @@
-"use client"
+"use client";
 
-import { Button, Heading } from "@chakra-ui/react";
-import React, { ReactElement, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-
-import { TextFormProps, OptionsFormProps } from "@forms/types/interfaces/field";
-
-import SelectForm from "@/components/select";
-import TextForm from "@/components/text";
+import Checkboxes from "@/components/Fields/Checkboxes";
+import DropdownList from "@/components/Fields/DropdownList";
+import Radio from "@/components/Fields/Radio";
+import TextForm from "@/components/Fields/Text";
 import useSubmitForm from "@/hooks/useSubmitForm";
 import { useFormSubmission } from "@/store/formSubmission";
+import { Button, Heading, Text } from "@chakra-ui/react";
+import { useSearchParams } from "next/navigation";
+import React, { ReactElement, useEffect } from "react";
+
+import { TextFormProps, OptionsFormProps } from "@forms/types/interfaces/field";
+import { Fields } from "@forms/utils";
 
 import { Container, Form, Field } from "./styles";
 
@@ -20,12 +22,15 @@ interface FieldComponentsReturn {
 const fieldComponents = (
   props: TextFormProps | OptionsFormProps
 ): FieldComponentsReturn => ({
-  text: <TextForm {...props} />,
-  select: <SelectForm {...(props as OptionsFormProps)} />,
+  [Fields.text]: <TextForm {...props} />,
+  [Fields.textarea]: <TextForm {...props} />,
+  [Fields.select]: <DropdownList {...(props as OptionsFormProps)} />,
+  [Fields.checkboxes]: <Checkboxes {...(props as OptionsFormProps)} />,
+  [Fields.radio]: <Radio {...(props as OptionsFormProps)} />,
 });
 
 const FormSubmissionPage = () => {
-  const { getForm, setFieldsInitialValues, fields, title } =
+  const { getForm, setFieldsInitialValues, fields, title, description } =
     useFormSubmission();
 
   const { handleSubmit } = useSubmitForm();
@@ -46,12 +51,15 @@ const FormSubmissionPage = () => {
         <Heading as="h1" fontSize="lg">
           {title.toUpperCase()}
         </Heading>
+        <Text>{description}</Text>
         <React.Fragment>
           {fields.map((field) => (
-            <Field key={field.id}>{fieldComponents(field)[field.type]}</Field>
+            <Field mt={8} key={field.id}>
+              {fieldComponents(field)[field.type]}
+            </Field>
           ))}
         </React.Fragment>
-        <Button mt={10} type={"submit"} bg={"black"} color={"white"}>
+        <Button mt={10} type="submit" bg="black" color="white">
           Enviar
         </Button>
       </Form>
