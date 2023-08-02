@@ -1,12 +1,12 @@
 "use client";
 
-import { useFormSubmission } from "@/store/formSubmission";
 import { FormControl, FormErrorMessage, Select } from "@chakra-ui/react";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { OptionsFormProps } from "@forms/types/interfaces/field";
 
 import useInitFields from "../hooks/useInitFields";
+import useSingleOptions from "../hooks/useSingleOptions";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
 
@@ -26,43 +26,23 @@ const DropdownListField: React.FC<OptionsFormProps> = ({
 
   const hasError = isRequired && !value;
 
-  const { updateFieldValue } = useFormSubmission();
-
   useInitFields({
     dependsOn,
     setVisible,
   });
 
-  const handleChange: React.ChangeEventHandler<HTMLSelectElement> = useCallback(
-    (event) => {
-      setValue(event.target.value);
-      updateFieldValue(id, event.target.value);
-    },
-    [id, updateFieldValue]
-  );
-
-  const handleOtherInput: React.ChangeEventHandler<HTMLInputElement> =
-    useCallback(
-      (event) => {
-        setValue(`outro: ${event.target.value}`);
-        updateFieldValue(id, `outro: ${event.target.value}`);
-      },
-      [id, updateFieldValue]
-    );
-
-  useEffect(() => {
-    if (initialValue && initialValue.length) {
-      setValue(initialValue as string);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { handleChange, handleOtherInput } = useSingleOptions({
+    id,
+    initialValue,
+    setValue,
+  });
 
   return isVisible ? (
     <React.Fragment>
       <FieldHeader description={description} label={label} />
       <FormControl isInvalid={hasError}>
         <Select
-          placeholder={placeholder}
+          placeholder={placeholder || "--- Selecione ---"}
           onChange={handleChange}
           value={value}
           bg="white"

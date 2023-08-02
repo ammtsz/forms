@@ -9,6 +9,7 @@ export type FieldErrors = { [key: string]: string[] };
 export interface OptionsFormProps extends TextFormProps {
     options: OptionProps[]
     optionOther: OptionOtherProps
+    value?: string[]
 }
 
 export interface OptionProps {
@@ -32,7 +33,7 @@ export interface TextFormProps {
   type: FieldsType
   isRequired?: boolean
   placeholder?: string
-  value?: string | string[]
+  value?: string
   dependsOn?: DependsOnProps
   description?: string
   max?: string

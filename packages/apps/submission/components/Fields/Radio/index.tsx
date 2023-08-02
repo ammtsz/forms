@@ -1,12 +1,12 @@
 "use client";
 
-import { useFormSubmission } from "@/store/formSubmission";
 import { Radio, RadioGroup, Flex } from "@chakra-ui/react";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { OptionsFormProps } from "@forms/types/interfaces/field";
 
 import useInitFields from "../hooks/useInitFields";
+import useSingleOptions from "../hooks/useSingleOptions";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
 
@@ -25,36 +25,16 @@ const RadioField: React.FC<OptionsFormProps> = ({
 
   const hasError = isRequired && !value;
 
-  const { updateFieldValue } = useFormSubmission();
-
   useInitFields({
     dependsOn,
     setVisible,
   });
 
-  const handleChange = useCallback(
-    (option: string) => {
-      setValue(option);
-      updateFieldValue(id, option);
-    },
-    [id, updateFieldValue]
-  );
-
-  const handleOtherInput: React.ChangeEventHandler<HTMLInputElement> =
-    useCallback(
-      (event) => {
-        setValue(`outro: ${event.target.value}`);
-        updateFieldValue(id, `outro: ${event.target.value}`);
-      },
-      [id, updateFieldValue]
-    );
-
-  useEffect(() => {
-    if (initialValue && initialValue.length) {
-      setValue(initialValue as string);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { handleChange, handleOtherInput } = useSingleOptions({
+    id,
+    initialValue,
+    setValue,
+  });
 
   return isVisible ? (
     <React.Fragment>
