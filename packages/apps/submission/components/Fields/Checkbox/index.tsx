@@ -3,14 +3,14 @@
 import { Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-import { BasicFormProps } from "@forms/types/interfaces/field";
+import { BasicFieldProps } from "@forms/types/interfaces/field";
 
 import useInitFields from "../hooks/useInitFields";
 import useToggle from "../hooks/useToggle";
 import FieldHeader from "../Reusable/FieldHeader";
 import { Checkbox } from "./styles";
 
-const CheckboxField: React.FC<BasicFormProps> = ({
+const CheckboxField: React.FC<BasicFieldProps> = ({
   id,
   label,
   isRequired,

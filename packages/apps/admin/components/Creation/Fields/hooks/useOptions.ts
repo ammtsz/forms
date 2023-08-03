@@ -6,13 +6,13 @@ import { MakeOptional } from "@forms/types/global/makeOptional";
 import {
   OptionProps,
   OptionOtherProps,
-  OptionsFormProps,
+  OptionsFieldProps,
 } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
 import { useFieldsBase } from "./useFieldsBase";
 
-export type ValueProps = MakeOptional<OptionsFormProps, "id" | "type">;
+export type ValueProps = MakeOptional<OptionsFieldProps, "id" | "type">;
 interface SelectProps {
   id: string;
 }

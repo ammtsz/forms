@@ -3,13 +3,13 @@
 import { Flex, FormLabel, Switch } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-import { BasicFormProps } from "@forms/types/interfaces/field";
+import { BasicFieldProps } from "@forms/types/interfaces/field";
 
 import useInitFields from "../hooks/useInitFields";
 import useToggle from "../hooks/useToggle";
 import FieldHeader from "../Reusable/FieldHeader";
 
-const SwitchField: React.FC<BasicFormProps> = ({
+const SwitchField: React.FC<BasicFieldProps> = ({
   id,
   label,
   isRequired,

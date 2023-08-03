@@ -4,19 +4,16 @@ import { useFormCreation } from "@/store/formCreation";
 import React, { useCallback } from "react";
 
 import { MakeOptional } from "@forms/types/global/makeOptional";
-import {
-  DependsOnProps,
-  FieldsType,
-  FieldProps,
-} from "@forms/types/interfaces/field";
+import { DependsOnProps, FieldProps } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
 export type ValueProps = MakeOptional<FieldProps, "id" | "type">;
 
+// TODO: remove any
 interface FieldsBaseProps {
   id: string;
   value: ValueProps;
-  setValue: React.Dispatch<React.SetStateAction<ValueProps>>;
+  setValue: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
@@ -24,7 +21,7 @@ const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
 
   const saveUpdates = useCallback(
     (props = {}) => {
-      const type = getPrefixFromString(id) as FieldsType;
+      const type = getPrefixFromString(id);
 
       updateField({
         id,

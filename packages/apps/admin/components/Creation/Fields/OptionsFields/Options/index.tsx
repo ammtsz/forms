@@ -19,7 +19,7 @@ import {
 } from "@forms/types/interfaces/field";
 
 import FieldIcon from "../../FieldIcon";
-import { ValueProps } from "../../hooks/useFieldsBase";
+import { ValueProps } from "../../hooks/useOptions";
 
 interface FieldOptionsProps {
   handleAddOption: React.MouseEventHandler<HTMLButtonElement>;

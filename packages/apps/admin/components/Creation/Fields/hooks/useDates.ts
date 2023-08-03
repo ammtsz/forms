@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 import { MakeOptional } from "@forms/types/global/makeOptional";
-import { DateFormProps } from "@forms/types/interfaces/field";
+import { DateFieldProps } from "@forms/types/interfaces/field";
 
 import { useFieldsBase } from "../hooks/useFieldsBase";
 
-export type ValueProps = MakeOptional<DateFormProps, "id" | "type">;
+export type ValueProps = MakeOptional<DateFieldProps, "id" | "type">;
 
 interface FieldsBaseProps {
   id: string;

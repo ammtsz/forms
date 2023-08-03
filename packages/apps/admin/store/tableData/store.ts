@@ -1,4 +1,8 @@
 import {
+  BasicFieldProps,
+  DateFieldProps,
+} from "@/../../commons/types/interfaces/field";
+import {
   getFormResponses as getFormResponsesFromDb,
   getForm as getFormFromDb,
   updateResponse,
@@ -10,6 +14,7 @@ import { ColumnShape } from "react-base-table";
 import { create } from "zustand";
 
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
+import { Fields } from "@forms/utils";
 
 import { TableDataState, TableDataStore } from "./types";
 import { filterBySearchTerm, filterByTab, processResponsesData } from "./utils";
@@ -56,9 +61,17 @@ const store = create<TableDataStore>((set, get) => ({
 
     const fields = [
       frozenColumn,
-      { id: "notes", label: "Anotações", type: "textarea" },
+      {
+        id: "notes",
+        label: "Anotações",
+        type: Fields.textarea,
+      } as BasicFieldProps,
       ...form.fields.splice(1),
-      { id: "created-at", label: "Criado em", type: "date" },
+      {
+        id: "created-at",
+        label: "Criado em",
+        type: Fields.date,
+      } as DateFieldProps,
     ];
 
     set({

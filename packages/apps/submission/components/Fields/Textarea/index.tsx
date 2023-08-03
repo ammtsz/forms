@@ -3,13 +3,13 @@
 import { FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-import { BasicFormProps } from "@forms/types/interfaces/field";
+import { BasicFieldProps } from "@forms/types/interfaces/field";
 
 import useInitFields from "../hooks/useInitFields";
 import useTexts from "../hooks/useTexts";
 import FieldHeader from "../Reusable/FieldHeader";
 
-const TextareaField: React.FC<BasicFormProps> = ({
+const TextareaField: React.FC<BasicFieldProps> = ({
   id,
   label,
   placeholder,

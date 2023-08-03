@@ -9,7 +9,7 @@ import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
   FieldErrors,
   OptionProps,
-  OptionsFormProps,
+  OptionsFieldProps,
 } from "@forms/types/interfaces/field";
 import { Fields } from "@forms/utils";
 
@@ -88,7 +88,7 @@ const useCreationPage = () => {
         field.type === Fields.checkboxes
       ) {
         const { optionsError } = validateOptions(
-          (field as MakeRequired<OptionsFormProps, "options">).options
+          (field as MakeRequired<OptionsFieldProps, "options">).options
         );
 
         if (optionsError.length > 0) {

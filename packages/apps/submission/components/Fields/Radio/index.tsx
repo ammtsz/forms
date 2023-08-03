@@ -4,7 +4,7 @@ import { Radio, RadioGroup, Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
-import { OptionsFormProps } from "@forms/types/interfaces/field";
+import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
 import useInitFields from "../hooks/useInitFields";
 import useSingleOptions from "../hooks/useSingleOptions";
@@ -12,7 +12,7 @@ import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
 
 const RadioField: React.FC<
-  MakeRequired<OptionsFormProps, "options" | "optionOther">
+  MakeRequired<OptionsFieldProps, "options" | "optionOther">
 > = ({
   dependsOn,
   description,

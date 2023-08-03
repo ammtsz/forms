@@ -2,31 +2,31 @@ type OptionsType = "select" | "radio" | "checkboxes";
 type BasicType = "text" | "textarea" | "switch" | "checkbox";
 type DateType = "date";
 
-export type FieldsType = OptionsType | BasicType | DateType;
+export type FieldsType = BasicType | OptionsType | DateType;
 
-export type FieldProps = FormBase & (BasicForm | OptionsForm | DateForm);
+export type FieldProps = FieldBase & (BasicField | OptionsField | DateField);
 
-export interface DateFormProps extends DateForm, FormBase {};
-export interface BasicFormProps extends BasicForm, FormBase {};
-export interface OptionsFormProps extends OptionsForm, FormBase {};
+export interface BasicFieldProps extends BasicField, FieldBase {};
+export interface DateFieldProps extends DateField, FieldBase {};
+export interface OptionsFieldProps extends OptionsField, FieldBase {};
 
-interface DateForm {
+interface DateField {
   type: DateType
   max?: string
   min?: string
 }
 
-interface OptionsForm {
+interface OptionsField {
   type: OptionsType
   options?: OptionProps[]
   optionOther?: OptionOtherProps
 }
 
-interface BasicForm {
+interface BasicField {
   type: BasicType;
 }
 
-interface FormBase {
+interface FieldBase {
   id: string
   label: string
   isRequired?: boolean

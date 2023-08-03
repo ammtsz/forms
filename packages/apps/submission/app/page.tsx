@@ -1,5 +1,6 @@
 "use client";
 
+import { MakeRequired } from "@/../../commons/types/global/makeRequired";
 import CheckboxField from "@/components/Fields/Checkbox";
 import CheckboxesField from "@/components/Fields/Checkboxes";
 import DropdownListField from "@/components/Fields/DropdownList";
@@ -14,27 +15,32 @@ import { useSearchParams } from "next/navigation";
 import React, { ReactElement, useEffect } from "react";
 
 import {
-  BasicFormProps,
+  BasicFieldProps,
   FieldProps,
-  OptionsFormProps,
+  OptionsFieldProps,
 } from "@forms/types/interfaces/field";
 import { Fields } from "@forms/utils";
 
 import { Container, Form, Field } from "./styles";
+
+type OptionFieldResponse = MakeRequired<
+  OptionsFieldProps,
+  "options" | "optionOther"
+>;
 
 interface FieldComponentsReturn {
   [key: string]: ReactElement;
 }
 
 const fieldComponents = (props: FieldProps): FieldComponentsReturn => ({
-  [Fields.text]: <TextField {...(props as BasicFormProps)} />,
-  [Fields.textarea]: <TextareaField {...(props as BasicFormProps)} />,
-  [Fields.select]: <DropdownListField {...(props as OptionsFormProps)} />,
-  [Fields.checkboxes]: <CheckboxesField {...(props as OptionsFormProps)} />,
-  [Fields.radio]: <RadioField {...(props as OptionsFormProps)} />,
-  [Fields.checkbox]: <CheckboxField {...(props as BasicFormProps)} />,
-  [Fields.switch]: <SwitchField {...(props as BasicFormProps)} />,
-  [Fields.date]: <SwitchField {...(props as BasicFormProps)} />,
+  [Fields.text]: <TextField {...(props as BasicFieldProps)} />,
+  [Fields.textarea]: <TextareaField {...(props as BasicFieldProps)} />,
+  [Fields.select]: <DropdownListField {...(props as OptionFieldResponse)} />,
+  [Fields.checkboxes]: <CheckboxesField {...(props as OptionFieldResponse)} />,
+  [Fields.radio]: <RadioField {...(props as OptionFieldResponse)} />,
+  [Fields.checkbox]: <CheckboxField {...(props as BasicFieldProps)} />,
+  [Fields.switch]: <SwitchField {...(props as BasicFieldProps)} />,
+  [Fields.date]: <SwitchField {...(props as BasicFieldProps)} />,
 });
 
 const FormSubmissionPage = () => {

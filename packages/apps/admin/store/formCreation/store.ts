@@ -5,7 +5,7 @@ import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
   FieldErrors,
   FieldProps,
-  OptionsFormProps,
+  OptionsFieldProps,
 } from "@forms/types/interfaces/field";
 import { isOptionTypeField, isToggleTypeField, uuid } from "@forms/utils";
 
@@ -84,7 +84,7 @@ const store = create<FormCreationStore>((set, get) => ({
   setDependsOnOptions: (field) => {
     const hasOptions =
       isOptionTypeField(field.type) &&
-      (field as MakeRequired<OptionsFormProps, "options">).options[0].label;
+      (field as MakeRequired<OptionsFieldProps, "options">).options[0].label;
 
     if (isToggleTypeField(field.type) || hasOptions) {
       set(({ dependsOnOptions }) => ({
@@ -94,7 +94,7 @@ const store = create<FormCreationStore>((set, get) => ({
             id: field.id,
             label: field.label,
             type: field.type,
-            options: hasOptions ? (field as OptionsFormProps).options : [],
+            options: hasOptions ? (field as OptionsFieldProps).options : [],
           },
         },
       }));
