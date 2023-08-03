@@ -5,8 +5,8 @@ import React, { useState } from "react";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
-import useInitFields from "../hooks/useInitFields";
 import useTexts from "../hooks/useTexts";
+import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 
 const Text: React.FC<BasicFieldProps> = ({
@@ -19,14 +19,10 @@ const Text: React.FC<BasicFieldProps> = ({
   description,
 }) => {
   const [value, setValue] = useState("");
-  const [isVisible, setVisible] = useState(true);
 
   const hasError = isRequired && !value;
 
-  useInitFields({
-    dependsOn,
-    setVisible,
-  });
+  const { isVisible } = useVisibleField({ dependsOn });
 
   const { handleChange } = useTexts({
     id,

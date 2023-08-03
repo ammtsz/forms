@@ -1,13 +1,13 @@
 "use client";
 
 import { Checkbox, Stack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
-import useInitFields from "../hooks/useInitFields";
 import useMultiOptions from "../hooks/useMultiOptions";
+import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
 
@@ -23,12 +23,7 @@ const CheckboxesField: React.FC<
   options,
   value: initialValue,
 }) => {
-  const [isVisible, setVisible] = useState(false);
-
-  useInitFields({
-    dependsOn,
-    setVisible,
-  });
+  const { isVisible } = useVisibleField({ dependsOn });
 
   const { getChecked, handleChange, handleOtherInput, items, others } =
     useMultiOptions({ id, initialValue });

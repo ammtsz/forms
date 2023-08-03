@@ -84,7 +84,7 @@ const store = create<FormCreationStore>((set, get) => ({
   setDependsOnOptions: (field) => {
     const hasOptions =
       isOptionTypeField(field.type) &&
-      (field as MakeRequired<OptionsFieldProps, "options">).options[0].label;
+      (field as MakeRequired<OptionsFieldProps, "options">).options[0]?.label;
 
     if (isToggleTypeField(field.type) || hasOptions) {
       set(({ dependsOnOptions }) => ({

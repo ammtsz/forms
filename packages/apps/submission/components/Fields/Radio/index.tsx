@@ -6,8 +6,8 @@ import React, { useState } from "react";
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
-import useInitFields from "../hooks/useInitFields";
 import useSingleOptions from "../hooks/useSingleOptions";
+import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
 
@@ -24,14 +24,10 @@ const RadioField: React.FC<
   value: initialValue,
 }) => {
   const [value, setValue] = useState("");
-  const [isVisible, setVisible] = useState(false);
 
   const hasError = isRequired && !value;
 
-  useInitFields({
-    dependsOn,
-    setVisible,
-  });
+  const { isVisible } = useVisibleField({ dependsOn });
 
   const { handleChange, handleOtherInput } = useSingleOptions({
     id,

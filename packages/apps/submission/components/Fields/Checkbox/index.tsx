@@ -5,8 +5,8 @@ import React, { useState } from "react";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
-import useInitFields from "../hooks/useInitFields";
 import useToggle from "../hooks/useToggle";
+import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 import { Checkbox } from "./styles";
 
@@ -19,14 +19,10 @@ const CheckboxField: React.FC<BasicFieldProps> = ({
   description,
 }) => {
   const [check, setCheck] = useState(false);
-  const [isVisible, setVisible] = useState(true);
 
   const hasError = isRequired && !check;
 
-  useInitFields({
-    dependsOn,
-    setVisible,
-  });
+  const { isVisible } = useVisibleField({ dependsOn });
 
   const { handleChange } = useToggle({
     id,
@@ -35,7 +31,7 @@ const CheckboxField: React.FC<BasicFieldProps> = ({
   });
 
   return isVisible ? (
-    <Flex mt={8}>
+    <Flex mt={16}>
       <Checkbox
         alignItems={"start"}
         onChange={handleChange}

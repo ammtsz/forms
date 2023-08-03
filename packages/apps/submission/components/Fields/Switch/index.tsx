@@ -5,8 +5,8 @@ import React, { useState } from "react";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
-import useInitFields from "../hooks/useInitFields";
 import useToggle from "../hooks/useToggle";
+import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 
 const SwitchField: React.FC<BasicFieldProps> = ({
@@ -18,14 +18,10 @@ const SwitchField: React.FC<BasicFieldProps> = ({
   description,
 }) => {
   const [check, setCheck] = useState(false);
-  const [isVisible, setVisible] = useState(true);
 
   const hasError = isRequired && !check;
 
-  useInitFields({
-    dependsOn,
-    setVisible,
-  });
+  const { isVisible } = useVisibleField({ dependsOn });
 
   const { handleChange } = useToggle({
     id,
