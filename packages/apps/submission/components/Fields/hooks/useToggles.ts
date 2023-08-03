@@ -11,7 +11,11 @@ interface TextsReturn {
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const useToggle = ({ id, initialValue, setCheck }: TextsProps): TextsReturn => {
+const useToggles = ({
+  id,
+  initialValue,
+  setCheck,
+}: TextsProps): TextsReturn => {
   const { updateFieldValue } = useFormSubmission();
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
@@ -32,4 +36,4 @@ const useToggle = ({ id, initialValue, setCheck }: TextsProps): TextsReturn => {
   };
 };
 
-export default useToggle;
+export default useToggles;

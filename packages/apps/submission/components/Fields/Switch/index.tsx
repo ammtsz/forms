@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
-import useToggle from "../hooks/useToggle";
+import useToggles from "../hooks/useToggles";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 
@@ -23,7 +23,7 @@ const SwitchField: React.FC<BasicFieldProps> = ({
 
   const { isVisible } = useVisibleField({ dependsOn });
 
-  const { handleChange } = useToggle({
+  const { handleChange } = useToggles({
     id,
     initialValue,
     setCheck,

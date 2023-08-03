@@ -39,7 +39,7 @@ export const getLimit = (
   const isMaxNumber = limitType === "max";
 
   if (isMaxDate && isMaxNumber) {
-    return 120;
+    return 365;
   }
 
   if (isMaxDate && !isMaxNumber) {
@@ -47,7 +47,7 @@ export const getLimit = (
   }
 
   if (!isMaxDate && !isMaxNumber) {
-    return -120;
+    return -365;
   }
 
   if (!isMaxDate && isMaxNumber) {

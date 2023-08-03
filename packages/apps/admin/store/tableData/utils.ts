@@ -4,6 +4,20 @@ import { formatDateAndHour } from "@forms/utils";
 
 import { TabTypes, TableData } from "./types";
 
+const getValue = (field: FieldProps, response: FormValuesProps) => {
+  if (field.id === "created-at" && response[field.id]) {
+    return formatDateAndHour(response[field.id]?.value);
+  }
+
+  if (field.type === "checkbox" || field.type === "switch") {
+    const value = response[field.id]?.value;
+
+    return value === "true" ? "Sim" : value === "false" ? "Não" : "";
+  }
+
+  return response[field.id]?.value || "";
+};
+
 export const processResponsesData = (
   responses: FormValuesProps[],
   fields: FieldProps[]
@@ -15,10 +29,7 @@ export const processResponsesData = (
     const responseSearchData: string[] = [id];
 
     fields.forEach((field) => {
-      const value =
-        field.type === "date" && response[field.id]
-          ? formatDateAndHour(response[field.id]?.value)
-          : response[field.id]?.value || "";
+      const value = getValue(field, response);
 
       responseData[field.id] = value;
       responseSearchData.push(value);

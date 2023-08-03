@@ -3,6 +3,7 @@
 import { MakeRequired } from "@/../../commons/types/global/makeRequired";
 import CheckboxField from "@/components/Fields/Checkbox";
 import CheckboxesField from "@/components/Fields/Checkboxes";
+import DateField from "@/components/Fields/Date";
 import DropdownListField from "@/components/Fields/DropdownList";
 import RadioField from "@/components/Fields/Radio";
 import SwitchField from "@/components/Fields/Switch";
@@ -16,6 +17,7 @@ import React, { ReactElement, useEffect } from "react";
 
 import {
   BasicFieldProps,
+  DateFieldProps,
   FieldProps,
   OptionsFieldProps,
 } from "@forms/types/interfaces/field";
@@ -40,7 +42,7 @@ const fieldComponents = (props: FieldProps): FieldComponentsReturn => ({
   [Fields.radio]: <RadioField {...(props as OptionFieldResponse)} />,
   [Fields.checkbox]: <CheckboxField {...(props as BasicFieldProps)} />,
   [Fields.switch]: <SwitchField {...(props as BasicFieldProps)} />,
-  [Fields.date]: <SwitchField {...(props as BasicFieldProps)} />,
+  [Fields.date]: <DateField {...(props as DateFieldProps)} />,
 });
 
 const FormSubmissionPage = () => {
