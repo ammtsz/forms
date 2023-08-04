@@ -26,7 +26,6 @@ const DateField: React.FC<DateFieldProps> = ({
   const { handleChange, limits, value } = useDates({
     id,
     initialValue,
-    isRequired,
     max,
     min,
   });
