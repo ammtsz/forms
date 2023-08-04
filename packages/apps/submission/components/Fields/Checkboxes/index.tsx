@@ -2,13 +2,12 @@
 
 import { useFormSubmission } from "@/store/formSubmission";
 import { Checkbox, Stack } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React from "react";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
 import useMultiOptions from "../hooks/useMultiOptions";
-import useResetCheckedFields from "../hooks/useResetCheckedFields";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
@@ -28,16 +27,19 @@ const CheckboxesField: React.FC<
 
   const { validateField } = useFormSubmission();
 
-  const { handleChange, handleOtherInput, items, others } = useMultiOptions({
+  const {
+    handleChange,
+    handleOtherInput,
+    isChecked,
+    isOthersChecked,
+    items,
+    others,
+  } = useMultiOptions({
     id,
     initialValue,
   });
 
-  const checkboxRef = useRef<HTMLDivElement>(null);
-
   const hasError = validateField(id);
-
-  useResetCheckedFields({ ref: checkboxRef, initialValue });
 
   return isVisible ? (
     <React.Fragment>
@@ -47,22 +49,31 @@ const CheckboxesField: React.FC<
         isRequired={isRequired}
         label={label}
       />
-      <Stack mt={2} ref={checkboxRef}>
+      <Stack mt={2}>
         {options.map((option) => (
-          <Checkbox key={option.value} onChange={handleChange(option.value)}>
+          <Checkbox
+            key={option.value}
+            onChange={handleChange(option.value)}
+            isChecked={isChecked(option.value)}
+          >
             {option.label}
           </Checkbox>
         ))}
         {optionOther && (
-          <Checkbox onChange={handleChange("others")}>outros</Checkbox>
+          <Checkbox
+            isChecked={isOthersChecked()}
+            onChange={handleChange("others")}
+          >
+            outros
+          </Checkbox>
         )}
       </Stack>
       {!!items.others && (
         <OtherOption
           placeholder={optionOther.placeholder}
           handleOtherInput={handleOtherInput}
-          value={others}
           isMultiSelect
+          value={others}
         />
       )}
     </React.Fragment>

@@ -28,18 +28,14 @@ const DropdownListField: React.FC<
 
   const { isVisible } = useVisibleField({ id });
 
-  const { handleChange, handleOtherInput, value } = useSingleOptions({
+  const { handleChange, handleOtherInput, other, value } = useSingleOptions({
     id,
     initialValue,
   });
 
   const hasError = validateField(id);
 
-  const isOtherOption = value.includes("outro: ");
-
-  const selectPlaceholder = isOtherOption
-    ? "outro"
-    : placeholder || "--- Selecione ---";
+  const isOtherOption = value === "other";
 
   return isVisible ? (
     <React.Fragment>
@@ -50,7 +46,7 @@ const DropdownListField: React.FC<
       />
       <FormControl isInvalid={hasError} mb={isOtherOption ? 2 : 0}>
         <Select
-          placeholder={selectPlaceholder}
+          placeholder={placeholder || "--- Selecione ---"}
           onChange={handleChange}
           value={value}
           bg="white"
@@ -62,7 +58,7 @@ const DropdownListField: React.FC<
                 {option.label}
               </option>
             ))}
-            {optionOther && <option value="outro: ">outro</option>}
+            {optionOther && <option value="other">outro</option>}
           </React.Fragment>
         </Select>
         {hasError && (
@@ -73,7 +69,7 @@ const DropdownListField: React.FC<
         <OtherOption
           placeholder={optionOther.placeholder}
           handleOtherInput={handleOtherInput}
-          value={value}
+          value={other}
         />
       )}
     </React.Fragment>

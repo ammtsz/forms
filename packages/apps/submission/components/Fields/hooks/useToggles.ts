@@ -16,8 +16,6 @@ const useToggles = ({ id }: TextsProps): TextsReturn => {
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event) => {
       updateFieldValue(id, String(event.target.checked));
-
-      console.log(event.target.checked, id);
     },
     [id, updateFieldValue]
   );

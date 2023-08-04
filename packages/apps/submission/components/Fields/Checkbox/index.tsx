@@ -2,11 +2,10 @@
 
 import { useFormSubmission } from "@/store/formSubmission";
 import { Flex } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React from "react";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
-import useResetCheckedFields from "../hooks/useResetCheckedFields";
 import useToggles from "../hooks/useToggles";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
@@ -28,18 +27,14 @@ const CheckboxField: React.FC<BasicFieldProps> = ({
     initialValue,
   });
 
-  const checkboxRef = useRef<HTMLDivElement>(null);
-
   const hasError = validateField(id);
 
-  useResetCheckedFields({ ref: checkboxRef, initialValue });
-
   return isVisible ? (
-    <Flex mt={16} ref={checkboxRef}>
+    <Flex mt={16}>
       <Checkbox
         alignItems={"start"}
         onChange={handleChange}
-        defaultChecked={initialValue === "true"}
+        isChecked={initialValue === "true"}
       >
         <FieldHeader
           label={label}

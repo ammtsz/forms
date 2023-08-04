@@ -9,6 +9,8 @@ interface MultiOptionsProps {
 interface MultiOptionsReturn {
   handleChange: (value: string) => React.ChangeEventHandler<HTMLInputElement>;
   handleOtherInput: React.ChangeEventHandler<HTMLInputElement>;
+  isChecked: (value: string) => boolean;
+  isOthersChecked: () => boolean;
   items: { [key: string]: boolean };
   others: string;
 }
@@ -35,17 +37,17 @@ const useMultiOptions = ({
           [value]: event.target.checked,
         };
 
+        const shouldHaveOthers =
+          (value === "others" && event.target.checked) ||
+          (value !== "others" && prev.others);
+
         updateFieldValue(
           id,
           JSON.stringify([
             ...getChecked(updatedCheckboxes),
-            ...(prev.others ? [others] : []),
+            ...(shouldHaveOthers ? [`outros: ${others}`] : []),
           ])
         );
-
-        if (value === "others" && !event.target.checked) {
-          setOthers("");
-        }
 
         return updatedCheckboxes;
       });
@@ -56,7 +58,7 @@ const useMultiOptions = ({
   const handleOtherInput: React.ChangeEventHandler<HTMLInputElement> =
     useCallback(
       (event) => {
-        setOthers(`outros: ${event.target.value}`);
+        setOthers(event.target.value);
         updateFieldValue(
           id,
           JSON.stringify([
@@ -68,15 +70,29 @@ const useMultiOptions = ({
       [items, id, updateFieldValue]
     );
 
+  const isChecked = (value: string) => {
+    return initialValue && JSON.parse(initialValue).includes(value);
+  };
+
+  const isOthersChecked = () => {
+    return (
+      initialValue &&
+      JSON.parse(initialValue).some((value: string) => /^outros: /.test(value))
+    );
+  };
+
   useEffect(() => {
     if (initialValue === "") {
       setItems({});
+      setOthers("");
     }
   }, [initialValue]);
 
   return {
     handleChange,
     handleOtherInput,
+    isChecked,
+    isOthersChecked,
     items,
     others,
   };

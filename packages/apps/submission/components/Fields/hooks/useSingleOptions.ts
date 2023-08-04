@@ -9,6 +9,7 @@ interface SingleOptionsProps {
 interface SingleOptionsReturn {
   handleChange: (event: React.ChangeEvent<HTMLSelectElement> | string) => void;
   handleOtherInput: React.ChangeEventHandler<HTMLInputElement>;
+  other: string;
   value: string;
 }
 
@@ -17,6 +18,7 @@ const useSingleOptions = ({
   initialValue,
 }: SingleOptionsProps): SingleOptionsReturn => {
   const [value, setValue] = useState("");
+  const [other, setOther] = useState("");
 
   const { updateFieldValue } = useFormSubmission();
 
@@ -25,29 +27,31 @@ const useSingleOptions = ({
       const fieldValue = typeof event === "string" ? event : event.target.value;
 
       setValue(fieldValue);
-      updateFieldValue(id, fieldValue);
+      updateFieldValue(id, fieldValue === "other" ? "outro" : fieldValue);
     },
-    [id, setValue, updateFieldValue]
+    [id, updateFieldValue]
   );
 
   const handleOtherInput: React.ChangeEventHandler<HTMLInputElement> =
     useCallback(
       (event) => {
-        setValue(`outro: ${event.target.value}`);
+        setOther(event.target.value);
         updateFieldValue(id, `outro: ${event.target.value}`);
       },
-      [id, setValue, updateFieldValue]
+      [id, updateFieldValue]
     );
 
   useEffect(() => {
-    if (typeof initialValue === "string" && value !== initialValue) {
+    if (initialValue === "" && initialValue !== value) {
       setValue(initialValue);
+      setOther("");
     }
   }, [initialValue, value]);
 
   return {
     handleChange,
     handleOtherInput,
+    other,
     value,
   };
 };

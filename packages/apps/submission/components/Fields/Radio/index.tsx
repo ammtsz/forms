@@ -2,12 +2,11 @@
 
 import { useFormSubmission } from "@/store/formSubmission";
 import { Radio, RadioGroup, Flex } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React from "react";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
-import useResetCheckedFields from "../hooks/useResetCheckedFields";
 import useSingleOptions from "../hooks/useSingleOptions";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
@@ -28,16 +27,12 @@ const RadioField: React.FC<
 
   const { validateField } = useFormSubmission();
 
-  const { handleChange, handleOtherInput, value } = useSingleOptions({
+  const { handleChange, handleOtherInput, other, value } = useSingleOptions({
     id,
     initialValue,
   });
 
-  const radioRef = useRef<HTMLDivElement>(null);
-
   const hasError = validateField(id);
-
-  useResetCheckedFields({ ref: radioRef, initialValue });
 
   return isVisible ? (
     <React.Fragment>
@@ -47,21 +42,21 @@ const RadioField: React.FC<
         isRequired={isRequired}
         label={label}
       />
-      <RadioGroup onChange={handleChange} mt={2}>
-        <Flex flexDirection="column" gap={1} ref={radioRef}>
+      <RadioGroup onChange={handleChange} mt={2} value={value}>
+        <Flex flexDirection="column" gap={1}>
           {options.map((option) => (
             <Radio key={option.value} value={option.value}>
               {option.label}
             </Radio>
           ))}
-          {optionOther && <Radio value={"outro: "}>outro</Radio>}
+          {optionOther && <Radio value="other">outro</Radio>}
         </Flex>
       </RadioGroup>
-      {value.includes("outro: ") && (
+      {value === "other" && (
         <OtherOption
           placeholder={optionOther.placeholder}
           handleOtherInput={handleOtherInput}
-          value={value}
+          value={other}
         />
       )}
     </React.Fragment>

@@ -27,7 +27,7 @@ const useTexts = ({ id, initialValue }: TextsProps): TextsReturn => {
   );
 
   useEffect(() => {
-    if (typeof initialValue === "string" && value !== initialValue) {
+    if (initialValue === "" && value !== initialValue) {
       setValue(initialValue);
     }
   }, [initialValue, value]);

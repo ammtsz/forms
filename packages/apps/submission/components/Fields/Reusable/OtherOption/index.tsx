@@ -16,7 +16,7 @@ const OtherOption: React.FC<OtherOptionProps> = ({
   placeholder,
   value,
 }) => {
-  const other = isMultiSelect ? "outros: " : "outro: ";
+  const label = isMultiSelect ? "Outros: " : "Outro: ";
 
   return (
     <FormControl
@@ -26,13 +26,13 @@ const OtherOption: React.FC<OtherOptionProps> = ({
       ml={1}
       mt={2}
     >
-      <FormLabel>Outro: </FormLabel>
+      <FormLabel>{label}</FormLabel>
       <Input
         bg="white"
         variant="flushed"
         onChange={handleOtherInput}
         placeholder={placeholder}
-        value={value.replace(other, "")}
+        value={value}
       />
     </FormControl>
   );
