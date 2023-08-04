@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormSubmission } from "@/store/formSubmission";
 import { FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -13,22 +14,22 @@ const TextareaField: React.FC<BasicFieldProps> = ({
   id,
   label,
   placeholder,
-  isRequired,
-  dependsOn,
   value: initialValue,
   description,
 }) => {
   const [value, setValue] = useState("");
 
-  const hasError = isRequired && !value;
+  const { isVisible } = useVisibleField({ id });
 
-  const { isVisible } = useVisibleField({ dependsOn });
+  const { validateField } = useFormSubmission();
 
   const { handleChange } = useTexts({
     id,
     initialValue,
     setValue,
   });
+
+  const hasError = validateField(id);
 
   return isVisible ? (
     <React.Fragment>

@@ -12,8 +12,8 @@ import TextareaField from "@/components/Fields/Textarea";
 import useSubmitForm from "@/hooks/useSubmitForm";
 import { useFormSubmission } from "@/store/formSubmission";
 import { Button, Heading, Text } from "@chakra-ui/react";
-import { useSearchParams } from "next/navigation";
-import React, { ReactElement, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useCallback, useEffect } from "react";
 
 import {
   BasicFieldProps,
@@ -23,7 +23,7 @@ import {
 } from "@forms/types/interfaces/field";
 import { Fields } from "@forms/utils";
 
-import { Container, Form, Field } from "./styles";
+import { Container, Form, Field } from "../styles";
 
 type OptionFieldResponse = MakeRequired<
   OptionsFieldProps,
@@ -31,7 +31,7 @@ type OptionFieldResponse = MakeRequired<
 >;
 
 interface FieldComponentsReturn {
-  [key: string]: ReactElement;
+  [key: string]: React.ReactElement;
 }
 
 const fieldComponents = (props: FieldProps): FieldComponentsReturn => ({
@@ -46,20 +46,28 @@ const fieldComponents = (props: FieldProps): FieldComponentsReturn => ({
 });
 
 const FormSubmissionPage = () => {
-  const { getForm, setFieldsInitialValues, fields, title, description } =
-    useFormSubmission();
+  const { getForm, fields, title, description } = useFormSubmission();
 
   const { handleSubmit } = useSubmitForm();
 
-  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const id = searchParams.get("id") || "7e7a952f-c85a-442a-92a9-7ee7cd15776f";
+  const id = pathname.split("/")[1];
+
+  const validateId = useCallback(async () => {
+    if (id) {
+      const form = await getForm(id);
+
+      if (!form) {
+        router.push("/");
+      }
+    }
+  }, [getForm, id, router]);
 
   useEffect(() => {
-    if (id) {
-      getForm(id);
-    }
-  }, [getForm, setFieldsInitialValues, id]);
+    validateId();
+  }, [validateId]);
 
   return (
     <Container>

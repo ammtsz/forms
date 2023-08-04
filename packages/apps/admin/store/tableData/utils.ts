@@ -1,6 +1,6 @@
 import { FieldProps } from "@forms/types/interfaces/field";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
-import { formatDateAndHour } from "@forms/utils";
+import { formatDateAndHour, isToggleTypeField } from "@forms/utils";
 
 import { TabTypes, TableData } from "./types";
 
@@ -9,7 +9,7 @@ const getValue = (field: FieldProps, response: FormValuesProps) => {
     return formatDateAndHour(response[field.id]?.value);
   }
 
-  if (field.type === "checkbox" || field.type === "switch") {
+  if (isToggleTypeField(field.type)) {
     const value = response[field.id]?.value;
 
     return value === "true" ? "Sim" : value === "false" ? "Não" : "";

@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormSubmission } from "@/store/formSubmission";
 import { Checkbox, Stack } from "@chakra-ui/react";
 import React from "react";
 
@@ -13,22 +14,17 @@ import OtherOption from "../Reusable/OtherOption";
 
 const CheckboxesField: React.FC<
   MakeRequired<OptionsFieldProps, "options" | "optionOther">
-> = ({
-  dependsOn,
-  description,
-  id,
-  isRequired,
-  label,
-  optionOther,
-  options,
-  value: initialValue,
-}) => {
-  const { isVisible } = useVisibleField({ dependsOn });
+> = ({ description, id, label, optionOther, options, value: initialValue }) => {
+  const { isVisible } = useVisibleField({ id });
 
-  const { getChecked, handleChange, handleOtherInput, items, others } =
-    useMultiOptions({ id, initialValue });
+  const { validateField } = useFormSubmission();
 
-  const hasError = isRequired && !getChecked(items).length;
+  const { handleChange, handleOtherInput, items, others } = useMultiOptions({
+    id,
+    initialValue,
+  });
+
+  const hasError = validateField(id);
 
   return isVisible ? (
     <React.Fragment>

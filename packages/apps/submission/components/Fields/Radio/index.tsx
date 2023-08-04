@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormSubmission } from "@/store/formSubmission";
 import { Radio, RadioGroup, Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -13,27 +14,20 @@ import OtherOption from "../Reusable/OtherOption";
 
 const RadioField: React.FC<
   MakeRequired<OptionsFieldProps, "options" | "optionOther">
-> = ({
-  dependsOn,
-  description,
-  id,
-  isRequired,
-  label,
-  optionOther,
-  options,
-  value: initialValue,
-}) => {
+> = ({ description, id, label, optionOther, options, value: initialValue }) => {
   const [value, setValue] = useState("");
 
-  const hasError = isRequired && !value;
+  const { isVisible } = useVisibleField({ id });
 
-  const { isVisible } = useVisibleField({ dependsOn });
+  const { validateField } = useFormSubmission();
 
   const { handleChange, handleOtherInput } = useSingleOptions({
     id,
     initialValue,
     setValue,
   });
+
+  const hasError = validateField(id);
 
   return isVisible ? (
     <React.Fragment>

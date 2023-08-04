@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormSubmission } from "@/store/formSubmission";
 import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -10,10 +11,8 @@ import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 
 const DateField: React.FC<DateFieldProps> = ({
-  dependsOn,
   description,
   id,
-  isRequired,
   label,
   max,
   min,
@@ -21,9 +20,9 @@ const DateField: React.FC<DateFieldProps> = ({
 }) => {
   const [value, setValue] = useState("");
 
-  const hasError = isRequired && !value;
+  const { isVisible } = useVisibleField({ id });
 
-  const { isVisible } = useVisibleField({ dependsOn });
+  const { validateField } = useFormSubmission();
 
   const { handleChange, limits } = useDates({
     id,
@@ -32,6 +31,8 @@ const DateField: React.FC<DateFieldProps> = ({
     min,
     setValue,
   });
+
+  const hasError = validateField(id);
 
   return isVisible ? (
     <React.Fragment>

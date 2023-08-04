@@ -1,5 +1,6 @@
 "use client";
 
+import { useFormSubmission } from "@/store/formSubmission";
 import { FormControl, FormErrorMessage, Select } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -14,10 +15,8 @@ import OtherOption from "../Reusable/OtherOption";
 const DropdownListField: React.FC<
   MakeRequired<OptionsFieldProps, "options" | "optionOther">
 > = ({
-  dependsOn,
   description,
   id,
-  isRequired,
   label,
   optionOther,
   options,
@@ -26,15 +25,17 @@ const DropdownListField: React.FC<
 }) => {
   const [value, setValue] = useState("");
 
-  const hasError = isRequired && !value;
+  const { validateField } = useFormSubmission();
 
-  const { isVisible } = useVisibleField({ dependsOn });
+  const { isVisible } = useVisibleField({ id });
 
   const { handleChange, handleOtherInput } = useSingleOptions({
     id,
     initialValue,
     setValue,
   });
+
+  const hasError = validateField(id);
 
   return isVisible ? (
     <React.Fragment>

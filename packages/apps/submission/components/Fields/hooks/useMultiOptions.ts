@@ -9,7 +9,6 @@ interface MultiOptionsProps {
 interface MultiOptionsReturn {
   handleChange: (value: string) => React.ChangeEventHandler<HTMLInputElement>;
   handleOtherInput: React.ChangeEventHandler<HTMLInputElement>;
-  getChecked: (options: { [key: string]: boolean }) => string[];
   items: { [key: string]: boolean };
   others: string;
 }
@@ -83,7 +82,6 @@ const useMultiOptions = ({
   }, []);
 
   return {
-    getChecked,
     handleChange,
     handleOtherInput,
     items,

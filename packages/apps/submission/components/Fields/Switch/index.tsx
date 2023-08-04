@@ -1,7 +1,8 @@
 "use client";
 
+import { useFormSubmission } from "@/store/formSubmission";
 import { Flex, FormLabel, Switch } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
@@ -12,22 +13,19 @@ import FieldHeader from "../Reusable/FieldHeader";
 const SwitchField: React.FC<BasicFieldProps> = ({
   id,
   label,
-  isRequired,
-  dependsOn,
   value: initialValue,
   description,
 }) => {
-  const [check, setCheck] = useState(false);
+  const { isVisible } = useVisibleField({ id });
 
-  const hasError = isRequired && !check;
-
-  const { isVisible } = useVisibleField({ dependsOn });
+  const { validateField } = useFormSubmission();
 
   const { handleChange } = useToggles({
     id,
     initialValue,
-    setCheck,
   });
+
+  const hasError = validateField(id);
 
   return isVisible ? (
     <Flex mt={16}>

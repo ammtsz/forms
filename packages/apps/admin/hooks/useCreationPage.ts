@@ -48,7 +48,6 @@ const useCreationPage = () => {
   );
 
   const validateOptions = useCallback((options: OptionProps[]) => {
-    console.log({ options });
     const isEmpty = !options || options.length === 0;
     if (isEmpty) return { optionsError: ["options--0"] };
 
@@ -57,8 +56,6 @@ const useCreationPage = () => {
     options.forEach((option, index) => {
       if (!option.value) optionsError.push(`options--${index}`);
     });
-
-    console.log(optionsError);
 
     return { optionsError };
   }, []);
