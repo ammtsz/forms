@@ -7,32 +7,21 @@ import { useCallback, useRef } from "react";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 import { isToggleTypeField, uuid } from "@forms/utils";
 
-const FORM_BASE = {
-  "created-at": {
-    id: "created-at",
-    value: new Date().toISOString(),
-  },
-  status: {
-    id: "status",
-    value: "new",
-  },
-  id: {
-    id: "id",
-    value: uuid(),
-  },
-};
+interface SubmitFormProps {
+  onOpen: () => void;
+}
 
 interface SubmitFormReturn {
   handleSubmit: React.FormEventHandler;
 }
 
-const useSubmitForm = (): SubmitFormReturn => {
-  const { submitForm, setErrors, isFieldVisible, fields } = useFormSubmission();
+const useSubmitForm = ({ onOpen }: SubmitFormProps): SubmitFormReturn => {
+  const { submitForm, setErrors, isFieldVisible, resetValues, fields } =
+    useFormSubmission();
 
   const toast = useToast();
   const toastIdRef = useRef<ToastId>();
 
-  // TODO: move toast to UI module
   const openToast = useCallback(
     (props: ToastProps) => {
       if (toastIdRef.current) {
@@ -87,14 +76,23 @@ const useSubmitForm = (): SubmitFormReturn => {
 
       try {
         await submitForm({
+          "created-at": {
+            id: "created-at",
+            value: new Date().toISOString(),
+          },
+          status: {
+            id: "status",
+            value: "new",
+          },
+          id: {
+            id: "id",
+            value: uuid(),
+          },
           ...formResponse,
-          ...FORM_BASE,
         });
 
-        openToast({
-          description: "Formulário enviado com sucesso!",
-          status: "success",
-        });
+        onOpen();
+        resetValues();
       } catch (error) {
         openToast({
           description: "Erro ao enviar o formulário.",

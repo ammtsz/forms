@@ -1,30 +1,31 @@
 import { useFormSubmission } from "@/store/formSubmission";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface SingleOptionsProps {
   id: string;
   initialValue?: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface SingleOptionsReturn {
   handleChange: (event: React.ChangeEvent<HTMLSelectElement> | string) => void;
   handleOtherInput: React.ChangeEventHandler<HTMLInputElement>;
+  value: string;
 }
 
 const useSingleOptions = ({
   id,
   initialValue,
-  setValue,
 }: SingleOptionsProps): SingleOptionsReturn => {
+  const [value, setValue] = useState("");
+
   const { updateFieldValue } = useFormSubmission();
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement> | string) => {
-      const value = typeof event === "string" ? event : event.target.value;
+      const fieldValue = typeof event === "string" ? event : event.target.value;
 
-      setValue(value);
-      updateFieldValue(id, value);
+      setValue(fieldValue);
+      updateFieldValue(id, fieldValue);
     },
     [id, setValue, updateFieldValue]
   );
@@ -39,15 +40,15 @@ const useSingleOptions = ({
     );
 
   useEffect(() => {
-    if (initialValue && initialValue.length) {
-      setValue(initialValue[0]);
+    if (typeof initialValue === "string" && value !== initialValue) {
+      setValue(initialValue);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialValue, value]);
 
   return {
     handleChange,
     handleOtherInput,
+    value,
   };
 };
 

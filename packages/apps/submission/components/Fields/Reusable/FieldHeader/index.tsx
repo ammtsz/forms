@@ -6,6 +6,7 @@ import React from "react";
 interface FieldHeaderProps {
   description?: string;
   hasError?: boolean;
+  isRequired?: boolean;
   label: string;
   mt?: number;
 }
@@ -13,6 +14,7 @@ interface FieldHeaderProps {
 const FieldHeader: React.FC<FieldHeaderProps> = ({
   description,
   hasError,
+  isRequired,
   label,
   mt,
 }) => {
@@ -25,7 +27,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
         mb={description || hasError ? 0 : 2}
         mt={mt ?? 16}
       >
-        {label}
+        {`${label} ${isRequired ? "*" : ""}`}
       </Text>
       {hasError && (
         <Text
@@ -37,7 +39,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
           Campo obrigatório
         </Text>
       )}
-      {description && (
+      {!!description && (
         <Text fontSize="sm" mb={2} color="gray" fontWeight="normal">
           {description}
         </Text>

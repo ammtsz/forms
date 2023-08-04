@@ -2,7 +2,7 @@
 
 import { useFormSubmission } from "@/store/formSubmission";
 import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 
 import { DateFieldProps } from "@forms/types/interfaces/field";
 
@@ -13,30 +13,33 @@ import FieldHeader from "../Reusable/FieldHeader";
 const DateField: React.FC<DateFieldProps> = ({
   description,
   id,
+  isRequired,
   label,
   max,
   min,
   value: initialValue,
 }) => {
-  const [value, setValue] = useState("");
-
   const { isVisible } = useVisibleField({ id });
 
   const { validateField } = useFormSubmission();
 
-  const { handleChange, limits } = useDates({
+  const { handleChange, limits, value } = useDates({
     id,
     initialValue,
+    isRequired,
     max,
     min,
-    setValue,
   });
 
   const hasError = validateField(id);
 
   return isVisible ? (
     <React.Fragment>
-      <FieldHeader description={description} label={label} />
+      <FieldHeader
+        description={description}
+        isRequired={isRequired}
+        label={label}
+      />
       <FormControl isInvalid={hasError}>
         <Input
           max={limits.max}
@@ -44,6 +47,7 @@ const DateField: React.FC<DateFieldProps> = ({
           onChange={handleChange}
           type="date"
           value={value}
+          boxShadow="inner"
         />
         {hasError && (
           <FormErrorMessage mt={1}>Campo obrigatório</FormErrorMessage>

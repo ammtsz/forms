@@ -2,16 +2,18 @@
 
 import { useFormSubmission } from "@/store/formSubmission";
 import { Flex, FormLabel, Switch } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
+import useResetCheckedFields from "../hooks/useResetCheckedFields";
 import useToggles from "../hooks/useToggles";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 
 const SwitchField: React.FC<BasicFieldProps> = ({
   id,
+  isRequired,
   label,
   value: initialValue,
   description,
@@ -25,10 +27,14 @@ const SwitchField: React.FC<BasicFieldProps> = ({
     initialValue,
   });
 
+  const switchRef = useRef<HTMLDivElement>(null);
+
   const hasError = validateField(id);
 
+  useResetCheckedFields({ ref: switchRef, initialValue });
+
   return isVisible ? (
-    <Flex mt={16}>
+    <Flex mt={16} ref={switchRef}>
       <Switch
         id={id}
         onChange={handleChange}
@@ -40,6 +46,7 @@ const SwitchField: React.FC<BasicFieldProps> = ({
           label={label}
           description={description}
           hasError={hasError}
+          isRequired={isRequired}
           mt={0}
         />
       </FormLabel>

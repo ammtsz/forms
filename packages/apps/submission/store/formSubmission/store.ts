@@ -88,12 +88,6 @@ const store = create<FormSubmissionStore>((set, get) => ({
 
   isFieldVisible: (fieldId) => get().visibleFields[fieldId],
 
-  setFieldsInitialValues: (initialValues) => {
-    get().fields.forEach((field) =>
-      get().updateFieldValue(field.id, initialValues[field.id].value)
-    );
-  },
-
   setErrors: (errors) => {
     set(() => ({ errors }));
   },
@@ -108,6 +102,12 @@ const store = create<FormSubmissionStore>((set, get) => ({
   submitForm: async (formResponse) => {
     const { formId } = get();
     await postForm(formResponse, formResponse.id.value, formId);
+  },
+
+  resetValues: () => {
+    const { fields } = get();
+
+    fields.forEach((field) => get().updateFieldValue(field.id, ""));
   },
 
   reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),

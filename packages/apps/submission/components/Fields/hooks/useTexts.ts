@@ -1,19 +1,21 @@
 import { useFormSubmission } from "@/store/formSubmission";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface TextsProps {
   id: string;
   initialValue?: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface TextsReturn {
   handleChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
+  value: string;
 }
 
-const useTexts = ({ id, initialValue, setValue }: TextsProps): TextsReturn => {
+const useTexts = ({ id, initialValue }: TextsProps): TextsReturn => {
+  const [value, setValue] = useState("");
+
   const { updateFieldValue } = useFormSubmission();
 
   const handleChange = useCallback(
@@ -25,14 +27,14 @@ const useTexts = ({ id, initialValue, setValue }: TextsProps): TextsReturn => {
   );
 
   useEffect(() => {
-    if (initialValue) {
+    if (typeof initialValue === "string" && value !== initialValue) {
       setValue(initialValue);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialValue, value]);
 
   return {
     handleChange,
+    value,
   };
 };
 

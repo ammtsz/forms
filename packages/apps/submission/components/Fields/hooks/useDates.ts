@@ -8,7 +8,6 @@ interface TextsProps {
   initialValue?: string;
   max?: string;
   min?: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface TextsReturn {
@@ -17,15 +16,11 @@ interface TextsReturn {
     max: string;
     min: string;
   };
+  value: string;
 }
 
-const useDates = ({
-  id,
-  initialValue,
-  max,
-  min,
-  setValue,
-}: TextsProps): TextsReturn => {
+const useDates = ({ id, initialValue, max, min }: TextsProps): TextsReturn => {
+  const [value, setValue] = useState("");
   const [limits, setLimits] = useState({
     max: "",
     min: "",
@@ -62,15 +57,15 @@ const useDates = ({
   }, [getLimit, max, min]);
 
   useEffect(() => {
-    if (initialValue) {
+    if (typeof initialValue === "string" && value !== initialValue) {
       setValue(initialValue);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialValue, value]);
 
   return {
     handleChange,
     limits,
+    value,
   };
 };
 

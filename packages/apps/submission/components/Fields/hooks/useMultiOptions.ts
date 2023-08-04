@@ -69,17 +69,10 @@ const useMultiOptions = ({
     );
 
   useEffect(() => {
-    if (initialValue && initialValue.length) {
-      const initialValueObject = {};
-
-      JSON.parse(initialValue).forEach((value: string) => {
-        initialValueObject[value] = true;
-      });
-
-      setItems(initialValueObject);
+    if (initialValue === "") {
+      setItems({});
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialValue]);
 
   return {
     handleChange,

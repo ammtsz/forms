@@ -2,7 +2,7 @@
 
 import { useFormSubmission } from "@/store/formSubmission";
 import { FormControl, FormErrorMessage, Select } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
@@ -17,32 +17,40 @@ const DropdownListField: React.FC<
 > = ({
   description,
   id,
+  isRequired,
   label,
   optionOther,
   options,
   placeholder,
   value: initialValue,
 }) => {
-  const [value, setValue] = useState("");
-
   const { validateField } = useFormSubmission();
 
   const { isVisible } = useVisibleField({ id });
 
-  const { handleChange, handleOtherInput } = useSingleOptions({
+  const { handleChange, handleOtherInput, value } = useSingleOptions({
     id,
     initialValue,
-    setValue,
   });
 
   const hasError = validateField(id);
 
+  const isOtherOption = value.includes("outro: ");
+
+  const selectPlaceholder = isOtherOption
+    ? "outro"
+    : placeholder || "--- Selecione ---";
+
   return isVisible ? (
     <React.Fragment>
-      <FieldHeader description={description} label={label} />
-      <FormControl isInvalid={hasError}>
+      <FieldHeader
+        description={description}
+        isRequired={isRequired}
+        label={label}
+      />
+      <FormControl isInvalid={hasError} mb={isOtherOption ? 2 : 0}>
         <Select
-          placeholder={placeholder || "--- Selecione ---"}
+          placeholder={selectPlaceholder}
           onChange={handleChange}
           value={value}
           bg="white"
@@ -61,7 +69,7 @@ const DropdownListField: React.FC<
           <FormErrorMessage mt={1}>Campo obrigatório</FormErrorMessage>
         )}
       </FormControl>
-      {value.includes("outro: ") && (
+      {isOtherOption && (
         <OtherOption
           placeholder={optionOther.placeholder}
           handleOtherInput={handleOtherInput}

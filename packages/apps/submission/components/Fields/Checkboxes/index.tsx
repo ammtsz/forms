@@ -2,19 +2,28 @@
 
 import { useFormSubmission } from "@/store/formSubmission";
 import { Checkbox, Stack } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
 import useMultiOptions from "../hooks/useMultiOptions";
+import useResetCheckedFields from "../hooks/useResetCheckedFields";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
 
 const CheckboxesField: React.FC<
   MakeRequired<OptionsFieldProps, "options" | "optionOther">
-> = ({ description, id, label, optionOther, options, value: initialValue }) => {
+> = ({
+  description,
+  id,
+  isRequired,
+  label,
+  optionOther,
+  options,
+  value: initialValue,
+}) => {
   const { isVisible } = useVisibleField({ id });
 
   const { validateField } = useFormSubmission();
@@ -24,16 +33,21 @@ const CheckboxesField: React.FC<
     initialValue,
   });
 
+  const checkboxRef = useRef<HTMLDivElement>(null);
+
   const hasError = validateField(id);
+
+  useResetCheckedFields({ ref: checkboxRef, initialValue });
 
   return isVisible ? (
     <React.Fragment>
       <FieldHeader
         description={description}
         hasError={hasError}
+        isRequired={isRequired}
         label={label}
       />
-      <Stack mt={2}>
+      <Stack mt={2} ref={checkboxRef}>
         {options.map((option) => (
           <Checkbox key={option.value} onChange={handleChange(option.value)}>
             {option.label}
