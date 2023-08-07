@@ -4,10 +4,9 @@ import FormSubmission from "@/components/Form";
 import Loading from "@/components/Loading";
 import PageMessage from "@/components/PageMessage";
 import { useFormSubmission } from "@/store/formSubmission";
+import { Flex } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
-
-import { Container } from "../styles";
 
 const FormSubmissionPage = () => {
   const [isValidForm, setValidForm] = useState(true);
@@ -30,7 +29,17 @@ const FormSubmissionPage = () => {
   }, [validateId]);
 
   return isValidForm ? (
-    <Container>{title ? <FormSubmission /> : <Loading />}</Container>
+    <Flex
+      bg="whiteAlpha.900"
+      borderRadius={["", "none", "3xl"]}
+      boxShadow={["none", "none", "dark-lg"]}
+      maxW={"1200px"}
+      mx={["2vw", "5vw", "5vw", "10vw", "auto"]}
+      my="10"
+      p={["10", "10", "24"]}
+    >
+      {title ? <FormSubmission /> : <Loading />}
+    </Flex>
   ) : (
     <PageMessage message="Formulário não encontrado" />
   );

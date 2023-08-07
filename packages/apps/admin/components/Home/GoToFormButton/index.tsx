@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
@@ -20,8 +20,10 @@ const GoToFormButton: React.FC<GoToFormButtonProps> = ({
   }, [id, router]);
 
   return (
-    <Button onClick={handleRedirect} minH={40} minW={80} boxShadow={"md"}>
-      {title || <i>Sem título</i>}
+    <Button onClick={handleRedirect} height={40} width={80} boxShadow="md">
+      <Text whiteSpace="break-spaces" overflow="hidden">
+        {title || <i>Sem título</i>}
+      </Text>
     </Button>
   );
 };

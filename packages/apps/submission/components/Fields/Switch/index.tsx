@@ -42,6 +42,7 @@ const SwitchField: React.FC<BasicFieldProps> = ({
           description={description}
           hasError={hasError}
           isRequired={isRequired}
+          isToggle
           mt={0}
         />
       </FormLabel>

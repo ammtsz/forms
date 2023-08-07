@@ -5,7 +5,7 @@ export const Form = styled(Flex)`
   flex-direction: column;
   width: 100%;
   max-width: 800px;
-  margin: ${theme.space[16]} auto;
+  margin: ${theme.space[8]} auto;
 ` as StyledComponent<FlexProps>;
 
 export const Field = styled(Flex)`

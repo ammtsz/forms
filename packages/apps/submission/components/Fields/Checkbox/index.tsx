@@ -32,15 +32,17 @@ const CheckboxField: React.FC<BasicFieldProps> = ({
   return isVisible ? (
     <Flex mt={16}>
       <Checkbox
-        alignItems={"start"}
+        alignItems="start"
         onChange={handleChange}
         isChecked={initialValue === "true"}
+        fontSize="lg"
       >
         <FieldHeader
           label={label}
           description={description}
           hasError={hasError}
           isRequired={isRequired}
+          isToggle
           mt={0}
         />
       </Checkbox>

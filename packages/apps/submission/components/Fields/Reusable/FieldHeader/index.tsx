@@ -7,6 +7,7 @@ interface FieldHeaderProps {
   description?: string;
   hasError?: boolean;
   isRequired?: boolean;
+  isToggle?: boolean;
   label: string;
   mt?: number;
 }
@@ -15,6 +16,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
   description,
   hasError,
   isRequired,
+  isToggle,
   label,
   mt,
 }) => {
@@ -22,7 +24,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
     <React.Fragment>
       <Text
         fontSize="lg"
-        fontWeight="semibold"
+        fontWeight={isToggle ? "normal" : "semibold"}
         color={hasError ? "#E53E3E" : "inherit"}
         mb={description || hasError ? 0 : 2}
         mt={mt ?? 16}
