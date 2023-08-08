@@ -1,7 +1,7 @@
 "use client";
 
+import { TableCell } from "@/components/Responses/Table/styles";
 import Tooltip from "@/components/Tooltip";
-import { TableCell } from "@/components/View/Table/styles";
 import { useTableData } from "@/store/tableData";
 import {
   Editable,
