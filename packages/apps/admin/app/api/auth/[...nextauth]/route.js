@@ -1,4 +1,4 @@
-import { getUser, registerUser } from "@utils/database";
+import { getUser, registerUser } from "@/utils/database";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
