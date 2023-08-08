@@ -55,31 +55,36 @@ const store = create<TableDataStore>((set, get) => ({
   tableData: INITIAL_STATE.tableData,
   title: INITIAL_STATE.title,
 
-  loadForm: async (formId) => {
+  getForm: async (formId) => {
     const form = await getFormFromDb(formId);
-    const frozenColumn = form.fields[0];
 
-    const fields = [
-      frozenColumn,
-      {
-        id: "notes",
-        label: "Anotações",
-        type: Fields.textarea,
-      } as BasicFieldProps,
-      ...form.fields.splice(1),
-      {
-        id: "created-at",
-        label: "Criado em",
-        type: Fields.date,
-      } as DateFieldProps,
-    ];
+    if (form) {
+      const frozenColumn = form.fields[0];
 
-    set({
-      formId: form.id,
-      title: form.title,
-      fields,
-      filteredFields: fields,
-    });
+      const fields = [
+        frozenColumn,
+        {
+          id: "notes",
+          label: "Anotações",
+          type: Fields.textarea,
+        } as BasicFieldProps,
+        ...form.fields.splice(1),
+        {
+          id: "created-at",
+          label: "Criado em",
+          type: Fields.date,
+        } as DateFieldProps,
+      ];
+
+      set({
+        formId: form.id,
+        title: form.title,
+        fields,
+        filteredFields: fields,
+      });
+    }
+
+    return form;
   },
 
   loadFormResponses: async (formId) => {

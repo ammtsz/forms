@@ -11,13 +11,21 @@ interface ListCellProps {
 
 const ListCell: React.FC<ListCellProps> = ({ text }) => {
   const getValue = () => {
-    return JSON.parse(text).join(", ");
+    if (text) {
+      return JSON.parse(text).join(", ");
+    }
+
+    return "";
   };
 
   const getTooltipValue = () => {
-    return JSON.parse(text).map((item: string, i: number) => (
-      <div key={i}>{`✓ ${item}`}</div>
-    ));
+    if (text) {
+      return JSON.parse(text).map((item: string, i: number) => (
+        <div key={i}>{`✓ ${item}`}</div>
+      ));
+    }
+
+    return "";
   };
 
   return (

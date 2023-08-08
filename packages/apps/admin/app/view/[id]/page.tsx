@@ -8,29 +8,38 @@ import Table from "@/components/View/Table";
 import Tabs from "@/components/View/Tabs";
 import { useTableData } from "@/store/tableData";
 import { Flex } from "@chakra-ui/react";
-import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 import { Container } from "./styles";
 
 const FormViewPage: React.FC = () => {
+  const [isValidForm, setValidForm] = useState(true);
   const [isLoading, setLoading] = useState(false);
 
-  const { loadFormResponses, loadForm } = useTableData();
+  const { loadFormResponses, getForm } = useTableData();
 
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id") || "7e7a952f-c85a-442a-92a9-7ee7cd15776f";
+  const pathname = usePathname();
+  const id = pathname.split("/")[2];
 
   const loadData = useCallback(async () => {
     setLoading(true);
-    await loadForm(id);
-    await loadFormResponses(id);
+
+    const form = await getForm(id);
+    setValidForm(!!form);
+
+    if (form) {
+      await loadFormResponses(id);
+    }
+
     setLoading(false);
-  }, [id, loadForm, loadFormResponses]);
+  }, [id, getForm, loadFormResponses]);
 
   useEffect(() => {
-    loadData();
-  }, [id, loadData, loadForm, loadFormResponses]);
+    if (id) {
+      loadData();
+    }
+  }, [id, loadData, getForm, loadFormResponses]);
 
   return (
     <Container>
@@ -43,7 +52,7 @@ const FormViewPage: React.FC = () => {
         </Flex>
       </Flex>
       <Tabs />
-      <Table isLoading={isLoading} />
+      <Table isLoading={isLoading} hasError={!isValidForm} />
     </Container>
   );
 };

@@ -10,9 +10,13 @@ import { Container } from "./styles";
 
 export interface TableProps {
   isLoading?: boolean;
+  hasError?: boolean;
 }
 
-const Table: React.FC<TableProps> = ({ isLoading = false }: TableProps) => {
+const Table: React.FC<TableProps> = ({
+  isLoading = false,
+  hasError = false,
+}: TableProps) => {
   const { filteredTableData, formId, getSortBy } = useTableData();
 
   const {
@@ -39,7 +43,8 @@ const Table: React.FC<TableProps> = ({ isLoading = false }: TableProps) => {
             emptyRenderer={
               <Feedback
                 isLoading={isLoading}
-                message="Nenhuma resposta encontrada"
+                errorMessage={hasError ? "Formulário não encontrado" : ""}
+                message="Nenhuma resposta até o momento"
               />
             }
             fixed={hasFrozenColumn}

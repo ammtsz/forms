@@ -4,18 +4,25 @@ import { Flex, Spinner, Text } from "@chakra-ui/react";
 import React from "react";
 
 interface FeedbackProps {
-  isLoading: boolean;
+  isLoading?: boolean;
+  errorMessage?: string;
   message?: string;
 }
 
-const Feedback: React.FC<FeedbackProps> = ({ isLoading, message }) => {
+const Feedback: React.FC<FeedbackProps> = ({
+  isLoading,
+  message,
+  errorMessage,
+}) => {
   return (
     <Flex justifyContent={"center"} alignItems={"center"}>
       {isLoading ? (
         <Spinner size={"xl"} />
       ) : (
         <Text fontSize={"xl"}>
-          {message || "Não foi possível carregar a página. Tente novamente."}
+          {errorMessage ||
+            message ||
+            "Não foi possível carregar a página. Tente novamente."}
         </Text>
       )}
     </Flex>

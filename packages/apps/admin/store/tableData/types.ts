@@ -3,6 +3,7 @@ import { StatusTypes } from "@/constants/status";
 import { ColumnShape, SortOrder } from "react-base-table";
 
 import { FieldProps } from "@forms/types/interfaces/field";
+import { FormProps } from "@forms/types/interfaces/form";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 
 export interface SortBy {
@@ -33,7 +34,7 @@ export interface TableDataState {
 }
 
 export interface TableDataStore extends TableDataState {
-  loadForm: (formId: string) => Promise<void>;
+  getForm: (formId: string) => Promise<FormProps>;
   loadFormResponses: (formId: string) => Promise<void>;
   generateTableData: () => void;
   filterTableData: (props: { tab?: TabTypes; searchTerm?: string }) => void;

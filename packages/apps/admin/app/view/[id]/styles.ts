@@ -1,8 +1,6 @@
 import { Flex, FlexProps } from "@chakra-ui/react";
 import styled, { StyledComponent } from "@emotion/styled";
 
-// TODO: configure chakra theme to use with emotion
-
 export const Container = styled(Flex)`
   justify-content: center;
   flex-direction: column;
