@@ -1,10 +1,11 @@
 "use client";
 
-import { getColumns, getScrollbarWidth } from "@/components/View/Table/utils";
 import { HEADER_HEIGHT } from "@/constants/table";
 import { useTableData } from "@/store/tableData";
 import { useCallback } from "react";
 import { ColumnShape, SortOrder } from "react-base-table";
+
+import { getColumns, getScrollbarWidth } from "../utils";
 
 interface TablePropsReturn {
   handleColumnSort: (args: {

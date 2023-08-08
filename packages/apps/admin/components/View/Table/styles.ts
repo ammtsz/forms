@@ -96,7 +96,6 @@ export const Container = styled(Box)`
 ` as StyledComponent<BoxProps>;
 
 export const TableCell = styled(Flex)`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  text-align: start;
 ` as StyledComponent<FlexProps>;

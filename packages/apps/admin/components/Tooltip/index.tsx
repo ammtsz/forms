@@ -11,7 +11,7 @@ interface TooltipProps {
 
 const Tooltip: React.FC<TooltipProps> = ({
   label,
-  hasArrow = true,
+  hasArrow,
   children,
 }: TooltipProps) => {
   return (

@@ -1,36 +1,34 @@
 import CheckboxCell from "@/components/View/Table/CheckboxCell";
 import CheckboxHeaderCell from "@/components/View/Table/CheckboxHeaderCell";
-import EditableCell from "@/components/View/Table/EditableCell";
 import { CellProps } from "@/components/View/Table/types";
 import { ColumnShape } from "react-base-table";
 
-export const getColumns = (fieldsColumns: ColumnShape[]): ColumnShape[] => [
-  {
-    key: "id",
-    dataKey: "id",
-    frozen: "left",
-    width: 48,
-    headerRenderer: ({ container: { props: rows } }) => (
-      <CheckboxHeaderCell responses={rows.data as { id: string }[]} />
-    ),
-    cellRenderer: (props: CellProps) => (
-      <CheckboxCell rowData={props.rowData} />
-    ),
-  } as ColumnShape,
-  ...fieldsColumns.map((column) => {
-    if (column.key === "notes") {
+import CellsByType from "./CellsByType";
+import HeaderCell from "./HeaderCell";
+
+export const getColumns = (fieldsColumns: ColumnShape[]): ColumnShape[] => {
+  return [
+    {
+      key: "id",
+      dataKey: "id",
+      frozen: "left",
+      width: 48,
+      headerRenderer: ({ container: { props: rows } }) => (
+        <CheckboxHeaderCell responses={rows.data as { id: string }[]} />
+      ),
+      cellRenderer: (props: CellProps) => (
+        <CheckboxCell rowData={props.rowData} />
+      ),
+    } as ColumnShape,
+    ...fieldsColumns.map((column) => {
       return {
         ...column,
-        width: 250,
-        cellRenderer: (props: CellProps) => (
-          <EditableCell rowData={props.rowData} />
-        ),
+        cellRenderer: (props: CellProps) => <CellsByType {...props} />,
+        headerRenderer: () => <HeaderCell text={column.title as string} />,
       } as ColumnShape;
-    }
-
-    return { ...column } as ColumnShape;
-  }),
-];
+    }),
+  ];
+};
 
 export const getScrollbarWidth = (): number => {
   // Creating invisible container

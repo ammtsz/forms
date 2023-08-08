@@ -1,22 +1,7 @@
 import { FieldProps } from "@forms/types/interfaces/field";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
-import { formatDateAndHour, isToggleTypeField } from "@forms/utils";
 
 import { TabTypes, TableData } from "./types";
-
-const getValue = (field: FieldProps, response: FormValuesProps) => {
-  if (field.id === "created-at" && response[field.id]) {
-    return formatDateAndHour(response[field.id]?.value);
-  }
-
-  if (isToggleTypeField(field.type)) {
-    const value = response[field.id]?.value;
-
-    return value === "true" ? "Sim" : value === "false" ? "Não" : "";
-  }
-
-  return response[field.id]?.value || "";
-};
 
 export const processResponsesData = (
   responses: FormValuesProps[],
@@ -29,7 +14,7 @@ export const processResponsesData = (
     const responseSearchData: string[] = [id];
 
     fields.forEach((field) => {
-      const value = getValue(field, response);
+      const value = response[field.id]?.value || "";
 
       responseData[field.id] = value;
       responseSearchData.push(value);

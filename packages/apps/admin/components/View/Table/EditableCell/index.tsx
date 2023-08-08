@@ -1,6 +1,6 @@
 "use client";
 
-import Tooltip from "@/components/Tooltip/Tooltip";
+import Tooltip from "@/components/Tooltip";
 import { TableCell } from "@/components/View/Table/styles";
 import { useTableData } from "@/store/tableData";
 import {
@@ -16,10 +16,14 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Check as CheckIcon, Edit as EditIcon } from "react-feather";
 
 interface EditableCellProps {
-  rowData: { id: string; notes: string | null };
+  responseId: string;
+  notes: string | null;
 }
 
-const EditableCell: React.FC<EditableCellProps> = ({ rowData }) => {
+const EditableCell: React.FC<EditableCellProps> = ({
+  responseId: id,
+  notes,
+}) => {
   const [text, setText] = useState("");
 
   const { updateResponseNote } = useTableData();
@@ -31,8 +35,8 @@ const EditableCell: React.FC<EditableCellProps> = ({ rowData }) => {
 
   const handleBlur: React.ChangeEventHandler<HTMLTextAreaElement> =
     useCallback(() => {
-      updateResponseNote(text, rowData.id);
-    }, [rowData, text, updateResponseNote]);
+      updateResponseNote(text, id);
+    }, [id, text, updateResponseNote]);
 
   const EditableControls = () => {
     const { isEditing, getSubmitButtonProps, getEditButtonProps } =
@@ -59,13 +63,13 @@ const EditableCell: React.FC<EditableCellProps> = ({ rowData }) => {
   };
 
   useEffect(() => {
-    if (rowData.notes) setText(rowData.notes);
-  }, [rowData.notes]);
+    if (notes) setText(notes);
+  }, [notes]);
 
   return (
     <TableCell>
       <Editable
-        defaultValue={rowData.notes || "Adcionar nota"}
+        defaultValue={notes || "Adcionar nota"}
         display="flex"
         flexDir="row"
         fontSize="sm"
@@ -73,8 +77,13 @@ const EditableCell: React.FC<EditableCellProps> = ({ rowData }) => {
         justifyContent={"space-between"}
         w="100%"
       >
-        <Tooltip hasArrow label={text}>
-          <EditablePreview color={text ? "black" : "blackAlpha.500"} />
+        <Tooltip label={text}>
+          <EditablePreview
+            color={text ? "black" : "blackAlpha.500"}
+            overflow={"hidden"}
+            textOverflow={"ellipsis"}
+            whiteSpace={"nowrap"}
+          />
         </Tooltip>
         <Textarea
           as={EditableTextarea}

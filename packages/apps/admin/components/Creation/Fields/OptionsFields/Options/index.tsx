@@ -1,6 +1,6 @@
 "use client";
 
-import Tooltip from "@/components/Tooltip/Tooltip";
+import Tooltip from "@/components/Tooltip";
 import {
   Input,
   Flex,
@@ -72,7 +72,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               </FormErrorMessage>
             )}
           </FormControl>
-          <Tooltip label="Apagar opção">
+          <Tooltip hasArrow label="Apagar opção">
             <Button
               bg="transparent"
               color="blackAlpha.700"
@@ -115,7 +115,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               placeholder="Adicione um placeholder para o campo outros (opcional)"
               value={(value.optionOther as OptionOtherProps).placeholder}
             />
-            <Tooltip label="Apagar opção">
+            <Tooltip hasArrow label="Apagar opção">
               <Button
                 bg="transparent"
                 color="blackAlpha.700"
