@@ -3,9 +3,8 @@
 import { UserSession } from "@/app/api/auth/[...nextauth]/route";
 import GoToFormButton from "@/components/Home/GoToFormButton";
 import { useFormsManagement } from "@/store/formsManagement";
-import { Button, Flex } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 const FormButtons: React.FC = () => {
@@ -14,8 +13,6 @@ const FormButtons: React.FC = () => {
   );
 
   const { getForms, getFormsNamesAndIds } = useFormsManagement();
-
-  const route = useRouter();
 
   const { data: session } = useSession();
 
@@ -37,24 +34,19 @@ const FormButtons: React.FC = () => {
   }, [loadForms, session]);
 
   return (
-    <Flex gap={4} direction={"column"} maxWidth={"1200px"} margin={"auto"}>
-      <Flex justifyContent={"center"} gap={4} flexWrap={"wrap"}>
-        <Button
-          onClick={() => route.push("/create")}
-          minH={40}
-          minW={80}
-          bg={"blackAlpha.800"}
-          color={"white"}
-          _hover={{ bg: "whiteAlpha.800", color: "inherit" }}
-          boxShadow={"md"}
+    <div className="flex items-center gap-4">
+      <div className="flex items-center justify-center gap-4 flex-wrap">
+        <Link
+          href="/create"
+          className="h-40 w-80 bg-black text-white rounded-2xl shadow-md flex items-center justify-center hover:opacity-80 font-bold"
         >
           + Criar novo formulário
-        </Button>
+        </Link>
         {formsNames.map((form) => (
           <GoToFormButton key={form.id} {...form} />
         ))}
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   );
 };
 
