@@ -8,6 +8,6 @@ export interface FormsManagementState {
 
 export interface FormsManagementStore extends FormsManagementState {
   getFormsNamesAndIds: () => { title: string; id: string }[];
-  getForms: () => Promise<FormProps[]>;
+  getForms: (formsIds: string[]) => Promise<FormProps[]>;
   reset: () => void;
 }

@@ -1,10 +1,15 @@
+"use client";
+
 import FormButtons from "@/components/Home/FormButtons";
+import IsSignedIn from "@/components/IsSignedIn";
 
 const Home: React.FC = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <FormButtons />
-    </main>
+    <IsSignedIn>
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <FormButtons />
+      </main>
+    </IsSignedIn>
   );
 };
 

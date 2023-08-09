@@ -16,8 +16,6 @@
     "build:admin": "npx lerna run build --verbose --scope=@forms/admin-app",
     "dev:submission": "npx lerna run dev --scope=@forms/submission-app",
     "build:submission": "npx lerna run build --verbose --scope=@forms/submission-app",
-    "dev:auth": "npx lerna run dev --scope=@forms/auth-app",
-    "build:auth": "npx lerna run build --verbose --scope=@forms/auth-app",
     "build:utils": "npx lerna run build --verbose --scope=@forms/utils",
     "stop": "kill-port --port 3000,3001"
   },

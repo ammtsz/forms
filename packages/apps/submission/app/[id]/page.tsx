@@ -13,9 +13,7 @@ const FormSubmissionPage = () => {
 
   const { getForm, title } = useFormSubmission();
 
-  const pathname = usePathname();
-
-  const id = pathname.split("/")[1];
+  const id = usePathname().split("/")[1];
 
   const validateId = useCallback(async () => {
     if (id) {

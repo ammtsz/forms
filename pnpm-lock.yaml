@@ -45,7 +45,6 @@ importers:
       '@emotion/react': ^11.11.1
       '@emotion/styled': ^11.11.0
       '@forms/utils': '*'
-      '@module-federation/nextjs-mf': ^6.0.1
       '@types/node': 20.4.5
       '@types/react': 18.2.16
       '@types/react-dom': 18.2.7
@@ -63,7 +62,6 @@ importers:
       react-feather: ^2.0.10
       tailwindcss: 3.3.3
       typescript: 5.1.6
-      webpack: ^5.88.0
       zustand: ^4.3.8
     dependencies:
       '@chakra-ui/next-js': 2.1.5_t3lhrgl5owuagmhquahol3rnz4
@@ -71,7 +69,6 @@ importers:
       '@emotion/react': 11.11.1_l2ddciyqa7ein2jypfx2higwqu
       '@emotion/styled': 11.11.0_3p6jhguztwcfbjidczm7dwrg74
       '@forms/utils': link:../../commons/utils
-      '@module-federation/nextjs-mf': 6.7.1_njnwnbwhrjevfxqoi5jmy2rbs4
       '@types/node': 20.4.5
       '@types/react': 18.2.16
       '@types/react-dom': 18.2.7
@@ -90,45 +87,6 @@ importers:
       tailwindcss: 3.3.3
       typescript: 5.1.6
       zustand: 4.3.9_react@18.2.0
-    devDependencies:
-      webpack: 5.88.1
-
-  packages/apps/auth:
-    specifiers:
-      '@module-federation/nextjs-mf': ^6.0.1
-      '@types/node': 20.4.5
-      '@types/react': 18.2.17
-      '@types/react-dom': 18.2.7
-      autoprefixer: 10.4.14
-      eslint: 8.46.0
-      eslint-config-next: 13.4.12
-      firebase: ^9.23.0
-      next: 13.4.12
-      next-auth: ^4.22.3
-      postcss: 8.4.27
-      react: 18.2.0
-      react-dom: 18.2.0
-      tailwindcss: 3.3.3
-      typescript: 5.1.6
-      webpack: ^5.88.0
-    dependencies:
-      '@module-federation/nextjs-mf': 6.7.1_njnwnbwhrjevfxqoi5jmy2rbs4
-      '@types/node': 20.4.5
-      '@types/react': 18.2.17
-      '@types/react-dom': 18.2.7
-      autoprefixer: 10.4.14_postcss@8.4.27
-      eslint: 8.46.0
-      eslint-config-next: 13.4.12_7haavtekmro7ptbnqmctjaodju
-      firebase: 9.23.0
-      next: 13.4.12_biqbaboplfbrettd7655fr4n2y
-      next-auth: 4.22.3_54ux7fu2vrztxgcjbkegvwjefy
-      postcss: 8.4.27
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      tailwindcss: 3.3.3
-      typescript: 5.1.6
-    devDependencies:
-      webpack: 5.88.1
 
   packages/apps/submission:
     specifiers:
@@ -137,7 +95,6 @@ importers:
       '@emotion/react': ^11.11.1
       '@emotion/styled': ^11.11.0
       '@forms/utils': '*'
-      '@module-federation/nextjs-mf': ^6.0.1
       '@types/node': 20.4.5
       '@types/react': 18.2.18
       '@types/react-dom': 18.2.7
@@ -152,7 +109,6 @@ importers:
       react-feather: ^2.0.10
       tailwindcss: 3.3.3
       typescript: 5.1.6
-      webpack: ^5.88.0
       zustand: ^4.3.8
     dependencies:
       '@chakra-ui/next-js': 2.1.5_t3lhrgl5owuagmhquahol3rnz4
@@ -160,7 +116,6 @@ importers:
       '@emotion/react': 11.11.1_fzrd6ivowi4azn3madm57eamia
       '@emotion/styled': 11.11.0_kkjyfhjhaqueq3ebmhjljfbdsm
       '@forms/utils': link:../../commons/utils
-      '@module-federation/nextjs-mf': 6.7.1_njnwnbwhrjevfxqoi5jmy2rbs4
       '@types/node': 20.4.5
       '@types/react': 18.2.18
       '@types/react-dom': 18.2.7
@@ -176,8 +131,6 @@ importers:
       tailwindcss: 3.3.3
       typescript: 5.1.6
       zustand: 4.3.9_react@18.2.0
-    devDependencies:
-      webpack: 5.88.1
 
   packages/commons/types:
     specifiers: {}
@@ -2412,7 +2365,7 @@ packages:
       '@firebase/app-compat': 0.2.13
       '@firebase/component': 0.6.4
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
     dev: false
@@ -2431,7 +2384,7 @@ packages:
       '@firebase/installations': 0.6.4_@firebase+app@0.9.13
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/app-check-compat/0.3.7_rlspeg26efzq4szzxjw273kkwu:
@@ -2445,7 +2398,7 @@ packages:
       '@firebase/component': 0.6.4
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
     dev: false
@@ -2467,7 +2420,7 @@ packages:
       '@firebase/component': 0.6.4
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/app-compat/0.2.13:
@@ -2477,7 +2430,7 @@ packages:
       '@firebase/component': 0.6.4
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/app-types/0.9.0:
@@ -2491,7 +2444,7 @@ packages:
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
       idb: 7.1.1
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/auth-compat/0.4.2_buhkithajdcap5corcmwxshbxm:
@@ -2505,7 +2458,7 @@ packages:
       '@firebase/component': 0.6.4
       '@firebase/util': 1.9.3
       node-fetch: 2.6.7
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
       - '@firebase/app-types'
@@ -2536,7 +2489,7 @@ packages:
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
       node-fetch: 2.6.7
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -2545,7 +2498,7 @@ packages:
     resolution: {integrity: sha512-rLMyrXuO9jcAUCaQXCMjCMUsWrba5fzHlNK24xz5j2W6A/SRmK8mZJ/hn7V0fViLbxC0lPMtrK1eYzk6Fg03jA==}
     dependencies:
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/database-compat/0.3.4:
@@ -2556,7 +2509,7 @@ packages:
       '@firebase/database-types': 0.10.4
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/database-types/0.10.4:
@@ -2574,7 +2527,7 @@ packages:
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
       faye-websocket: 0.11.4
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/firestore-compat/0.3.12_buhkithajdcap5corcmwxshbxm:
@@ -2587,7 +2540,7 @@ packages:
       '@firebase/firestore': 3.13.0_@firebase+app@0.9.13
       '@firebase/firestore-types': 2.5.1_pe7cbgjgh7vzd7cjsjzacprt4m
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
       - '@firebase/app-types'
@@ -2618,7 +2571,7 @@ packages:
       '@grpc/grpc-js': 1.7.3
       '@grpc/proto-loader': 0.6.13
       node-fetch: 2.6.7
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -2633,7 +2586,7 @@ packages:
       '@firebase/functions': 0.10.0_@firebase+app@0.9.13
       '@firebase/functions-types': 0.6.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
       - encoding
@@ -2655,7 +2608,7 @@ packages:
       '@firebase/messaging-interop-types': 0.2.0
       '@firebase/util': 1.9.3
       node-fetch: 2.6.7
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -2670,7 +2623,7 @@ packages:
       '@firebase/installations': 0.6.4_@firebase+app@0.9.13
       '@firebase/installations-types': 0.5.0_@firebase+app-types@0.9.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
       - '@firebase/app-types'
@@ -2693,13 +2646,13 @@ packages:
       '@firebase/component': 0.6.4
       '@firebase/util': 1.9.3
       idb: 7.0.1
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/logger/0.4.0:
     resolution: {integrity: sha512-eRKSeykumZ5+cJPdxxJRgAC3G5NknY2GwEbKfymdnXtnT0Ucm4pspfR6GT4MUQEDuJwRVbVcSx85kgJulMoFFA==}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/messaging-compat/0.2.4_rlspeg26efzq4szzxjw273kkwu:
@@ -2711,7 +2664,7 @@ packages:
       '@firebase/component': 0.6.4
       '@firebase/messaging': 0.12.4_@firebase+app@0.9.13
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
     dev: false
@@ -2731,7 +2684,7 @@ packages:
       '@firebase/messaging-interop-types': 0.2.0
       '@firebase/util': 1.9.3
       idb: 7.0.1
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/performance-compat/0.2.4_rlspeg26efzq4szzxjw273kkwu:
@@ -2745,7 +2698,7 @@ packages:
       '@firebase/performance': 0.6.4_@firebase+app@0.9.13
       '@firebase/performance-types': 0.2.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
     dev: false
@@ -2764,7 +2717,7 @@ packages:
       '@firebase/installations': 0.6.4_@firebase+app@0.9.13
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/remote-config-compat/0.2.4_rlspeg26efzq4szzxjw273kkwu:
@@ -2778,7 +2731,7 @@ packages:
       '@firebase/remote-config': 0.4.4_@firebase+app@0.9.13
       '@firebase/remote-config-types': 0.3.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
     dev: false
@@ -2797,7 +2750,7 @@ packages:
       '@firebase/installations': 0.6.4_@firebase+app@0.9.13
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/storage-compat/0.3.2_buhkithajdcap5corcmwxshbxm:
@@ -2810,7 +2763,7 @@ packages:
       '@firebase/storage': 0.11.2_@firebase+app@0.9.13
       '@firebase/storage-types': 0.8.0_pe7cbgjgh7vzd7cjsjzacprt4m
       '@firebase/util': 1.9.3
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - '@firebase/app'
       - '@firebase/app-types'
@@ -2836,7 +2789,7 @@ packages:
       '@firebase/component': 0.6.4
       '@firebase/util': 1.9.3
       node-fetch: 2.6.7
-      tslib: 2.6.0
+      tslib: 2.6.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -2844,7 +2797,7 @@ packages:
   /@firebase/util/1.9.3:
     resolution: {integrity: sha512-DY02CRhOZwpzO36fHpuVysz6JZrscPiBXD0fXp6qSrL9oNOx5KWICKdR95C0lSITzxp0TZosVyHqzatE8JbcjA==}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /@firebase/webchannel-wrapper/0.10.1:
@@ -3164,12 +3117,6 @@ packages:
     resolution: {integrity: sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==}
     engines: {node: '>=6.0.0'}
 
-  /@jridgewell/source-map/0.3.5:
-    resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==}
-    dependencies:
-      '@jridgewell/gen-mapping': 0.3.3
-      '@jridgewell/trace-mapping': 0.3.18
-
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
 
@@ -3219,76 +3166,6 @@ packages:
       - bluebird
       - supports-color
     dev: true
-
-  /@module-federation/nextjs-mf/6.7.1_njnwnbwhrjevfxqoi5jmy2rbs4:
-    resolution: {integrity: sha512-uxE8D7Vcvl63syv8pa2Gt6LVaTYJIOjS1m+/Pa5KgSFFmGcX8sZ7BCpXJ3MQxNxFD2AA0QsHmX969Le/h6zKIw==}
-    peerDependencies:
-      next: ^12 || ^13
-      react: ^17 || ^18
-      react-dom: ^17 || ^18
-      styled-jsx: '*'
-      webpack: ^5.40.0
-    peerDependenciesMeta:
-      styled-jsx:
-        optional: true
-    dependencies:
-      '@module-federation/node': 0.16.2_njnwnbwhrjevfxqoi5jmy2rbs4
-      '@module-federation/utilities': 1.9.1_njnwnbwhrjevfxqoi5jmy2rbs4
-      encoding: 0.1.13
-      eventemitter3: 5.0.1
-      fast-glob: 3.3.0
-      next: 13.4.12_biqbaboplfbrettd7655fr4n2y
-      node-fetch: 2.6.9_encoding@0.1.13
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      webpack: 5.88.1
-      webpack-sources: 3.2.3
-    dev: false
-
-  /@module-federation/node/0.16.2_njnwnbwhrjevfxqoi5jmy2rbs4:
-    resolution: {integrity: sha512-9zyB1D76lKsoSHcpaM5V+ifNqS2wevCQQgbw3Q7/C9JhoBM2GFhXkKXR2FxTlWdPZz4dmkN+jC5ZYW/w8v+mEA==}
-    peerDependencies:
-      next: ^12||^13
-      react: ^16||^17||^18
-      react-dom: ^16||^17||^18
-      webpack: ^5.40.0
-    peerDependenciesMeta:
-      next:
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      '@module-federation/utilities': 1.9.1_njnwnbwhrjevfxqoi5jmy2rbs4
-      encoding: 0.1.13
-      next: 13.4.12_biqbaboplfbrettd7655fr4n2y
-      node-fetch: 2.6.9_encoding@0.1.13
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      webpack: 5.88.1
-    dev: false
-
-  /@module-federation/utilities/1.9.1_njnwnbwhrjevfxqoi5jmy2rbs4:
-    resolution: {integrity: sha512-EVPV90TSK+tSG6R7Kw65w7pRuI2phff8YFIazzGWNViZPRlTYS3c9pZWVPYGiwIz1+96P+yeNp/WQZrkyS8kpA==}
-    peerDependencies:
-      next: ^12 || ^13
-      react: ^16 || ^17 || ^18
-      react-dom: ^16 || ^17 || ^18
-      webpack: ^5.40.0
-    peerDependenciesMeta:
-      next:
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      next: 13.4.12_biqbaboplfbrettd7655fr4n2y
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      webpack: 5.88.1
-    dev: false
 
   /@next/env/13.4.12:
     resolution: {integrity: sha512-RmHanbV21saP/6OEPBJ7yJMuys68cIf8OBBWd7+uj40LdpmswVAwe1uzeuFyUsd6SfeITWT3XnQfn6wULeKwDQ==}
@@ -3727,7 +3604,7 @@ packages:
       is-glob: 4.0.3
       open: 9.1.0
       picocolors: 1.0.0
-      tslib: 2.6.0
+      tslib: 2.6.1
 
   /@popperjs/core/2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
@@ -3986,21 +3863,6 @@ packages:
       '@babel/types': 7.22.5
     dev: true
 
-  /@types/eslint-scope/3.7.4:
-    resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
-    dependencies:
-      '@types/eslint': 8.44.0
-      '@types/estree': 1.0.1
-
-  /@types/eslint/8.44.0:
-    resolution: {integrity: sha512-gsF+c/0XOguWgaOgvFs+xnnRqt9GwgTvIks36WpE6ueeI4KCEHHd8K/CKHqhOqrJKsYH8m27kRzQEvWXAwXUTw==}
-    dependencies:
-      '@types/estree': 1.0.1
-      '@types/json-schema': 7.0.12
-
-  /@types/estree/1.0.1:
-    resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
-
   /@types/graceful-fs/4.1.6:
     resolution: {integrity: sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw==}
     dependencies:
@@ -4043,6 +3905,7 @@ packages:
 
   /@types/json-schema/7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
+    dev: true
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
@@ -4108,14 +3971,6 @@ packages:
 
   /@types/react/18.2.16:
     resolution: {integrity: sha512-LLFWr12ZhBJ4YVw7neWLe6Pk7Ey5R9OCydfuMsz1L8bZxzaawJj2p06Q8/EFEHDeTBQNFLF62X+CG7B2zIyu0Q==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.3
-      csstype: 3.1.2
-    dev: false
-
-  /@types/react/18.2.17:
-    resolution: {integrity: sha512-u+e7OlgPPh+aryjOm5UJMX32OvB2E3QASOAqVMY6Ahs90djagxwv2ya0IctglNbNTexC12qCSMZG47KPfy1hAA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -4344,103 +4199,6 @@ packages:
       '@typescript-eslint/types': 5.62.0
       eslint-visitor-keys: 3.4.2
 
-  /@webassemblyjs/ast/1.11.6:
-    resolution: {integrity: sha512-IN1xI7PwOvLPgjcf180gC1bqn3q/QaOCwYUahIOhbYUu8KA/3tw2RT/T0Gidi1l7Hhj5D/INhJxiICObqpMu4Q==}
-    dependencies:
-      '@webassemblyjs/helper-numbers': 1.11.6
-      '@webassemblyjs/helper-wasm-bytecode': 1.11.6
-
-  /@webassemblyjs/floating-point-hex-parser/1.11.6:
-    resolution: {integrity: sha512-ejAj9hfRJ2XMsNHk/v6Fu2dGS+i4UaXBXGemOfQ/JfQ6mdQg/WXtwleQRLLS4OvfDhv8rYnVwH27YJLMyYsxhw==}
-
-  /@webassemblyjs/helper-api-error/1.11.6:
-    resolution: {integrity: sha512-o0YkoP4pVu4rN8aTJgAyj9hC2Sv5UlkzCHhxqWj8butaLvnpdc2jOwh4ewE6CX0txSfLn/UYaV/pheS2Txg//Q==}
-
-  /@webassemblyjs/helper-buffer/1.11.6:
-    resolution: {integrity: sha512-z3nFzdcp1mb8nEOFFk8DrYLpHvhKC3grJD2ardfKOzmbmJvEf/tPIqCY+sNcwZIY8ZD7IkB2l7/pqhUhqm7hLA==}
-
-  /@webassemblyjs/helper-numbers/1.11.6:
-    resolution: {integrity: sha512-vUIhZ8LZoIWHBohiEObxVm6hwP034jwmc9kuq5GdHZH0wiLVLIPcMCdpJzG4C11cHoQ25TFIQj9kaVADVX7N3g==}
-    dependencies:
-      '@webassemblyjs/floating-point-hex-parser': 1.11.6
-      '@webassemblyjs/helper-api-error': 1.11.6
-      '@xtuc/long': 4.2.2
-
-  /@webassemblyjs/helper-wasm-bytecode/1.11.6:
-    resolution: {integrity: sha512-sFFHKwcmBprO9e7Icf0+gddyWYDViL8bpPjJJl0WHxCdETktXdmtWLGVzoHbqUcY4Be1LkNfwTmXOJUFZYSJdA==}
-
-  /@webassemblyjs/helper-wasm-section/1.11.6:
-    resolution: {integrity: sha512-LPpZbSOwTpEC2cgn4hTydySy1Ke+XEu+ETXuoyvuyezHO3Kjdu90KK95Sh9xTbmjrCsUwvWwCOQQNta37VrS9g==}
-    dependencies:
-      '@webassemblyjs/ast': 1.11.6
-      '@webassemblyjs/helper-buffer': 1.11.6
-      '@webassemblyjs/helper-wasm-bytecode': 1.11.6
-      '@webassemblyjs/wasm-gen': 1.11.6
-
-  /@webassemblyjs/ieee754/1.11.6:
-    resolution: {integrity: sha512-LM4p2csPNvbij6U1f19v6WR56QZ8JcHg3QIJTlSwzFcmx6WSORicYj6I63f9yU1kEUtrpG+kjkiIAkevHpDXrg==}
-    dependencies:
-      '@xtuc/ieee754': 1.2.0
-
-  /@webassemblyjs/leb128/1.11.6:
-    resolution: {integrity: sha512-m7a0FhE67DQXgouf1tbN5XQcdWoNgaAuoULHIfGFIEVKA6tu/edls6XnIlkmS6FrXAquJRPni3ZZKjw6FSPjPQ==}
-    dependencies:
-      '@xtuc/long': 4.2.2
-
-  /@webassemblyjs/utf8/1.11.6:
-    resolution: {integrity: sha512-vtXf2wTQ3+up9Zsg8sa2yWiQpzSsMyXj0qViVP6xKGCUT8p8YJ6HqI7l5eCnWx1T/FYdsv07HQs2wTFbbof/RA==}
-
-  /@webassemblyjs/wasm-edit/1.11.6:
-    resolution: {integrity: sha512-Ybn2I6fnfIGuCR+Faaz7YcvtBKxvoLV3Lebn1tM4o/IAJzmi9AWYIPWpyBfU8cC+JxAO57bk4+zdsTjJR+VTOw==}
-    dependencies:
-      '@webassemblyjs/ast': 1.11.6
-      '@webassemblyjs/helper-buffer': 1.11.6
-      '@webassemblyjs/helper-wasm-bytecode': 1.11.6
-      '@webassemblyjs/helper-wasm-section': 1.11.6
-      '@webassemblyjs/wasm-gen': 1.11.6
-      '@webassemblyjs/wasm-opt': 1.11.6
-      '@webassemblyjs/wasm-parser': 1.11.6
-      '@webassemblyjs/wast-printer': 1.11.6
-
-  /@webassemblyjs/wasm-gen/1.11.6:
-    resolution: {integrity: sha512-3XOqkZP/y6B4F0PBAXvI1/bky7GryoogUtfwExeP/v7Nzwo1QLcq5oQmpKlftZLbT+ERUOAZVQjuNVak6UXjPA==}
-    dependencies:
-      '@webassemblyjs/ast': 1.11.6
-      '@webassemblyjs/helper-wasm-bytecode': 1.11.6
-      '@webassemblyjs/ieee754': 1.11.6
-      '@webassemblyjs/leb128': 1.11.6
-      '@webassemblyjs/utf8': 1.11.6
-
-  /@webassemblyjs/wasm-opt/1.11.6:
-    resolution: {integrity: sha512-cOrKuLRE7PCe6AsOVl7WasYf3wbSo4CeOk6PkrjS7g57MFfVUF9u6ysQBBODX0LdgSvQqRiGz3CXvIDKcPNy4g==}
-    dependencies:
-      '@webassemblyjs/ast': 1.11.6
-      '@webassemblyjs/helper-buffer': 1.11.6
-      '@webassemblyjs/wasm-gen': 1.11.6
-      '@webassemblyjs/wasm-parser': 1.11.6
-
-  /@webassemblyjs/wasm-parser/1.11.6:
-    resolution: {integrity: sha512-6ZwPeGzMJM3Dqp3hCsLgESxBGtT/OeCvCZ4TA1JUPYgmhAx38tTPR9JaKy0S5H3evQpO/h2uWs2j6Yc/fjkpTQ==}
-    dependencies:
-      '@webassemblyjs/ast': 1.11.6
-      '@webassemblyjs/helper-api-error': 1.11.6
-      '@webassemblyjs/helper-wasm-bytecode': 1.11.6
-      '@webassemblyjs/ieee754': 1.11.6
-      '@webassemblyjs/leb128': 1.11.6
-      '@webassemblyjs/utf8': 1.11.6
-
-  /@webassemblyjs/wast-printer/1.11.6:
-    resolution: {integrity: sha512-JM7AhRcE+yW2GWYaKeHL5vt4xqee5N2WcezptmgyhNS+ScggqcT1OtXykhAb13Sn5Yas0j2uv9tHgrjwvzAP4A==}
-    dependencies:
-      '@webassemblyjs/ast': 1.11.6
-      '@xtuc/long': 4.2.2
-
-  /@xtuc/ieee754/1.2.0:
-    resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
-
-  /@xtuc/long/4.2.2:
-    resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
-
   /@yarnpkg/lockfile/1.1.0:
     resolution: {integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==}
     dev: true
@@ -4491,13 +4249,6 @@ packages:
       acorn-walk: 8.2.0
     dev: true
 
-  /acorn-import-assertions/1.9.0_acorn@8.10.0:
-    resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
-    peerDependencies:
-      acorn: ^8
-    dependencies:
-      acorn: 8.10.0
-
   /acorn-jsx/5.3.2_acorn@8.10.0:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -4542,13 +4293,6 @@ packages:
       clean-stack: 2.2.0
       indent-string: 4.0.0
     dev: true
-
-  /ajv-keywords/3.5.2_ajv@6.12.6:
-    resolution: {integrity: sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==}
-    peerDependencies:
-      ajv: ^6.9.1
-    dependencies:
-      ajv: 6.12.6
 
   /ajv/6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
@@ -4653,7 +4397,7 @@ packages:
     resolution: {integrity: sha512-xcLxITLe2HYa1cnYnwCjkOO1PqUHQpozB8x9AR0OgWN2woOBi5kSDVxKfd0b7sb1hw5qFeJhXm9H1nu3xSfLeQ==}
     engines: {node: '>=10'}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /aria-query/5.1.3:
@@ -4956,6 +4700,7 @@ packages:
 
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
+    dev: true
 
   /buffer/5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
@@ -5115,10 +4860,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /chrome-trace-event/1.0.3:
-    resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
-    engines: {node: '>=6.0'}
-
   /ci-info/3.8.0:
     resolution: {integrity: sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==}
     engines: {node: '>=8'}
@@ -5244,9 +4985,6 @@ packages:
     dependencies:
       delayed-stream: 1.0.0
     dev: true
-
-  /commander/2.20.3:
-    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
 
   /commander/4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -5831,6 +5569,8 @@ packages:
     requiresBuild: true
     dependencies:
       iconv-lite: 0.6.3
+    dev: true
+    optional: true
 
   /end-of-stream/1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
@@ -5930,9 +5670,6 @@ packages:
       isarray: 2.0.5
       stop-iteration-iterator: 1.0.0
     dev: false
-
-  /es-module-lexer/1.3.0:
-    resolution: {integrity: sha512-vZK7T0N2CBmBOixhmjdqx2gWVbFZ4DXZ/NyRMZVlJXPa7CyFS+/a4QQsDGDQy9ZfEzxFuNEsMLeQJnKP2p5/JA==}
 
   /es-set-tostringtag/2.0.1:
     resolution: {integrity: sha512-g3OMbtlwY3QewlqAiMLI47KywjWZoEytKr8pf6iTC8uJq5bIAH52Z9pnQ8pVL6whrCto53JZDuUIsifGeLorTg==}
@@ -6481,6 +6218,7 @@ packages:
     dependencies:
       esrecurse: 4.3.0
       estraverse: 4.3.0
+    dev: true
 
   /eslint-scope/7.2.1:
     resolution: {integrity: sha512-CvefSOsDdaYYvxChovdrPo/ZGt8d5lrJWleAc1diXRKhHGiTYEI26cvo8Kle/wGnsizoCJjK73FMg1/IkIwiNA==}
@@ -6625,6 +6363,7 @@ packages:
   /estraverse/4.3.0:
     resolution: {integrity: sha512-39nnKffWz8xN1BU/2c79n9nB9HDzo0niYUqx6xyqUnyoAnQyyWpOTdZEeiCch8BBu515t4wp9ZmgVfVhn9EBpw==}
     engines: {node: '>=4.0'}
+    dev: true
 
   /estraverse/5.3.0:
     resolution: {integrity: sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==}
@@ -6641,14 +6380,6 @@ packages:
   /eventemitter3/4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
     dev: true
-
-  /eventemitter3/5.0.1:
-    resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
-    dev: false
-
-  /events/3.3.0:
-    resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
-    engines: {node: '>=0.8.x'}
 
   /execa/5.0.0:
     resolution: {integrity: sha512-ov6w/2LCiuyO4RLYGdpFGjkcs0wMTgGE8PrkTHikeUy5iJekXyPIKUjifk5CsE0pt7sMCrMZ3YNqoCj6idQOnQ==}
@@ -6919,7 +6650,7 @@ packages:
     resolution: {integrity: sha512-KSuV3ur4gf2KqMNoZx3nXNVhqCkn42GuTYCX4tXPEwf0MjpFQmNMiN6m7dXaUXgIoivL6/65agoUMg4RLS0Vbg==}
     engines: {node: '>=10'}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /follow-redirects/1.15.2:
@@ -7528,6 +7259,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
+    dev: true
 
   /idb/7.0.1:
     resolution: {integrity: sha512-UUxlE7vGWK5RfB/fDwEGgRf84DY/ieqNha6msMV99UsEMQhJ1RwbCd8AYBj3QMgnE3VZnfQvm4oKVCJTYlqIgg==}
@@ -8477,14 +8209,6 @@ packages:
       string-length: 4.0.2
     dev: true
 
-  /jest-worker/27.5.1:
-    resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
-    engines: {node: '>= 10.13.0'}
-    dependencies:
-      '@types/node': 20.4.5
-      merge-stream: 2.0.0
-      supports-color: 8.1.1
-
   /jest-worker/29.6.1:
     resolution: {integrity: sha512-U+Wrbca7S8ZAxAe9L6nb6g8kPdia5hj32Puu5iOqBCMTMWFHXuK6dOV2IFrpedbTV8fjMFLdWNttQTBL6u2MRA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -8840,10 +8564,6 @@ packages:
       type-fest: 0.6.0
     dev: true
 
-  /loader-runner/4.3.0:
-    resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
-    engines: {node: '>=6.11.5'}
-
   /locate-path/2.0.0:
     resolution: {integrity: sha512-NCI2kiDkyR7VeEKm27Kda/iQHyKJe1Bu0FlTbYp3CqJu+9IFe9bLyAjMxf5ZDDbEg+iMPzB5zYyUTSm8wVTKmA==}
     engines: {node: '>=4'}
@@ -9075,12 +8795,14 @@ packages:
   /mime-db/1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
+    dev: true
 
   /mime-types/2.1.35:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.52.0
+    dev: true
 
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
@@ -9282,6 +9004,7 @@ packages:
 
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+    dev: true
 
   /next-auth/4.22.3_54ux7fu2vrztxgcjbkegvwjefy:
     resolution: {integrity: sha512-XAgy9xV3J2eJOXrQhmxdjV6MLM29ibm6WtMXc3KY6IPZeApf+SuBuPvlqCUfbu5YsAzlg9WSw6u01dChTfeZOA==}
@@ -9417,19 +9140,6 @@ packages:
     dependencies:
       whatwg-url: 5.0.0
     dev: true
-
-  /node-fetch/2.6.9_encoding@0.1.13:
-    resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      encoding: 0.1.13
-      whatwg-url: 5.0.0
-    dev: false
 
   /node-gyp-build/4.6.0:
     resolution: {integrity: sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==}
@@ -10359,11 +10069,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /randombytes/2.1.0:
-    resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
-    dependencies:
-      safe-buffer: 5.2.1
-
   /react-base-table/1.13.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-HEMjAvERnF8CsRkJFLyeZrtv0Rv1w8EfTNiwhTXjSu5KNuHoHZho1P2CB7UvSqq4NcqNeZt8j0xyziJyKSrQng==}
     peerDependencies:
@@ -10498,7 +10203,7 @@ packages:
       '@types/react': 18.2.16
       react: 18.2.0
       react-style-singleton: 2.2.1_l2ddciyqa7ein2jypfx2higwqu
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /react-remove-scroll/2.5.6_fzrd6ivowi4azn3madm57eamia:
@@ -10534,7 +10239,7 @@ packages:
       react: 18.2.0
       react-remove-scroll-bar: 2.3.4_l2ddciyqa7ein2jypfx2higwqu
       react-style-singleton: 2.2.1_l2ddciyqa7ein2jypfx2higwqu
-      tslib: 2.6.0
+      tslib: 2.6.1
       use-callback-ref: 1.3.0_l2ddciyqa7ein2jypfx2higwqu
       use-sidecar: 1.1.2_l2ddciyqa7ein2jypfx2higwqu
     dev: false
@@ -10890,6 +10595,7 @@ packages:
 
   /safer-buffer/2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+    dev: true
 
   /saxes/6.0.0:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
@@ -10903,14 +10609,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
     dev: false
-
-  /schema-utils/3.3.0:
-    resolution: {integrity: sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg==}
-    engines: {node: '>= 10.13.0'}
-    dependencies:
-      '@types/json-schema': 7.0.12
-      ajv: 6.12.6
-      ajv-keywords: 3.5.2_ajv@6.12.6
 
   /semver/5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
@@ -10943,11 +10641,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-
-  /serialize-javascript/6.0.1:
-    resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
-    dependencies:
-      randombytes: 2.1.0
 
   /set-blocking/2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
@@ -11056,12 +10749,6 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /source-map-support/0.5.21:
-    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
-    dependencies:
-      buffer-from: 1.1.2
-      source-map: 0.6.1
-
   /source-map/0.5.7:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
     engines: {node: '>=0.10.0'}
@@ -11070,6 +10757,7 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /spdx-correct/3.2.0:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
@@ -11329,6 +11017,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       has-flag: 4.0.0
+    dev: true
 
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
@@ -11343,7 +11032,7 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
       '@pkgr/utils': 2.4.2
-      tslib: 2.6.0
+      tslib: 2.6.1
 
   /tailwindcss/3.3.3:
     resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}
@@ -11407,39 +11096,6 @@ packages:
     resolution: {integrity: sha512-xZFXEGbG7SNC3itwBzI3RYjq/cEhBkx2hJuKGIUOcEULmkQExXiHat2z/qkISYsuR+IKumhEfKKbV5qXmhICFQ==}
     engines: {node: '>=4'}
     dev: true
-
-  /terser-webpack-plugin/5.3.9_webpack@5.88.1:
-    resolution: {integrity: sha512-ZuXsqE07EcggTWQjXUj+Aot/OMcD0bMKGgF63f7UxYcu5/AJF53aIpK1YoP5xR9l6s/Hy2b+t1AM0bLNPRuhwA==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      '@swc/core': '*'
-      esbuild: '*'
-      uglify-js: '*'
-      webpack: ^5.1.0
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      esbuild:
-        optional: true
-      uglify-js:
-        optional: true
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.18
-      jest-worker: 27.5.1
-      schema-utils: 3.3.0
-      serialize-javascript: 6.0.1
-      terser: 5.19.0
-      webpack: 5.88.1
-
-  /terser/5.19.0:
-    resolution: {integrity: sha512-JpcpGOQLOXm2jsomozdMDpd5f8ZHh1rR48OFgWUH3QsyZcfPgv2qDCYbcDEAYNd4OZRj2bWYKpwdll/udZCk/Q==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      '@jridgewell/source-map': 0.3.5
-      acorn: 8.10.0
-      commander: 2.20.3
-      source-map-support: 0.5.21
 
   /test-exclude/6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
@@ -11854,7 +11510,7 @@ packages:
     dependencies:
       '@types/react': 18.2.16
       react: 18.2.0
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /use-sidecar/1.1.2_fzrd6ivowi4azn3madm57eamia:
@@ -11886,7 +11542,7 @@ packages:
       '@types/react': 18.2.16
       detect-node-es: 1.1.0
       react: 18.2.0
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: false
 
   /use-sync-external-store/1.2.0_react@18.2.0:
@@ -11979,49 +11635,6 @@ packages:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
     engines: {node: '>=12'}
     dev: true
-
-  /webpack-sources/3.2.3:
-    resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
-    engines: {node: '>=10.13.0'}
-
-  /webpack/5.88.1:
-    resolution: {integrity: sha512-FROX3TxQnC/ox4N+3xQoWZzvGXSuscxR32rbzjpXgEzWudJFEJBpdlkkob2ylrv5yzzufD1zph1OoFsLtm6stQ==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    peerDependencies:
-      webpack-cli: '*'
-    peerDependenciesMeta:
-      webpack-cli:
-        optional: true
-    dependencies:
-      '@types/eslint-scope': 3.7.4
-      '@types/estree': 1.0.1
-      '@webassemblyjs/ast': 1.11.6
-      '@webassemblyjs/wasm-edit': 1.11.6
-      '@webassemblyjs/wasm-parser': 1.11.6
-      acorn: 8.10.0
-      acorn-import-assertions: 1.9.0_acorn@8.10.0
-      browserslist: 4.21.9
-      chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.15.0
-      es-module-lexer: 1.3.0
-      eslint-scope: 5.1.1
-      events: 3.3.0
-      glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.11
-      json-parse-even-better-errors: 2.3.1
-      loader-runner: 4.3.0
-      mime-types: 2.1.35
-      neo-async: 2.6.2
-      schema-utils: 3.3.0
-      tapable: 2.2.1
-      terser-webpack-plugin: 5.3.9_webpack@5.88.1
-      watchpack: 2.4.0
-      webpack-sources: 3.2.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - esbuild
-      - uglify-js
 
   /websocket-driver/0.7.4:
     resolution: {integrity: sha512-b17KeDIQVjvb0ssuSDF2cYXSg2iztliJ4B9WdsuB6J952qCPKmnVq4DyW5motImXHDC1cBT/1UezrJVsKw5zjg==}

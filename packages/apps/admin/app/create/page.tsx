@@ -5,6 +5,7 @@ import Date from "@/components/Creation/Fields/DateFields";
 import Options from "@/components/Creation/Fields/OptionsFields";
 import Texts from "@/components/Creation/Fields/TextsFields";
 import Toggles from "@/components/Creation/Fields/ToggleFields";
+import IsSignedIn from "@/components/IsSignedIn";
 import useCreationPage from "@/hooks/useCreationPage";
 import { useFormCreation } from "@/store/formCreation";
 import {
@@ -45,72 +46,74 @@ const FormCreationPage = () => {
   } = useCreationPage();
 
   return (
-    <Container
-      borderRadius={["none", "none", "2xl"]}
-      mx={[0, 5, 10, 10, "auto"]}
-      my={[0, 0, 10]}
-      boxShadow={["none", "none", "dark-lg"]}
-      p={[6, 8, 12]}
-    >
-      <Form as={"form"} onSubmit={handleSubmit}>
-        <Box mb={8}>
-          <FormControl isInvalid={hasTitleError} mb={8}>
-            <Input
-              id="create-title"
-              variant={hasTitleError ? "flushed" : "unstyled"}
-              size="lg"
+    <IsSignedIn>
+      <Container
+        borderRadius={["none", "none", "2xl"]}
+        mx={[0, 5, 10, 10, "auto"]}
+        my={[0, 0, 10]}
+        boxShadow={["none", "none", "dark-lg"]}
+        p={[6, 8, 12]}
+      >
+        <Form as={"form"} onSubmit={handleSubmit}>
+          <Box mb={8}>
+            <FormControl isInvalid={hasTitleError} mb={8}>
+              <Input
+                id="create-title"
+                variant={hasTitleError ? "flushed" : "unstyled"}
+                size="lg"
+                color="blackAlpha.900"
+                placeholder="Adicione um título"
+                textAlign="center"
+                fontSize={["lg", "xl", "2xl"]}
+                onChange={handleTitle}
+                value={title}
+              />
+              {hasTitleError && (
+                <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
+              )}
+            </FormControl>
+            <Textarea
+              bg={"white"}
               color="blackAlpha.900"
-              placeholder="Adicione um título"
-              textAlign="center"
-              fontSize={["lg", "xl", "2xl"]}
-              onChange={handleTitle}
-              value={title}
+              fontSize={["sm", "sm", "md"]}
+              onChange={handleDescription}
+              placeholder="Adicione uma descrição (opcional)"
+              value={description}
             />
-            {hasTitleError && (
-              <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
-            )}
-          </FormControl>
-          <Textarea
-            bg={"white"}
-            color="blackAlpha.900"
-            fontSize={["sm", "sm", "md"]}
-            onChange={handleDescription}
-            placeholder="Adicione uma descrição (opcional)"
-            value={description}
-          />
-        </Box>
-        <React.Fragment>
-          {fieldsIds.map((fieldId) => {
-            const Component = fieldComponents[getPrefixFromString(fieldId)];
+          </Box>
+          <React.Fragment>
+            {fieldsIds.map((fieldId) => {
+              const Component = fieldComponents[getPrefixFromString(fieldId)];
 
-            return (
-              <Flex
-                key={fieldId}
-                direction="column"
-                pt={[4, 6, 8]}
-                pb={[8, 8, 12]}
-                px={[4, 6, 8]}
-                my={[4, 6, 8]}
-                bg="blackAlpha.100"
-                borderRadius="10"
-                width="100%"
-              >
-                <Component id={fieldId} />
-              </Flex>
-            );
-          })}
-        </React.Fragment>
-        <AddFieldButton />
-        <Button
-          type="submit"
-          bg="cyan.700"
-          color="white"
-          isDisabled={isLoading}
-        >
-          {isLoading ? "Criando formulário..." : "Criar formulário"}
-        </Button>
-      </Form>
-    </Container>
+              return (
+                <Flex
+                  key={fieldId}
+                  direction="column"
+                  pt={[4, 6, 8]}
+                  pb={[8, 8, 12]}
+                  px={[4, 6, 8]}
+                  my={[4, 6, 8]}
+                  bg="blackAlpha.100"
+                  borderRadius="10"
+                  width="100%"
+                >
+                  <Component id={fieldId} />
+                </Flex>
+              );
+            })}
+          </React.Fragment>
+          <AddFieldButton />
+          <Button
+            type="submit"
+            bg="cyan.700"
+            color="white"
+            isDisabled={isLoading}
+          >
+            {isLoading ? "Criando formulário..." : "Criar formulário"}
+          </Button>
+        </Form>
+      </Container>
+    </IsSignedIn>
   );
 };
 

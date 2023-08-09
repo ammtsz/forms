@@ -14,10 +14,10 @@ const store = create<FormsManagementStore>((set, get) => ({
   errors: INITIAL_STATE.errors,
   forms: INITIAL_STATE.forms,
 
-  getForms: async () => {
+  getForms: async (formsIds) => {
     if (get().forms.length) return get().forms;
 
-    const forms = await getFormsFromDb();
+    const forms = await getFormsFromDb(formsIds);
     set({ forms });
 
     return forms;

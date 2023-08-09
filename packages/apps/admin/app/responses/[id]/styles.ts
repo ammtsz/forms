@@ -1,7 +1,8 @@
 import { Flex, FlexProps } from "@chakra-ui/react";
 import styled, { StyledComponent } from "@emotion/styled";
 
-export const Container = styled(Flex)`
+export const Container = styled.main`
+  display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: top;

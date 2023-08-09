@@ -1,8 +1,10 @@
 "use client";
 
+import { UserSession } from "@/app/api/auth/[...nextauth]/route";
 import GoToFormButton from "@/components/Home/GoToFormButton";
 import { useFormsManagement } from "@/store/formsManagement";
 import { Button, Flex } from "@chakra-ui/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -15,15 +17,24 @@ const FormButtons: React.FC = () => {
 
   const route = useRouter();
 
-  const loadForms = useCallback(async () => {
-    await getForms();
-    getFormsNamesAndIds();
-    setFormsNames(getFormsNamesAndIds());
-  }, [getForms, getFormsNamesAndIds]);
+  const { data: session } = useSession();
+
+  const loadForms = useCallback(
+    async (forms: string[]) => {
+      await getForms(forms);
+      getFormsNamesAndIds();
+      setFormsNames(getFormsNamesAndIds());
+    },
+    [getForms, getFormsNamesAndIds]
+  );
 
   useEffect(() => {
-    loadForms();
-  }, [loadForms]);
+    const forms = (session as UserSession)?.user?.forms;
+
+    if (forms) {
+      loadForms(forms);
+    }
+  }, [loadForms, session]);
 
   return (
     <Flex gap={4} direction={"column"} maxWidth={"1200px"} margin={"auto"}>

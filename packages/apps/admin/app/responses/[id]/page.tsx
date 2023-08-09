@@ -1,5 +1,7 @@
 "use client";
 
+import { UserSession } from "@/app/api/auth/[...nextauth]/route";
+import IsSignedIn from "@/components/IsSignedIn";
 import ActionsButton from "@/components/Responses/ActionsButton";
 import ColumnsFilter from "@/components/Responses/ColumnsFilter";
 import CopyButton from "@/components/Responses/CopyButton";
@@ -8,6 +10,7 @@ import Table from "@/components/Responses/Table";
 import Tabs from "@/components/Responses/Tabs";
 import { useTableData } from "@/store/tableData";
 import { Flex } from "@chakra-ui/react";
+import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -19,41 +22,48 @@ const FormViewPage: React.FC = () => {
 
   const { loadFormResponses, getForm } = useTableData();
 
-  const pathname = usePathname();
-  const id = pathname.split("/")[2];
+  const { data: session } = useSession();
+
+  const id = usePathname().split("/")[2];
 
   const loadData = useCallback(async () => {
-    setLoading(true);
+    const userForms = (session as UserSession)?.user?.forms || [];
 
-    const form = await getForm(id);
-    setValidForm(!!form);
+    if (id && userForms.includes(id)) {
+      setLoading(true);
 
-    if (form) {
-      await loadFormResponses(id);
+      const form = await getForm(id);
+      setValidForm(!!form);
+
+      if (form) {
+        await loadFormResponses(id);
+      }
+
+      setLoading(false);
+    } else {
+      setValidForm(false);
     }
-
-    setLoading(false);
-  }, [id, getForm, loadFormResponses]);
+  }, [session, id, getForm, loadFormResponses]);
 
   useEffect(() => {
-    if (id) {
-      loadData();
-    }
-  }, [id, loadData, getForm, loadFormResponses]);
+    loadData();
+  }, [loadData]);
 
   return (
-    <Container>
-      <Flex pb={5} gap={4} direction={["column", "column", "row"]} mb={8}>
-        <SearchBar />
-        <Flex justifyContent={"space-between"} gap={"0.5rem"} ml={"auto"}>
-          <CopyButton />
-          <ColumnsFilter />
-          <ActionsButton />
+    <IsSignedIn>
+      <Container>
+        <Flex pb={5} gap={4} direction={["column", "column", "row"]} mb={8}>
+          <SearchBar />
+          <Flex justifyContent={"space-between"} gap={"0.5rem"} ml={"auto"}>
+            <CopyButton />
+            <ColumnsFilter />
+            <ActionsButton />
+          </Flex>
         </Flex>
-      </Flex>
-      <Tabs />
-      <Table isLoading={isLoading} hasError={!isValidForm} />
-    </Container>
+        <Tabs />
+        <Table isLoading={isLoading} hasError={!isValidForm} />
+      </Container>
+    </IsSignedIn>
   );
 };
 

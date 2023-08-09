@@ -1,5 +1,13 @@
 import { firestore } from "@/api/firebase";
-import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 
 import { FormProps } from "@forms/types/interfaces/form";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
@@ -19,10 +27,14 @@ export const getForm = async (id: string) => {
   }
 };
 
-export const getForms = async () => {
+export const getForms = async (formsIds: string[]) => {
   try {
     const formsRef = collection(firestore, "forms");
-    const querySnapshot = await getDocs(formsRef);
+
+    const q = query(formsRef, where("__name__", "in", formsIds));
+
+    const querySnapshot = await getDocs(q);
+
     console.error("firebase | admin | getForms");
 
     return querySnapshot.docs.map((doc) => doc.data()) as FormProps[];
