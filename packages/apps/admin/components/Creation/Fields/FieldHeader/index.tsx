@@ -1,6 +1,5 @@
 "use client";
 
-import { FIELDS_LABEL } from "@/constants/fieldsLabels";
 import {
   Flex,
   Button,
@@ -11,6 +10,7 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
+import { FIELDS_LABEL } from "@constants/fieldsLabels";
 import React, { useState } from "react";
 import { MoreHorizontal as MoreIcon } from "react-feather";
 

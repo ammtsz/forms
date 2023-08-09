@@ -1,7 +1,5 @@
 "use client";
 
-import { StatusTypes } from "@/constants/status";
-import { useCheckedRows } from "@/store/checkedRows";
 import {
   Modal,
   ModalOverlay,
@@ -12,6 +10,8 @@ import {
   ModalCloseButton,
   Button,
 } from "@chakra-ui/react";
+import { StatusTypes } from "@constants/status";
+import { useCheckedRows } from "@store/checkedRows";
 import { useCallback } from "react";
 
 export interface ConfirmationTexts {

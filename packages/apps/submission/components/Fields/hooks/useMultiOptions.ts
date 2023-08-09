@@ -1,4 +1,4 @@
-import { useFormSubmission } from "@/store/formSubmission";
+import { useFormSubmission } from "@store/formSubmission";
 import { useCallback, useEffect, useState } from "react";
 
 interface MultiOptionsProps {

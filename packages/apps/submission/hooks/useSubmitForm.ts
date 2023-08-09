@@ -1,7 +1,7 @@
 "use client";
 
-import { useFormSubmission } from "@/store/formSubmission";
 import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
+import { useFormSubmission } from "@store/formSubmission";
 import { useCallback, useRef } from "react";
 
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";

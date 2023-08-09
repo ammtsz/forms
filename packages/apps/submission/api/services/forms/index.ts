@@ -1,4 +1,4 @@
-import { firestore } from "@/api/firebase";
+import { firestore } from "@api/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import { FormProps } from "@forms/types/interfaces/form";

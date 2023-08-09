@@ -1,7 +1,7 @@
 "use client";
 
-import { useTableData } from "@/store/tableData";
 import { Button } from "@chakra-ui/react";
+import { useTableData } from "@store/tableData";
 import { useCallback } from "react";
 import { Copy as CopyIcon } from "react-feather";
 

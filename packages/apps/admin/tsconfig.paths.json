@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
+      "@*": ["./*"],
       "@forms/utils": ["../../commons/utils/src"],
     }
   }

@@ -1,7 +1,7 @@
 "use client";
 
-import { HEADER_HEIGHT } from "@/constants/table";
-import { useTableData } from "@/store/tableData";
+import { HEADER_HEIGHT } from "@constants/table";
+import { useTableData } from "@store/tableData";
 import { useCallback } from "react";
 import { ColumnShape, SortOrder } from "react-base-table";
 

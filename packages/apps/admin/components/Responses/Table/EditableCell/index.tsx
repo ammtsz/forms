@@ -1,8 +1,5 @@
 "use client";
 
-import { TableCell } from "@/components/Responses/Table/styles";
-import Tooltip from "@/components/Tooltip";
-import { useTableData } from "@/store/tableData";
 import {
   Editable,
   EditableTextarea,
@@ -12,6 +9,9 @@ import {
   Textarea,
   useEditableControls,
 } from "@chakra-ui/react";
+import { TableCell } from "@components/Responses/Table/styles";
+import Tooltip from "@components/Tooltip";
+import { useTableData } from "@store/tableData";
 import React, { useCallback, useEffect, useState } from "react";
 import { Check as CheckIcon, Edit as EditIcon } from "react-feather";
 

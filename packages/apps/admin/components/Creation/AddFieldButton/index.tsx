@@ -1,8 +1,8 @@
 "use client";
 
-import { FIELDS_LABEL } from "@/constants/fieldsLabels";
-import { useFormCreation } from "@/store/formCreation";
 import { Button, Flex } from "@chakra-ui/react";
+import { FIELDS_LABEL } from "@constants/fieldsLabels";
+import { useFormCreation } from "@store/formCreation";
 import { useCallback, useState } from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";

@@ -14,7 +14,6 @@ module.exports = {
     "types",
     "/**/types",
     "build",
-    "admin-old",
     "craco.config.js",
     "environments"
   ],
@@ -56,7 +55,7 @@ module.exports = {
       "warn",
       {
         newlinesBetween: "always",
-        groups: ["module", "/^@forms/", "/^@app/", ["parent", "sibling", "index"]],
+        groups: ["module", "/^@forms/", "/^@app/", "/^@*/", ["parent", "sibling", "index"]],
         alphabetize: { order: "asc", ignoreCase: true },
       },
     ],

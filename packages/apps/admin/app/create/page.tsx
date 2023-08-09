@@ -1,13 +1,13 @@
 "use client";
 
-import AddFieldButton from "@/components/Creation/AddFieldButton";
-import Date from "@/components/Creation/Fields/DateFields";
-import Options from "@/components/Creation/Fields/OptionsFields";
-import Texts from "@/components/Creation/Fields/TextsFields";
-import Toggles from "@/components/Creation/Fields/ToggleFields";
-import IsSignedIn from "@/components/IsSignedIn";
-import useCreationPage from "@/hooks/useCreationPage";
-import { useFormCreation } from "@/store/formCreation";
+import AddFieldButton from "@components/Creation/AddFieldButton";
+import Date from "@components/Creation/Fields/DateFields";
+import Options from "@components/Creation/Fields/OptionsFields";
+import Texts from "@components/Creation/Fields/TextsFields";
+import Toggles from "@components/Creation/Fields/ToggleFields";
+import IsSignedIn from "@components/IsSignedIn";
+import useCreationPage from "@hooks/useCreationPage";
+import { useFormCreation } from "@store/formCreation";
 import {
   Input,
   Flex,

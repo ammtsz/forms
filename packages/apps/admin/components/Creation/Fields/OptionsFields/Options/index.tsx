@@ -1,6 +1,5 @@
 "use client";
 
-import Tooltip from "@/components/Tooltip";
 import {
   Input,
   Flex,
@@ -9,6 +8,7 @@ import {
   FormControl,
   FormErrorMessage,
 } from "@chakra-ui/react";
+import Tooltip from "@components/Tooltip";
 import React, { useCallback } from "react";
 import { X as XIcon } from "react-feather";
 

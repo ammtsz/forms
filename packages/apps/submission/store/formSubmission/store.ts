@@ -1,4 +1,4 @@
-import { getForm as getFormFromDb, postForm } from "@/api/services/forms";
+import { getForm as getFormFromDb, postForm } from "@api/services/forms";
 import { create } from "zustand";
 
 import { FieldProps } from "@forms/types/interfaces/field";

@@ -1,4 +1,4 @@
-import { useFormSubmission } from "@/store/formSubmission";
+import { useFormSubmission } from "@store/formSubmission";
 import { useCallback } from "react";
 
 interface TextsProps {

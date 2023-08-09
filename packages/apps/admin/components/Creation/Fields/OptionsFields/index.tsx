@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormCreation } from "@/store/formCreation";
+import { useFormCreation } from "@store/formCreation";
 import React from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";

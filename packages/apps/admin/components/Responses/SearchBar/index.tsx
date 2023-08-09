@@ -1,7 +1,7 @@
 "use client";
 
-import { useTableData } from "@/store/tableData";
 import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import { useTableData } from "@store/tableData";
 import { useCallback } from "react";
 import { Search as SearchIcon } from "react-feather";
 
