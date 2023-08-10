@@ -1,69 +1,33 @@
 "use client";
 
-import { BuiltInProviderType } from "next-auth/providers/index";
-import {
-  signIn,
-  signOut,
-  useSession,
-  getProviders,
-  LiteralUnion,
-  ClientSafeProvider,
-} from "next-auth/react";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Loader as HomeIcon } from "react-feather";
+
+import SignInButton from "../SignInButton";
 
 const Navbar: React.FC = () => {
   const { data: session } = useSession();
 
-  const [providers, setProviders] = useState<Record<
-    LiteralUnion<BuiltInProviderType, string>,
-    ClientSafeProvider
-  > | null>(null);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const setUpProviders = async () => {
-      const response = await getProviders();
-
-      setProviders(response);
-    };
-
-    setUpProviders();
-  }, []);
+  const getPageTitle = () => {
+    const page = pathname.split("/")[1];
+    if (!session) return "Admin";
+    if (page === "create") return "Novo Formulário";
+    if (page === "responses") return "Respostas";
+    if (page === "") return "Home";
+  };
 
   return (
-    <nav className="h-16 border-b">
-      <div className="flex justify-end items-center  h-100 p-4">
-        {session?.user ? (
-          <div className="flex gap-4">
-            <button
-              key={session.user.email}
-              onClick={() => signOut()}
-              className="primary_btn"
-            >
-              Sign Out
-            </button>
-            {session?.user.image && (
-              <Image
-                src={session?.user.image}
-                height={37}
-                width={37}
-                className="rounded-full"
-                alt="profile image"
-              />
-            )}
-          </div>
-        ) : (
-          providers &&
-          Object.values(providers).map((provider) => (
-            <button
-              key={provider.name}
-              onClick={() => signIn(provider.id)}
-              className="primary_btn"
-            >
-              Sign In
-            </button>
-          ))
-        )}
+    <nav className="h-16 border-b border-gray-200 shadow-md bg-gray-50 sticky top-0 z-10">
+      <div className="flex items-center h-100 p-4">
+        <Link href={"/"} aria-label="home">
+          <HomeIcon />
+        </Link>
+        <p className="ml-4 mr-auto font-bold">{getPageTitle()}</p>
+        <SignInButton session={session} isPrimary />
       </div>
     </nav>
   );

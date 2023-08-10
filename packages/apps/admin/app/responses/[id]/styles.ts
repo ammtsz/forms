@@ -8,6 +8,7 @@ export const Container = styled.main`
   align-items: top;
   min-height: 100%;
   padding: 1rem;
+  padding-top: 3rem;
 ` as StyledComponent<FlexProps>;
 
 export const TableContainer = styled(Flex)`

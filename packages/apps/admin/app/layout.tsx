@@ -1,10 +1,11 @@
 import Navbar from "@components/Navbar";
-import "./globals.css";
 import Providers from "@components/Providers";
 import type { Metadata } from "next";
 
+import "./globals.css";
+
 export const metadata: Metadata = {
-  title: "Forms Admin",
+  title: "Forms | Admin",
 };
 
 const RootLayout: React.FC<{

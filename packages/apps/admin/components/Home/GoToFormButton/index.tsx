@@ -22,7 +22,7 @@ const GoToFormButton: React.FC<GoToFormButtonProps> = ({
   return !isSelected ? (
     <button
       onClick={handleClick}
-      className="h-40 w-80 bg-gray-100 rounded-2xl shadow-md flex items-center justify-center p-8 leading-5 font-bold text-center"
+      className="h-40 w-80 bg-gray-100 rounded-2xl shadow-md flex items-center justify-center p-8 leading-5 font-bold text-center hover:bg-gray-200"
     >
       <p className="whitespace-break-spaces overflow-hidden">{title}</p>
     </button>
@@ -38,7 +38,7 @@ const GoToFormButton: React.FC<GoToFormButtonProps> = ({
       </div>
       <div className="flex gap-4 font-bold ">
         <Link
-          href={`https://forms-submission.vercel.app/${id}`}
+          href={`https://form-response.vercel.app/${id}`}
           target="_blank"
           rel="noopener noreferrer"
           className="h-24 w-full bg-white hover:bg-gray-50 justify-center items-center rounded-2xl shadow-md flex p-4 font-bold text-center"
