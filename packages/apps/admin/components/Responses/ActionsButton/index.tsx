@@ -1,21 +1,18 @@
 "use client";
 
+import ConfirmationModal, { ConfirmationTexts } from "../../ConfirmationModal";
+import { ACTIONS, getConfirmationTexts } from "./utils";
 import {
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  Button,
   useDisclosure,
 } from "@chakra-ui/react";
 import { StatusTypes } from "@constants/status";
 import { useCheckedRows } from "@store/checkedRows";
 import { useTableData } from "@store/tableData";
 import { useCallback, useState } from "react";
-import { ChevronDown as ChevronDownIcon } from "react-feather";
-
-import ConfirmationModal, { ConfirmationTexts } from "../../ConfirmationModal";
-import { ACTIONS, getConfirmationTexts } from "./utils";
 
 const ActionsButton: React.FC = () => {
   const [texts, setAction] = useState<ConfirmationTexts>();
@@ -42,15 +39,11 @@ const ActionsButton: React.FC = () => {
     <>
       <Menu>
         <MenuButton
-          as={Button}
-          bg="cyan.800"
-          color="white"
-          isDisabled={!checkedRows.length}
-          rightIcon={<ChevronDownIcon size={"1rem"} />}
-          size={["sm", "sm", "md"]}
-          _hover={{ bg: "cyan.900" }}
+          as="button"
+          disabled={!checkedRows.length}
+          className="primary_btn w-28 "
         >
-          Ações
+          Ações ⏷
         </MenuButton>
         <MenuList>
           {ACTIONS.map(({ action, label }) => (

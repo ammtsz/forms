@@ -38,7 +38,7 @@ export const Container = styled(Box)`
   }
 
   .BaseTable__header-row {
-    background-color: ${theme.colors.cyan[800]};
+    background-color: ${theme.colors.blackAlpha[800]};
   }
 
   .BaseTable__header-cell {
@@ -50,7 +50,7 @@ export const Container = styled(Box)`
     text-align: center;
 
     :hover {
-      background-color: ${theme.colors.cyan[900]};
+      background-color: ${theme.colors.blackAlpha[900]};
     }
   }
 
@@ -90,7 +90,7 @@ export const Container = styled(Box)`
     }
 
     .BaseTable__header-row {
-      background: ${theme.colors.cyan[800]};
+      background: ${theme.colors.blackAlpha[800]};
     }
   }
 ` as StyledComponent<BoxProps>;

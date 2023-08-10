@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@chakra-ui/react";
 import { useTableData } from "@store/tableData";
 import { useCallback } from "react";
 import { Copy as CopyIcon } from "react-feather";
@@ -23,16 +22,13 @@ const CopyButton: React.FC = () => {
   }, [formId]);
 
   return (
-    <Button
+    <button
+      className="primary_btn icon_btn"
       aria-label="copiar tabela"
-      bg={"cyan.800"}
-      color="white"
       onClick={handleCopy}
-      size={["sm", "sm", "md"]}
-      _hover={{ bg: "cyan.900" }}
     >
       <CopyIcon height={"1.25rem"} />
-    </Button>
+    </button>
   );
 };
 

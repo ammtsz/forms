@@ -1,11 +1,10 @@
 "use client";
 
+import SignInButton from "../SignInButton";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Loader as HomeIcon } from "react-feather";
-
-import SignInButton from "../SignInButton";
 
 const Navbar: React.FC = () => {
   const { data: session } = useSession();
@@ -21,7 +20,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="h-16 border-b border-gray-200 shadow-md bg-gray-50 sticky top-0 z-10">
+    <nav className="h-18 border-b border-gray-200 shadow-md bg-gray-50 sticky top-0 z-10">
       <div className="flex items-center h-100 p-4">
         <Link href={"/"} aria-label="home">
           <HomeIcon />

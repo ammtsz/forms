@@ -20,7 +20,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
         onClick={() => signOut()}
         className="tertiary_btn"
       >
-        Sign Out
+        Sair
       </button>
       {session?.user.image && (
         <Image
@@ -38,7 +38,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
       onClick={() => signIn(googleProvider && googleProvider.id)}
       className={isPrimary ? "tertiary_btn" : "primary_btn"}
     >
-      Sign In
+      Entrar
     </button>
   );
 };

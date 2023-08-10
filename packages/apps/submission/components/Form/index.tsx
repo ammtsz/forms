@@ -53,7 +53,7 @@ const FormSubmission = () => {
 
   return (
     <>
-      <Form as="form" onSubmit={handleSubmit}>
+      <Form as="form" onSubmit={handleSubmit} mx="auto" my={[8, 8, 0, 0, 8]}>
         <Heading as="h1" fontSize="2xl" textAlign="center">
           {title.toUpperCase()}
         </Heading>

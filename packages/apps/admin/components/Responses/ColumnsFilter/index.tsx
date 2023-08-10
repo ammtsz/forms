@@ -1,5 +1,7 @@
 "use client";
 
+import DrawerBody from "./DrawerBody";
+import useColumnsFilter from "./hooks";
 import {
   Drawer,
   DrawerFooter,
@@ -7,12 +9,8 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Button,
 } from "@chakra-ui/react";
 import { Filter as FilterIcon } from "react-feather";
-
-import DrawerBody from "./DrawerBody";
-import useColumnsFilter from "./hooks";
 
 const ColumnsFilter: React.FC = () => {
   const {
@@ -27,18 +25,14 @@ const ColumnsFilter: React.FC = () => {
   } = useColumnsFilter();
   return (
     <>
-      <Button
+      <button
+        className="primary_btn"
         aria-label="Filtrar colunas"
-        bg="cyan.800"
-        color="white"
         onClick={handleOpen}
-        rightIcon={<FilterIcon size={"1rem"} />}
-        size={["sm", "sm", "md"]}
-        width={"auto"}
-        _hover={{ bg: "cyan.900" }}
       >
-        Fitrar colunas
-      </Button>
+        <span className="ellipsis mr-2">Fitrar colunas</span>
+        <FilterIcon size={"1rem"} />
+      </button>
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
@@ -51,13 +45,13 @@ const ColumnsFilter: React.FC = () => {
             isAllChecked={isAllChecked}
           />
           <DrawerFooter borderTopWidth="1px">
-            <Button
-              colorScheme="blue"
+            <button
+              className="primary_btn"
               onClick={handleSave}
               aria-label="Salvar alterações"
             >
               Salvar
-            </Button>
+            </button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

@@ -15,6 +15,7 @@ const FieldFooter: React.FC<FieldFooterProps> = ({ handleCheckbox }) => {
       mr="auto"
       size={"sm"}
       onChange={handleCheckbox}
+      colorScheme="gray"
     >
       Campo obrigatório
     </Switch>

@@ -40,7 +40,7 @@ const DrawerBody: React.FC<DrawerBodyProps> = ({
         </Checkbox>
         {fields.map((field, index) => (
           <Checkbox
-            colorScheme="cyan"
+            colorScheme="gray"
             key={field.id}
             data-id={field.id}
             disabled={!index}

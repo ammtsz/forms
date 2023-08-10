@@ -8,7 +8,6 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button,
 } from "@chakra-ui/react";
 
 interface FeedbackModalProps {
@@ -35,17 +34,9 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
         <ModalBody textAlign={"center"}>{message}</ModalBody>
 
         <ModalFooter mt={4}>
-          <Button
-            bg="cyan.800"
-            colorScheme="black"
-            justifyContent={"center"}
-            m="auto"
-            w="100%"
-            onClick={onClose}
-            _hover={{ bg: "cyan.900" }}
-          >
+          <button onClick={onClose} className="primary_btn w-full">
             {buttonText}
-          </Button>
+          </button>
         </ModalFooter>
       </ModalContent>
     </Modal>

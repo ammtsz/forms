@@ -37,11 +37,11 @@ const Tabs: React.FC = () => {
             bg="gray.200"
             data-id={tab.id}
             onClick={handleClick}
-            _hover={{ bg: "blackAlpha.200" }}
+            _hover={{ bg: "gray.300" }}
             _selected={{
               color: "white",
-              bg: "cyan.800",
-              _hover: { bg: "cyan.900" },
+              bg: "blackAlpha.800",
+              _hover: { bg: "black" },
             }}
           >
             {tab.name}

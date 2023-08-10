@@ -59,15 +59,13 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           >
             Cancelar
           </Button>
-          <Button
+          <button
             aria-label={texts.mainButton}
-            bg={texts.isDanger ? "red.700" : "cyan.700"}
-            color="white"
             onClick={handleConfirmation}
-            _hover={{ bg: texts.isDanger ? "red.900" : "cyan.900" }}
+            className="primary_btn"
           >
             {texts.mainButton}
-          </Button>
+          </button>
         </ModalFooter>
       </ModalContent>
     </Modal>

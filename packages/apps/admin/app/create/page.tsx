@@ -1,11 +1,13 @@
 "use client";
 
+import { Fields, getPrefixFromString } from "@forms/utils";
+
+import { Container, Form } from "./styles";
 import {
   Input,
   Flex,
   Box,
   Textarea,
-  Button,
   FormControl,
   FormErrorMessage,
 } from "@chakra-ui/react";
@@ -18,10 +20,6 @@ import IsSignedIn from "@components/IsSignedIn";
 import useCreationPage from "@hooks/useCreationPage";
 import { useFormCreation } from "@store/formCreation";
 import React from "react";
-
-import { Fields, getPrefixFromString } from "@forms/utils";
-
-import { Container, Form } from "./styles";
 
 const fieldComponents = {
   [Fields.text]: Texts,
@@ -104,14 +102,9 @@ const FormCreationPage = () => {
             })}
           </React.Fragment>
           <AddFieldButton />
-          <Button
-            type="submit"
-            bg="cyan.700"
-            color="white"
-            isDisabled={isLoading}
-          >
+          <button type="submit" className="primary_btn" disabled={isLoading}>
             {isLoading ? "Criando formulário..." : "Criar formulário"}
-          </Button>
+          </button>
         </Form>
       </Container>
     </IsSignedIn>
