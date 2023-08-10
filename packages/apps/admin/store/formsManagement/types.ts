@@ -7,6 +7,7 @@ export interface FormsManagementState {
 }
 
 export interface FormsManagementStore extends FormsManagementState {
+  addCreatedForm: (props: FormProps) => void;
   getFormsNamesAndIds: () => { title: string; id: string }[];
   getForms: (formsIds: string[]) => Promise<FormProps[]>;
   reset: () => void;

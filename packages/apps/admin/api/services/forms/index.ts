@@ -104,3 +104,13 @@ export const getUser = async (email: string) => {
     return {};
   }
 };
+
+export const updateUserForms = async (email: string, forms: string[]) => {
+  try {
+    await setDoc(doc(firestore, "users", email), { forms }, { merge: true });
+    console.log("firebase | admin | updateUserForms");
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};

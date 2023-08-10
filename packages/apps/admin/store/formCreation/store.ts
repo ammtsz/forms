@@ -7,7 +7,7 @@ import {
 import { isOptionTypeField, isToggleTypeField, uuid } from "@forms/utils";
 
 import { FormCreationState, FormCreationStore } from "./types";
-import { postForm } from "@api/services/forms";
+import { postForm, updateUserForms } from "@api/services/forms";
 import { create } from "zustand";
 
 const INITIAL_STATE: FormCreationState = {
@@ -67,12 +67,20 @@ const store = create<FormCreationStore>((set, get) => ({
     get().setDependsOnOptions(field);
   },
 
-  createForm: async () => {
+  createUserForm: async (email, forms) => {
     const { fields, title, description } = get();
     const id = uuid();
-    const error = await postForm({ title, id, fields, description }, id);
 
-    return { hasError: !!error };
+    let hasError = false;
+
+    hasError = !!(await postForm({ title, id, fields, description }, id));
+
+    if (!hasError) {
+      const formsIds = forms ? [...forms, id] : [id];
+      hasError = !!(await updateUserForms(email, formsIds));
+    }
+
+    return { formId: id, hasError };
   },
 
   getField: (fieldId: string): FieldProps => {

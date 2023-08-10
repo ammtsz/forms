@@ -29,6 +29,10 @@ const store = create<FormsManagementStore>((set, get) => ({
     }));
   },
 
+  addCreatedForm: (form) => {
+    set(({ forms }) => ({ forms: [...forms, form] }));
+  },
+
   reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),
 }));
 

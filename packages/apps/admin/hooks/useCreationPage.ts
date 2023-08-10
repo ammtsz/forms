@@ -1,10 +1,5 @@
 "use client";
 
-import { useFormCreation } from "@store/formCreation";
-import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
-import { useRouter } from "next/navigation";
-import React, { useCallback, useRef, useState } from "react";
-
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
   FieldErrors,
@@ -13,23 +8,36 @@ import {
 } from "@forms/types/interfaces/field";
 import { Fields } from "@forms/utils";
 
+import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
+import { useFormCreation } from "@store/formCreation";
+import { useFormsManagement } from "@store/formsManagement";
+import { UserSession } from "@types";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useCallback, useRef, useState } from "react";
+
 const useCreationPage = () => {
   const [isLoading, setLoading] = useState(false);
   const [hasTitleError, setTitleError] = useState(false);
 
   const {
-    createForm,
+    createUserForm,
     updateTitle,
     updateDescription,
     setErrors,
     fields,
     title,
+    description,
   } = useFormCreation();
+
+  const { addCreatedForm } = useFormsManagement();
 
   const router = useRouter();
 
   const toast = useToast();
   const toastIdRef = useRef<ToastId>();
+
+  const { data: session } = useSession();
 
   const openToast = useCallback(
     (props: ToastProps) => {
@@ -110,34 +118,57 @@ const useCreationPage = () => {
       event.preventDefault();
       setLoading(true);
 
-      const errorMessage = validateForm();
+      const validationError = validateForm();
 
-      if (!errorMessage) {
-        const { hasError } = await createForm();
+      const user = session?.user as UserSession["user"];
 
-        if (!hasError) {
-          router.push("/");
-          openToast({
-            description: "Formulário criado com sucesso",
-            status: "success",
-          });
+      if (user) {
+        if (!validationError) {
+          const { hasError: hasCreationError, formId } = await createUserForm(
+            user.email as string,
+            user.forms
+          );
+
+          if (!hasCreationError) {
+            addCreatedForm({ title, id: formId, fields, description });
+            router.push("/");
+            openToast({
+              description: "Formulário criado com sucesso",
+              status: "success",
+            });
+          } else {
+            openToast({
+              description: "Erro ao criar o formulário. Tente novamente.",
+              status: "error",
+              duration: null,
+            });
+          }
         } else {
           openToast({
-            description: "Erro ao criar o formulário. Tente novamente.",
-            status: "error",
-            duration: null,
+            description: validationError,
+            status: "warning",
           });
         }
       } else {
         openToast({
-          description: errorMessage,
-          status: "warning",
+          description: "faça login para criar um formulário",
+          status: "error",
         });
       }
 
       setLoading(false);
     },
-    [validateForm, createForm, router, openToast]
+    [
+      validateForm,
+      createUserForm,
+      addCreatedForm,
+      openToast,
+      session?.user,
+      title,
+      fields,
+      description,
+      router,
+    ]
   );
 
   const handleTitle: React.ChangeEventHandler<HTMLInputElement> = useCallback(
