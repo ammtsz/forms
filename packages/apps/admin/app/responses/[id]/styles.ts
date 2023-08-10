@@ -1,7 +1,7 @@
 import { Flex, FlexProps } from "@chakra-ui/react";
 import styled, { StyledComponent } from "@emotion/styled";
 
-export const Container = styled.main`
+export const Container = styled(Flex)`
   display: flex;
   justify-content: center;
   flex-direction: column;

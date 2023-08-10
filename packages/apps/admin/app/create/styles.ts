@@ -1,7 +1,7 @@
 import { Flex, theme, FlexProps } from "@chakra-ui/react";
 import styled, { StyledComponent } from "@emotion/styled";
 
-export const Container = styled.main`
+export const Container = styled(Flex)`
   display: flex;
   background-color: ${theme.colors.whiteAlpha[900]};
   max-width: 1200px;

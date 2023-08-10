@@ -27,13 +27,41 @@ body {
 }
 
 .black_btn {
-  @apply rounded-lg border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center font-medium flex items-center justify-center;
+  @apply rounded-lg border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-black disabled:hover:text-white;
 }
 
 .primary_btn {
-  @apply rounded-lg border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center font-medium flex items-center justify-center;
+  @apply rounded-lg border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-primary disabled:hover:text-white;
 }
 
 .tertiary_btn {
-  @apply py-1.5 px-2 transition-all text-primary hover:text-gray-500 text-center font-medium flex items-center justify-center;
+  @apply py-1.5 px-2 transition-all text-primary hover:text-gray-500 text-center font-medium flex items-center justify-center disabled:opacity-50;
+}
+
+.btn_card {
+  @apply h-40 w-80 rounded-2xl shadow-md flex items-center justify-center p-4 leading-5 hover:opacity-80 font-bold;
+}
+
+.btn_card_back {
+  @apply h-40 w-80 rounded-2xl shadow-md flex p-4 flex-col;
+}
+
+.sub_btn_card {
+  @apply h-24 w-full bg-white hover:bg-gray-50 justify-center items-center rounded-2xl shadow-md flex p-4 font-bold text-center;
+}
+
+.black_scheme {
+  @apply bg-black text-white ;
+}
+
+.light_scheme {
+  @apply bg-gray-100 text-black hover:bg-gray-200;
+}
+
+.ellipsis {
+  @apply overflow-ellipsis whitespace-nowrap overflow-hidden;
+}
+
+.flex_center {
+  @apply flex items-center justify-center;
 }

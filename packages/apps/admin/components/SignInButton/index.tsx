@@ -12,7 +12,7 @@ interface SignInButtonProps {
 }
 
 const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
-  const { providers } = useSessionProvider();
+  const { googleProvider } = useSessionProvider();
 
   return session?.user ? (
     <div className="flex gap-4">
@@ -34,16 +34,13 @@ const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
       )}
     </div>
   ) : (
-    providers &&
-      Object.values(providers).map((provider) => (
-        <button
-          key={provider.name}
-          onClick={() => signIn(provider.id)}
-          className={isPrimary ? "tertiary_btn" : "primary_btn"}
-        >
-          Sign In
-        </button>
-      ))
+    <button
+      disabled={!googleProvider}
+      onClick={() => signIn(googleProvider && googleProvider.id)}
+      className={isPrimary ? "tertiary_btn" : "primary_btn"}
+    >
+      Sign In
+    </button>
   );
 };
 

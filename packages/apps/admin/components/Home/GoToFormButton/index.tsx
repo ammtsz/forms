@@ -20,14 +20,11 @@ const GoToFormButton: React.FC<GoToFormButtonProps> = ({
   }, []);
 
   return !isSelected ? (
-    <button
-      onClick={handleClick}
-      className="h-40 w-80 bg-gray-100 rounded-2xl shadow-md flex items-center justify-center p-8 leading-5 font-bold text-center hover:bg-gray-200"
-    >
+    <button onClick={handleClick} className="btn_card light_scheme">
       <p className="whitespace-break-spaces overflow-hidden">{title}</p>
     </button>
   ) : (
-    <div className="h-40 w-80 bg-gray-100 rounded-2xl shadow-md flex p-4 flex-col">
+    <div className="btn_card_back light_scheme">
       <div className="flex m-2 mt-0 gap-4">
         <i className="whitespace-nowrap overflow-hidden text-ellipsis">
           {title}
@@ -38,17 +35,14 @@ const GoToFormButton: React.FC<GoToFormButtonProps> = ({
       </div>
       <div className="flex gap-4 font-bold ">
         <Link
-          href={`https://form-response.vercel.app/${id}`}
+          href={`${process.env.NEXT_PUBLIC_FORMS_URL}/${id}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="h-24 w-full bg-white hover:bg-gray-50 justify-center items-center rounded-2xl shadow-md flex p-4 font-bold text-center"
+          className="sub_btn_card"
         >
           <p className="whitespace-break-spaces overflow-hidden">Ver form</p>
         </Link>
-        <Link
-          href={`/responses/${id}`}
-          className="h-24 w-full bg-white hover:bg-gray-50 justify-center items-center rounded-2xl shadow-md flex p-4 font-bold text-center"
-        >
+        <Link href={`/responses/${id}`} className="sub_btn_card">
           <p className="whitespace-break-spaces overflow-hidden">
             Ver respostas
           </p>

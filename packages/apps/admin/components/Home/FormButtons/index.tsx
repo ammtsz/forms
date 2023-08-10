@@ -35,18 +35,13 @@ const FormButtons: React.FC = () => {
   }, [loadForms, session]);
 
   return (
-    <div className="flex items-center gap-4">
-      <div className="flex items-center justify-center gap-4 flex-wrap">
-        <Link
-          href="/create"
-          className="h-40 w-80 bg-black text-white rounded-2xl shadow-md flex items-center justify-center hover:opacity-80 font-bold"
-        >
-          + Criar novo formulário
-        </Link>
-        {formsNames.map((form) => (
-          <GoToFormButton key={form.id} {...form} />
-        ))}
-      </div>
+    <div className="flex gap-4 flex-wrap justify-center">
+      <Link href="/create" className="btn_card black_scheme">
+        + Criar novo formulário
+      </Link>
+      {formsNames.map((form) => (
+        <GoToFormButton key={form.id} {...form} />
+      ))}
     </div>
   );
 };

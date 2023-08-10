@@ -9,10 +9,7 @@ import {
 import { useEffect, useState } from "react";
 
 interface SessionProviderReturn {
-  providers: Record<
-    LiteralUnion<BuiltInProviderType, string>,
-    ClientSafeProvider
-  > | null;
+  googleProvider?: ClientSafeProvider;
 }
 
 const useSessionProvider = (): SessionProviderReturn => {
@@ -32,7 +29,7 @@ const useSessionProvider = (): SessionProviderReturn => {
   }, []);
 
   return {
-    providers,
+    googleProvider: providers?.google,
   };
 };
 

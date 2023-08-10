@@ -52,7 +52,7 @@ const FormViewPage: React.FC = () => {
 
   return (
     <IsSignedIn>
-      <Container>
+      <Container as="main">
         <Flex gap={4} direction={["column", "column", "row"]} mb={8}>
           <SearchBar />
           <Flex justifyContent={"space-between"} gap={"0.5rem"} ml={"auto"}>

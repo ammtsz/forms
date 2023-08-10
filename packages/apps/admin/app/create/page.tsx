@@ -48,6 +48,7 @@ const FormCreationPage = () => {
   return (
     <IsSignedIn>
       <Container
+        as="main"
         borderRadius={["none", "none", "2xl"]}
         mx={[0, 5, 10, 10, "auto"]}
         my={[0, 0, 10]}
