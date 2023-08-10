@@ -1,7 +1,7 @@
 import { FormProps } from "@forms/types/interfaces/form";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 
-import { firestore } from "@/api/firebase";
+import { firestore } from "@api/firebase";
 import { User } from "@types";
 import {
   collection,

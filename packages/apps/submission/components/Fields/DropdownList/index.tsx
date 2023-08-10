@@ -1,9 +1,5 @@
 "use client";
 
-import { useFormSubmission } from "@/store/formSubmission";
-import { FormControl, FormErrorMessage, Select } from "@chakra-ui/react";
-import React from "react";
-
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
@@ -11,6 +7,9 @@ import useSingleOptions from "../hooks/useSingleOptions";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
+import { FormControl, FormErrorMessage, Select } from "@chakra-ui/react";
+import { useFormSubmission } from "@store/formSubmission";
+import React from "react";
 
 const DropdownListField: React.FC<
   MakeRequired<OptionsFieldProps, "options" | "optionOther">

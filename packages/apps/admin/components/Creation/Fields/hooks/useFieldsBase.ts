@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormCreation } from "@/store/formCreation";
+import { useFormCreation } from "@store/formCreation";
 import React, { useCallback } from "react";
 
 import { MakeOptional } from "@forms/types/global/makeOptional";

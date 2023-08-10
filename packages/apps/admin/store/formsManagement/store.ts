@@ -1,7 +1,6 @@
-import { getForms as getFormsFromDb } from "@/api/services/forms";
-import { create } from "zustand";
-
 import { FormsManagementState, FormsManagementStore } from "./types";
+import { getForms as getFormsFromDb } from "@api/services/forms";
+import { create } from "zustand";
 
 const INITIAL_STATE: FormsManagementState = {
   isLoading: false,

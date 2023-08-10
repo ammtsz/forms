@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormCreation } from "@/store/formCreation";
+import { useFormCreation } from "@store/formCreation";
 import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useRef, useState } from "react";

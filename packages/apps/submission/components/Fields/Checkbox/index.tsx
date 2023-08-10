@@ -1,15 +1,14 @@
 "use client";
 
-import { useFormSubmission } from "@/store/formSubmission";
-import { Flex } from "@chakra-ui/react";
-import React from "react";
-
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
 import useToggles from "../hooks/useToggles";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 import { Checkbox } from "./styles";
+import { Flex } from "@chakra-ui/react";
+import { useFormSubmission } from "@store/formSubmission";
+import React from "react";
 
 const CheckboxField: React.FC<BasicFieldProps> = ({
   id,

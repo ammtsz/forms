@@ -1,14 +1,13 @@
 "use client";
 
-import { useFormSubmission } from "@/store/formSubmission";
-import { Flex, FormLabel, Switch } from "@chakra-ui/react";
-import React from "react";
-
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
 import useToggles from "../hooks/useToggles";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
+import { Flex, FormLabel, Switch } from "@chakra-ui/react";
+import { useFormSubmission } from "@store/formSubmission";
+import React from "react";
 
 const SwitchField: React.FC<BasicFieldProps> = ({
   id,

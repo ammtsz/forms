@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormCreation } from "@/store/formCreation";
+import { useFormCreation } from "@store/formCreation";
 import { useCallback, useState } from "react";
 
 import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";

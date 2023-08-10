@@ -1,6 +1,6 @@
 "use client";
 
-import { useTableData } from "@/store/tableData";
+import { useTableData } from "@store/tableData";
 import { useDisclosure } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
 

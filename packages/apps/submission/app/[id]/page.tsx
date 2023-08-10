@@ -1,10 +1,10 @@
 "use client";
 
-import FormSubmission from "@/components/Form";
-import Loading from "@/components/Loading";
-import PageMessage from "@/components/PageMessage";
-import { useFormSubmission } from "@/store/formSubmission";
 import { Flex } from "@chakra-ui/react";
+import FormSubmission from "@components/Form";
+import Loading from "@components/Loading";
+import PageMessage from "@components/PageMessage";
+import { useFormSubmission } from "@store/formSubmission";
 import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 

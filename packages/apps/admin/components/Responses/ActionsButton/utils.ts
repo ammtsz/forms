@@ -1,4 +1,4 @@
-import { Status, StatusTypes } from "@/constants/status";
+import { Status, StatusTypes } from "@constants/status";
 
 import { ConfirmationTexts } from "../../ConfirmationModal";
 

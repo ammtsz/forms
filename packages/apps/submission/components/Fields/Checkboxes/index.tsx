@@ -1,9 +1,5 @@
 "use client";
 
-import { useFormSubmission } from "@/store/formSubmission";
-import { Checkbox, Stack } from "@chakra-ui/react";
-import React from "react";
-
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
@@ -11,6 +7,9 @@ import useMultiOptions from "../hooks/useMultiOptions";
 import useVisibleField from "../hooks/useVisibleField";
 import FieldHeader from "../Reusable/FieldHeader";
 import OtherOption from "../Reusable/OtherOption";
+import { Checkbox, Stack } from "@chakra-ui/react";
+import { useFormSubmission } from "@store/formSubmission";
+import React from "react";
 
 const CheckboxesField: React.FC<
   MakeRequired<OptionsFieldProps, "options" | "optionOther">
