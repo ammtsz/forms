@@ -1,10 +1,9 @@
 "use client";
 
 import useSessionProvider from "@hooks/useSessionProvider";
+import { UserSession } from "@types";
 import { signIn, signOut } from "next-auth/react";
 import Image from "next/image";
-
-import { UserSession } from "@app/api/auth/[...nextauth]/route";
 
 interface SignInButtonProps {
   session: UserSession | null;

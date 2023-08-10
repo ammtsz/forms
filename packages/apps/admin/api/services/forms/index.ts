@@ -1,4 +1,8 @@
+import { FormProps } from "@forms/types/interfaces/form";
+import { FormValuesProps } from "@forms/types/interfaces/formResponse";
+
 import { firestore } from "@/api/firebase";
+import { User } from "@types";
 import {
   collection,
   doc,
@@ -8,9 +12,6 @@ import {
   setDoc,
   where,
 } from "firebase/firestore";
-
-import { FormProps } from "@forms/types/interfaces/form";
-import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 
 export const getForm = async (id: string) => {
   try {
@@ -79,5 +80,27 @@ export const updateResponse = async (
     console.log("firebase | admin | updateResponse");
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const registerUser = async (user: User) => {
+  try {
+    await setDoc(doc(firestore, "users", user.id), user);
+
+    console.log("fireabase | auth | registerUser");
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getUser = async (email: string) => {
+  try {
+    const user = (await getDoc(doc(firestore, "users", email))).data();
+    console.log("firebase | auth | getUser");
+
+    return user;
+  } catch (error) {
+    console.error(error);
+    return {};
   }
 };

@@ -1,14 +1,7 @@
-import { getUser, registerUser } from "@/utils/database";
-import { Session } from "next-auth";
+import { getUser, registerUser } from "@api/services/forms";
+import { UserSession } from "@types";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
-
-export interface UserSession extends Session {
-  user?: Session["user"] & {
-    id?: string;
-    forms?: string[];
-  };
-}
 
 const handler = NextAuth({
   providers: [
