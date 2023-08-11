@@ -21,7 +21,7 @@ const CheckboxCell: React.FC<CheckboxCellProps> = ({ rowData }) => {
       <Checkbox
         isChecked={isRowChecked(rowData.id)}
         onChange={handleChange}
-        colorScheme="gray"
+        colorScheme="telegram"
       />
     </TableCell>
   );

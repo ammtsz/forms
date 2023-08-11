@@ -30,7 +30,7 @@ const DrawerBody: React.FC<DrawerBodyProps> = ({
       <Flex direction={"column"} py={4} gap={4}>
         <Checkbox
           onChange={handleToggleAll}
-          colorScheme="blackAlpha"
+          colorScheme="telegram"
           mb={4}
           isChecked={isAllChecked()}
         >
@@ -40,7 +40,7 @@ const DrawerBody: React.FC<DrawerBodyProps> = ({
         </Checkbox>
         {fields.map((field, index) => (
           <Checkbox
-            colorScheme="gray"
+            colorScheme="telegram"
             key={field.id}
             data-id={field.id}
             disabled={!index}

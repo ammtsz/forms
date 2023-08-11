@@ -95,12 +95,12 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
           <Radio
             value="today"
             gridArea={"1 / 1 / 2 / 1"}
-            colorScheme="blackAlpha"
+            colorScheme="telegram"
           />
           <Radio
             value="calendar"
             gridArea={"3 / 1 / 3 / 1"}
-            colorScheme="blackAlpha"
+            colorScheme="telegram"
           />
         </RadioGroup>
         {GRID_AREAS.map((area, index) => {

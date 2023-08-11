@@ -54,14 +54,14 @@ const CheckboxesField: React.FC<
             key={option.value}
             onChange={handleChange(option.value)}
             isChecked={isChecked(option.value)}
-            colorScheme="blackAlpha"
+            colorScheme="telegram"
           >
             {option.label}
           </Checkbox>
         ))}
         {optionOther && (
           <Checkbox
-            colorScheme="blackAlpha"
+            colorScheme="telegram"
             isChecked={isOthersChecked()}
             onChange={handleChange("others")}
           >

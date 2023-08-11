@@ -53,7 +53,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <ModalFooter>
           <Button
             aria-label="Cancelar ação"
-            colorScheme="gray"
+            colorScheme="telegram"
             mr={3}
             onClick={onClose}
           >

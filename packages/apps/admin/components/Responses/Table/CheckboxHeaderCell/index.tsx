@@ -38,7 +38,7 @@ const CheckboxHeaderCell: React.FC<CheckboxHeaderCellProps> = ({
         isChecked={isAllChecked()}
         isIndeterminate={isIndeterminate()}
         onChange={handleChange}
-        colorScheme="gray"
+        colorScheme="telegram"
       />
     </TableCell>
   );

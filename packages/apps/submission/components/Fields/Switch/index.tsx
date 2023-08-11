@@ -34,7 +34,7 @@ const SwitchField: React.FC<BasicFieldProps> = ({
         onChange={handleChange}
         isChecked={initialValue === "true"}
         mt={1}
-        colorScheme="gray"
+        colorScheme="telegram"
       />
       <FormLabel htmlFor={id} ml={2}>
         <FieldHeader

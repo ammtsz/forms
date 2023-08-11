@@ -67,7 +67,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
         size={["sm", "sm", "md"]}
         value={option.value}
         onChange={(e) => handleOptionsSelect(e.target.checked, option.value)}
-        colorScheme="blackAlpha"
+        colorScheme="telegram"
       >
         {option.label}
       </Checkbox>
