@@ -11,15 +11,12 @@ module.exports = {
     '<rootDir>/**/__tests__/**/*.{ts,tsx}',
     '<rootDir>/**/*.{spec,test}.{ts,tsx}'
   ],
-  testPathIgnorePatterns: ['node_modules', 'dist', 'coverage', 'build(.*)'],
+  testPathIgnorePatterns: ['node_modules', 'dist', 'coverage', 'build(.*)', ".next"],
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{ts,tsx}',
     '!<rootDir>/src/**/*.mock.{ts,tsx}',
     '!<rootDir>/src/**/styles.{ts,tsx}',
-    '!<rootDir>/src/bootloader.tsx',
     '!<rootDir>/src/index.{ts,tsx}',
-    '!<rootDir>/src/routes/appRoutes.ts',
-    '!<rootDir>/src/setupTests.ts'
   ],
   coveragePathIgnorePatterns: ['node_modules', 'dist', 'styles.ts'],
   coverageReporters: [

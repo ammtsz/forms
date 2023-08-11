@@ -20,14 +20,14 @@
   },
   "include": [
     "./src",
-    "../../commons/types",
-    "../environments/environments.d.ts"
+    "../../commons/types"
   ],
   "exclude": [
     "**/*.spec.ts",
     "**/*.spec.tsx",
     "**/*.mock.ts",
     "**/*.mock.tsx",
+    ".next",
     "build",
     "dist",
     "node_modules"

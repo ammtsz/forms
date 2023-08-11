@@ -22,7 +22,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
-    "@forms/environments": "*",
     "@forms/eslint-config": "*",
     "@forms/test": "*",
     "@forms/tsconfig": "*",
@@ -34,6 +33,7 @@
     "husky": "^8.0.3",
     "kill-port": "^2.0.1",
     "lerna": "^7.1.0",
+    "lint-staged": "^13.2.3",
     "next": "13.4.12",
     "typescript": "5.0.4"
   },
@@ -42,5 +42,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }
