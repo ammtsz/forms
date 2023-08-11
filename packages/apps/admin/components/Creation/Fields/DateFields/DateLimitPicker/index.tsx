@@ -1,6 +1,14 @@
 "use client";
 
 import {
+  GRID_AREAS,
+  INPUT_PROPS,
+  LABELS,
+  getLimit,
+  getSelectedDate,
+} from "../utils";
+import { useDateLimitPicker } from "./hooks/useDateLimitPicker";
+import {
   Input,
   Flex,
   FormLabel,
@@ -16,17 +24,9 @@ import {
   RadioGroup,
   Button,
   useMediaQuery,
+  FormControl,
 } from "@chakra-ui/react";
 import React from "react";
-
-import {
-  GRID_AREAS,
-  INPUT_PROPS,
-  LABELS,
-  getLimit,
-  getSelectedDate,
-} from "../utils";
-import { useDateLimitPicker } from "./hooks/useDateLimitPicker";
 
 interface DateLimitPickerProps {
   min?: string;
@@ -114,20 +114,22 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                   Hoje
                 </Kbd>
                 <Text fontWeight={600}>+</Text>
-                <NumberInput
-                  bg="white"
-                  isDisabled={dateType !== "today"}
-                  max={getLimit("max", dateLimitType, date)}
-                  min={getLimit("min", dateLimitType, date)}
-                  onChange={handleDaysChange(dateLimitType)}
-                  size={"sm"}
-                >
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
+                <FormControl isInvalid={dateType === "today" && !max && !min}>
+                  <NumberInput
+                    bg="white"
+                    isDisabled={dateType !== "today"}
+                    max={getLimit("max", dateLimitType, date)}
+                    min={getLimit("min", dateLimitType, date)}
+                    onChange={handleDaysChange(dateLimitType)}
+                    size={"sm"}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </FormControl>
                 <Kbd fontSize="md" opacity={dateType === "today" ? 1 : 0.4}>
                   dias
                 </Kbd>

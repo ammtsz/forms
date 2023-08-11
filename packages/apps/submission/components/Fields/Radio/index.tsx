@@ -48,7 +48,7 @@ const RadioField: React.FC<
               {option.label}
             </Radio>
           ))}
-          {optionOther && <Radio value="other">outro</Radio>}
+          {optionOther.isVisible && <Radio value="other">outro</Radio>}
         </Flex>
       </RadioGroup>
       {value === "other" && (
