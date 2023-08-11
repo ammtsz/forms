@@ -1,10 +1,7 @@
-import {
-  BasicFieldProps,
-  DateFieldProps,
-} from "@../../commons/types/interfaces/field";
 import { ColumnShape } from "react-base-table";
 import { create } from "zustand";
 
+import { BasicFieldProps, DateFieldProps } from "@forms/types/interfaces/field";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 import { Fields } from "@forms/utils";
 
