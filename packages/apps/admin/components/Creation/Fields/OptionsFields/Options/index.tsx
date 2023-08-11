@@ -1,14 +1,6 @@
 "use client";
 
 import {
-  FieldsType,
-  OptionOtherProps,
-  OptionProps,
-} from "@forms/types/interfaces/field";
-
-import FieldIcon from "../../FieldIcon";
-import { ValueProps } from "../../hooks/useOptions";
-import {
   Input,
   Flex,
   Button,
@@ -16,9 +8,19 @@ import {
   FormControl,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import Tooltip from "@components/Tooltip";
 import React, { useCallback } from "react";
 import { X as XIcon } from "react-feather";
+
+import {
+  FieldsType,
+  OptionOtherProps,
+  OptionProps,
+} from "@forms/types/interfaces/field";
+
+import Tooltip from "@app/components/Tooltip";
+
+import FieldIcon from "../../FieldIcon";
+import { ValueProps } from "../../hooks/useOptions";
 
 interface FieldOptionsProps {
   handleAddOption: React.MouseEventHandler<HTMLButtonElement>;

@@ -1,19 +1,21 @@
 "use client";
 
-import { Container } from "./styles";
 import { Flex } from "@chakra-ui/react";
-import IsSignedIn from "@components/IsSignedIn";
-import ActionsButton from "@components/Responses/ActionsButton";
-import ColumnsFilter from "@components/Responses/ColumnsFilter";
-import CopyButton from "@components/Responses/CopyButton";
-import SearchBar from "@components/Responses/SearchBar";
-import Table from "@components/Responses/Table";
-import Tabs from "@components/Responses/Tabs";
-import { useTableData } from "@store/tableData";
-import { UserSession } from "@types";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+
+import IsSignedIn from "@app/components/IsSignedIn";
+import ActionsButton from "@app/components/Responses/ActionsButton";
+import ColumnsFilter from "@app/components/Responses/ColumnsFilter";
+import CopyButton from "@app/components/Responses/CopyButton";
+import SearchBar from "@app/components/Responses/SearchBar";
+import Table from "@app/components/Responses/Table";
+import Tabs from "@app/components/Responses/Tabs";
+import { useTableData } from "@app/store/tableData";
+import { UserSession } from "@app/types";
+
+import { Container } from "./styles";
 
 const FormViewPage: React.FC = () => {
   const [isValidForm, setValidForm] = useState(true);

@@ -1,6 +1,7 @@
-import { firestore } from "@api/firebase";
-import { User } from "@types";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+
+import { firestore } from "@app/api/firebase";
+import { User } from "@app/types";
 
 export const registerUser = async (user: User) => {
   try {

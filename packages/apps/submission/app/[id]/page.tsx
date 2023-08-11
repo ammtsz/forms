@@ -1,12 +1,13 @@
 "use client";
 
 import { Flex } from "@chakra-ui/react";
-import FormSubmission from "@components/Form";
-import Loading from "@components/Loading";
-import PageMessage from "@components/PageMessage";
-import { useFormSubmission } from "@store/formSubmission";
 import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
+
+import FormSubmission from "@app/components/Form";
+import Loading from "@app/components/Loading";
+import PageMessage from "@app/components/PageMessage";
+import { useFormSubmission } from "@app/store/formSubmission";
 
 const FormSubmissionPage = () => {
   const [isValidForm, setValidForm] = useState(true);

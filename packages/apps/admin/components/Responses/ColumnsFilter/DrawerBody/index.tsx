@@ -6,7 +6,8 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
-import { useTableData } from "@store/tableData";
+
+import { useTableData } from "@app/store/tableData";
 
 interface DrawerBodyProps {
   checkedColumns: { [key: string]: boolean };

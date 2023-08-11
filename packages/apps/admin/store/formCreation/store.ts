@@ -1,3 +1,5 @@
+import { create } from "zustand";
+
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
   FieldErrors,
@@ -6,10 +8,10 @@ import {
 } from "@forms/types/interfaces/field";
 import { isOptionTypeField, isToggleTypeField, uuid } from "@forms/utils";
 
+import { postForm } from "@app/api/services/forms";
+import { updateUserForms } from "@app/api/services/user";
+
 import { FormCreationState, FormCreationStore } from "./types";
-import { postForm } from "@api/services/forms";
-import { updateUserForms } from "@api/services/user";
-import { create } from "zustand";
 
 const INITIAL_STATE: FormCreationState = {
   isLoading: false,

@@ -1,14 +1,6 @@
 "use client";
 
 import {
-  GRID_AREAS,
-  INPUT_PROPS,
-  LABELS,
-  getLimit,
-  getSelectedDate,
-} from "../utils";
-import { useDateLimitPicker } from "./hooks/useDateLimitPicker";
-import {
   Input,
   Flex,
   FormLabel,
@@ -27,6 +19,15 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 import React from "react";
+
+import {
+  GRID_AREAS,
+  INPUT_PROPS,
+  LABELS,
+  getLimit,
+  getSelectedDate,
+} from "../utils";
+import { useDateLimitPicker } from "./hooks/useDateLimitPicker";
 
 interface DateLimitPickerProps {
   min?: string;

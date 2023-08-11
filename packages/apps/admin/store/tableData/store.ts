@@ -1,22 +1,24 @@
-import { FormValuesProps } from "@forms/types/interfaces/formResponse";
-import { Fields } from "@forms/utils";
-
-import { TableDataState, TableDataStore } from "./types";
-import { filterBySearchTerm, filterByTab, processResponsesData } from "./utils";
 import {
   BasicFieldProps,
   DateFieldProps,
 } from "@../../commons/types/interfaces/field";
-import { getForm as getFormFromDb } from "@api/services/forms";
+import { ColumnShape } from "react-base-table";
+import { create } from "zustand";
+
+import { FormValuesProps } from "@forms/types/interfaces/formResponse";
+import { Fields } from "@forms/utils";
+
+import { getForm as getFormFromDb } from "@app/api/services/forms";
 import {
   getFormResponses as getFormResponsesFromDb,
   updateResponse,
-} from "@api/services/responses";
-import { SortOrder } from "@constants/order";
-import { Status } from "@constants/status";
-import { PAGE_SIZE } from "@constants/table";
-import { ColumnShape } from "react-base-table";
-import { create } from "zustand";
+} from "@app/api/services/responses";
+import { SortOrder } from "@app/constants/order";
+import { Status } from "@app/constants/status";
+import { PAGE_SIZE } from "@app/constants/table";
+
+import { TableDataState, TableDataStore } from "./types";
+import { filterBySearchTerm, filterByTab, processResponsesData } from "./utils";
 
 const INITIAL_STATE: TableDataState = {
   errors: null,

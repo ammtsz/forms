@@ -10,9 +10,10 @@ import {
   ModalCloseButton,
   Button,
 } from "@chakra-ui/react";
-import { StatusTypes } from "@constants/status";
-import { useCheckedRows } from "@store/checkedRows";
 import { useCallback } from "react";
+
+import { StatusTypes } from "@app/constants/status";
+import { useCheckedRows } from "@app/store/checkedRows";
 
 export interface ConfirmationTexts {
   action: StatusTypes;

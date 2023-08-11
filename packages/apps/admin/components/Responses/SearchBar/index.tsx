@@ -1,11 +1,12 @@
 "use client";
 
 import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
-import { useTableData } from "@store/tableData";
 import { useCallback } from "react";
 import { Search as SearchIcon } from "react-feather";
 
 import { debounce } from "@forms/utils";
+
+import { useTableData } from "@app/store/tableData";
 
 const SearchBar: React.FC = () => {
   const { filterTableData } = useTableData();

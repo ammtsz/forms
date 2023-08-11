@@ -15,7 +15,7 @@ module.exports = {
     "/**/types",
     "build",
     "craco.config.js",
-    "environments"
+    "environments",
   ],
   extends: [
     "standard",
@@ -52,10 +52,15 @@ module.exports = {
       },
     ],
     "import-helpers/order-imports": [
-      "warn",
+      "error",
       {
         newlinesBetween: "always",
-        groups: ["module", "/^@forms/", "/^@app/", "/^@*/", ["parent", "sibling", "index"]],
+        groups: [
+          "module",
+          "/^@forms/",
+          "/^@app/",
+          ["parent", "sibling", "index"],
+        ],
         alphabetize: { order: "asc", ignoreCase: true },
       },
     ],

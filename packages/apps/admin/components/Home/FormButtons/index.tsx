@@ -1,11 +1,12 @@
 "use client";
 
-import GoToFormButton from "@components/Home/GoToFormButton";
-import { useFormsManagement } from "@store/formsManagement";
-import { UserSession } from "@types";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+
+import GoToFormButton from "@app/components/Home/GoToFormButton";
+import { useFormsManagement } from "@app/store/formsManagement";
+import { UserSession } from "@app/types";
 
 const FormButtons: React.FC = () => {
   const [formsNames, setFormsNames] = useState<{ title: string; id: string }[]>(

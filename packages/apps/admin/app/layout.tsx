@@ -1,6 +1,7 @@
-import Navbar from "@components/Navbar";
-import Providers from "@components/Providers";
 import type { Metadata } from "next";
+
+import Navbar from "@app/components/Navbar";
+import Providers from "@app/components/Providers";
 
 import "./globals.css";
 

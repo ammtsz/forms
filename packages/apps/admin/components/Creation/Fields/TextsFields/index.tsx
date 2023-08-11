@@ -1,11 +1,12 @@
 "use client";
 
 import { Textarea, Input } from "@chakra-ui/react";
-import { useFormCreation } from "@store/formCreation";
 import React, { useState } from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { Fields, getPrefixFromString } from "@forms/utils";
+
+import { useFormCreation } from "@app/store/formCreation";
 
 import FieldBase from "../FieldBase";
 import FieldFooter from "../FieldFooter";

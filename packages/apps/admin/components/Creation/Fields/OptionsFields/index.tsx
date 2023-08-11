@@ -1,10 +1,11 @@
 "use client";
 
-import { useFormCreation } from "@store/formCreation";
 import React from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
+
+import { useFormCreation } from "@app/store/formCreation";
 
 import FieldBase from "../FieldBase";
 import FieldFooter from "../FieldFooter";

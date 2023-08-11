@@ -1,9 +1,10 @@
 "use client";
 
 import { Checkbox } from "@chakra-ui/react";
-import { TableCell } from "@components/Responses/Table/styles";
-import { useCheckedRows } from "@store/checkedRows";
 import React, { useCallback } from "react";
+
+import { TableCell } from "@app/components/Responses/Table/styles";
+import { useCheckedRows } from "@app/store/checkedRows";
 
 interface CheckboxCellProps {
   rowData: { id: string };

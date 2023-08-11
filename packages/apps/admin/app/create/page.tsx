@@ -1,8 +1,5 @@
 "use client";
 
-import { Fields, getPrefixFromString } from "@forms/utils";
-
-import { Container, Form } from "./styles";
 import {
   Input,
   Flex,
@@ -11,15 +8,20 @@ import {
   FormControl,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import AddFieldButton from "@components/Creation/AddFieldButton";
-import Date from "@components/Creation/Fields/DateFields";
-import Options from "@components/Creation/Fields/OptionsFields";
-import Texts from "@components/Creation/Fields/TextsFields";
-import Toggles from "@components/Creation/Fields/ToggleFields";
-import IsSignedIn from "@components/IsSignedIn";
-import useCreationPage from "@hooks/useCreationPage";
-import { useFormCreation } from "@store/formCreation";
 import React from "react";
+
+import { Fields, getPrefixFromString } from "@forms/utils";
+
+import AddFieldButton from "@app/components/Creation/AddFieldButton";
+import Date from "@app/components/Creation/Fields/DateFields";
+import Options from "@app/components/Creation/Fields/OptionsFields";
+import Texts from "@app/components/Creation/Fields/TextsFields";
+import Toggles from "@app/components/Creation/Fields/ToggleFields";
+import IsSignedIn from "@app/components/IsSignedIn";
+import useCreationPage from "@app/hooks/useCreationPage";
+import { useFormCreation } from "@app/store/formCreation";
+
+import { Container, Form } from "./styles";
 
 const fieldComponents = {
   [Fields.text]: Texts,

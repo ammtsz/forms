@@ -1,5 +1,9 @@
 "use client";
 
+import { Button, Heading, Text, useDisclosure } from "@chakra-ui/react";
+import React from "react";
+
+import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
   BasicFieldProps,
   DateFieldProps,
@@ -8,21 +12,19 @@ import {
 } from "@forms/types/interfaces/field";
 import { Fields } from "@forms/utils";
 
+import CheckboxField from "@app/components/Fields/Checkbox";
+import CheckboxesField from "@app/components/Fields/Checkboxes";
+import DateField from "@app/components/Fields/Date";
+import DropdownListField from "@app/components/Fields/DropdownList";
+import RadioField from "@app/components/Fields/Radio";
+import SwitchField from "@app/components/Fields/Switch";
+import TextField from "@app/components/Fields/Text";
+import TextareaField from "@app/components/Fields/Textarea";
+import useSubmitForm from "@app/hooks/useSubmitForm";
+import { useFormSubmission } from "@app/store/formSubmission";
+
 import FeedbackModal from "../FeedbackModal";
 import { Form, Field } from "./styles";
-import { MakeRequired } from "@../../commons/types/global/makeRequired";
-import { Button, Heading, Text, useDisclosure } from "@chakra-ui/react";
-import CheckboxField from "@components/Fields/Checkbox";
-import CheckboxesField from "@components/Fields/Checkboxes";
-import DateField from "@components/Fields/Date";
-import DropdownListField from "@components/Fields/DropdownList";
-import RadioField from "@components/Fields/Radio";
-import SwitchField from "@components/Fields/Switch";
-import TextField from "@components/Fields/Text";
-import TextareaField from "@components/Fields/Textarea";
-import useSubmitForm from "@hooks/useSubmitForm";
-import { useFormSubmission } from "@store/formSubmission";
-import React from "react";
 
 type OptionFieldResponse = MakeRequired<
   OptionsFieldProps,

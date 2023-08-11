@@ -1,8 +1,5 @@
 "use client";
 
-import { DependsOnProps, OptionProps } from "@forms/types/interfaces/field";
-
-import useFieldDependsOn from "./hooks/useFieldsDependsOn";
 import {
   Select,
   FormControl,
@@ -14,7 +11,12 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
-import { useFormCreation } from "@store/formCreation";
+
+import { DependsOnProps, OptionProps } from "@forms/types/interfaces/field";
+
+import { useFormCreation } from "@app/store/formCreation";
+
+import useFieldDependsOn from "./hooks/useFieldsDependsOn";
 
 interface FieldDependsOnProps {
   visible: boolean;

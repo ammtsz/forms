@@ -1,7 +1,7 @@
 "use client";
 
-import FormButtons from "@components/Home/FormButtons";
-import IsSignedIn from "@components/IsSignedIn";
+import FormButtons from "@app/components/Home/FormButtons";
+import IsSignedIn from "@app/components/IsSignedIn";
 
 const Home: React.FC = () => {
   return (

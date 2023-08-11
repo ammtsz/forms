@@ -1,12 +1,13 @@
 "use client";
 
 import { Button, Flex } from "@chakra-ui/react";
-import { FIELDS_LABEL } from "@constants/fieldsLabels";
-import { useFormCreation } from "@store/formCreation";
 import { useCallback, useState } from "react";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { uuid } from "@forms/utils";
+
+import { FIELDS_LABEL } from "@app/constants/fieldsLabels";
+import { useFormCreation } from "@app/store/formCreation";
 
 const AddFieldButton: React.FC = () => {
   const [isSelected, setSelected] = useState<boolean>(false);

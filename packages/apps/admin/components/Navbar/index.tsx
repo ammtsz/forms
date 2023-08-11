@@ -1,10 +1,11 @@
 "use client";
 
-import SignInButton from "../SignInButton";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Loader as HomeIcon } from "react-feather";
+
+import SignInButton from "../SignInButton";
 
 const Navbar: React.FC = () => {
   const { data: session } = useSession();

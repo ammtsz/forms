@@ -1,7 +1,8 @@
-import { getUser, registerUser } from "@api/services/user";
-import { UserSession } from "@types";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
+
+import { getUser, registerUser } from "@app/api/services/user";
+import { UserSession } from "@app/types";
 
 const handler = NextAuth({
   providers: [

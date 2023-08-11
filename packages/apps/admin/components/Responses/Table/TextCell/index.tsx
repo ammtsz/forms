@@ -1,8 +1,6 @@
 "use client";
 
 import { Text } from "@chakra-ui/react";
-import { TableCell } from "@components/Responses/Table/styles";
-import Tooltip from "@components/Tooltip";
 import React from "react";
 
 import {
@@ -10,6 +8,9 @@ import {
   getPrefixFromString,
   isToggleTypeField,
 } from "@forms/utils";
+
+import { TableCell } from "@app/components/Responses/Table/styles";
+import Tooltip from "@app/components/Tooltip";
 
 interface TextCellProps {
   text: string;

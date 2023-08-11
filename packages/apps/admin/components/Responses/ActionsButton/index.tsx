@@ -1,7 +1,5 @@
 "use client";
 
-import ConfirmationModal, { ConfirmationTexts } from "../../ConfirmationModal";
-import { ACTIONS, getConfirmationTexts } from "./utils";
 import {
   Menu,
   MenuButton,
@@ -9,10 +7,14 @@ import {
   MenuItem,
   useDisclosure,
 } from "@chakra-ui/react";
-import { StatusTypes } from "@constants/status";
-import { useCheckedRows } from "@store/checkedRows";
-import { useTableData } from "@store/tableData";
 import { useCallback, useState } from "react";
+
+import { StatusTypes } from "@app/constants/status";
+import { useCheckedRows } from "@app/store/checkedRows";
+import { useTableData } from "@app/store/tableData";
+
+import ConfirmationModal, { ConfirmationTexts } from "../../ConfirmationModal";
+import { ACTIONS, getConfirmationTexts } from "./utils";
 
 const ActionsButton: React.FC = () => {
   const [texts, setAction] = useState<ConfirmationTexts>();

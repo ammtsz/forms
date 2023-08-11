@@ -1,7 +1,5 @@
 "use client";
 
-import DrawerBody from "./DrawerBody";
-import useColumnsFilter from "./hooks";
 import {
   Drawer,
   DrawerFooter,
@@ -11,6 +9,9 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react";
 import { Filter as FilterIcon } from "react-feather";
+
+import DrawerBody from "./DrawerBody";
+import useColumnsFilter from "./hooks";
 
 const ColumnsFilter: React.FC = () => {
   const {
@@ -35,7 +36,7 @@ const ColumnsFilter: React.FC = () => {
       </button>
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent minW="min(500px, 100vw)">
           <DrawerCloseButton />
           <DrawerHeader borderBottomWidth="1px">Filtrar colunas</DrawerHeader>
           <DrawerBody

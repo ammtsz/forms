@@ -1,7 +1,8 @@
-import CheckboxCell from "@components/Responses/Table/CheckboxCell";
-import CheckboxHeaderCell from "@components/Responses/Table/CheckboxHeaderCell";
-import { CellProps } from "@components/Responses/Table/types";
 import { ColumnShape } from "react-base-table";
+
+import CheckboxCell from "@app/components/Responses/Table/CheckboxCell";
+import CheckboxHeaderCell from "@app/components/Responses/Table/CheckboxHeaderCell";
+import { CellProps } from "@app/components/Responses/Table/types";
 
 import CellsByType from "./CellsByType";
 import HeaderCell from "./HeaderCell";

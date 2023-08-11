@@ -9,11 +9,12 @@ import {
   Textarea,
   useEditableControls,
 } from "@chakra-ui/react";
-import { TableCell } from "@components/Responses/Table/styles";
-import Tooltip from "@components/Tooltip";
-import { useTableData } from "@store/tableData";
 import React, { useCallback, useEffect, useState } from "react";
 import { Check as CheckIcon, Edit as EditIcon } from "react-feather";
+
+import { TableCell } from "@app/components/Responses/Table/styles";
+import Tooltip from "@app/components/Tooltip";
+import { useTableData } from "@app/store/tableData";
 
 interface EditableCellProps {
   responseId: string;

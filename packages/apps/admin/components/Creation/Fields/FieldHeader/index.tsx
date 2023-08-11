@@ -10,11 +10,12 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
-import { FIELDS_LABEL } from "@constants/fieldsLabels";
 import React, { useState } from "react";
 import { MoreHorizontal as MoreIcon } from "react-feather";
 
 import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
+
+import { FIELDS_LABEL } from "@app/constants/fieldsLabels";
 
 import FieldDependsOn from "../FIeldDependsOn";
 

@@ -1,9 +1,10 @@
 "use client";
 
-import Feedback from "@components/Feedback";
-import SignInButton from "@components/SignInButton";
 import { useSession } from "next-auth/react";
 import React from "react";
+
+import Feedback from "@app/components/Feedback";
+import SignInButton from "@app/components/SignInButton";
 
 const IsSignedIn: React.FC<{ children: React.ReactElement }> = ({
   children,
