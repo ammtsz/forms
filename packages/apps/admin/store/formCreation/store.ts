@@ -7,7 +7,8 @@ import {
 import { isOptionTypeField, isToggleTypeField, uuid } from "@forms/utils";
 
 import { FormCreationState, FormCreationStore } from "./types";
-import { postForm, updateUserForms } from "@api/services/forms";
+import { postForm } from "@api/services/forms";
+import { updateUserForms } from "@api/services/user";
 import { create } from "zustand";
 
 const INITIAL_STATE: FormCreationState = {

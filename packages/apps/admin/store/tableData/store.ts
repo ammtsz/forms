@@ -7,11 +7,11 @@ import {
   BasicFieldProps,
   DateFieldProps,
 } from "@../../commons/types/interfaces/field";
+import { getForm as getFormFromDb } from "@api/services/forms";
 import {
   getFormResponses as getFormResponsesFromDb,
-  getForm as getFormFromDb,
   updateResponse,
-} from "@api/services/forms";
+} from "@api/services/responses";
 import { SortOrder } from "@constants/order";
 import { Status } from "@constants/status";
 import { PAGE_SIZE } from "@constants/table";

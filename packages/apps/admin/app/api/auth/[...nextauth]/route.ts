@@ -1,4 +1,4 @@
-import { getUser, registerUser } from "@api/services/forms";
+import { getUser, registerUser } from "@api/services/user";
 import { UserSession } from "@types";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
