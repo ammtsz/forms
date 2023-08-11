@@ -35,6 +35,7 @@ const CheckboxField: React.FC<BasicFieldProps> = ({
         onChange={handleChange}
         isChecked={initialValue === "true"}
         fontSize="lg"
+        colorScheme="blackAlpha"
       >
         <FieldHeader
           label={label}

@@ -44,11 +44,19 @@ const RadioField: React.FC<
       <RadioGroup onChange={handleChange} mt={2} value={value}>
         <Flex flexDirection="column" gap={1}>
           {options.map((option) => (
-            <Radio key={option.value} value={option.value}>
+            <Radio
+              key={option.value}
+              value={option.value}
+              colorScheme="blackAlpha"
+            >
               {option.label}
             </Radio>
           ))}
-          {optionOther.isVisible && <Radio value="other">outro</Radio>}
+          {optionOther.isVisible && (
+            <Radio value="other" colorScheme="blackAlpha">
+              outro
+            </Radio>
+          )}
         </Flex>
       </RadioGroup>
       {value === "other" && (

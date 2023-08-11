@@ -1,6 +1,14 @@
 "use client";
 
 import {
+  FieldsType,
+  OptionOtherProps,
+  OptionProps,
+} from "@forms/types/interfaces/field";
+
+import FieldIcon from "../../FieldIcon";
+import { ValueProps } from "../../hooks/useOptions";
+import {
   Input,
   Flex,
   Button,
@@ -11,15 +19,6 @@ import {
 import Tooltip from "@components/Tooltip";
 import React, { useCallback } from "react";
 import { X as XIcon } from "react-feather";
-
-import {
-  FieldsType,
-  OptionOtherProps,
-  OptionProps,
-} from "@forms/types/interfaces/field";
-
-import FieldIcon from "../../FieldIcon";
-import { ValueProps } from "../../hooks/useOptions";
 
 interface FieldOptionsProps {
   handleAddOption: React.MouseEventHandler<HTMLButtonElement>;
@@ -101,7 +100,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
           <Flex alignItems="center">
             <FieldIcon type={type} />
             <Text mt="3" mr="auto" fontSize={["xs", "xs", "sm"]}>
-              Outros
+              Outro
             </Text>
           </Flex>
           <Flex>
@@ -112,7 +111,9 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               mt="1"
               name="optionOther"
               onChange={handleOtherOption}
-              placeholder="Adicione um placeholder para o campo outros (opcional)"
+              placeholder={
+                "Adicione um placeholder para o campo \u0022outro\u0022 (opcional)"
+              }
               value={(value.optionOther as OptionOtherProps).placeholder}
             />
             <Tooltip hasArrow label="Apagar opção">
@@ -137,7 +138,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
           mt={[1, 1, 3]}
           onClick={toggleOtherOption}
         >
-          {"+ Adicionar campo \u0022outros\u0022"}
+          {"+ Adicionar campo \u0022outro\u0022"}
         </Button>
       )}
     </>

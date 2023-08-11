@@ -92,8 +92,16 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
           onChange={handleRadio}
           value={dateType}
         >
-          <Radio value="today" gridArea={"1 / 1 / 2 / 1"} />
-          <Radio value="calendar" gridArea={"3 / 1 / 3 / 1"} />
+          <Radio
+            value="today"
+            gridArea={"1 / 1 / 2 / 1"}
+            colorScheme="blackAlpha"
+          />
+          <Radio
+            value="calendar"
+            gridArea={"3 / 1 / 3 / 1"}
+            colorScheme="blackAlpha"
+          />
         </RadioGroup>
         {GRID_AREAS.map((area, index) => {
           const dateLimitType = INPUT_PROPS[index].name;

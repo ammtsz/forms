@@ -1,5 +1,8 @@
 "use client";
 
+import { DependsOnProps, OptionProps } from "@forms/types/interfaces/field";
+
+import useFieldDependsOn from "./hooks/useFieldsDependsOn";
 import {
   Select,
   FormControl,
@@ -12,10 +15,6 @@ import {
   RadioGroup,
 } from "@chakra-ui/react";
 import { useFormCreation } from "@store/formCreation";
-
-import { DependsOnProps, OptionProps } from "@forms/types/interfaces/field";
-
-import useFieldDependsOn from "./hooks/useFieldsDependsOn";
 
 interface FieldDependsOnProps {
   visible: boolean;
@@ -68,6 +67,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
         size={["sm", "sm", "md"]}
         value={option.value}
         onChange={(e) => handleOptionsSelect(e.target.checked, option.value)}
+        colorScheme="blackAlpha"
       >
         {option.label}
       </Checkbox>
