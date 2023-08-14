@@ -3,15 +3,16 @@
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { X as XIcon } from "react-feather";
-
 interface GoToFormButtonProps {
   title: string;
   id: string;
+  handleDelete: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const GoToFormButton: React.FC<GoToFormButtonProps> = ({
   title,
   id,
+  handleDelete,
 }: GoToFormButtonProps) => {
   const [isSelected, setSelected] = useState(false);
 
@@ -33,23 +34,28 @@ const GoToFormButton: React.FC<GoToFormButtonProps> = ({
           <XIcon size={16} />
         </button>
       </div>
-      <div className="flex gap-4 font-bold ">
-        <Link href={`/edit/${id}`} className="sub_btn_card">
-          <p className="whitespace-break-spaces overflow-hidden">Editar form</p>
-        </Link>
-        <Link
-          href={`${process.env.NEXT_PUBLIC_FORMS_URL}/${id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="sub_btn_card"
-        >
-          <p className="whitespace-break-spaces overflow-hidden">Ver form</p>
-        </Link>
-        <Link href={`/responses/${id}`} className="sub_btn_card">
-          <p className="whitespace-break-spaces overflow-hidden">
-            Ver respostas
-          </p>
-        </Link>
+      <div className="flex flex-wrap gap-4 font-bold">
+        <div className="flex justify-between w-full gap-4">
+          <Link href={`/responses/${id}`} className="sub_btn_card">
+            <p className="whitespace-break-spaces overflow-hidden">Respostas</p>
+          </Link>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_FORMS_URL}/${id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="sub_btn_card"
+          >
+            <p className="whitespace-break-spaces overflow-hidden">Ver form</p>
+          </Link>
+        </div>
+        <div className="flex justify-between w-full gap-4">
+          <Link href={`/edit/${id}`} className="sub_btn_card">
+            <p className="whitespace-break-spaces overflow-hidden">Editar</p>
+          </Link>
+          <button className="sub_btn_card" onClick={handleDelete} data-id={id}>
+            <p className="whitespace-break-spaces overflow-hidden">Apagar</p>
+          </button>
+        </div>
       </div>
     </div>
   );

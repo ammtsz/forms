@@ -1,6 +1,10 @@
 import { create } from "zustand";
 
-import { getForms as getFormsFromDb } from "@app/api/services/forms";
+import {
+  getForms as getFormsFromDb,
+  deleteForm,
+} from "@app/api/services/forms";
+import { updateUserForms } from "@app/api/services/user";
 
 import { FormsManagementState, FormsManagementStore } from "./types";
 
@@ -33,6 +37,26 @@ const store = create<FormsManagementStore>((set, get) => ({
 
   addCreatedForm: (form) => {
     set(({ forms }) => ({ forms: [...forms, form] }));
+  },
+
+  deleteForm: async (formId, email) => {
+    const error = await deleteForm(formId);
+
+    if (error) {
+      return { hasError: true };
+    }
+
+    const formsIds = get()
+      .forms.filter((form) => form.id !== formId)
+      .map((form) => form.id);
+
+    const hasError = !!(await updateUserForms(email, formsIds));
+
+    set(({ forms }) => ({
+      forms: forms.filter((form) => form.id !== formId),
+    }));
+
+    return { hasError };
   },
 
   reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),

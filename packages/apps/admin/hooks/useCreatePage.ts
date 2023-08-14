@@ -1,9 +1,8 @@
 "use client";
 
-import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
@@ -16,6 +15,8 @@ import { Fields } from "@forms/utils";
 import { useFormCreation } from "@app/store/formCreation";
 import { useFormsManagement } from "@app/store/formsManagement";
 import { UserSession } from "@app/types";
+
+import useToast from "./useToast";
 
 const useCreatePage = () => {
   const [isLoading, setLoading] = useState(false);
@@ -35,26 +36,9 @@ const useCreatePage = () => {
 
   const router = useRouter();
 
-  const toast = useToast();
-  const toastIdRef = useRef<ToastId>();
-
   const { data: session, update: userUpdate } = useSession();
 
-  const openToast = useCallback(
-    (props: ToastProps) => {
-      if (toastIdRef.current) {
-        toast.close(toastIdRef.current);
-      }
-
-      toastIdRef.current = toast({
-        duration: 10000,
-        isClosable: true,
-        variant: "subtle",
-        ...props,
-      });
-    },
-    [toast]
-  );
+  const { openToast } = useToast();
 
   const validateOptions = useCallback((options: OptionProps[]) => {
     const isEmpty = !options || options.length === 0;
@@ -163,14 +147,15 @@ const useCreatePage = () => {
     },
     [
       validateForm,
+      session?.user,
       createUserForm,
       addCreatedForm,
-      openToast,
-      session?.user,
       title,
       fields,
       description,
+      userUpdate,
       router,
+      openToast,
     ]
   );
 

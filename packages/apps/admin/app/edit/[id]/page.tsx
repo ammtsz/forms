@@ -126,7 +126,7 @@ const FormCreationPage = () => {
             </React.Fragment>
             <AddFieldButton />
             <button type="submit" className="primary_btn" disabled={isLoading}>
-              {isLoading ? "Criando formulário..." : "Criar formulário"}
+              {isLoading ? "Salvando alterações..." : "Salvar alterações"}
             </button>
           </Form>
         </Container>

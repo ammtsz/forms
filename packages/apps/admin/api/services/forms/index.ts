@@ -6,6 +6,7 @@ import {
   query,
   setDoc,
   where,
+  deleteDoc,
 } from "firebase/firestore";
 
 import { FormProps } from "@forms/types/interfaces/form";
@@ -41,6 +42,14 @@ export const getForms = async (formsIds: string[]) => {
 export const postForm = async (form: FormProps, docId: string) => {
   try {
     await setDoc(doc(firestore, "forms", docId), form);
+  } catch (error) {
+    return error;
+  }
+};
+
+export const deleteForm = async (formId: string) => {
+  try {
+    await deleteDoc(doc(firestore, "forms", formId));
   } catch (error) {
     return error;
   }
