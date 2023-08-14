@@ -5,9 +5,13 @@ import React from "react";
 
 interface FieldFooterProps {
   handleCheckbox: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isRequired?: boolean;
 }
 
-const FieldFooter: React.FC<FieldFooterProps> = ({ handleCheckbox }) => {
+const FieldFooter: React.FC<FieldFooterProps> = ({
+  handleCheckbox,
+  isRequired,
+}) => {
   return (
     <Switch
       fontSize={["sm", "sm", "md"]}
@@ -16,6 +20,7 @@ const FieldFooter: React.FC<FieldFooterProps> = ({ handleCheckbox }) => {
       size={"sm"}
       onChange={handleCheckbox}
       colorScheme="telegram"
+      isChecked={isRequired}
     >
       Campo obrigatório
     </Switch>

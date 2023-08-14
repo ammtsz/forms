@@ -19,17 +19,17 @@ import { useFormCreation } from "@app/store/formCreation";
 import useFieldDependsOn from "./hooks/useFieldsDependsOn";
 
 interface FieldDependsOnProps {
-  visible: boolean;
   fieldId: string;
+  initialDependsOn?: DependsOnProps;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   handleDependsOn: (dependsOn?: DependsOnProps) => void;
 }
 
 const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
-  visible,
   fieldId,
   setVisible,
   handleDependsOn,
+  initialDependsOn,
 }) => {
   const {
     handleCancel,
@@ -40,6 +40,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
   } = useFieldDependsOn({
     setVisible,
     handleDependsOn,
+    initialDependsOn,
   });
 
   const { dependsOnOptions } = useFormCreation();
@@ -50,10 +51,11 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
         <RadioGroup
           size={["sm", "sm", "md"]}
           onChange={(e) => handleOptionsSelect(true, e)}
+          value={initialDependsOn?.optionsValues?.[0].toString() || ""}
         >
           <Radio value="true">Sim</Radio>
           <Radio value="false" ml={4}>
-            No
+            Não
           </Radio>
         </RadioGroup>
       );
@@ -70,21 +72,17 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
         value={option.value}
         onChange={(e) => handleOptionsSelect(e.target.checked, option.value)}
         colorScheme="telegram"
+        isChecked={initialDependsOn?.optionsValues?.includes(option.value)}
       >
         {option.label}
       </Checkbox>
     ));
   };
 
-  return visible ? (
+  return (
     <>
       <Flex>
-        <Text
-          fontSize={["xs", "xs", "sm"]}
-          mt={8}
-          mb={2}
-          color={"blackAlpha.600"}
-        >
+        <Text fontSize={["xs", "xs", "sm"]} mb={2} color={"blackAlpha.600"}>
           Dependência
         </Text>
       </Flex>
@@ -107,6 +105,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
             name="dependsOnField"
             onChange={handleFieldSelect}
             placeholder="Selecione uma pergunta"
+            value={selectedField || ""}
           >
             {dependsOnOptions &&
               Object.keys(dependsOnOptions).map((id) => {
@@ -134,7 +133,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
         </Button>
       </Flex>
     </>
-  ) : null;
+  );
 };
 
 export default FieldDependsOn;

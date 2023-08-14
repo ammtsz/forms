@@ -39,11 +39,11 @@ body {
 }
 
 .btn_card {
-  @apply h-40 w-80 rounded-2xl shadow-md flex items-center justify-center p-4 leading-5 hover:opacity-80 font-bold;
+  @apply h-40 w-96 rounded-2xl shadow-md flex items-center justify-center p-4 leading-5 hover:opacity-80 font-bold;
 }
 
 .btn_card_back {
-  @apply h-40 w-80 rounded-2xl shadow-md flex p-4 flex-col;
+  @apply h-40 w-96 rounded-2xl shadow-md flex p-4 flex-col;
 }
 
 .sub_btn_card {

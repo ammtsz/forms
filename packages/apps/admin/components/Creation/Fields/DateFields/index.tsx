@@ -38,6 +38,7 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         handleDelete={handleDelete}
         handleDependsOn={handleDependsOnChange}
         type={getPrefixFromString(id)}
+        initialDependsOn={value.dependsOn}
       />
       <Flex flexDir={"row"}>
         <FieldIcon type={type} />
@@ -70,7 +71,10 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
           </Flex>
         </Flex>
       </Flex>
-      <FieldFooter handleCheckbox={handleCheckbox} />
+      <FieldFooter
+        handleCheckbox={handleCheckbox}
+        isRequired={value.isRequired}
+      />
     </>
   );
 };

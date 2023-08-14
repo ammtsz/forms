@@ -24,9 +24,11 @@ export interface FormCreationState {
 }
 
 export interface FormCreationStore extends FormCreationState {
+  loadForm: (formId: string) => Promise<{ hasError: boolean }>;
   updateTitle: (title: string) => void;
   updateDescription: (description: string) => void;
   addField: (field: FieldProps) => void;
+  addFields: (fields: FieldProps[]) => void;
   deleteField: (fieldId: string) => void;
   updateField: (field: FieldProps) => void;
   getField: (fieldId: string) => FieldProps;

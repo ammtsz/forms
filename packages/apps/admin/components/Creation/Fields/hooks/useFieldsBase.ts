@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import { MakeOptional } from "@forms/types/global/makeOptional";
 import { DependsOnProps, FieldProps } from "@forms/types/interfaces/field";
@@ -18,7 +18,7 @@ interface FieldsBaseProps {
 }
 
 const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
-  const { deleteField, updateField } = useFormCreation();
+  const { deleteField, updateField, fields } = useFormCreation();
 
   const saveUpdates = useCallback(
     (props = {}) => {
@@ -85,6 +85,14 @@ const useFieldsBase = ({ id, value, setValue }: FieldsBaseProps) => {
   const handleDelete = useCallback(() => {
     deleteField(id);
   }, [deleteField, id]);
+
+  useEffect(() => {
+    const initialValue = fields.find((field) => field.id === id);
+
+    if (!value.label && initialValue && initialValue.label) {
+      setValue(initialValue);
+    }
+  }, [fields, id, setValue, value]);
 
   return {
     handleCheckbox,

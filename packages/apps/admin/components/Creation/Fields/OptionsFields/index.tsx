@@ -40,6 +40,7 @@ const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
         handleDelete={handleDelete}
         handleDependsOn={handleDependsOnChange}
         type={getPrefixFromString(id)}
+        initialDependsOn={value.dependsOn}
       />
       <FieldBase
         handleInputChange={handleInputChange}
@@ -56,7 +57,10 @@ const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
         type={getPrefixFromString(id) as FieldsType}
         value={value}
       />
-      <FieldFooter handleCheckbox={handleCheckbox} />
+      <FieldFooter
+        handleCheckbox={handleCheckbox}
+        isRequired={value.isRequired}
+      />
     </>
   );
 };

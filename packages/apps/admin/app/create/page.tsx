@@ -10,29 +10,15 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-import { Fields, getPrefixFromString } from "@forms/utils";
+import { getPrefixFromString } from "@forms/utils";
 
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
-import Date from "@app/components/Creation/Fields/DateFields";
-import Options from "@app/components/Creation/Fields/OptionsFields";
-import Texts from "@app/components/Creation/Fields/TextsFields";
-import Toggles from "@app/components/Creation/Fields/ToggleFields";
 import IsSignedIn from "@app/components/IsSignedIn";
-import useCreationPage from "@app/hooks/useCreationPage";
+import useCreatePage from "@app/hooks/useCreatePage";
 import { useFormCreation } from "@app/store/formCreation";
+import { getFieldComponent } from "@app/utils/getFieldComponent";
 
 import { Container, Form } from "./styles";
-
-const fieldComponents = {
-  [Fields.text]: Texts,
-  [Fields.textarea]: Texts,
-  [Fields.select]: Options,
-  [Fields.radio]: Options,
-  [Fields.checkboxes]: Options,
-  [Fields.checkbox]: Toggles,
-  [Fields.switch]: Toggles,
-  [Fields.date]: Date,
-};
 
 const FormCreationPage = () => {
   const { fieldsIds, description, title } = useFormCreation();
@@ -43,7 +29,7 @@ const FormCreationPage = () => {
     handleDescription,
     isLoading,
     hasTitleError,
-  } = useCreationPage();
+  } = useCreatePage();
 
   return (
     <IsSignedIn>
@@ -84,7 +70,7 @@ const FormCreationPage = () => {
           </Box>
           <React.Fragment>
             {fieldsIds.map((fieldId) => {
-              const Component = fieldComponents[getPrefixFromString(fieldId)];
+              const Component = getFieldComponent(getPrefixFromString(fieldId));
 
               return (
                 <Flex

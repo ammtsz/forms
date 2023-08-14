@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 interface FieldsBaseProps {
   handleInputChange: React.ChangeEventHandler<HTMLInputElement>;
   handleLimitsChange: (max: string, min: string) => void;
+  max?: string;
+  min?: string;
 }
 
 export interface DateProps {
@@ -21,6 +23,8 @@ export interface DateProps {
 const useDateLimitPicker = ({
   handleInputChange,
   handleLimitsChange,
+  max,
+  min,
 }: FieldsBaseProps) => {
   const [dateType, setDateType] = useState<string>("");
   const [date, setDate] = useState<DateProps>({
@@ -84,6 +88,26 @@ const useDateLimitPicker = ({
     },
     [handleLimitsChange, date]
   );
+
+  useEffect(() => {
+    const hasInitialMinValue = min && !date.calendar.min && !date.today.min;
+    const hasInitialMaxValue = max && !date.calendar.max && !date.today.max;
+
+    if (hasInitialMaxValue || hasInitialMinValue) {
+      const type =
+        (max && max.length > 5 ? "calendar" : "today") ||
+        (min && min.length > 5 ? "calendar" : "today");
+
+      setDate((prev) => ({
+        ...prev,
+        [type]: {
+          min: min || "",
+          max: max || "",
+        },
+      }));
+      setDateType(type);
+    }
+  }, [dateType, date, handleLimitsChange, min, max]);
 
   return {
     handleInputChange,

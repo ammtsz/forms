@@ -49,7 +49,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
     handleDateChange,
     handleDaysChange,
     handleRadio,
-  } = useDateLimitPicker({ handleInputChange, handleLimitsChange });
+  } = useDateLimitPicker({ handleInputChange, handleLimitsChange, max, min });
 
   const [isMediumScreen] = useMediaQuery("(min-width: 768px)");
 
@@ -131,6 +131,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                     min={getLimit("min", dateLimitType, date)}
                     onChange={handleDaysChange(dateLimitType)}
                     size={"sm"}
+                    value={date.today[dateLimitType]}
                   >
                     <NumberInputField />
                     <NumberInputStepper>

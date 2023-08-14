@@ -34,6 +34,9 @@ const GoToFormButton: React.FC<GoToFormButtonProps> = ({
         </button>
       </div>
       <div className="flex gap-4 font-bold ">
+        <Link href={`/edit/${id}`} className="sub_btn_card">
+          <p className="whitespace-break-spaces overflow-hidden">Editar form</p>
+        </Link>
         <Link
           href={`${process.env.NEXT_PUBLIC_FORMS_URL}/${id}`}
           target="_blank"

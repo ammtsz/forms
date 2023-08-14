@@ -43,6 +43,7 @@ const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         handleDelete={handleDelete}
         handleDependsOn={handleDependsOnChange}
         type={getPrefixFromString(id)}
+        initialDependsOn={value.dependsOn}
       />
       <Flex flexDir={"row"}>
         <FieldIcon type={type} />
@@ -54,7 +55,10 @@ const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
           />
         </Flex>
       </Flex>
-      <FieldFooter handleCheckbox={handleCheckbox} />
+      <FieldFooter
+        handleCheckbox={handleCheckbox}
+        isRequired={value.isRequired}
+      />
     </>
   );
 };

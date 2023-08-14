@@ -17,7 +17,7 @@ import { useFormCreation } from "@app/store/formCreation";
 import { useFormsManagement } from "@app/store/formsManagement";
 import { UserSession } from "@app/types";
 
-const useCreationPage = () => {
+const useCreatePage = () => {
   const [isLoading, setLoading] = useState(false);
   const [hasTitleError, setTitleError] = useState(false);
 
@@ -38,7 +38,7 @@ const useCreationPage = () => {
   const toast = useToast();
   const toastIdRef = useRef<ToastId>();
 
-  const { data: session } = useSession();
+  const { data: session, update: userUpdate } = useSession();
 
   const openToast = useCallback(
     (props: ToastProps) => {
@@ -132,7 +132,9 @@ const useCreationPage = () => {
 
           if (!hasCreationError) {
             addCreatedForm({ title, id: formId, fields, description });
+            userUpdate();
             router.push("/");
+
             openToast({
               description: "Formulário criado com sucesso",
               status: "success",
@@ -196,4 +198,4 @@ const useCreationPage = () => {
   };
 };
 
-export default useCreationPage;
+export default useCreatePage;

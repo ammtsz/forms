@@ -40,18 +40,16 @@ const FieldBase: React.FC<FieldBaseProps> = ({
           </FormErrorMessage>
         )}
       </FormControl>
-      <FormControl mt={0}>
-        <Input
-          color="blackAlpha.600"
-          fontSize={["xs", "xs", "sm"]}
-          name="description"
-          onChange={handleInputChange}
-          placeholder="Adicione uma decrição (opcional)"
-          _placeholder={{ color: "inherit" }}
-          value={value.description}
-          variant={"unstyled"}
-        />
-      </FormControl>
+      <Input
+        color="blackAlpha.600"
+        fontSize={["xs", "xs", "sm"]}
+        name="description"
+        onChange={handleInputChange}
+        placeholder="Adicione uma decrição (opcional)"
+        _placeholder={{ color: "inherit" }}
+        value={value.description || ""}
+        variant={"unstyled"}
+      />
     </>
   );
 };

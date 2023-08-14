@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
     if (!session) return "Admin";
     if (page === "create") return "Novo Formulário";
     if (page === "responses") return "Respostas";
+    if (page === "edit") return "Edição de Formulário";
     if (page === "") return "Home";
   };
 

@@ -10,7 +10,7 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MoreHorizontal as MoreIcon } from "react-feather";
 
 import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
@@ -24,6 +24,7 @@ interface FieldHeaderProps {
   handleDependsOn: (dependsOn?: DependsOnProps) => void;
   fieldId: string;
   type: FieldsType;
+  initialDependsOn?: DependsOnProps;
 }
 
 const FieldHeader: React.FC<FieldHeaderProps> = ({
@@ -31,8 +32,15 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
   handleDependsOn,
   fieldId,
   type,
+  initialDependsOn,
 }) => {
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (!visible && initialDependsOn?.fieldId) {
+      setVisible(true);
+    }
+  }, [initialDependsOn?.fieldId, visible]);
 
   return (
     <>
@@ -61,12 +69,14 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
           </MenuList>
         </Menu>
       </Flex>
-      <FieldDependsOn
-        visible={visible}
-        setVisible={setVisible}
-        fieldId={fieldId}
-        handleDependsOn={handleDependsOn}
-      />
+      {visible && (
+        <FieldDependsOn
+          setVisible={setVisible}
+          fieldId={fieldId}
+          handleDependsOn={handleDependsOn}
+          initialDependsOn={initialDependsOn}
+        />
+      )}
     </>
   );
 };

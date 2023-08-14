@@ -44,6 +44,7 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         type={getPrefixFromString(id)}
         fieldId={id}
         handleDependsOn={handleDependsOnChange}
+        initialDependsOn={value.dependsOn}
       />
       <FieldBase
         handleInputChange={handleInputChange}
@@ -60,9 +61,12 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         onChange={handleInputChange}
         placeholder="Adicione um placeholder (opcional)"
         _placeholder={{ color: "inherit" }}
-        value={value.placeholder}
+        value={value.placeholder || ""}
       />
-      <FieldFooter handleCheckbox={handleCheckbox} />
+      <FieldFooter
+        handleCheckbox={handleCheckbox}
+        isRequired={value.isRequired}
+      />
     </>
   );
 };

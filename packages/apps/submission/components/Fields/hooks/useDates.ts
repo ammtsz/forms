@@ -38,14 +38,14 @@ const useDates = ({ id, initialValue, max, min }: TextsProps): TextsReturn => {
   );
 
   const getLimit = useCallback((limit: string) => {
-    if (limit.length <= 4) {
+    if (limit.length <= 5) {
       const today = new Date();
       const result = today.setDate(today.getDate() + Number(limit));
 
       return formatDate(new Date(result).toISOString());
     }
 
-    if (limit.length > 4) {
+    if (limit.length > 5) {
       return limit;
     }
   }, []);

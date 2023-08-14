@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
 import { isToggleTypeField } from "@forms/utils/build";
@@ -10,6 +10,7 @@ import { useFormCreation } from "@app/store/formCreation";
 interface FieldDependsOnProps {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   handleDependsOn: (dependsOn?: DependsOnProps) => void;
+  initialDependsOn?: DependsOnProps;
 }
 
 interface FieldDependsOnReturn {
@@ -23,6 +24,7 @@ interface FieldDependsOnReturn {
 const useFieldDependsOn = ({
   setVisible,
   handleDependsOn,
+  initialDependsOn,
 }: FieldDependsOnProps): FieldDependsOnReturn => {
   const [selectedField, setSelectedField] = useState("");
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -64,6 +66,13 @@ const useFieldDependsOn = ({
     setSelectedOptions({});
     handleDependsOn();
   }, [handleDependsOn, setVisible]);
+
+  useEffect(() => {
+    if (!selectedField && initialDependsOn?.fieldId) {
+      setSelectedField(initialDependsOn.fieldId);
+      setSelectedOptions(initialDependsOn.optionsValues);
+    }
+  }, [initialDependsOn, selectedField]);
 
   return {
     handleCancel,

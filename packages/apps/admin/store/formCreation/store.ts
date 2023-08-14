@@ -8,7 +8,7 @@ import {
 } from "@forms/types/interfaces/field";
 import { isOptionTypeField, isToggleTypeField, uuid } from "@forms/utils";
 
-import { postForm } from "@app/api/services/forms";
+import { getForm, postForm } from "@app/api/services/forms";
 import { updateUserForms } from "@app/api/services/user";
 
 import { FormCreationState, FormCreationStore } from "./types";
@@ -32,6 +32,30 @@ const store = create<FormCreationStore>((set, get) => ({
   fieldsIds: INITIAL_STATE.fieldsIds,
   dependsOnOptions: INITIAL_STATE.dependsOnOptions,
 
+  loadForm: async (formId) => {
+    const { updateTitle, updateDescription, addFields, fields, isLoading } =
+      get();
+
+    if (fields.length === 0 && !isLoading) {
+      set({ isLoading: true });
+
+      const form = await getForm(formId);
+
+      updateTitle(form.title);
+      addFields(form.fields);
+
+      if (form.description) {
+        updateDescription(form.description);
+      }
+
+      set({ isLoading: false });
+
+      return { hasError: !form };
+    }
+
+    return { hasError: false };
+  },
+
   updateTitle: (title: string) => {
     set({ title });
   },
@@ -40,10 +64,22 @@ const store = create<FormCreationStore>((set, get) => ({
     set({ description });
   },
 
-  addField: (field: FieldProps) => {
+  addField: (field) => {
     set(({ fields, fieldsIds }) => ({
       fields: [...fields, field],
       fieldsIds: [...fieldsIds, field.id],
+    }));
+  },
+
+  addFields: (newFields) => {
+    const newFieldsIds = newFields.map((field) => {
+      get().setDependsOnOptions(field);
+      return field.id;
+    });
+
+    set(({ fields, fieldsIds }) => ({
+      fields: [...fields, ...newFields],
+      fieldsIds: [...fieldsIds, ...newFieldsIds],
     }));
   },
 

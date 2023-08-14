@@ -12,8 +12,6 @@ export const postForm = async (
 ) => {
   try {
     await setDoc(doc(firestore, formId, responseId), form);
-
-    console.log("firebase | submission | postForms");
   } catch (error) {
     console.error(error);
   }
@@ -24,7 +22,6 @@ export const getForm = async (id: string) => {
     const form = (
       await getDoc(doc(firestore, "forms", id.trim()))
     ).data() as FormProps;
-    console.log("firebase | submission | getForm");
 
     return form;
   } catch (error) {

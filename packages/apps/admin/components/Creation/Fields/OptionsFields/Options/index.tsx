@@ -97,7 +97,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
       >
         + Adicionar opção
       </Button>
-      {(value.optionOther as OptionOtherProps).isVisible ? (
+      {(value.optionOther as OptionOtherProps)?.isVisible ? (
         <>
           <Flex alignItems="center">
             <FieldIcon type={type} />
@@ -117,6 +117,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
                 "Adicione um placeholder para o campo \u0022outro\u0022 (opcional)"
               }
               value={(value.optionOther as OptionOtherProps).placeholder}
+              color="blackAlpha.600"
             />
             <Tooltip hasArrow label="Apagar opção">
               <Button
