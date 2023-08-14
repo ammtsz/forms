@@ -18,7 +18,7 @@ import { UserSession } from "@app/types";
 
 import useToast from "./useToast";
 
-const useCreatePage = () => {
+const useSubmitForm = () => {
   const [isLoading, setLoading] = useState(false);
   const [hasTitleError, setTitleError] = useState(false);
 
@@ -183,4 +183,4 @@ const useCreatePage = () => {
   };
 };
 
-export default useCreatePage;
+export default useSubmitForm;

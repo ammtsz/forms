@@ -8,60 +8,32 @@ import {
   FormControl,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 
 import { getPrefixFromString } from "@forms/utils";
 
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
 import Feedback from "@app/components/Feedback";
 import IsSignedIn from "@app/components/IsSignedIn";
-import useCreatePage from "@app/hooks/useCreatePage";
+import useInitialData from "@app/hooks/useInitialData";
+import useSubmitForm from "@app/hooks/useSubmitForm";
 import { useFormCreation } from "@app/store/formCreation";
-import { UserSession } from "@app/types";
 import { getFieldComponent } from "@app/utils/getFieldComponent";
 
 import { Container, Form } from "../../create/styles";
 
 const FormCreationPage = () => {
-  const [isLoadingForm, setLoadingForm] = useState(false);
-  const [isValidForm, setValidForm] = useState(true);
-
   const {
     handleSubmit,
     handleTitle,
     handleDescription,
     isLoading,
     hasTitleError,
-  } = useCreatePage();
+  } = useSubmitForm();
 
   const { fieldsIds, description, title } = useFormCreation();
 
-  const { loadForm } = useFormCreation();
-
-  const { data: session } = useSession();
-
-  const id = usePathname().split("/")[2];
-
-  const loadData = useCallback(async () => {
-    const userForms = (session as UserSession)?.user?.forms || [];
-
-    if (id && userForms.includes(id)) {
-      setLoadingForm(true);
-
-      const { hasError } = await loadForm(id);
-      setValidForm(!hasError);
-
-      setLoadingForm(false);
-    } else {
-      setValidForm(false);
-    }
-  }, [session, id, loadForm]);
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
+  const { isLoadingForm, isValidForm } = useInitialData();
 
   return (
     <IsSignedIn>
