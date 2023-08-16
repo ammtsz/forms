@@ -13,6 +13,7 @@ import React, { useCallback, useEffect } from "react";
 import { getPrefixFromString } from "@forms/utils";
 
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
+import AIModal from "@app/components/Creation/AIModal";
 import IsSignedIn from "@app/components/IsSignedIn";
 import useSubmitForm from "@app/hooks/useSubmitForm";
 import { useFormCreation } from "@app/store/formCreation";
@@ -46,6 +47,7 @@ const FormCreationPage = () => {
           <button className="primary_btn" onClick={handleCleanForm}>
             Limpar formulário
           </button>
+          <AIModal />
         </div>
         <Container
           as="main"

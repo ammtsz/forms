@@ -178,6 +178,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                 type="date"
                 w={"210px"}
                 width="100%"
+                value={date.calendar[dateLimitType]}
                 {...INPUT_PROPS[index]}
               />
             </React.Fragment>
