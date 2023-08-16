@@ -37,22 +37,24 @@ const useOpenAI = ({ onClose }: OpenAIProps): OpenAIReturn => {
     try {
       setLoading(true);
 
-      const response = await fetch("/api/openai", {
+      const aiResponse = await fetch("/api/openai", {
         method: "POST",
         body: JSON.stringify({
           content: subject,
         }),
       });
 
-      const openAIForm = JSON.parse(await response.json());
+      const response = await aiResponse.json();
 
-      if (openAIForm.error) {
+      if (response.error) {
         openToast({
-          description: `${openAIForm.error} Tente novamente.`,
+          description: `${response.error} Tente novamente.`,
           status: "error",
           duration: null,
         });
       } else {
+        const openAIForm = JSON.parse(response);
+
         updateTitle(openAIForm.title || "");
         updateDescription(openAIForm.description || "");
         addFields(openAIForm.fields as FieldProps[]);
