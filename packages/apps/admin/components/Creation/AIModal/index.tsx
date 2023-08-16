@@ -10,13 +10,17 @@ import {
   ModalCloseButton,
   Input,
   useDisclosure,
+  Tooltip,
 } from "@chakra-ui/react";
 import React from "react";
+
+import { useFormCreation } from "@app/store/formCreation";
 
 import useOpenAI from "./hooks/useOpenAI";
 
 const AIModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { fields } = useFormCreation();
 
   const { isLoading, subject, handleInputChange, handleAIButton } = useOpenAI({
     onClose,
@@ -24,9 +28,19 @@ const AIModal = () => {
 
   return (
     <>
-      <button onClick={onOpen} type="button" className="primary_btn">
-        Criar com IA
-      </button>
+      <Tooltip
+        label={"Limpe o formulário para usar esta opção."}
+        isDisabled={fields.length === 0}
+      >
+        <button
+          onClick={onOpen}
+          type="button"
+          className="secondary_btn"
+          disabled={fields.length > 0}
+        >
+          Criar com IA
+        </button>
+      </Tooltip>
       {isOpen && (
         <Modal isOpen={isOpen} onClose={onClose} isCentered>
           <ModalOverlay />
@@ -49,7 +63,7 @@ const AIModal = () => {
               <button
                 onClick={onClose}
                 disabled={isLoading}
-                className="tertiary_btn mr-3"
+                className="link_btn mr-3"
               >
                 Cancelar
               </button>

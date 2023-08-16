@@ -27,12 +27,25 @@ body {
 }
 
 .primary_btn {
-  @apply rounded-lg border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-primary disabled:hover:text-white;
+  @apply rounded-lg border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-primary text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-primary disabled:hover:text-white;
 }
 
-.tertiary_btn {
+.secondary_btn {
+  @apply rounded-lg border border-secondary py-1.5 px-5 text-secondary transition-all hover:bg-secondary hover:text-white text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-secondary;
+}
+
+.light_btn {
+  @apply rounded-lg border border-light bg-light py-1.5 px-5 transition-all hover:bg-white hover:border-black text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-light;
+}
+
+.danger_btn {
+  @apply rounded-lg border border-danger bg-danger py-1.5 px-5 text-white transition-all hover:bg-white hover:text-danger text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-danger disabled:hover:text-white;
+}
+
+.link_btn {
   @apply py-1.5 px-2 transition-all text-primary hover:text-gray-500 text-center font-medium flex items-center justify-center disabled:opacity-50;
 }
+
 
 .icon_btn {
   @apply px-3;

@@ -12,6 +12,7 @@ import { useCallback, useState } from "react";
 import { StatusTypes } from "@app/constants/status";
 import { useCheckedRows } from "@app/store/checkedRows";
 import { useTableData } from "@app/store/tableData";
+import { UpdateStatusProps } from "@app/store/tableData/types";
 
 import ConfirmationModal, { ConfirmationTexts } from "../../ConfirmationModal";
 import { ACTIONS, getConfirmationTexts } from "./utils";
@@ -65,7 +66,7 @@ const ActionsButton: React.FC = () => {
         isOpen={isOpen}
         onClose={onClose}
         texts={texts as ConfirmationTexts}
-        onConfirm={updateResponseStatus}
+        onConfirm={updateResponseStatus as (args?: UpdateStatusProps) => void}
       />
     </>
   );

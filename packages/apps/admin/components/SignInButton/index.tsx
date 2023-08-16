@@ -19,7 +19,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
       <button
         key={session.user.email}
         onClick={() => signOut()}
-        className="tertiary_btn"
+        className="link_btn"
       >
         Sair
       </button>
@@ -37,7 +37,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
     <button
       disabled={!googleProvider}
       onClick={() => signIn(googleProvider && googleProvider.id)}
-      className={isPrimary ? "tertiary_btn" : "primary_btn"}
+      className={isPrimary ? "link_btn" : "primary_btn"}
     >
       Entrar
     </button>

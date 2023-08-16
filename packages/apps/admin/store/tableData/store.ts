@@ -175,10 +175,10 @@ const store = create<TableDataStore>((set, get) => ({
 
   getSortBy: () => get().sortBy,
 
-  updateResponseStatus: async (responseIds, status) => {
+  updateResponseStatus: async ({ responsesIds, status }) => {
     const { responses, formId, loadFormResponses } = get();
 
-    responseIds.forEach(async (responseId) => {
+    responsesIds.forEach(async (responseId) => {
       const response = responses.find(
         (response) => response.id.value === responseId
       ) as FormValuesProps;

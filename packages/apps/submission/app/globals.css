@@ -6,7 +6,7 @@
   @apply rounded-lg border border-primary bg-primary py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-primary disabled:hover:text-white;
 }
 
-.tertiary_btn {
+.link_btn {
   @apply py-1.5 px-2 transition-all text-primary hover:text-gray-500 text-center font-medium flex items-center justify-center disabled:opacity-50;
 }
 

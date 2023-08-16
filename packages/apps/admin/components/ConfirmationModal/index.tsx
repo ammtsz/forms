@@ -8,15 +8,15 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button,
 } from "@chakra-ui/react";
 import { useCallback } from "react";
 
 import { StatusTypes } from "@app/constants/status";
 import { useCheckedRows } from "@app/store/checkedRows";
+import { UpdateStatusProps } from "@app/store/tableData/types";
 
 export interface ConfirmationTexts {
-  action: StatusTypes;
+  action?: StatusTypes;
   title: string;
   message: string;
   mainButton: string;
@@ -27,7 +27,7 @@ interface ConfirmationModalProps {
   texts: ConfirmationTexts;
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: (responseIds: string[], status: StatusTypes) => void;
+  onConfirm: (args?: UpdateStatusProps) => void;
 }
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
@@ -39,7 +39,12 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   const { checkedRows } = useCheckedRows();
 
   const handleConfirmation = useCallback(() => {
-    onConfirm(checkedRows, texts?.action);
+    if (texts?.action) {
+      onConfirm({ responsesIds: checkedRows, status: texts.action });
+    } else {
+      onConfirm();
+    }
+
     onClose();
   }, [checkedRows, onClose, onConfirm, texts?.action]);
 
@@ -52,18 +57,17 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <ModalBody>{texts.message}</ModalBody>
 
         <ModalFooter>
-          <Button
+          <button
             aria-label="Cancelar ação"
-            colorScheme="telegram"
-            mr={3}
+            className="light_btn mr-3"
             onClick={onClose}
           >
             Cancelar
-          </Button>
+          </button>
           <button
             aria-label={texts.mainButton}
             onClick={handleConfirmation}
-            className="primary_btn"
+            className={texts.isDanger ? "danger_btn" : "primary_btn"}
           >
             {texts.mainButton}
           </button>

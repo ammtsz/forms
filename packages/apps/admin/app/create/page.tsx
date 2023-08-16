@@ -13,7 +13,7 @@ import React, { useCallback, useEffect } from "react";
 import { getPrefixFromString } from "@forms/utils";
 
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
-import AIModal from "@app/components/Creation/AIModal";
+import TopButtons from "@app/components/Creation/TopButtons";
 import IsSignedIn from "@app/components/IsSignedIn";
 import useSubmitForm from "@app/hooks/useSubmitForm";
 import { useFormCreation } from "@app/store/formCreation";
@@ -43,12 +43,7 @@ const FormCreationPage = () => {
   return (
     <IsSignedIn>
       <>
-        <div className="flex ml-auto w-full gap-2 justify-end p-4">
-          <button className="primary_btn" onClick={handleCleanForm}>
-            Limpar formulário
-          </button>
-          <AIModal />
-        </div>
+        <TopButtons />
         <Container
           as="main"
           borderRadius={["none", "none", "2xl"]}
