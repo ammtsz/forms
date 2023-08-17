@@ -4,7 +4,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import React, { useCallback } from "react";
 
 import ConfirmationModal from "@app/components/ConfirmationModal";
-import AIModal from "@app/components/Creation/AIModal";
+import AISection from "@app/components/Creation/AISection";
 import { useFormCreation } from "@app/store/formCreation";
 
 import { Container } from "./styles";
@@ -24,7 +24,7 @@ const TopButtons = () => {
         <button className="secondary_btn" onClick={onOpen}>
           Limpar formulário
         </button>
-        <AIModal />
+        <AISection />
       </Container>
       <ConfirmationModal
         isOpen={isOpen}
