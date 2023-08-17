@@ -7,6 +7,7 @@ export const Container = styled(Flex)`
   justify-content: center;
   align-items: center;
   min-height: 600px;
+  flex-direction: column;
 ` as StyledComponent<FlexProps>;
 
 export const Form = styled(Flex)`

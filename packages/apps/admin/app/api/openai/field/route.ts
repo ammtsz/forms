@@ -43,7 +43,7 @@ export const POST = async (request: Request): Promise<Response> => {
 
     return new Response(
       JSON.stringify({
-        error: "Não foi possível gerar um novo campo. Tente novamente.",
+        error: "Não foi possível gerar um novo campo.",
       }),
       { status: 500 }
     );

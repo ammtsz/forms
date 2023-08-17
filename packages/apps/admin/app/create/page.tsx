@@ -7,14 +7,17 @@ import {
   Textarea,
   FormControl,
   FormErrorMessage,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect } from "react";
 
 import { getPrefixFromString } from "@forms/utils";
 
+import ConfirmationModal from "@app/components/ConfirmationModal";
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
-import TopButtons from "@app/components/Creation/TopButtons";
+import AISection from "@app/components/Creation/AISection";
 import IsSignedIn from "@app/components/IsSignedIn";
+import Tooltip from "@app/components/Tooltip";
 import useSubmitForm from "@app/hooks/useSubmitForm";
 import { useFormCreation } from "@app/store/formCreation";
 import { getFieldComponent } from "@app/utils/getFieldComponent";
@@ -23,6 +26,8 @@ import { Container, Form } from "./styles";
 
 const FormCreationPage = () => {
   const { fieldsIds, description, title, reset } = useFormCreation();
+
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   const {
     handleSubmit,
@@ -43,7 +48,7 @@ const FormCreationPage = () => {
   return (
     <IsSignedIn>
       <>
-        <TopButtons />
+        <AISection />
         <Container
           as="main"
           borderRadius={["none", "none", "2xl"]}
@@ -52,6 +57,11 @@ const FormCreationPage = () => {
           boxShadow={["none", "none", "dark-lg"]}
           p={[6, 8, 12]}
         >
+          <Tooltip label="Limpar formulário">
+            <button className="secondary_btn ml-auto" onClick={onOpen}>
+              limpar
+            </button>
+          </Tooltip>
           <Form as={"form"} onSubmit={handleSubmit}>
             <Box mb={8}>
               <FormControl isInvalid={hasTitleError} mb={8}>
@@ -108,6 +118,18 @@ const FormCreationPage = () => {
             </button>
           </Form>
         </Container>
+        <ConfirmationModal
+          isOpen={isOpen}
+          onConfirm={handleCleanForm}
+          onClose={onClose}
+          texts={{
+            title: "Limpar formulário",
+            message:
+              "Tem certeza que deseja limpar o formulário? Esta ação não poderá ser desfeita.",
+            mainButton: "Limpar",
+            isDanger: true,
+          }}
+        />
       </>
     </IsSignedIn>
   );

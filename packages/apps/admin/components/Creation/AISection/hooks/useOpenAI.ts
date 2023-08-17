@@ -7,16 +7,20 @@ import { useFormCreation } from "@app/store/formCreation";
 import { useOpenaiRequest } from "@app/store/openaiRequests";
 
 interface OpenAIReturn {
-  isLoading: boolean;
+  isFieldLoading: boolean;
+  isTitleLoading: boolean;
   topic: string;
+  hasError: boolean;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleAIFieldButton: () => void;
   handleAITitleButton: () => void;
 }
 
 const useOpenAI = (): OpenAIReturn => {
-  const [isLoading, setLoading] = useState(false);
+  const [isTitleLoading, setTitleLoading] = useState(false);
+  const [isFieldLoading, setFieldLoading] = useState(false);
   const [topic, setTopic] = useState("");
+  const [hasError, setError] = useState(false);
 
   const { addFields, updateTitle, updateDescription } = useFormCreation();
 
@@ -25,16 +29,25 @@ const useOpenAI = (): OpenAIReturn => {
 
   const { openToast } = useToast();
 
+  const errorToast = useCallback(
+    (message: string) =>
+      openToast({ description: message, status: "error", duration: null }),
+    [openToast]
+  );
+
   const handleInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setTopic(event.target.value);
+      const { value } = event.target;
+
+      setTopic(value);
+      setError(value.length < 3 || value.length > 100);
     },
     []
   );
 
   const handleAIFieldButton = useCallback(async () => {
     try {
-      setLoading(true);
+      setFieldLoading(true);
 
       updateTopic(topic.trim());
       const response = await generateField();
@@ -42,28 +55,20 @@ const useOpenAI = (): OpenAIReturn => {
       console.log({ response });
 
       if (response.error) {
-        openToast({
-          description: `${response.error} Tente novamente.`,
-          status: "error",
-          duration: null,
-        });
+        errorToast(`${response.error} Tente novamente.`);
       } else {
         addFields([response]);
       }
     } catch (error) {
-      openToast({
-        description: "Não foi possível gerar o formulário. Tente novamente.",
-        status: "error",
-        duration: null,
-      });
+      errorToast("Não foi possível criar um novo campo. Tente novamente.");
     } finally {
-      setLoading(false);
+      setFieldLoading(false);
     }
-  }, [updateTopic, topic, generateField, openToast, addFields]);
+  }, [topic, updateTopic, generateField, errorToast, addFields]);
 
   const handleAITitleButton = useCallback(async () => {
     try {
-      setLoading(true);
+      setTitleLoading(true);
 
       updateTopic(topic.trim());
       const response = await generateTitleAndDescription();
@@ -71,37 +76,32 @@ const useOpenAI = (): OpenAIReturn => {
       console.log({ response });
 
       if (response.error) {
-        openToast({
-          description: `${response.error} Tente novamente.`,
-          status: "error",
-          duration: null,
-        });
+        errorToast(`${response.error} Tente novamente.`);
       } else {
         updateTitle(response.title || "");
         updateDescription(response.description || "");
       }
     } catch (error) {
-      openToast({
-        description:
-          "Não foi possível gerar um titulo e uma descrição. Tente novamente.",
-        status: "error",
-        duration: null,
-      });
+      errorToast(
+        "Não foi possível gerar um titulo e uma descrição. Tente novamente."
+      );
     } finally {
-      setLoading(false);
+      setTitleLoading(false);
     }
   }, [
-    updateTopic,
     topic,
+    updateTopic,
     generateTitleAndDescription,
-    openToast,
+    errorToast,
     updateTitle,
     updateDescription,
   ]);
 
   return {
-    isLoading,
+    isTitleLoading,
+    isFieldLoading,
     topic,
+    hasError,
     handleInputChange,
     handleAIFieldButton,
     handleAITitleButton,

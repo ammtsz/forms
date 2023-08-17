@@ -31,7 +31,7 @@ body {
 }
 
 .secondary_btn {
-  @apply rounded-lg border border-secondary py-1.5 px-5 text-secondary transition-all hover:bg-secondary hover:text-white text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-secondary;
+  @apply rounded-lg border border-secondary bg-white py-1.5 px-5 text-secondary transition-all hover:bg-secondary hover:text-white text-center font-medium flex items-center justify-center disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-secondary;
 }
 
 .light_btn {
@@ -46,6 +46,9 @@ body {
   @apply py-1.5 px-2 transition-all text-primary hover:text-gray-500 text-center font-medium flex items-center justify-center disabled:opacity-50;
 }
 
+.round_btn {
+  @apply rounded-full h-[62px] w-[62px];
+}
 
 .icon_btn {
   @apply px-3;
