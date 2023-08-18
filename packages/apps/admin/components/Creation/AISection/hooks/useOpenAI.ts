@@ -86,8 +86,6 @@ const useOpenAI = (): OpenAIReturn => {
       updateTopic(topic.trim());
       const response = await generateTitleAndDescription();
 
-      console.log({ response });
-
       if (response.error) {
         errorToast(`${response.error} Tente novamente.`);
       } else {

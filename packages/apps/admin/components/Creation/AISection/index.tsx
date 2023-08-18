@@ -7,7 +7,7 @@ import {
   FormErrorMessage,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { EyeOff as EyeOffIcon } from "react-feather";
 
 import Tooltip from "@app/components/Tooltip";
@@ -15,7 +15,7 @@ import Tooltip from "@app/components/Tooltip";
 import useOpenAI from "./hooks/useOpenAI";
 import { Container, StickyButton, StickyForm } from "./styles";
 
-const AISection = () => {
+const AISection = ({ setFormDisabled }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isTitleLoading,
@@ -28,6 +28,10 @@ const AISection = () => {
   } = useOpenAI();
 
   const Sticky = isOpen ? StickyForm : StickyButton;
+
+  useEffect(() => {
+    setFormDisabled(isTitleLoading || isFieldLoading);
+  }, [isTitleLoading, isFieldLoading, setFormDisabled]);
 
   return (
     <>

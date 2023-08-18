@@ -8,7 +8,7 @@ import {
   FormControl,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import { getPrefixFromString } from "@forms/utils";
 
@@ -23,6 +23,7 @@ import { getFieldComponent } from "@app/utils/getFieldComponent";
 import { Container, Form } from "./styles";
 
 const FormCreationPage = () => {
+  const [isDisabled, setDisabled] = useState(false);
   const { fieldsIds, description, title, reset } = useFormCreation();
 
   const {
@@ -44,7 +45,7 @@ const FormCreationPage = () => {
   return (
     <IsSignedIn>
       <>
-        <AISection />
+        <AISection setFormDisabled={setDisabled} />
         <Container
           as="main"
           borderRadius={["none", "none", "2xl"]}
@@ -53,7 +54,10 @@ const FormCreationPage = () => {
           boxShadow={["none", "none", "dark-lg"]}
           p={[6, 8, 12]}
         >
-          <CleanButton handleCleanForm={handleCleanForm} />
+          <CleanButton
+            handleCleanForm={handleCleanForm}
+            isDisabled={isDisabled}
+          />
           <Form as={"form"} onSubmit={handleSubmit}>
             <Box mb={8}>
               <FormControl isInvalid={hasTitleError} mb={8}>
@@ -105,7 +109,11 @@ const FormCreationPage = () => {
               })}
             </React.Fragment>
             <AddFieldButton />
-            <button type="submit" className="primary_btn" disabled={isLoading}>
+            <button
+              type="submit"
+              className="primary_btn"
+              disabled={isLoading || isDisabled}
+            >
               {isLoading ? "Criando formulário..." : "Criar formulário"}
             </button>
           </Form>

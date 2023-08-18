@@ -27,8 +27,6 @@ export const POST = async (request: Request): Promise<Response> => {
       max_tokens: 300,
     });
 
-    console.log(response.data.choices[0]);
-
     const aiContent = response.data.choices[0].message?.content;
 
     if (aiContent && aiContent.startsWith("{")) {

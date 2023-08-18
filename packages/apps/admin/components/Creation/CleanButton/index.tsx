@@ -14,9 +14,13 @@ import ConfirmationModal from "@app/components/ConfirmationModal";
 
 interface CleanButtonProps {
   handleCleanForm: () => void;
+  isDisabled?: boolean;
 }
 
-const CleanButton: React.FC<CleanButtonProps> = ({ handleCleanForm }) => {
+const CleanButton: React.FC<CleanButtonProps> = ({
+  handleCleanForm,
+  isDisabled,
+}) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
@@ -24,9 +28,10 @@ const CleanButton: React.FC<CleanButtonProps> = ({ handleCleanForm }) => {
       <Menu>
         <MenuButton
           as={Button}
-          ml="auto"
           bg="white"
+          ml="auto"
           h="44px"
+          isDisabled={isDisabled}
           _hover={{ bg: "blackAlpha.100" }}
         >
           <MoreHorizontalIcon size={20} />

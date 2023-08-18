@@ -21,8 +21,6 @@ export const POST = async (request: Request): Promise<Response> => {
     },
   ];
 
-  console.log("messages: ", messages);
-
   try {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -30,8 +28,6 @@ export const POST = async (request: Request): Promise<Response> => {
       temperature: 1,
       max_tokens: 300,
     });
-
-    console.log("choices: ", response.data.choices[0]);
 
     const aiContent = response.data.choices[0].message?.content;
 

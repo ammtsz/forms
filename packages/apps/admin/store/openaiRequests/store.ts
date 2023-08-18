@@ -9,16 +9,12 @@ const INITIAL_STATE: FormCreationState = {
   topic: "",
   messages: [],
   interval: [],
-  lastMessage: "",
-  newField: "",
 };
 
 const store = create<FormCreationStore>((set, get) => ({
   topic: INITIAL_STATE.topic,
   messages: INITIAL_STATE.messages,
   interval: INITIAL_STATE.interval,
-  lastMessage: INITIAL_STATE.lastMessage,
-  newField: INITIAL_STATE.newField,
 
   updateTopic: (topic: string) => {
     set({ topic });
@@ -32,18 +28,13 @@ const store = create<FormCreationStore>((set, get) => ({
       }),
     });
 
-    console.log({ data });
     const response = await data.json();
 
     if (response.error) {
       return { error: response.error };
     }
 
-    console.log({ response });
-
     const titleAndDescription = JSON.parse(response);
-
-    console.log({ titleAndDescription });
 
     return titleAndDescription;
   },
@@ -57,22 +48,17 @@ const store = create<FormCreationStore>((set, get) => ({
       }),
     });
 
-    console.log({ data });
     const response = await data.json();
 
     if (response.error) {
       return { error: response.error };
     }
 
-    console.log({ response });
-
     get().addMessage(response);
 
     const field = JSON.parse(response);
 
     field.id = `${field.type}--${uuid()}`;
-
-    console.log({ field });
 
     return field;
   },
@@ -90,14 +76,11 @@ const store = create<FormCreationStore>((set, get) => ({
   },
 
   updateMessages: (fields) => {
-    console.log({ fields });
     const currentFields = [...fields];
     const messages: Message[] = [];
 
     currentFields.forEach((field) => {
       if (field.label) {
-        console.log({ field });
-
         const options = isOptionTypeField(field.type)
           ? { options: (field as OptionsField).options }
           : {};
@@ -117,8 +100,6 @@ const store = create<FormCreationStore>((set, get) => ({
     });
 
     set({ messages });
-
-    console.log({ messages });
   },
 
   reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),

@@ -22,8 +22,6 @@ export interface FormCreationState {
   topic: string;
   messages: Message[];
   interval: string[];
-  lastMessage: string;
-  newField: string;
 }
 
 export interface FormCreationStore extends FormCreationState {
@@ -32,6 +30,7 @@ export interface FormCreationStore extends FormCreationState {
   generateField: () => Promise<Field>;
   addMessage: (content: string) => void;
   updateMessages: (fields: Fields) => void;
+  // TODO:
   // calculateInterval: () => number; // [123131231, 131231231231, 1231312312]
   // updateIntervals: (interval: number) => void;
   // isAIDisabled: () => boolean;
