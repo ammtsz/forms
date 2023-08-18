@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
-import GoToFormButton from "@app/components/Home/GoToFormButton";
+import FormCard from "@app/components/Home/FormCard";
 import useToast from "@app/hooks/useToast";
 import { useFormsManagement } from "@app/store/formsManagement";
 import { UserSession } from "@app/types";
@@ -20,9 +20,9 @@ const FormButtons: React.FC = () => {
 
   const { openToast } = useToast();
 
-  const handleDelete: React.MouseEventHandler<HTMLButtonElement> = useCallback(
-    async (event) => {
-      const id = event.currentTarget.dataset.id as string;
+  const handleDelete = useCallback(
+    async (id: string) => {
+      // const id = event.currentTarget.dataset.id as string;
       const { hasError } = await deleteForm(id, session?.user?.email as string);
 
       if (!hasError) {
@@ -64,7 +64,7 @@ const FormButtons: React.FC = () => {
         + Criar novo formulário
       </Link>
       {formsNames.map((form) => (
-        <GoToFormButton key={form.id} {...form} handleDelete={handleDelete} />
+        <FormCard key={form.id} {...form} handleDelete={handleDelete} />
       ))}
     </div>
   );

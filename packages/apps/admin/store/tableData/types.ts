@@ -34,11 +34,6 @@ export interface TableDataState {
   title: string;
 }
 
-export interface UpdateStatusProps {
-  responsesIds: string[];
-  status: StatusTypes;
-}
-
 export interface TableDataStore extends TableDataState {
   getForm: (formId: string) => Promise<FormProps>;
   loadFormResponses: (formId: string) => Promise<void>;
@@ -52,7 +47,10 @@ export interface TableDataStore extends TableDataState {
   getSortBy: () => SortBy;
   getFields: () => FieldProps[];
   getFilteredTableData: () => TableData[];
-  updateResponseStatus: (args: UpdateStatusProps) => void;
+  updateResponseStatus: (args: {
+    responsesIds: string[];
+    status: StatusTypes;
+  }) => void;
   updateResponseNote: (notes: string, id: string) => void;
   incrementPage: () => void;
   resetPage: () => void;

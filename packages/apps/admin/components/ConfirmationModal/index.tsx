@@ -13,7 +13,6 @@ import { useCallback } from "react";
 
 import { StatusTypes } from "@app/constants/status";
 import { useCheckedRows } from "@app/store/checkedRows";
-import { UpdateStatusProps } from "@app/store/tableData/types";
 
 export interface ConfirmationTexts {
   action?: StatusTypes;
@@ -27,8 +26,10 @@ interface ConfirmationModalProps {
   texts: ConfirmationTexts;
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: (args?: UpdateStatusProps) => void;
+  onConfirm: any;
 }
+
+// TODO: refactor component to be more generic
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   texts,
