@@ -1,8 +1,9 @@
 import { create } from "zustand";
 
-import { uuid } from "@forms/utils";
+import { OptionsField } from "@forms/types/interfaces/field";
+import { isOptionTypeField, uuid } from "@forms/utils";
 
-import { FormCreationState, FormCreationStore } from "./types";
+import { FormCreationState, FormCreationStore, Message } from "./types";
 
 const INITIAL_STATE: FormCreationState = {
   topic: "",
@@ -65,7 +66,7 @@ const store = create<FormCreationStore>((set, get) => ({
 
     console.log({ response });
 
-    get().updateMessages(response);
+    get().addMessage(response);
 
     const field = JSON.parse(response);
 
@@ -76,7 +77,7 @@ const store = create<FormCreationStore>((set, get) => ({
     return field;
   },
 
-  updateMessages: (content) => {
+  addMessage: (content) => {
     set(({ messages }) => ({
       messages: [
         ...messages,
@@ -86,6 +87,38 @@ const store = create<FormCreationStore>((set, get) => ({
         },
       ],
     }));
+  },
+
+  updateMessages: (fields) => {
+    console.log({ fields });
+    const currentFields = [...fields];
+    const messages: Message[] = [];
+
+    currentFields.forEach((field) => {
+      if (field.label) {
+        console.log({ field });
+
+        const options = isOptionTypeField(field.type)
+          ? { options: (field as OptionsField).options }
+          : {};
+
+        messages.push({
+          role: "assistant",
+          content: JSON.stringify({
+            type: field.type,
+            label: field.label,
+            isRequired: field.isRequired,
+            placeholder: field.placeholder,
+            description: field.description,
+            ...options,
+          }),
+        });
+      }
+    });
+
+    set({ messages });
+
+    console.log({ messages });
   },
 
   reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),

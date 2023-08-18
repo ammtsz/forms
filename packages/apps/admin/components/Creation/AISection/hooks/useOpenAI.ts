@@ -22,10 +22,15 @@ const useOpenAI = (): OpenAIReturn => {
   const [topic, setTopic] = useState("");
   const [hasError, setError] = useState(false);
 
-  const { addFields, updateTitle, updateDescription } = useFormCreation();
+  const { addFields, updateTitle, updateDescription, fields } =
+    useFormCreation();
 
-  const { generateField, generateTitleAndDescription, updateTopic } =
-    useOpenaiRequest();
+  const {
+    generateField,
+    generateTitleAndDescription,
+    updateTopic,
+    updateMessages,
+  } = useOpenaiRequest();
 
   const { openToast } = useToast();
 
@@ -50,9 +55,9 @@ const useOpenAI = (): OpenAIReturn => {
       setFieldLoading(true);
 
       updateTopic(topic.trim());
-      const response = await generateField();
+      updateMessages(fields);
 
-      console.log({ response });
+      const response = await generateField();
 
       if (response.error) {
         errorToast(`${response.error} Tente novamente.`);
@@ -64,7 +69,15 @@ const useOpenAI = (): OpenAIReturn => {
     } finally {
       setFieldLoading(false);
     }
-  }, [topic, updateTopic, generateField, errorToast, addFields]);
+  }, [
+    topic,
+    fields,
+    updateTopic,
+    updateMessages,
+    generateField,
+    errorToast,
+    addFields,
+  ]);
 
   const handleAITitleButton = useCallback(async () => {
     try {

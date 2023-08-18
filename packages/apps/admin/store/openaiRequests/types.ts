@@ -1,12 +1,13 @@
+import { MakeOptional } from "@forms/types/global/makeOptional";
 import { FieldProps } from "@forms/types/interfaces/field";
 
-interface TitleAndDescription {
+export interface TitleAndDescription {
   title: string;
   description: string;
   error?: string;
 }
 
-interface Message {
+export interface Message {
   role: "assistant";
   content: string;
 }
@@ -14,6 +15,8 @@ interface Message {
 type Field = FieldProps & {
   error?: string;
 };
+
+type Fields = MakeOptional<FieldProps, "id">[];
 
 export interface FormCreationState {
   topic: string;
@@ -27,7 +30,8 @@ export interface FormCreationStore extends FormCreationState {
   updateTopic: (topic: string) => void;
   generateTitleAndDescription: () => Promise<TitleAndDescription>;
   generateField: () => Promise<Field>;
-  updateMessages: (content: string) => void;
+  addMessage: (content: string) => void;
+  updateMessages: (fields: Fields) => void;
   // calculateInterval: () => number; // [123131231, 131231231231, 1231312312]
   // updateIntervals: (interval: number) => void;
   // isAIDisabled: () => boolean;

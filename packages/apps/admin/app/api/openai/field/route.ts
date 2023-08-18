@@ -21,7 +21,7 @@ export const POST = async (request: Request): Promise<Response> => {
     },
   ];
 
-  console.log("messagesBase: ", messagesBase);
+  console.log("messages: ", messages);
 
   try {
     const response = await openai.createChatCompletion({

@@ -31,13 +31,13 @@ const AISection = () => {
 
   return (
     <>
-      <Sticky>
+      <Sticky className={!isOpen ? "md:justify-end" : ""}>
         {!isOpen ? (
           <Tooltip label={"Mostrar opções de IA"}>
             <button
               onClick={onOpen}
               type="button"
-              className="primary_btn round_btn ml-4 mt-4"
+              className="primary_btn round_btn mx-4 mt-4"
             >
               IA
             </button>
@@ -71,28 +71,32 @@ const AISection = () => {
               </FormErrorMessage>
             </FormControl>
             <div className="flex gap-2 w-full mt-4 justify-end flex-col sm:flex-row">
-              <button
-                onClick={handleAITitleButton}
-                type="button"
-                className="primary_btn"
-                disabled={
-                  isTitleLoading || isFieldLoading || hasError || !topic
-                }
-              >
-                {isTitleLoading
-                  ? "Criando título e descrição..."
-                  : "Criar título e descrição"}
-              </button>
-              <button
-                onClick={handleAIFieldButton}
-                type="button"
-                className="primary_btn"
-                disabled={
-                  isTitleLoading || isFieldLoading || hasError || !topic
-                }
-              >
-                {isFieldLoading ? "Criando campo..." : "Novo campo"}
-              </button>
+              <Tooltip label="O título e a descrição são criados com base no tema.">
+                <button
+                  onClick={handleAITitleButton}
+                  type="button"
+                  className="primary_btn"
+                  disabled={
+                    isTitleLoading || isFieldLoading || hasError || !topic
+                  }
+                >
+                  {isTitleLoading
+                    ? "Criando título e descrição..."
+                    : "Criar título e descrição"}
+                </button>
+              </Tooltip>
+              <Tooltip label="Os campos são criados com base no tema e nos campos existentes.">
+                <button
+                  onClick={handleAIFieldButton}
+                  type="button"
+                  className="primary_btn"
+                  disabled={
+                    isTitleLoading || isFieldLoading || hasError || !topic
+                  }
+                >
+                  {isFieldLoading ? "Criando campo..." : "Novo campo"}
+                </button>
+              </Tooltip>
             </div>
           </Container>
         )}
