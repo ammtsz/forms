@@ -59,7 +59,7 @@ const DropdownListField: React.FC<
                 {option.label}
               </option>
             ))}
-            {optionOther.isVisible && <option value="other">outro</option>}
+            {optionOther?.isVisible && <option value="other">outro</option>}
           </React.Fragment>
         </Select>
         {hasError && (

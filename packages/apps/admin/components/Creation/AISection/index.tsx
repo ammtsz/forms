@@ -15,7 +15,7 @@ import Tooltip from "@app/components/Tooltip";
 import useOpenAI from "./hooks/useOpenAI";
 import { Container, StickyButton, StickyForm } from "./styles";
 
-const AISection = ({ setFormDisabled }) => {
+const AISection = ({ setFormDisabled, isSubmitting }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isTitleLoading,
@@ -32,6 +32,9 @@ const AISection = ({ setFormDisabled }) => {
   useEffect(() => {
     setFormDisabled(isTitleLoading || isFieldLoading);
   }, [isTitleLoading, isFieldLoading, setFormDisabled]);
+
+  const isDisabled =
+    isTitleLoading || isFieldLoading || hasError || !topic || isSubmitting;
 
   return (
     <>
@@ -80,9 +83,7 @@ const AISection = ({ setFormDisabled }) => {
                   onClick={handleAITitleButton}
                   type="button"
                   className="primary_btn"
-                  disabled={
-                    isTitleLoading || isFieldLoading || hasError || !topic
-                  }
+                  disabled={isDisabled}
                 >
                   {isTitleLoading
                     ? "Criando título e descrição..."
@@ -94,9 +95,7 @@ const AISection = ({ setFormDisabled }) => {
                   onClick={handleAIFieldButton}
                   type="button"
                   className="primary_btn"
-                  disabled={
-                    isTitleLoading || isFieldLoading || hasError || !topic
-                  }
+                  disabled={isDisabled}
                 >
                   {isFieldLoading ? "Criando campo..." : "Novo campo"}
                 </button>

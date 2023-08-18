@@ -30,7 +30,7 @@ const FormCreationPage = () => {
     handleSubmit,
     handleTitle,
     handleDescription,
-    isLoading,
+    isLoading: isSubmitting,
     hasTitleError,
   } = useSubmitForm();
 
@@ -45,7 +45,7 @@ const FormCreationPage = () => {
   return (
     <IsSignedIn>
       <>
-        <AISection setFormDisabled={setDisabled} />
+        <AISection setFormDisabled={setDisabled} isSubmitting={isSubmitting} />
         <Container
           as="main"
           borderRadius={["none", "none", "2xl"]}
@@ -112,9 +112,9 @@ const FormCreationPage = () => {
             <button
               type="submit"
               className="primary_btn"
-              disabled={isLoading || isDisabled}
+              disabled={isSubmitting || isDisabled}
             >
-              {isLoading ? "Criando formulário..." : "Criar formulário"}
+              {isSubmitting ? "Criando formulário..." : "Criar formulário"}
             </button>
           </Form>
         </Container>

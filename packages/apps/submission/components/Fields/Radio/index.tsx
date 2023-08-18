@@ -54,7 +54,7 @@ const RadioField: React.FC<
               {option.label}
             </Radio>
           ))}
-          {optionOther.isVisible && (
+          {optionOther?.isVisible && (
             <Radio value="other" colorScheme="telegram">
               outro
             </Radio>
