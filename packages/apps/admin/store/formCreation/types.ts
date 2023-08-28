@@ -34,6 +34,7 @@ export interface FormCreationStore extends FormCreationState {
   getField: (fieldId: string) => FieldProps;
   createUserForm: (
     email: string,
+    lang: string,
     forms?: string[]
   ) => Promise<{ formId: string; hasError: boolean }>;
   setDependsOnOptions: (field: FieldProps) => void;

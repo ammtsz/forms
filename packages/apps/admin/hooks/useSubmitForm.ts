@@ -41,7 +41,7 @@ const useSubmitForm = () => {
 
   const { openToast } = useToast();
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const validateOptions = useCallback((options: OptionProps[]) => {
     const isEmpty = !options || options.length === 0;
@@ -116,6 +116,7 @@ const useSubmitForm = () => {
         if (!validationError) {
           const { hasError: hasCreationError, formId } = await createUserForm(
             user.email as string,
+            i18n.resolvedLanguage || "en",
             user.forms
           );
 
