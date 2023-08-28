@@ -1,0 +1,152 @@
+{
+  "commons": {
+    "requiredField": "Required field",
+    "yes": "Yes",
+    "no": "No",
+    "responses": "Responses",
+    "delete": "Delete",
+    "edit": "Edit",
+    "move": "Move",
+    "save": "Save",
+    "cancel": "Cancel",
+    "clean": "Clean",
+    "optional": "Optional",
+    "or": "or",
+    "other": "Other",
+    "actions": "Actions",
+    "all":"All",
+    "signOut": "Sign out",
+    "login": "Login"
+  },
+  "fields": {
+    "text": "Short answer",
+    "paragraph": "Paragraph",
+    "dropdown": "Dropdown",
+    "radio": "Multiple choice - radio",
+    "checkboxes": "Multiple choice - checkbox",
+    "checkbox": "Checkbox",
+    "switch": "Switch",
+    "date": "Date"
+  },
+  "date": {
+    "minDate": "Minimum date",
+    "maxDate": "Maximum date",
+    "today": "Today",
+    "days": "Days"
+  },
+  "feedbacks": {
+    "loginRequired": "Log in to continue",
+    "errorToLoadPage": "Error loading page.",
+    "retry": "Retry later.",
+    "form": {
+      "fillRequiredFields": "Fill in the required fields.",
+      "formDeleted": "Form deleted successfully.",
+      "errorDeleteForm": "Error deleting form.",
+      "formNotFound": "Form not found."
+    }
+  },
+  "confirmations": {
+    "cantBeUndone": "This action cannot be undone.",
+    "cleanForm": "Are you sure you want to clear the form? This action cannot be undone.",
+    "deleteForm": "Are you sure you want to delete the form? This action cannot be undone.",
+    "moveResponse": "Do you want to move {{count}} answer(s) to the 'main' tab?",
+    "deleteResponse": "Do you want to delete {{count}} answer(s)?"
+  },
+  "home": {
+    "buttons": {
+      "createNewForm": "+ Create new form",
+      "openForm": "Open form",
+      "deleteForm": "Delete form"
+    },
+    "navbar": {
+      "admin": "Admin",
+      "home": "Home",
+      "responses": "Responses",
+      "create": "New form",
+      "edit": "Form editing"
+    }
+  },
+  "create": {
+    "ai": {
+      "topicInputLabel": "Enter the form topic to create a title, description, and new fields with help of AI.",
+      "topicInputPlaceholder": "Enter a topic",
+      "topicInputHint": "The topic should have 3 to 100 characters.",
+      "titleAndDescriptionTip": "Title and description are created based on the topic.",
+      "fieldTip": "Fields are created based on the topic and existing fields.",
+      "feedbacks": {
+        "unableCreateTitleAndDescription": "Unable to generate a title and description.",
+        "errorCreateTitleAndDescription": "Error generating a title and description.",
+        "unableCreateField": "Could not generate a new field.",
+        "errorCreateField": "Error generating a new field."
+      }
+    },
+    "placeholders": {
+      "addTitle": "Add a title",
+      "addDescription": "Add a description (optional)",
+      "addQuestion": "Add a question",
+      "addOption": "Add an option",
+      "addOptionOther": "Add a placeholder for option \u0022other\u0022 (optional)",
+      "addPlaceholder": "Add a placeholder (optional)",
+      "selectQuestion": "Select a question"
+    },
+    "labels": {
+      "visibleOnlyWhen": "Visible only when",
+      "dependency": "Dependency"
+    },
+    "buttons": {
+      "showAIOptions": "Show AI options",
+      "hideAIOptions": "Hide AI options",
+      "createTitleAndDescription": "Create title and description",
+      "newField": "New field",
+      "deleteOption": "Delete option",
+      "addOption": "+ Add option",
+      "addOptionOther": "+ Add option \u0022other\u0022",
+      "saveChanges": "Save changes",
+      "createForm": "Create form",
+      "cleanForm": "Clean form",
+      "cleanDates": "Clean dates",
+      "addField": "+ Add field"
+    },
+    "loading": {
+      "creatingTitleAndDescription": "Creating title and description...",
+      "savingChanges": "Saving changes...",
+      "creatingField": "Creating field...",
+      "creatingForm": "Creating form..."
+    },
+    "feedbacks":
+      {
+        "addTitle": "Add a title to the form",
+        "oneFieldAtLeast": "Add at least one field to the form",
+        "fillRequiredFields": "Fill in the required fields",
+        "formCreated": "Form successfully created",
+        "errorCreateForm": "Unable to create form",
+        "loginRequired": "Log in to create a form"
+      }
+  },
+  "responses": {
+    "buttons": {
+      "deleteResponses": "Delete responses",
+      "filterColumns": "Filter columns",
+      "copyTable": "Copy table",
+      "search": "Search",
+      "addNote": "Add note",
+      "moveToMain": "Move to 'Main'"    
+    },
+    "placeholders": {
+      "addNote": "Add a note"
+    },
+    "tabs": {
+      "all": "All",
+      "main": "Main",
+      "new": "New"    
+    },
+    "columns": {
+      "notes": "Notes",
+      "createdAt": "Created at"
+    },
+    "feedbacks": {
+      "noResponseYet": "No response yet"
+    }
+  }
+  
+}

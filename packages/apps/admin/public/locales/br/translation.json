@@ -1,0 +1,151 @@
+{
+  "commons": {
+    "requiredField": "Campo obrigatório",
+    "yes": "Sim",
+    "no": "Não",
+    "responses": "Respostas",
+    "delete": "Apagar",
+    "edit": "Editar",
+    "move": "Mover",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "clean": "Limpar",
+    "optional": "Opcional",
+    "or": "ou",
+    "other": "Outro",
+    "actions": "Ações",
+    "all":"Todas",
+    "signOut": "Sair",
+    "login": "Entrar"
+  },
+  "fields": {
+    "text": "Texto curto",
+    "paragraph": "Parágrafo",
+    "dropdown": "Lista Dropdown",
+    "radio": "Múltipla escolha - radio",
+    "checkboxes": "Múltipla escolha - checkbox",
+    "checkbox": "Checkbox",
+    "switch": "Switch",
+    "date": "Data"
+  },
+  "date": {
+    "minDate": "Data mínima",
+    "maxDate": "Data máxima",
+    "today": "Hoje",
+    "days": "Dias"
+  },
+  "feedbacks": {
+    "loginRequired": "Faça o login para continuar",
+    "errorToLoadPage": "Não foi possível carregar a página. Tente novamente.",
+    "retry": "Tente novamente.",
+    "form" : {
+      "fillRequiredFields": "Preeencha os campos obrigatórios.",
+      "formDeleted": "Formulário apagado com sucesso",
+      "errorDeleteForm": "Não foi possível apagar o formulário",
+      "formNotFound": "Formulário não encontrado"
+    }
+  },
+  "confirmations": {
+    "cantBeUndone": "Esta ação não poderá ser desfeita.",
+    "cleanForm": "Tem certeza que deseja limpar o formulário? Esta ação não poderá ser desfeita.",
+    "deleteForm": "Tem certeza que deseja apagar este formulário? Esta ação não pode ser desfeita.",
+    "moveResponse": "Deseja mover {{count}} resposta(s) para a aba 'principal?",
+    "deleteResponse": "Deseja apagar {{count}} resposta(s)?"
+  },
+  "home": {
+    "buttons": {
+      "createNewForm": "+ Criar novo formulário",
+      "openForm": "Ver formulário",
+      "deleteForm": "Apagar formulário"
+    },
+    "navbar": {
+      "admin": "Admin",
+      "home": "Home",
+      "responses": "Respostas",
+      "create": "Novo formulário",
+      "edit": "Edição de formulário"
+    }
+  },
+  "create": {
+    "ai": {
+      "topicInputLabel": "Informe o tema do formulário para crie um título, uma descrição e novos campos com a ajuda de uma IA.",
+      "topicInputPlaceholder": "Digite um tema",
+      "topicInputHint": "O tema deve ter de 3 a 100 caracteres.",
+      "titleAndDescriptionTip": "O título e a descrição são criados com base no tema.",
+      "fieldTip": "Os campos são criados com base no tema e nos campos existentes.",
+      "feedbacks": {
+        "unableCreateTitleAndDescription": "Não foi possível gerar um título e uma descrição.",
+        "errorCreateTitleAndDescription": "Erro ao gerar um título e uma descrição.",
+        "unableCreateField": "Não foi possível gerar um novo campo.",
+        "errorCreateField": "Erro ao gerar um novo campo."
+      }
+    },
+    "placeholders": {
+      "addTitle": "Adicione um título",
+      "addDescription": "Adicione uma descrição (opcional)",
+      "addQuestion": "Adicione uma pergunta",
+      "addOption": "Adicione uma opção",
+      "addOptionOther": "Adicione um placeholder para o campo \u0022outro\u0022 (opcional)",
+      "addPlaceholder": "Adicione um placeholder (opcional)",
+      "selectQuestion": "Selecione uma pergunta"
+    },
+    "labels": {
+      "visibleOnlyWhen": "Visível apenas quando",
+      "dependency": "Dependência"
+    },
+    "buttons": {
+      "showAIOptions": "Mostrar opções de IA",
+      "hideAIOptions": "Esconder opções de IA",
+      "createTitleAndDescription": "Criar título e descrição",
+      "newField": "Novo campo",
+      "deleteOption": "Apagar opção",
+      "addOption": "+ Adicionar opção",
+      "addOptionOther": "+ Adicionar opção \u0022outro\u0022",
+      "saveChanges": "Salvar alterações",
+      "createForm": "Criar formulário",
+      "cleanForm": "Limpar formulário",
+      "cleanDates": "Limpar datas",
+      "addField": "+ Adicionar campo"
+    },
+    "loading": {
+      "creatingTitleAndDescription": "Criando título e descrição...",
+      "savingChanges": "Salvando alterações...",
+      "creatingField": "Criando campo...",
+      "creatingForm": "Criando formulário..."
+    },
+    "feedbacks": {
+      "addTitle": "Adicione um título ao formulário",
+      "oneFieldAtLeast": "Adicione pelo menos um campo ao formulário",
+      "fillRequiredFields": "Preencha os campos obrigatórios",
+      "formCreated": "Formulário criado com sucesso",
+      "errorCreateForm": "Não foi possível criar o formulário",
+      "loginRequired": "Faça o login para criar um formulário"
+    }
+  },
+  "responses": {
+    "buttons": {
+      "deleteResponses": "Apagar respostas",
+      "filterColumns": "Filtrar colunas",
+      "copyTable": "Copiar tabela",
+      "search": "Buscar",
+      "addNote": "Adcionar nota",
+      "moveToMain": "Mover para 'Principal'"
+    },
+    "placeholders": {
+      "addNote": "Adicionar nota"
+    },
+    "tabs": {
+      "all": "Todos",
+      "main": "Principal",
+      "new": "Novos"
+    },
+    "columns": {
+      "notes": "Anotações",
+      "createdAt": "Criado em"
+    },
+    "feedbacks": {
+      "noResponseYet": "Nenhuma resposta até o momento"
+    }
+  }
+  
+}
