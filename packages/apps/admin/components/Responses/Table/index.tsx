@@ -1,6 +1,7 @@
 "use client";
 
 import BaseTable, { AutoResizer } from "react-base-table";
+import { useTranslation } from "react-i18next";
 
 import { useTableData } from "@app/store/tableData";
 import "react-base-table/styles.css";
@@ -19,6 +20,8 @@ const Table: React.FC<TableProps> = ({
   hasError = false,
 }: TableProps) => {
   const { filteredTableData, formId, getSortBy } = useTableData();
+
+  const { t } = useTranslation();
 
   const {
     handleColumnSort,
@@ -44,8 +47,8 @@ const Table: React.FC<TableProps> = ({
             emptyRenderer={
               <Feedback
                 isLoading={isLoading}
-                errorMessage={hasError ? "Formulário não encontrado" : ""}
-                message="Nenhuma resposta até o momento"
+                errorMessage={hasError ? t("feedbacks.form.formNotFound") : ""}
+                message={t("responses.feedbacks.noResponseYet")}
               />
             }
             fixed={hasFrozenColumn}

@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import FormCard from "@app/components/Home/FormCard";
 import useToast from "@app/hooks/useToast";
@@ -20,25 +21,28 @@ const FormButtons: React.FC = () => {
 
   const { openToast } = useToast();
 
+  const { t } = useTranslation();
+
   const handleDelete = useCallback(
     async (id: string) => {
-      // const id = event.currentTarget.dataset.id as string;
       const { hasError } = await deleteForm(id, session?.user?.email as string);
 
       if (!hasError) {
         setFormsNames((prev) => prev.filter((form) => form.id !== id));
         openToast({
-          description: "Formulário apagado com sucesso",
+          description: t("feedbacks.form.formDeleted"),
           status: "success",
         });
       } else {
         openToast({
-          description: "Não foi possível apagar o formulário",
+          description: `${t("feedbacks.form.errorDeleteForm")} ${t(
+            "feedbacks.retry"
+          )}`,
           status: "error",
         });
       }
     },
-    [deleteForm, openToast, session?.user?.email]
+    [deleteForm, openToast, session?.user?.email, t]
   );
 
   const loadForms = useCallback(
@@ -61,7 +65,7 @@ const FormButtons: React.FC = () => {
   return (
     <div className="flex gap-4 flex-wrap justify-center">
       <Link href="/create" className="btn_card black_scheme">
-        + Criar novo formulário
+        {t("home.buttons.createNewForm")}
       </Link>
       {formsNames.map((form) => (
         <FormCard key={form.id} {...form} handleDelete={handleDelete} />

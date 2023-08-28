@@ -9,6 +9,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { getPrefixFromString } from "@forms/utils";
 
@@ -33,6 +34,8 @@ const FormCreationPage = () => {
     isLoading: isSubmitting,
     hasTitleError,
   } = useSubmitForm();
+
+  const { t } = useTranslation();
 
   const handleCleanForm = useCallback(() => {
     reset();
@@ -66,14 +69,16 @@ const FormCreationPage = () => {
                   variant={hasTitleError ? "flushed" : "unstyled"}
                   size="lg"
                   color="blackAlpha.900"
-                  placeholder="Adicione um título"
+                  placeholder={t("create.placeholders.addTitle")}
                   textAlign="center"
                   fontSize={["lg", "xl", "2xl"]}
                   onChange={handleTitle}
                   value={title}
                 />
                 {hasTitleError && (
-                  <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
+                  <FormErrorMessage mt={0}>
+                    {t("commons.requiredField")}
+                  </FormErrorMessage>
                 )}
               </FormControl>
               <Textarea
@@ -81,7 +86,7 @@ const FormCreationPage = () => {
                 color="blackAlpha.900"
                 fontSize={["sm", "sm", "md"]}
                 onChange={handleDescription}
-                placeholder="Adicione uma descrição (opcional)"
+                placeholder={t("create.placeholders.addDescription")}
                 value={description}
               />
             </Box>
@@ -114,7 +119,9 @@ const FormCreationPage = () => {
               className="primary_btn"
               disabled={isSubmitting || isDisabled}
             >
-              {isSubmitting ? "Criando formulário..." : "Criar formulário"}
+              {isSubmitting
+                ? t("create.loading.creatingForm")
+                : t("create.buttons.createForm")}
             </button>
           </Form>
         </Container>

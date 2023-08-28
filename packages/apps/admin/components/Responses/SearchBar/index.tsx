@@ -3,6 +3,7 @@
 import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 import { useCallback } from "react";
 import { Search as SearchIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
 import { debounce } from "@forms/utils";
 
@@ -10,6 +11,8 @@ import { useTableData } from "@app/store/tableData";
 
 const SearchBar: React.FC = () => {
   const { filterTableData } = useTableData();
+
+  const { t } = useTranslation();
 
   const filterResponses = debounce(
     useCallback(
@@ -34,7 +37,7 @@ const SearchBar: React.FC = () => {
         <SearchIcon />
       </InputLeftAddon>
       <Input
-        placeholder="Buscar"
+        placeholder={t("responses.buttons.search")}
         onChange={handleSearch}
         fontSize={["sm", "sm", "md"]}
       />

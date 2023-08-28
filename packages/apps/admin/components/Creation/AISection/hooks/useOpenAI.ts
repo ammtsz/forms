@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import useToast from "@app/hooks/useToast";
 import { useFormCreation } from "@app/store/formCreation";
@@ -21,6 +22,8 @@ const useOpenAI = (): OpenAIReturn => {
   const [isFieldLoading, setFieldLoading] = useState(false);
   const [topic, setTopic] = useState("");
   const [hasError, setError] = useState(false);
+
+  const { t, i18n } = useTranslation();
 
   const { addFields, updateTitle, updateDescription, fields } =
     useFormCreation();
@@ -57,21 +60,25 @@ const useOpenAI = (): OpenAIReturn => {
       updateTopic(topic.trim());
       updateMessages(fields);
 
-      const response = await generateField();
+      const response = await generateField(i18n.resolvedLanguage || "en");
 
       if (response.error) {
-        errorToast(`${response.error} Tente novamente.`);
-      } else {
+        errorToast(`${response.error} ${t("feedbacks.retry")}`);
+      } else if (response) {
         addFields([response]);
       }
     } catch (error) {
-      errorToast("Não foi possível criar um novo campo. Tente novamente.");
+      errorToast(
+        `${t("create.ai.feedbacks.unableCreateField")} ${t("feedbacks.retry")}`
+      );
     } finally {
       setFieldLoading(false);
     }
   }, [
-    topic,
+    t,
+    i18n,
     fields,
+    topic,
     updateTopic,
     updateMessages,
     generateField,
@@ -84,23 +91,29 @@ const useOpenAI = (): OpenAIReturn => {
       setTitleLoading(true);
 
       updateTopic(topic.trim());
-      const response = await generateTitleAndDescription();
+      const response = await generateTitleAndDescription(
+        i18n.resolvedLanguage || "en"
+      );
 
       if (response.error) {
-        errorToast(`${response.error} Tente novamente.`);
+        errorToast(`${response.error} ${t("feedbacks.retry")}`);
       } else {
         updateTitle(response.title || "");
         updateDescription(response.description || "");
       }
     } catch (error) {
       errorToast(
-        "Não foi possível gerar um titulo e uma descrição. Tente novamente."
+        `${t("create.ai.feedbacks.unableCreateTitleAndDescription")} ${t(
+          "feedbacks.retry"
+        )}`
       );
     } finally {
       setTitleLoading(false);
     }
   }, [
+    t,
     topic,
+    i18n.resolvedLanguage,
     updateTopic,
     generateTitleAndDescription,
     errorToast,

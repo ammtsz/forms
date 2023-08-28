@@ -2,6 +2,7 @@
 
 import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
@@ -26,6 +27,8 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
   } = useDates({
     id,
   });
+
+  const { t } = useTranslation();
 
   const { errors } = useFormCreation();
 
@@ -54,7 +57,7 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
             mb={2}
             mt={8}
           >
-            Opcional
+            {t("commons.optional")}
           </Text>
           <Flex
             justifyContent={"space-around"}

@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
@@ -40,6 +41,8 @@ const useSubmitForm = () => {
 
   const { openToast } = useToast();
 
+  const { t } = useTranslation();
+
   const validateOptions = useCallback((options: OptionProps[]) => {
     const isEmpty = !options || options.length === 0;
     if (isEmpty) return { optionsError: ["options--0"] };
@@ -56,13 +59,13 @@ const useSubmitForm = () => {
   const validateForm = useCallback(() => {
     if (!title) {
       setTitleError(true);
-      return "Adicione um título ao formulário";
+      return t("create.feedbacks.addTitle");
     }
 
     setTitleError(false);
 
     if (!fields.length) {
-      return "O formulário deve conter ao menos um campo.";
+      return t("create.feedbacks.oneFieldAtLeast");
     }
 
     const fieldErrors: FieldErrors = {};
@@ -93,10 +96,12 @@ const useSubmitForm = () => {
 
     const hasError = Object.keys(fieldErrors).length;
 
-    const errorMessage = hasError ? "Preeencha os campos obrigatórios." : "";
+    const errorMessage = hasError
+      ? t("create.feedbacks.fillRequiredFields")
+      : "";
 
     return errorMessage;
-  }, [fields, title, setErrors, validateOptions]);
+  }, [title, fields, setErrors, t, validateOptions]);
 
   const handleSubmit: React.FormEventHandler = useCallback(
     async (event) => {
@@ -120,12 +125,14 @@ const useSubmitForm = () => {
             router.push("/");
 
             openToast({
-              description: "Formulário criado com sucesso",
+              description: t("create.feedbacks.formCreated"),
               status: "success",
             });
           } else {
             openToast({
-              description: "Erro ao criar o formulário. Tente novamente.",
+              description: `${t("create.feedbacks.errorCreateForm")} ${t(
+                "feedbacks.retry"
+              )}`,
               status: "error",
               duration: null,
             });
@@ -138,7 +145,7 @@ const useSubmitForm = () => {
         }
       } else {
         openToast({
-          description: "faça login para criar um formulário",
+          description: t("create.feedbacks.loginRequired"),
           status: "error",
         });
       }
@@ -156,6 +163,7 @@ const useSubmitForm = () => {
       userUpdate,
       router,
       openToast,
+      t,
     ]
   );
 

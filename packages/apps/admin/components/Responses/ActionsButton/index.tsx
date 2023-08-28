@@ -8,13 +8,14 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { StatusTypes } from "@app/constants/status";
+import { Status, StatusTypes } from "@app/constants/status";
 import { useCheckedRows } from "@app/store/checkedRows";
 import { useTableData } from "@app/store/tableData";
 
 import ConfirmationModal, { ConfirmationTexts } from "../../ConfirmationModal";
-import { ACTIONS, getConfirmationTexts } from "./utils";
+import { getConfirmationTexts } from "./utils";
 
 const ActionsButton: React.FC = () => {
   const [texts, setAction] = useState<ConfirmationTexts>();
@@ -24,6 +25,19 @@ const ActionsButton: React.FC = () => {
   const { checkedRows } = useCheckedRows();
 
   const { updateResponseStatus } = useTableData();
+
+  const { t } = useTranslation();
+
+  const ACTIONS = [
+    {
+      label: t("commons.delete"),
+      action: Status.deleted,
+    },
+    {
+      label: t("responses.buttons.moveToMain"),
+      action: Status.main,
+    },
+  ];
 
   const handleAction: React.MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
@@ -43,9 +57,9 @@ const ActionsButton: React.FC = () => {
         <MenuButton
           as="button"
           disabled={!checkedRows.length}
-          className="primary_btn w-28 "
+          className="primary_btn w-[120px] "
         >
-          Ações ⏷
+          {`${t("commons.actions")} ⏷`}
         </MenuButton>
         <MenuList>
           {ACTIONS.map(({ action, label }) => (

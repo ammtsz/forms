@@ -12,10 +12,11 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { MoreHorizontal as MoreIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
 import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
 
-import { FIELDS_LABEL } from "@app/constants/fieldsLabels";
+import { getFieldLabel } from "@app/utils/fieldsLabels";
 
 import FieldDependsOn from "../FIeldDependsOn";
 
@@ -36,6 +37,8 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
 }) => {
   const [visible, setVisible] = useState(false);
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     if (!visible && initialDependsOn?.fieldId) {
       setVisible(true);
@@ -46,7 +49,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
     <>
       <Flex alignItems={"center"} mb={4}>
         <Text color="blackAlpha.500" fontSize="sm" as="i">
-          {FIELDS_LABEL[type]}
+          {getFieldLabel(type)}
         </Text>
         <Menu>
           <MenuButton
@@ -61,10 +64,12 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
             <MoreIcon size="20px" />
           </MenuButton>
           <MenuList fontSize={["sm", "md"]}>
-            <MenuItem onClick={() => setVisible(true)}>Dependência</MenuItem>
+            <MenuItem onClick={() => setVisible(true)}>
+              {t("create.labels.dependency")}
+            </MenuItem>
             <MenuDivider />
             <MenuItem onClick={handleDelete} color="red.500">
-              Apagar
+              {t("commons.delete")}
             </MenuItem>
           </MenuList>
         </Menu>

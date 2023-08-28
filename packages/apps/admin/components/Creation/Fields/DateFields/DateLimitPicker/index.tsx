@@ -19,14 +19,9 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-import {
-  GRID_AREAS,
-  INPUT_PROPS,
-  LABELS,
-  getLimit,
-  getSelectedDate,
-} from "../utils";
+import { GRID_AREAS, INPUT_PROPS, getLimit, getSelectedDate } from "../utils";
 import { useDateLimitPicker } from "./hooks/useDateLimitPicker";
 
 interface DateLimitPickerProps {
@@ -51,16 +46,24 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
     handleRadio,
   } = useDateLimitPicker({ handleInputChange, handleLimitsChange, max, min });
 
+  const { t } = useTranslation();
+
   const [isMediumScreen] = useMediaQuery("(min-width: 768px)");
 
-  const selectedDate = (dateLimitType: string, dateGroupType: string) => {
-    return getSelectedDate(
+  const selectedDate = (
+    index: number,
+    dateLimitType: string,
+    dateGroupType: string
+  ) => {
+    const LABELS = [t("date.minDate"), t("date.maxDate")];
+
+    return `${LABELS[index]}: ${getSelectedDate(
       dateLimitType,
       dateGroupType,
       date,
       dateType,
       isMediumScreen
-    );
+    )}`;
   };
 
   return (
@@ -116,11 +119,11 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                 ml={1}
                 gridArea={area.label}
               >
-                {`${LABELS[index]}: ${selectedDate(dateLimitType, "today")}`}
+                {selectedDate(index, dateLimitType, "today")}
               </FormLabel>
               <Flex alignItems={"center"} gap={2} gridArea={area.today}>
                 <Kbd fontSize="md" opacity={dateType === "today" ? 1 : 0.4}>
-                  Hoje
+                  {t("date.today")}
                 </Kbd>
                 <Text fontWeight={600}>+</Text>
                 <FormControl isInvalid={dateType === "today" && !max && !min}>
@@ -141,7 +144,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                   </NumberInput>
                 </FormControl>
                 <Kbd fontSize="md" opacity={dateType === "today" ? 1 : 0.4}>
-                  dias
+                  {t("date.days").toLowerCase()}
                 </Kbd>
               </Flex>
               {isMediumScreen ? (
@@ -152,7 +155,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                   opacity={dateType ? 1 : 0.4}
                   textAlign={"center"}
                 >
-                  ou
+                  {t("commons.or")}
                 </Text>
               ) : (
                 <FormLabel
@@ -162,10 +165,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                   ml={1}
                   gridArea={area.or}
                 >
-                  {`${LABELS[index]}: ${selectedDate(
-                    dateLimitType,
-                    "calendar"
-                  )}`}
+                  {selectedDate(index, dateLimitType, "calendar")}
                 </FormLabel>
               )}
               <Input
@@ -192,7 +192,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
         width={"auto"}
         size={["sm", "sm", "md"]}
       >
-        Limpar datas
+        {t("create.buttons.cleanDates")}
       </Button>
     </Flex>
   );

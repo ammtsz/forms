@@ -36,7 +36,7 @@
   },
   "feedbacks": {
     "loginRequired": "Faça o login para continuar",
-    "errorToLoadPage": "Não foi possível carregar a página. Tente novamente.",
+    "errorToLoadPage": "Não foi possível carregar a página.",
     "retry": "Tente novamente.",
     "form" : {
       "fillRequiredFields": "Preeencha os campos obrigatórios.",
@@ -47,8 +47,8 @@
   },
   "confirmations": {
     "cantBeUndone": "Esta ação não poderá ser desfeita.",
-    "cleanForm": "Tem certeza que deseja limpar o formulário? Esta ação não poderá ser desfeita.",
-    "deleteForm": "Tem certeza que deseja apagar este formulário? Esta ação não pode ser desfeita.",
+    "cleanForm": "Tem certeza que deseja limpar o formulário?",
+    "deleteForm": "Tem certeza que deseja apagar este formulário?",
     "moveResponse": "Deseja mover {{count}} resposta(s) para a aba 'principal?",
     "deleteResponse": "Deseja apagar {{count}} resposta(s)?"
   },
@@ -75,9 +75,7 @@
       "fieldTip": "Os campos são criados com base no tema e nos campos existentes.",
       "feedbacks": {
         "unableCreateTitleAndDescription": "Não foi possível gerar um título e uma descrição.",
-        "errorCreateTitleAndDescription": "Erro ao gerar um título e uma descrição.",
-        "unableCreateField": "Não foi possível gerar um novo campo.",
-        "errorCreateField": "Erro ao gerar um novo campo."
+        "unableCreateField": "Não foi possível gerar um novo campo."
       }
     },
     "placeholders": {
@@ -147,5 +145,4 @@
       "noResponseYet": "Nenhuma resposta até o momento"
     }
   }
-  
 }

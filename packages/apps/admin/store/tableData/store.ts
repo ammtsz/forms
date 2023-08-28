@@ -63,13 +63,13 @@ const store = create<TableDataStore>((set, get) => ({
         frozenColumn,
         {
           id: "notes",
-          label: "Anotações",
+          label: "notes",
           type: Fields.textarea,
         } as BasicFieldProps,
         ...form.fields.splice(1),
         {
           id: "created-at",
-          label: "Criado em",
+          label: "created-at",
           type: Fields.date,
         } as DateFieldProps,
       ];

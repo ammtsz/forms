@@ -2,17 +2,20 @@
 
 import { Button, Flex } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { uuid } from "@forms/utils";
 
-import { FIELDS_LABEL } from "@app/constants/fieldsLabels";
 import { useFormCreation } from "@app/store/formCreation";
+import { getFieldLabel, getFields } from "@app/utils/fieldsLabels";
 
 const AddFieldButton: React.FC = () => {
   const [isSelected, setSelected] = useState<boolean>(false);
 
   const { addField } = useFormCreation();
+
+  const { t } = useTranslation();
 
   const handleNewFieldClick = useCallback(
     (type: FieldsType) => {
@@ -47,9 +50,7 @@ const AddFieldButton: React.FC = () => {
       mt="4"
       mb="16"
     >
-      {Object.keys(FIELDS_LABEL).map((type) =>
-        renderButton(FIELDS_LABEL[type], type as FieldsType)
-      )}
+      {getFields().map((type) => renderButton(getFieldLabel(type), type))}
     </Flex>
   ) : (
     <Button
@@ -63,7 +64,7 @@ const AddFieldButton: React.FC = () => {
       mt="4"
       mb="16"
     >
-      + Adicionar campo
+      {t("create.buttons.addField")}
     </Button>
   );
 };

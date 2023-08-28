@@ -2,6 +2,7 @@
 
 import { Text } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   formatDateAndHour,
@@ -18,6 +19,8 @@ interface TextCellProps {
 }
 
 const TextCell: React.FC<TextCellProps> = ({ text, fieldId: id }) => {
+  const { t } = useTranslation();
+
   const fieldType = getPrefixFromString(id);
 
   const getValue = () => {
@@ -26,7 +29,11 @@ const TextCell: React.FC<TextCellProps> = ({ text, fieldId: id }) => {
     }
 
     if (fieldType && isToggleTypeField(fieldType)) {
-      return text === "true" ? "Sim" : text === "false" ? "Não" : "";
+      return text === "true"
+        ? t("commons.yes")
+        : text === "false"
+        ? t("commons.no")
+        : "";
     }
 
     return text || "";

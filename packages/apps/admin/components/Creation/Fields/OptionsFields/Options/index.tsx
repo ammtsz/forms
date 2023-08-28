@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useCallback } from "react";
 import { X as XIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
 import {
   FieldsType,
@@ -43,6 +44,8 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
   type,
   value,
 }) => {
+  const { t } = useTranslation();
+
   const getOptionError = useCallback(
     (index: number) =>
       !!(fieldErrors && fieldErrors.includes(`options--${index}`)),
@@ -63,17 +66,17 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               fontSize={["sm", "sm", "md"]}
               name={`${index}--option`}
               onChange={handleOptionChange}
-              placeholder="Adicione uma opção"
+              placeholder={t("create.placeholders.addOption")}
               value={label}
               variant="flushed"
             />
             {getOptionError(index) && (
               <FormErrorMessage mt={0} fontSize={["xs", "xs", "sm"]}>
-                Campo obrigatório
+                {t("commons.requiredField")}
               </FormErrorMessage>
             )}
           </FormControl>
-          <Tooltip hasArrow label="Apagar opção">
+          <Tooltip hasArrow label={t("create.buttons.deleteOption")}>
             <Button
               bg="transparent"
               color="blackAlpha.700"
@@ -95,14 +98,14 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
         mt="3"
         onClick={handleAddOption}
       >
-        + Adicionar opção
+        {t("create.buttons.addOption")}
       </Button>
       {(value.optionOther as OptionOtherProps)?.isVisible ? (
         <>
           <Flex alignItems="center">
             <FieldIcon type={type} />
             <Text mt="3" mr="auto" fontSize={["xs", "xs", "sm"]}>
-              Outro
+              {t("commons.other")}
             </Text>
           </Flex>
           <Flex>
@@ -113,13 +116,11 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               mt="1"
               name="optionOther"
               onChange={handleOtherOption}
-              placeholder={
-                "Adicione um placeholder para o campo \u0022outro\u0022 (opcional)"
-              }
+              placeholder={t("create.placeholders.addOptionOther")}
               value={(value.optionOther as OptionOtherProps).placeholder}
               color="blackAlpha.600"
             />
-            <Tooltip hasArrow label="Apagar opção">
+            <Tooltip hasArrow label={t("create.buttons.deleteOption")}>
               <Button
                 bg="transparent"
                 color="blackAlpha.700"
@@ -141,7 +142,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
           mt={[1, 1, 3]}
           onClick={toggleOtherOption}
         >
-          {"+ Adicionar campo \u0022outro\u0022"}
+          {t("create.buttons.addOptionOther")}
         </Button>
       )}
     </>

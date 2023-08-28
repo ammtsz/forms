@@ -4,6 +4,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { X as XIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
 import ConfirmationModal from "@app/components/ConfirmationModal";
 
@@ -21,6 +22,8 @@ const FormCard: React.FC<FormCardProps> = ({
   const [isSelected, setSelected] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { t } = useTranslation();
 
   const handleClick = useCallback(() => {
     setSelected((prev) => !prev);
@@ -45,7 +48,7 @@ const FormCard: React.FC<FormCardProps> = ({
           <div className="flex justify-between w-full gap-4">
             <Link href={`/responses/${id}`} className="sub_btn_card">
               <p className="whitespace-break-spaces overflow-hidden">
-                Respostas
+                {t("commons.responses")}
               </p>
             </Link>
             <Link
@@ -55,16 +58,20 @@ const FormCard: React.FC<FormCardProps> = ({
               className="sub_btn_card"
             >
               <p className="whitespace-break-spaces overflow-hidden">
-                Ver form
+                {t("home.buttons.openForm")}
               </p>
             </Link>
           </div>
           <div className="flex justify-between w-full gap-4">
             <Link href={`/edit/${id}`} className="sub_btn_card">
-              <p className="whitespace-break-spaces overflow-hidden">Editar</p>
+              <p className="whitespace-break-spaces overflow-hidden">
+                {t("commons.edit")}
+              </p>
             </Link>
             <button className="sub_btn_card" onClick={onOpen}>
-              <p className="whitespace-break-spaces overflow-hidden">Apagar</p>
+              <p className="whitespace-break-spaces overflow-hidden">
+                {t("commons.delete")}
+              </p>
             </button>
           </div>
         </div>
@@ -74,10 +81,11 @@ const FormCard: React.FC<FormCardProps> = ({
         onClose={onClose}
         onConfirm={() => handleDelete(id)}
         texts={{
-          title: "Apagar formulário",
-          message:
-            "Tem certeza que deseja apagar este formulário? Esta ação não pode ser desfeita.",
-          mainButton: "Apagar",
+          title: t("home.buttons.deleteForm"),
+          message: `${t("confirmations.deleteForm")} ${t(
+            "confirmations.cantBeUndone"
+          )}`,
+          mainButton: t("commons.delete"),
           isDanger: true,
         }}
       />

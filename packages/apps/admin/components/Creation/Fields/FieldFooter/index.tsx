@@ -2,6 +2,7 @@
 
 import { Switch } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface FieldFooterProps {
   handleCheckbox: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -12,6 +13,8 @@ const FieldFooter: React.FC<FieldFooterProps> = ({
   handleCheckbox,
   isRequired,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Switch
       fontSize={["sm", "sm", "md"]}
@@ -22,7 +25,7 @@ const FieldFooter: React.FC<FieldFooterProps> = ({
       colorScheme="telegram"
       isChecked={isRequired}
     >
-      Campo obrigatório
+      {t("commons.requiredField")}
     </Switch>
   );
 };

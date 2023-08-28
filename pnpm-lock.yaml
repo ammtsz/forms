@@ -112,11 +112,15 @@ importers:
       eslint: 8.46.0
       eslint-config-next: 13.4.12
       firebase: ^9.22.2
+      i18next: ^23.4.6
+      i18next-browser-languagedetector: ^7.1.0
+      i18next-http-backend: ^2.2.1
       next: 13.4.12
       postcss: 8.4.27
       react: 18.2.0
       react-dom: 18.2.0
       react-feather: ^2.0.10
+      react-i18next: ^13.2.0
       tailwindcss: 3.3.3
       typescript: 5.1.6
       zustand: ^4.3.8
@@ -133,11 +137,15 @@ importers:
       eslint: 8.46.0
       eslint-config-next: 13.4.12_7haavtekmro7ptbnqmctjaodju
       firebase: 9.23.0
+      i18next: 23.4.6
+      i18next-browser-languagedetector: 7.1.0
+      i18next-http-backend: 2.2.1
       next: 13.4.12_biqbaboplfbrettd7655fr4n2y
       postcss: 8.4.27
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-feather: 2.0.10_react@18.2.0
+      react-i18next: 13.2.0_tdfn4wwtvfybtukrsv2e5gl7pa
       tailwindcss: 3.3.3
       typescript: 5.1.6
       zustand: 4.3.9_react@18.2.0
@@ -791,7 +799,7 @@ packages:
       '@emotion/react': '>=10.0.35'
       react: '>=18'
     dependencies:
-      '@emotion/react': 11.11.1_l2ddciyqa7ein2jypfx2higwqu
+      '@emotion/react': 11.11.1_fzrd6ivowi4azn3madm57eamia
       react: 18.2.0
     dev: false
 
@@ -1074,9 +1082,9 @@ packages:
       next: '>=13'
       react: '>=18'
     dependencies:
-      '@chakra-ui/react': 2.7.1_eaxvisnxzbzvkaal3bjjjotcue
+      '@chakra-ui/react': 2.7.1_3rswlqynqroynxah4elrc2ovea
       '@emotion/cache': 11.11.0
-      '@emotion/react': 11.11.1_l2ddciyqa7ein2jypfx2higwqu
+      '@emotion/react': 11.11.1_fzrd6ivowi4azn3madm57eamia
       next: 13.4.12_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
     dev: false
@@ -1219,8 +1227,8 @@ packages:
       '@chakra-ui/react-env': 3.0.0_react@18.2.0
       '@chakra-ui/system': 2.5.8_5uavjbr3lmuxf4a3t6dmknaeea
       '@chakra-ui/utils': 2.0.15
-      '@emotion/react': 11.11.1_l2ddciyqa7ein2jypfx2higwqu
-      '@emotion/styled': 11.11.0_3p6jhguztwcfbjidczm7dwrg74
+      '@emotion/react': 11.11.1_fzrd6ivowi4azn3madm57eamia
+      '@emotion/styled': 11.11.0_kkjyfhjhaqueq3ebmhjljfbdsm
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -1721,8 +1729,8 @@ packages:
       '@chakra-ui/styled-system': 2.9.1
       '@chakra-ui/theme-utils': 2.0.18
       '@chakra-ui/utils': 2.0.15
-      '@emotion/react': 11.11.1_l2ddciyqa7ein2jypfx2higwqu
-      '@emotion/styled': 11.11.0_3p6jhguztwcfbjidczm7dwrg74
+      '@emotion/react': 11.11.1_fzrd6ivowi4azn3madm57eamia
+      '@emotion/styled': 11.11.0_kkjyfhjhaqueq3ebmhjljfbdsm
       react: 18.2.0
       react-fast-compare: 3.2.1
     dev: false

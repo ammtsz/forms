@@ -6,6 +6,7 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 import { useTableData } from "@app/store/tableData";
 
@@ -26,6 +27,8 @@ const DrawerBody: React.FC<DrawerBodyProps> = ({
 }: DrawerBodyProps) => {
   const { fields } = useTableData();
 
+  const { t } = useTranslation();
+
   return (
     <ChakraDrawerBody>
       <Flex direction={"column"} py={4} gap={4}>
@@ -36,7 +39,7 @@ const DrawerBody: React.FC<DrawerBodyProps> = ({
           isChecked={isAllChecked()}
         >
           <Text as={"b"} lineHeight={"125%"}>
-            Todas
+            {t("commons.all")}
           </Text>
         </Checkbox>
         {fields.map((field, index) => (

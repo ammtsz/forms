@@ -2,6 +2,7 @@
 
 import { Spinner } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface FeedbackProps {
   isLoading?: boolean;
@@ -14,6 +15,8 @@ const Feedback: React.FC<FeedbackProps> = ({
   message,
   errorMessage,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex_center h-[80vh]">
       {isLoading ? (
@@ -22,7 +25,7 @@ const Feedback: React.FC<FeedbackProps> = ({
         <p className="text-xl font-medium">
           {errorMessage ||
             message ||
-            "Não foi possível carregar a página. Tente novamente."}
+            `${t("feedbacks.errorToLoadPage")} ${t("feedbacks.retry")}`}
         </p>
       )}
     </div>

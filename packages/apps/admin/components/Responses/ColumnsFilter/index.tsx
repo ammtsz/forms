@@ -9,6 +9,7 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react";
 import { Filter as FilterIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
 import DrawerBody from "./DrawerBody";
 import useColumnsFilter from "./hooks";
@@ -24,21 +25,24 @@ const ColumnsFilter: React.FC = () => {
     handleOpen,
     isAllChecked,
   } = useColumnsFilter();
+
+  const { t } = useTranslation();
+
   return (
     <>
-      <button
-        className="primary_btn"
-        aria-label="Filtrar colunas"
-        onClick={handleOpen}
-      >
-        <span className="ellipsis mr-2">Fitrar colunas</span>
+      <button className="primary_btn" onClick={handleOpen}>
+        <span className="ellipsis mr-2">
+          {t("responses.buttons.filterColumns")}
+        </span>
         <FilterIcon size={"1rem"} />
       </button>
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent minW="min(500px, 100vw)">
           <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth="1px">Filtrar colunas</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">
+            {t("responses.buttons.filterColumns")}
+          </DrawerHeader>
           <DrawerBody
             checkedColumns={checkedColumns}
             handleToggleAll={handleToggleAll}
@@ -46,12 +50,8 @@ const ColumnsFilter: React.FC = () => {
             isAllChecked={isAllChecked}
           />
           <DrawerFooter borderTopWidth="1px">
-            <button
-              className="primary_btn"
-              onClick={handleSave}
-              aria-label="Salvar alterações"
-            >
-              Salvar
+            <button className="primary_btn" onClick={handleSave}>
+              {t("commons.save")}
             </button>
           </DrawerFooter>
         </DrawerContent>

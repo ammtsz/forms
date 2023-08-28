@@ -2,6 +2,7 @@
 
 import { Textarea, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { Fields, getPrefixFromString } from "@forms/utils";
@@ -32,6 +33,8 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
     setValue,
   });
 
+  const { t } = useTranslation();
+
   const { errors } = useFormCreation();
 
   const type = getPrefixFromString(id) as FieldsType;
@@ -59,7 +62,7 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         mt="3"
         name="placeholder"
         onChange={handleInputChange}
-        placeholder="Adicione um placeholder (opcional)"
+        placeholder={t("create.placeholders.addPlaceholder")}
         _placeholder={{ color: "inherit" }}
         value={value.placeholder || ""}
       />

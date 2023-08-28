@@ -10,7 +10,6 @@ import { useFormCreation } from "@app/store/formCreation";
 
 export type ValueProps = MakeOptional<FieldProps, "id" | "type">;
 
-// TODO: remove any
 interface FieldsBaseProps {
   id: string;
   value: ValueProps;

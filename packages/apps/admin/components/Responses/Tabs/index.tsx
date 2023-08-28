@@ -2,6 +2,7 @@
 
 import { Tabs as ChakraTabs, TabList, Tab } from "@chakra-ui/react";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 import { StatusTypes } from "@app/constants/status";
 import { useTableData } from "@app/store/tableData";
@@ -11,14 +12,16 @@ interface TabProps {
   id: string;
 }
 
-const TABS = [
-  { name: "Todos", id: "all" },
-  { name: "Principal", id: "main" },
-  { name: "Novos", id: "new" },
-] as TabProps[];
-
 const Tabs: React.FC = () => {
   const { filterTableData } = useTableData();
+
+  const { t } = useTranslation();
+
+  const TABS = [
+    { name: t("responses.tabs.all"), id: "all" },
+    { name: t("responses.tabs.main"), id: "main" },
+    { name: t("responses.tabs.new"), id: "new" },
+  ] as TabProps[];
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {

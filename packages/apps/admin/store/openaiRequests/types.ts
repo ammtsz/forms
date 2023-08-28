@@ -26,8 +26,8 @@ export interface FormCreationState {
 
 export interface FormCreationStore extends FormCreationState {
   updateTopic: (topic: string) => void;
-  generateTitleAndDescription: () => Promise<TitleAndDescription>;
-  generateField: () => Promise<Field>;
+  generateTitleAndDescription: (lang: string) => Promise<TitleAndDescription>;
+  generateField: (lang: string) => Promise<Field>;
   addMessage: (content: string) => void;
   updateMessages: (fields: Fields) => void;
   // TODO:

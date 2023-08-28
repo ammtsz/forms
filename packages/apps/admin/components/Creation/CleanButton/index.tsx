@@ -9,6 +9,7 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import { MoreHorizontal as MoreHorizontalIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
 import ConfirmationModal from "@app/components/ConfirmationModal";
 
@@ -22,6 +23,8 @@ const CleanButton: React.FC<CleanButtonProps> = ({
   isDisabled,
 }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -37,7 +40,7 @@ const CleanButton: React.FC<CleanButtonProps> = ({
           <MoreHorizontalIcon size={20} />
         </MenuButton>
         <MenuList>
-          <MenuItem onClick={onOpen}>Limpar formulário</MenuItem>
+          <MenuItem onClick={onOpen}>{t("create.buttons.cleanForm")}</MenuItem>
         </MenuList>
       </Menu>
 
@@ -46,10 +49,11 @@ const CleanButton: React.FC<CleanButtonProps> = ({
         onConfirm={handleCleanForm}
         onClose={onClose}
         texts={{
-          title: "Limpar formulário",
-          message:
-            "Tem certeza que deseja limpar o formulário? Esta ação não poderá ser desfeita.",
-          mainButton: "Limpar",
+          title: t("create.buttons.cleanForm"),
+          message: `${t("confirmations.cleanForm")} ${t(
+            "confirmations.cantBeUndone"
+          )}`,
+          mainButton: t("commons.clean"),
           isDanger: true,
         }}
       />

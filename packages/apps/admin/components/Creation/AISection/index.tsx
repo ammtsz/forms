@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { EyeOff as EyeOffIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
 import Tooltip from "@app/components/Tooltip";
 
@@ -27,6 +28,8 @@ const AISection = ({ setFormDisabled, isSubmitting }) => {
     handleAITitleButton,
   } = useOpenAI();
 
+  const { t } = useTranslation();
+
   const Sticky = isOpen ? StickyForm : StickyButton;
 
   useEffect(() => {
@@ -40,8 +43,9 @@ const AISection = ({ setFormDisabled, isSubmitting }) => {
     <>
       <Sticky className={!isOpen ? "md:justify-end" : ""}>
         {!isOpen ? (
-          <Tooltip label={"Mostrar opções de IA"}>
+          <Tooltip label={t("create.buttons.showAIOptions")}>
             <button
+              aria-label={t("create.buttons.showAIOptions")}
               onClick={onOpen}
               type="button"
               className="primary_btn round_btn mx-4 mt-4"
@@ -51,9 +55,9 @@ const AISection = ({ setFormDisabled, isSubmitting }) => {
           </Tooltip>
         ) : (
           <Container mx={[0, 5, 10, 10, "auto"]} px={[6, 8, 12]} pt={12} pb={8}>
-            <Tooltip label={"Esconder opções de IA"}>
+            <Tooltip label={t("create.buttons.hideAIOptions")}>
               <button
-                aria-label="Esconder opções de IA"
+                aria-label={t("create.buttons.hideAIOptions")}
                 onClick={onClose}
                 className="absolute top-6 right-6 text-secondary"
               >
@@ -61,24 +65,20 @@ const AISection = ({ setFormDisabled, isSubmitting }) => {
               </button>
             </Tooltip>
             <FormControl isInvalid={hasError}>
-              <FormLabel>
-                Informe o tema do formulário e crie um título, uma descrição e
-                novos campos com a ajuda de uma IA.
-              </FormLabel>
+              <FormLabel>{t("create.ai.topicInputLabel")}</FormLabel>
               <Input
-                placeholder="Digite um tema"
-                aria-label="Tema do formulário"
+                placeholder={t("create.ai.topicInputPlaceholder")}
                 type="text"
                 value={topic}
                 onChange={handleInputChange}
                 boxShadow={"inner"}
               />
               <FormErrorMessage>
-                O tema deve ter de 3 a 100 caracteres.
+                {t("create.ai.topicInputHint")}
               </FormErrorMessage>
             </FormControl>
             <div className="flex gap-2 w-full mt-4 justify-end flex-col sm:flex-row">
-              <Tooltip label="O título e a descrição são criados com base no tema.">
+              <Tooltip label={t("create.ai.titleAndDescriptionTip")}>
                 <button
                   onClick={handleAITitleButton}
                   type="button"
@@ -86,18 +86,20 @@ const AISection = ({ setFormDisabled, isSubmitting }) => {
                   disabled={isDisabled}
                 >
                   {isTitleLoading
-                    ? "Criando título e descrição..."
-                    : "Criar título e descrição"}
+                    ? t("create.loading.creatingTitleAndDescription")
+                    : t("create.buttons.createTitleAndDescription")}
                 </button>
               </Tooltip>
-              <Tooltip label="Os campos são criados com base no tema e nos campos existentes.">
+              <Tooltip label={t("create.ai.fieldTip")}>
                 <button
                   onClick={handleAIFieldButton}
                   type="button"
                   className="primary_btn"
                   disabled={isDisabled}
                 >
-                  {isFieldLoading ? "Criando campo..." : "Novo campo"}
+                  {isFieldLoading
+                    ? t("create.loading.creatingField")
+                    : t("create.buttons.newField")}
                 </button>
               </Tooltip>
             </div>

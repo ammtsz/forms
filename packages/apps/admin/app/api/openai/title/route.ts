@@ -7,7 +7,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export const POST = async (request: Request): Promise<Response> => {
-  const { content } = await request.json();
+  const { content, lang } = await request.json();
+
+  const language = lang === "br" ? "Portuguese (Brazil)" : "English";
 
   try {
     const response = await openai.createChatCompletion({
@@ -15,8 +17,7 @@ export const POST = async (request: Request): Promise<Response> => {
       messages: [
         {
           role: "system",
-          content:
-            "You will create a form with the given topic. Return a title and a description using a javascript object structure: { title: string, description: string }. The answer must start with: {. The form is in portuguese (Brazil)",
+          content: `You will create a form with the given topic. Return a title and a description using a javascript object structure: { title: string, description: string }. The answer must start with: {. The form is in ${language}`,
         },
         {
           role: "user",

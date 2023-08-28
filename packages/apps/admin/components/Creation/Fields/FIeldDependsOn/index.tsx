@@ -11,6 +11,7 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 import { DependsOnProps, OptionProps } from "@forms/types/interfaces/field";
 
@@ -45,6 +46,8 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
 
   const { dependsOnOptions } = useFormCreation();
 
+  const { t } = useTranslation();
+
   const renderOptions = () => {
     if (isToggleType()) {
       return (
@@ -53,9 +56,9 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
           onChange={(e) => handleOptionsSelect(true, e)}
           value={initialDependsOn?.optionsValues?.[0].toString() || ""}
         >
-          <Radio value="true">Sim</Radio>
+          <Radio value="true">{t("commons.yes")}</Radio>
           <Radio value="false" ml={4}>
-            Não
+            {t("commons.no")}
           </Radio>
         </RadioGroup>
       );
@@ -83,7 +86,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
     <>
       <Flex>
         <Text fontSize={["xs", "xs", "sm"]} mb={2} color={"blackAlpha.600"}>
-          Dependência
+          {t("create.labels.dependency")}
         </Text>
       </Flex>
       <Flex
@@ -95,7 +98,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
       >
         <FormControl>
           <FormLabel fontSize={["sm", "sm", "md"]}>
-            Visível apenas quando:
+            {`${t("create.labels.visibleOnlyWhen")} :`}
           </FormLabel>
           <Select
             bg={"white"}
@@ -104,7 +107,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
             mb={4}
             name="dependsOnField"
             onChange={handleFieldSelect}
-            placeholder="Selecione uma pergunta"
+            placeholder={t("create.placeholders.selectQuestion")}
             value={selectedField || ""}
           >
             {dependsOnOptions &&
@@ -129,7 +132,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
           mt={4}
           size={["sm", "sm", "md"]}
         >
-          Cancelar
+          {t("commons.cancel")}
         </Button>
       </Flex>
     </>

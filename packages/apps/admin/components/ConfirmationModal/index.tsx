@@ -10,6 +10,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 import { StatusTypes } from "@app/constants/status";
 import { useCheckedRows } from "@app/store/checkedRows";
@@ -39,6 +40,8 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 }) => {
   const { checkedRows } = useCheckedRows();
 
+  const { t } = useTranslation();
+
   const handleConfirmation = useCallback(() => {
     if (texts?.action) {
       onConfirm({ responsesIds: checkedRows, status: texts.action });
@@ -58,12 +61,8 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <ModalBody>{texts.message}</ModalBody>
 
         <ModalFooter>
-          <button
-            aria-label="Cancelar ação"
-            className="light_btn mr-3"
-            onClick={onClose}
-          >
-            Cancelar
+          <button className="light_btn mr-3" onClick={onClose}>
+            {t("commons.cancel")}
           </button>
           <button
             aria-label={texts.mainButton}

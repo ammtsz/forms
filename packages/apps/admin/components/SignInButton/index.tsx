@@ -2,6 +2,7 @@
 
 import { signIn, signOut } from "next-auth/react";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 import useSessionProvider from "@app/hooks/useSessionProvider";
 import { UserSession } from "@app/types";
@@ -14,6 +15,8 @@ interface SignInButtonProps {
 const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
   const { googleProvider } = useSessionProvider();
 
+  const { t } = useTranslation();
+
   return session?.user ? (
     <div className="flex gap-4">
       <button
@@ -21,7 +24,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
         onClick={() => signOut()}
         className="link_btn"
       >
-        Sair
+        {t("commons.signOut")}
       </button>
       {session?.user.image && (
         <Image
@@ -39,7 +42,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({ session, isPrimary }) => {
       onClick={() => signIn(googleProvider && googleProvider.id)}
       className={isPrimary ? "link_btn" : "primary_btn"}
     >
-      Entrar
+      {t("commons.login")}
     </button>
   );
 };

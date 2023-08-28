@@ -1,3 +1,5 @@
+import { t } from "i18next";
+
 import { DateProps } from "./DateLimitPicker/hooks/useDateLimitPicker";
 
 export const GRID_AREAS = [
@@ -18,17 +20,13 @@ export const GRID_AREAS = [
 export const INPUT_PROPS = [
   {
     name: "min",
-    label: "Data mínima",
     min: "",
   },
   {
     name: "max",
-    label: "Data máxima",
     max: "",
   },
 ];
-
-export const LABELS = ["Data mínima", "Data máxima"];
 
 export const getLimit = (
   limitType: string,
@@ -63,7 +61,7 @@ export const getSelectedDate = (
   isMediumScreen: boolean
 ) => {
   const limit = date[dateType] && date[dateType][dateLimitType];
-  const todayLimit = `hoje + ${limit}`;
+  const todayLimit = `${t("date.today")} + ${limit}`;
   const displayLimit = dateType === "today" ? todayLimit : limit;
 
   if (!limit) {

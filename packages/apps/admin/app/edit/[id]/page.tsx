@@ -9,6 +9,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { getPrefixFromString } from "@forms/utils";
 
@@ -35,6 +36,8 @@ const FormCreationPage = () => {
 
   const { isLoadingForm, isValidForm } = useInitialData();
 
+  const { t } = useTranslation();
+
   return (
     <IsSignedIn>
       {isValidForm ? (
@@ -54,14 +57,16 @@ const FormCreationPage = () => {
                   variant={hasTitleError ? "flushed" : "unstyled"}
                   size="lg"
                   color="blackAlpha.900"
-                  placeholder="Adicione um título"
+                  placeholder={t("create.placeholders.addTitle")}
                   textAlign="center"
                   fontSize={["lg", "xl", "2xl"]}
                   onChange={handleTitle}
                   value={title}
                 />
                 {hasTitleError && (
-                  <FormErrorMessage mt={0}>Campo obrigatório</FormErrorMessage>
+                  <FormErrorMessage mt={0}>
+                    {t("commons.requiredField")}
+                  </FormErrorMessage>
                 )}
               </FormControl>
               <Textarea
@@ -69,7 +74,7 @@ const FormCreationPage = () => {
                 color="blackAlpha.900"
                 fontSize={["sm", "sm", "md"]}
                 onChange={handleDescription}
-                placeholder="Adicione uma descrição (opcional)"
+                placeholder={t("create.placeholders.addDescription")}
                 value={description || ""}
               />
             </Box>
@@ -98,13 +103,15 @@ const FormCreationPage = () => {
             </React.Fragment>
             <AddFieldButton />
             <button type="submit" className="primary_btn" disabled={isLoading}>
-              {isLoading ? "Salvando alterações..." : "Salvar alterações"}
+              {isLoading
+                ? t("create.loading.savingChanges")
+                : t("create.buttons.saveChanges")}
             </button>
           </Form>
         </Container>
       ) : (
         <Feedback
-          errorMessage="Formulário não encontrado"
+          errorMessage={t("feedbacks.form.formNotFound")}
           isLoading={isLoadingForm}
         />
       )}

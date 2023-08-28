@@ -20,11 +20,12 @@ const store = create<FormCreationStore>((set, get) => ({
     set({ topic });
   },
 
-  generateTitleAndDescription: async () => {
+  generateTitleAndDescription: async (lang) => {
     const data = await fetch("/api/openai/title", {
       method: "POST",
       body: JSON.stringify({
         content: get().topic,
+        lang,
       }),
     });
 
@@ -39,12 +40,13 @@ const store = create<FormCreationStore>((set, get) => ({
     return titleAndDescription;
   },
 
-  generateField: async () => {
+  generateField: async (lang) => {
     const data = await fetch("/api/openai/field", {
       method: "POST",
       body: JSON.stringify({
         content: get().topic,
         messages: get().messages,
+        lang,
       }),
     });
 

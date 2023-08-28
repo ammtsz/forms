@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { ColumnShape } from "react-base-table";
 
 import CheckboxCell from "@app/components/Responses/Table/CheckboxCell";
@@ -6,6 +7,17 @@ import { CellProps } from "@app/components/Responses/Table/types";
 
 import CellsByType from "./CellsByType";
 import HeaderCell from "./HeaderCell";
+
+const getLangTitle = (title: string): string => {
+  switch (title) {
+    case "notes":
+      return t("responses.columns.notes");
+    case "created-at":
+      return t("responses.columns.createdAt");
+    default:
+      return title;
+  }
+};
 
 export const getColumns = (fieldsColumns: ColumnShape[]): ColumnShape[] => {
   return [
@@ -25,7 +37,9 @@ export const getColumns = (fieldsColumns: ColumnShape[]): ColumnShape[] => {
       return {
         ...column,
         cellRenderer: (props: CellProps) => <CellsByType {...props} />,
-        headerRenderer: () => <HeaderCell text={column.title as string} />,
+        headerRenderer: () => (
+          <HeaderCell text={getLangTitle(column.title || "")} />
+        ),
       } as ColumnShape;
     }),
   ];

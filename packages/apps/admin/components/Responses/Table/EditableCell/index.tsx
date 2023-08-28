@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { Check as CheckIcon, Edit as EditIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
 import { TableCell } from "@app/components/Responses/Table/styles";
 import Tooltip from "@app/components/Tooltip";
@@ -29,6 +30,8 @@ const EditableCell: React.FC<EditableCellProps> = ({
 
   const { updateResponseNote } = useTableData();
 
+  const { t } = useTranslation();
+
   const handleChange: React.ChangeEventHandler<HTMLTextAreaElement> =
     useCallback((event): void => {
       setText(event.target.value);
@@ -46,18 +49,27 @@ const EditableCell: React.FC<EditableCellProps> = ({
     return (
       <Flex>
         {isEditing ? (
-          <Button
-            {...getSubmitButtonProps()}
-            aria-label="salvar"
-            p={0}
-            size="sm"
-          >
-            <CheckIcon height="0.75rem" />
-          </Button>
+          <Tooltip label={t("commons.save")}>
+            <Button
+              {...getSubmitButtonProps()}
+              aria-label={t("commons.save")}
+              p={0}
+              size="sm"
+            >
+              <CheckIcon height="0.75rem" />
+            </Button>
+          </Tooltip>
         ) : (
-          <Button {...getEditButtonProps()} aria-label="editar" p={0} size="sm">
-            <EditIcon height="0.75rem" />
-          </Button>
+          <Tooltip label={t("commons.edit")}>
+            <Button
+              {...getEditButtonProps()}
+              aria-label={t("commons.edit")}
+              p={0}
+              size="sm"
+            >
+              <EditIcon height="0.75rem" />
+            </Button>
+          </Tooltip>
         )}
       </Flex>
     );
@@ -70,7 +82,7 @@ const EditableCell: React.FC<EditableCellProps> = ({
   return (
     <TableCell>
       <Editable
-        defaultValue={notes || "Adcionar nota"}
+        defaultValue={notes || t("responses.placeholders.addNote")}
         display="flex"
         flexDir="row"
         fontSize="sm"

@@ -2,11 +2,15 @@
 
 import { useCallback } from "react";
 import { Copy as CopyIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
 
+import Tooltip from "@app/components/Tooltip";
 import { useTableData } from "@app/store/tableData";
 
 const CopyButton: React.FC = () => {
   const { formId } = useTableData();
+
+  const { t } = useTranslation();
 
   const handleCopy = useCallback(() => {
     const el = document.getElementById(formId) as HTMLElement;
@@ -23,13 +27,15 @@ const CopyButton: React.FC = () => {
   }, [formId]);
 
   return (
-    <button
-      className="primary_btn icon_btn"
-      aria-label="copiar tabela"
-      onClick={handleCopy}
-    >
-      <CopyIcon height={"1.25rem"} />
-    </button>
+    <Tooltip label={t("responses.buttons.copyTable")}>
+      <button
+        className="primary_btn icon_btn"
+        aria-label={t("responses.buttons.copyTable")}
+        onClick={handleCopy}
+      >
+        <CopyIcon height={"1.25rem"} />
+      </button>
+    </Tooltip>
   );
 };
 
