@@ -10,13 +10,19 @@
     "save": "Salvar",
     "cancel": "Cancelar",
     "clean": "Limpar",
+    "open": "Abrir",
+    "see": "Ver",
     "optional": "Opcional",
     "or": "ou",
     "other": "Outro",
     "actions": "Ações",
     "all":"Todas",
     "signOut": "Sair",
-    "login": "Entrar"
+    "login": "Entrar",
+    "settings": "Configurações",
+    "language": "Idioma",
+    "form": "Formulário",
+    "more": "main"
   },
   "fields": {
     "text": "Texto curto",

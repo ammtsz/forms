@@ -43,7 +43,7 @@ body {
 }
 
 .link_btn {
-  @apply py-1.5 px-2 transition-all text-primary hover:text-gray-500 text-center font-medium flex items-center justify-center disabled:opacity-50;
+  @apply px-2 transition-all text-primary hover:text-gray-500 text-center font-medium flex items-center justify-center disabled:opacity-50;
 }
 
 .round_btn {

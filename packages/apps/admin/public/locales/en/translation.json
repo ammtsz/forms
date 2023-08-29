@@ -10,13 +10,19 @@
     "save": "Save",
     "cancel": "Cancel",
     "clean": "Clean",
+    "open": "Open",
+    "see": "See",
     "optional": "Optional",
     "or": "or",
     "other": "Other",
     "actions": "Actions",
     "all":"All",
     "signOut": "Sign out",
-    "login": "Login"
+    "login": "Login",
+    "settings": "Settings",
+    "language": "Language",
+    "form": "Form",
+    "more": "More"
   },
   "fields": {
     "text": "Short answer",

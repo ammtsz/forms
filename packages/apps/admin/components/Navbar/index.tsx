@@ -1,24 +1,27 @@
 "use client";
 
-import { Switch } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Loader as HomeIcon } from "react-feather";
 import { useTranslation } from "react-i18next";
 
+import { MakeRequired } from "@forms/types/global/makeRequired";
+
 import { useTableData } from "@app/store/tableData";
+import { UserSession } from "@app/types";
 
 import SignInButton from "../SignInButton";
+import SettingsMenu from "./SettingsMenu";
 
 const Navbar: React.FC = () => {
+  const pathname = usePathname();
+
   const { data: session, status } = useSession();
 
   const { title } = useTableData();
 
-  const pathname = usePathname();
-
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
 
   const isLoading = status === "loading";
 
@@ -34,10 +37,6 @@ const Navbar: React.FC = () => {
     if (page === "") return t("home.navbar.home");
   };
 
-  const handleLanguageChange = (event) => {
-    i18n.changeLanguage(event.target.checked ? "en" : "br");
-  };
-
   return (
     <nav className="h-18 border-b border-gray-200 shadow-md bg-gray-50 sticky top-0 z-10">
       <div className="flex items-center h-100 p-4">
@@ -47,12 +46,14 @@ const Navbar: React.FC = () => {
         {!isLoading && (
           <>
             <p className="ml-4 mr-auto font-bold">{getPageTitle()}</p>
-            <div className="ml-4">
-              br
-              <Switch onChange={handleLanguageChange} />
-              en
-            </div>
-            <SignInButton session={session} isPrimary />
+            {session?.user ? (
+              <SettingsMenu
+                session={session as MakeRequired<UserSession, "user">}
+                isPrimary
+              />
+            ) : (
+              <SignInButton isPrimary />
+            )}
           </>
         )}
       </div>

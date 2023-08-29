@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
+import Breadcrumb from "@app/components/Breadcrumb";
 import Feedback from "@app/components/Feedback";
 import Navbar from "@app/components/Navbar";
 import Providers from "@app/components/Providers";
@@ -24,6 +25,7 @@ const RootLayout: React.FC<{
         <Suspense fallback={<Feedback isLoading />}>
           <Providers>
             <Navbar />
+            <Breadcrumb />
             {children}
           </Providers>
         </Suspense>
