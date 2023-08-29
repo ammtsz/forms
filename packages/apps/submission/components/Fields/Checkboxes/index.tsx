@@ -2,6 +2,7 @@
 
 import { Checkbox, Stack } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
@@ -40,6 +41,8 @@ const CheckboxesField: React.FC<
     initialValue,
   });
 
+  const { t } = useTranslation();
+
   const hasError = validateField(id);
 
   return isVisible ? (
@@ -67,7 +70,7 @@ const CheckboxesField: React.FC<
             isChecked={isOthersChecked()}
             onChange={handleChange("others")}
           >
-            outros
+            {t("fields.others").toLowerCase()}
           </Checkbox>
         )}
       </Stack>

@@ -1,0 +1,21 @@
+{
+  "commons": {
+    "requiredField": "Required field",
+    "requiredFields": "Required fields",
+    "submit": "Submit",
+    "success": "Success",
+    "submitNew": "Submit new"
+  },
+  "fields": {
+    "optional": "Optional",
+    "others": "Others",
+    "other": "Other",
+    "selectPlaceholder": "--- Select ---"
+  },
+  "feedbacks": {
+    "fillRequiredFields": "Fill in all required fields",
+    "formNotFound": "Form not found",
+    "formSent": "Form sent successfully",
+    "errorOnSubmit": "Error on submit form"
+  }
+}

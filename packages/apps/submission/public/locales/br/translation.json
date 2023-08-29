@@ -1,0 +1,21 @@
+{
+  "commons": {
+    "requiredField": "Campo obrigatório",
+    "requiredFields": "Campos obrigatórios",
+    "submit": "Enviar",
+    "success": "Sucesso",
+    "submitNew": "Enviar novo"
+  },
+  "fields": {
+    "optional": "Opcional",
+    "others": "Outros",
+    "other": "Outro",
+    "selectPlaceholder": "--- Selecione ---"
+  },
+  "feedbacks": {
+    "fillRequiredFields": "Preeencha todos os campos obrigatórios",
+    "formNotFound": "Formulário não encontrado",
+    "formSent": "Formulário enviado com sucesso",
+    "errorOnSubmit": "Erro ao enviar formulário"
+  }
+}

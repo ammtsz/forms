@@ -66,7 +66,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
 
     const options =
       dependsOnOptions &&
-      (dependsOnOptions[selectedField].options as OptionProps[]);
+      (dependsOnOptions[selectedField]?.options as OptionProps[]);
 
     return options?.map((option) => (
       <Checkbox

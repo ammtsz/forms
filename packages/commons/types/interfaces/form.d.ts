@@ -5,4 +5,5 @@ export interface FormProps {
   title: string
   fields: FieldProps[]
   description?: string;
+  lang?: string;
 }

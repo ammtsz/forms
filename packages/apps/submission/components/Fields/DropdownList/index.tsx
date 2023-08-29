@@ -2,6 +2,7 @@
 
 import { FormControl, FormErrorMessage, Select } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
@@ -34,6 +35,8 @@ const DropdownListField: React.FC<
     initialValue,
   });
 
+  const { t } = useTranslation();
+
   const hasError = validateField(id);
 
   const isOtherOption = value === "other";
@@ -47,7 +50,7 @@ const DropdownListField: React.FC<
       />
       <FormControl isInvalid={hasError} mb={isOtherOption ? 2 : 0}>
         <Select
-          placeholder={placeholder || "--- Selecione ---"}
+          placeholder={placeholder || t("fields.selectPlaceholder")}
           onChange={handleChange}
           value={value}
           bg="white"
@@ -59,11 +62,17 @@ const DropdownListField: React.FC<
                 {option.label}
               </option>
             ))}
-            {optionOther?.isVisible && <option value="other">outro</option>}
+            {optionOther?.isVisible && (
+              <option value="other">
+                {t("fields.other").toLocaleLowerCase()}
+              </option>
+            )}
           </React.Fragment>
         </Select>
         {hasError && (
-          <FormErrorMessage mt={1}>Campo obrigatório</FormErrorMessage>
+          <FormErrorMessage mt={1}>
+            {t("commons.requiredField")}
+          </FormErrorMessage>
         )}
       </FormControl>
       {isOtherOption && (

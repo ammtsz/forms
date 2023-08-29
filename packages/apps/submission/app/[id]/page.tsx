@@ -3,6 +3,7 @@
 import { Flex } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import FormSubmission from "@app/components/Form";
 import Loading from "@app/components/Loading";
@@ -14,14 +15,19 @@ const FormSubmissionPage = () => {
 
   const { getForm, title } = useFormSubmission();
 
+  const { t, i18n } = useTranslation();
+
   const id = usePathname().split("/")[1];
 
   const validateId = useCallback(async () => {
     if (id) {
       const form = await getForm(id);
+
+      form?.lang && i18n.changeLanguage(form.lang);
+
       setValidForm(!!form);
     }
-  }, [getForm, id]);
+  }, [getForm, i18n, id]);
 
   useEffect(() => {
     validateId();
@@ -40,7 +46,7 @@ const FormSubmissionPage = () => {
       {title ? <FormSubmission /> : <Loading />}
     </Flex>
   ) : (
-    <PageMessage message="Formulário não encontrado" />
+    <PageMessage message={t("feedbacks.formNotFound")} />
   );
 };
 

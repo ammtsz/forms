@@ -18,7 +18,7 @@ import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
 
 import { getFieldLabel } from "@app/utils/fieldsLabels";
 
-import FieldDependsOn from "../FIeldDependsOn";
+import FieldDependsOn from "../FieldDependsOn";
 
 interface FieldHeaderProps {
   handleDelete: React.MouseEventHandler<HTMLButtonElement>;

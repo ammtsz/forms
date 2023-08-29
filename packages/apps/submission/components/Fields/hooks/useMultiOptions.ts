@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useFormSubmission } from "@app/store/formSubmission";
 
@@ -25,6 +26,8 @@ const useMultiOptions = ({
 
   const { updateFieldValue } = useFormSubmission();
 
+  const { t } = useTranslation();
+
   const getChecked = (options: { [key: string]: boolean }) =>
     Object.keys(options).filter((key) => options[key] && key !== "others");
 
@@ -46,14 +49,16 @@ const useMultiOptions = ({
           id,
           JSON.stringify([
             ...getChecked(updatedCheckboxes),
-            ...(shouldHaveOthers ? [`outros: ${others}`] : []),
+            ...(shouldHaveOthers
+              ? [`${t("fields.others").toLocaleLowerCase()}: ${others}`]
+              : []),
           ])
         );
 
         return updatedCheckboxes;
       });
     },
-    [id, others, updateFieldValue]
+    [id, others, t, updateFieldValue]
   );
 
   const handleOtherInput: React.ChangeEventHandler<HTMLInputElement> =
@@ -64,11 +69,11 @@ const useMultiOptions = ({
           id,
           JSON.stringify([
             ...getChecked(items),
-            `outros: ${event.target.value}`,
+            `${t("fields.others").toLocaleLowerCase()}: ${event.target.value}`,
           ])
         );
       },
-      [items, id, updateFieldValue]
+      [updateFieldValue, id, items, t]
     );
 
   const isChecked = (value: string) => {
@@ -78,7 +83,9 @@ const useMultiOptions = ({
   const isOthersChecked = () => {
     return (
       initialValue &&
-      JSON.parse(initialValue).some((value: string) => /^outros: /.test(value))
+      JSON.parse(initialValue).some((value: string) =>
+        /^(outros|others): /.test(value)
+      )
     );
   };
 

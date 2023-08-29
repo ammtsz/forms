@@ -32,7 +32,7 @@ const useFieldDependsOn = ({
   const { dependsOnOptions } = useFormCreation();
 
   const isToggleType = useCallback(() => {
-    const fieldType = dependsOnOptions && dependsOnOptions[selectedField].type;
+    const fieldType = dependsOnOptions && dependsOnOptions[selectedField]?.type;
     return isToggleTypeField(fieldType as FieldsType);
   }, [dependsOnOptions, selectedField]);
 

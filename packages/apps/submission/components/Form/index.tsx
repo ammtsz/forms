@@ -2,6 +2,7 @@
 
 import { Button, Heading, Text, useDisclosure } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
@@ -53,6 +54,8 @@ const FormSubmission = () => {
 
   const { handleSubmit } = useSubmitForm({ onOpen });
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Form as="form" onSubmit={handleSubmit} mx="auto" my={[8, 8, 0, 0, 8]}>
@@ -72,10 +75,10 @@ const FormSubmission = () => {
         {!!fields.length && (
           <>
             <Button mt={20} type="submit" bg="black" color="white">
-              Enviar
+              {t("commons.submit")}
             </Button>
             <Text mt={2} ml="auto" as="i" color="gray.500">
-              * Campos obrigatórios
+              {`* ${t("commons.requiredFields")}`}
             </Text>
           </>
         )}
@@ -83,9 +86,9 @@ const FormSubmission = () => {
       <FeedbackModal
         isOpen={isOpen}
         onClose={onClose}
-        title={"Sucesso"}
-        message={"Formulário enviado com sucesso!"}
-        buttonText={"Enviar novo"}
+        title={t("commons.success")}
+        message={t("feedbacks.formSent")}
+        buttonText={t("commons.submitNew")}
       />
     </>
   );

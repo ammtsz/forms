@@ -2,6 +2,7 @@
 
 import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { DateFieldProps } from "@forms/types/interfaces/field";
 
@@ -31,6 +32,8 @@ const DateField: React.FC<DateFieldProps> = ({
     min,
   });
 
+  const { t } = useTranslation();
+
   const hasError = validateField(id);
 
   return isVisible ? (
@@ -50,7 +53,9 @@ const DateField: React.FC<DateFieldProps> = ({
           boxShadow="inner"
         />
         {hasError && (
-          <FormErrorMessage mt={1}>Campo obrigatório</FormErrorMessage>
+          <FormErrorMessage mt={1}>
+            {t("commons.requiredField")}
+          </FormErrorMessage>
         )}
       </FormControl>
     </React.Fragment>

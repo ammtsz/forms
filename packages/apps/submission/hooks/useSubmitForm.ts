@@ -2,6 +2,7 @@
 
 import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
 import { useCallback, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 import { isToggleTypeField, uuid } from "@forms/utils";
@@ -22,6 +23,8 @@ const useSubmitForm = ({ onOpen }: SubmitFormProps): SubmitFormReturn => {
 
   const toast = useToast();
   const toastIdRef = useRef<ToastId>();
+
+  const { t } = useTranslation();
 
   const openToast = useCallback(
     (props: ToastProps) => {
@@ -96,13 +99,13 @@ const useSubmitForm = ({ onOpen }: SubmitFormProps): SubmitFormReturn => {
         resetValues();
       } catch (error) {
         openToast({
-          description: "Erro ao enviar o formulário.",
+          description: t("feedbacks.errorOnSubmit"),
           status: "error",
         });
       }
     } else {
       openToast({
-        description: "Preencha todos os campos obrigatórios",
+        description: t("feedbacks.fillRequiredFields"),
         status: "error",
       });
     }

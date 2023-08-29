@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useFormSubmission } from "@app/store/formSubmission";
 
@@ -23,23 +24,33 @@ const useSingleOptions = ({
 
   const { updateFieldValue } = useFormSubmission();
 
+  const { t } = useTranslation();
+
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement> | string) => {
       const fieldValue = typeof event === "string" ? event : event.target.value;
 
       setValue(fieldValue);
-      updateFieldValue(id, fieldValue === "other" ? "outro" : fieldValue);
+      updateFieldValue(
+        id,
+        fieldValue === "other"
+          ? t("fields.other").toLocaleLowerCase()
+          : fieldValue
+      );
     },
-    [id, updateFieldValue]
+    [id, t, updateFieldValue]
   );
 
   const handleOtherInput: React.ChangeEventHandler<HTMLInputElement> =
     useCallback(
       (event) => {
         setOther(event.target.value);
-        updateFieldValue(id, `outro: ${event.target.value}`);
+        updateFieldValue(
+          id,
+          `${t("fields.other").toLocaleLowerCase()}: ${event.target.value}`
+        );
       },
-      [id, updateFieldValue]
+      [id, t, updateFieldValue]
     );
 
   useEffect(() => {

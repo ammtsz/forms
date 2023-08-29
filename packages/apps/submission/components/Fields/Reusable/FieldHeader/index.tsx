@@ -2,6 +2,7 @@
 
 import { Text } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface FieldHeaderProps {
   description?: string;
@@ -20,6 +21,8 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
   label,
   mt,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <React.Fragment>
       <Text
@@ -38,7 +41,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
           mb={description ? 0 : 2}
           fontWeight="normal"
         >
-          Campo obrigatório
+          {t("commons.requiredField")}
         </Text>
       )}
       {!!description && (

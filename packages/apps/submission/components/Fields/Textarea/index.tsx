@@ -2,6 +2,7 @@
 
 import { FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
@@ -28,6 +29,8 @@ const TextareaField: React.FC<BasicFieldProps> = ({
     initialValue,
   });
 
+  const { t } = useTranslation();
+
   const hasError = validateField(id);
 
   return isVisible ? (
@@ -45,7 +48,9 @@ const TextareaField: React.FC<BasicFieldProps> = ({
           boxShadow="inner"
         />
         {hasError && (
-          <FormErrorMessage mt={1}>Campo obrigatório</FormErrorMessage>
+          <FormErrorMessage mt={1}>
+            {t("commons.requiredField")}
+          </FormErrorMessage>
         )}
       </FormControl>
     </React.Fragment>

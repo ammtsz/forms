@@ -1,7 +1,11 @@
+"use client";
+
 import "./globals.css";
 import type { Metadata } from "next";
 
 import Providers from "@app/components/Providers";
+
+import "../i18n";
 
 export const metadata: Metadata = {
   title: "Forms",

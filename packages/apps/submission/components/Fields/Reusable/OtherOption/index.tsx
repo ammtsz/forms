@@ -2,6 +2,7 @@
 
 import { Flex, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface OtherOptionProps {
   handleOtherInput: React.ChangeEventHandler<HTMLInputElement>;
@@ -16,7 +17,9 @@ const OtherOption: React.FC<OtherOptionProps> = ({
   placeholder,
   value,
 }) => {
-  const label = isMultiSelect ? "Outros: " : "Outro: ";
+  const { t } = useTranslation();
+
+  const label = `${t(isMultiSelect ? "fields.others" : "fields.other")}: `;
 
   return (
     <FormControl
