@@ -33,7 +33,7 @@ const useSubmitForm = () => {
     description,
   } = useFormCreation();
 
-  const { addCreatedForm } = useFormsManagement();
+  const { updateForms } = useFormsManagement();
 
   const router = useRouter();
 
@@ -121,7 +121,7 @@ const useSubmitForm = () => {
           );
 
           if (!hasCreationError) {
-            addCreatedForm({ title, id: formId, fields, description });
+            updateForms({ title, id: formId, fields, description });
             userUpdate();
             router.push("/");
 
@@ -157,7 +157,8 @@ const useSubmitForm = () => {
       validateForm,
       session?.user,
       createUserForm,
-      addCreatedForm,
+      i18n.resolvedLanguage,
+      updateForms,
       title,
       fields,
       description,

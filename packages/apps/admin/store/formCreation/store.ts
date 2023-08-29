@@ -14,6 +14,7 @@ import { updateUserForms } from "@app/api/services/user";
 import { FormCreationState, FormCreationStore } from "./types";
 
 const INITIAL_STATE: FormCreationState = {
+  id: "",
   isLoading: false,
   errors: null,
   title: "",
@@ -24,6 +25,7 @@ const INITIAL_STATE: FormCreationState = {
 };
 
 const store = create<FormCreationStore>((set, get) => ({
+  id: INITIAL_STATE.id,
   isLoading: INITIAL_STATE.isLoading,
   errors: INITIAL_STATE.errors,
   title: INITIAL_STATE.title,
@@ -33,11 +35,12 @@ const store = create<FormCreationStore>((set, get) => ({
   dependsOnOptions: INITIAL_STATE.dependsOnOptions,
 
   loadForm: async (formId) => {
-    const { updateTitle, updateDescription, addFields, fields, isLoading } =
-      get();
+    const { updateTitle, updateDescription, addFields, isLoading } = get();
 
-    if (fields.length === 0 && !isLoading) {
-      set({ isLoading: true });
+    if (!isLoading) {
+      get().reset();
+
+      set({ isLoading: true, id: formId });
 
       const form = await getForm(formId);
 
@@ -108,7 +111,7 @@ const store = create<FormCreationStore>((set, get) => ({
 
   createUserForm: async (email, lang, forms) => {
     const { fields, title, description } = get();
-    const id = uuid();
+    const id = get().id || uuid();
 
     let hasError = false;
 

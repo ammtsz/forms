@@ -35,8 +35,20 @@ const store = create<FormsManagementStore>((set, get) => ({
     }));
   },
 
-  addCreatedForm: (form) => {
-    set(({ forms }) => ({ forms: [...forms, form] }));
+  updateForms: (newForm) => {
+    const existingForm = get().forms.find(({ id }) => id === newForm.id);
+    if (existingForm) {
+      set(({ forms }) => ({
+        forms: forms.map((form) => {
+          if (newForm.id === form.id) {
+            return newForm;
+          }
+          return form;
+        }),
+      }));
+    } else {
+      set(({ forms }) => ({ forms: [...forms, newForm] }));
+    }
   },
 
   deleteForm: async (formId, email) => {

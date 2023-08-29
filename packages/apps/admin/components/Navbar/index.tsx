@@ -7,10 +7,14 @@ import { usePathname } from "next/navigation";
 import { Loader as HomeIcon } from "react-feather";
 import { useTranslation } from "react-i18next";
 
+import { useTableData } from "@app/store/tableData";
+
 import SignInButton from "../SignInButton";
 
 const Navbar: React.FC = () => {
   const { data: session, status } = useSession();
+
+  const { title } = useTableData();
 
   const pathname = usePathname();
 
@@ -24,7 +28,8 @@ const Navbar: React.FC = () => {
     const page = pathname.split("/")[1];
     if (!session) return t("home.navbar.admin");
     if (page === "create") return t("home.navbar.create");
-    if (page === "responses") return t("home.navbar.responses");
+    if (page === "responses")
+      return `${t("home.navbar.responses")}: ${title.toLocaleUpperCase()}`;
     if (page === "edit") return t("home.navbar.edit");
     if (page === "") return t("home.navbar.home");
   };
