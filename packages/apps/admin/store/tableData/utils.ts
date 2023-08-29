@@ -1,7 +1,11 @@
-import { FieldProps } from "@forms/types/interfaces/field";
+import { MakeRequired } from "@forms/types/global/makeRequired";
+import { FieldProps, OptionsFieldProps } from "@forms/types/interfaces/field";
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
+import { isOptionTypeField } from "@forms/utils";
 
 import { TabTypes, TableData } from "./types";
+
+type OptionsField = MakeRequired<OptionsFieldProps, "options">;
 
 export const processResponsesData = (
   responses: FormValuesProps[],
@@ -14,8 +18,18 @@ export const processResponsesData = (
     const responseSearchData: string[] = [id];
 
     fields.forEach((field) => {
-      const value = response[field.id]?.value || "";
+      let value = "";
 
+      if (isOptionTypeField(field.type)) {
+        const responseValue = response[field.id].value;
+        const selectedOption = (field as OptionsField).options.find(
+          ({ value }) => value === responseValue
+        );
+
+        value = selectedOption ? selectedOption.label : "";
+      } else {
+        value = response[field.id]?.value || "";
+      }
       responseData[field.id] = value;
       responseSearchData.push(value);
     });
