@@ -8,7 +8,7 @@ export interface TitleAndDescription {
 }
 
 export interface Message {
-  role: "assistant";
+  role: "user";
   content: string;
 }
 
@@ -29,7 +29,7 @@ export interface FormCreationState {
 export interface FormCreationStore extends FormCreationState {
   updateTopic: (topic: string) => void;
   generateTitleAndDescription: (lang: string) => Promise<TitleAndDescription>;
-  generateField: (lang: string) => Promise<Field>;
+  generateField: (lang: string, description?: string) => Promise<Field>;
   addMessage: (content: string) => void;
   updateMessages: (fields: Fields) => void;
   setVisible: (isOpen: boolean) => void;

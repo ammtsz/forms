@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
@@ -6,24 +7,26 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export const POST = async (request: Request): Promise<Response> => {
-  const { content, lang } = await request.json();
+export const POST = async (request: Request): Promise<Response | void> => {
+  const { content, messages, lang } = await request.json();
 
   const language = lang === "br" ? "Portuguese (Brazil)" : "English";
+
+  const messagesBase = [
+    {
+      role: "system",
+      content: `You will create a form with the given topic. Return a title and a description using a javascript object structure: { title: string, description: string }. The answer must start with: {. The form is in ${language}`,
+    },
+    {
+      role: "user",
+      content: `topic: ${content}`,
+    },
+  ];
 
   try {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content: `You will create a form with the given topic. Return a title and a description using a javascript object structure: { title: string, description: string }. The answer must start with: {. The form is in ${language}`,
-        },
-        {
-          role: "user",
-          content,
-        },
-      ],
+      messages: [...messagesBase, ...messages],
       temperature: 1.25,
       max_tokens: 300,
     });
@@ -35,16 +38,12 @@ export const POST = async (request: Request): Promise<Response> => {
         status: 201,
       });
     }
-
+  } catch (error) {
+    console.log(error);
     return new Response(
       JSON.stringify({
-        error: "Não foi possível gerar um título e uma descrição.",
+        error: t("create.ai.feedbacks.unableCreateTitleAndDescription"),
       }),
-      { status: 500 }
-    );
-  } catch (error) {
-    return new Response(
-      JSON.stringify({ error: "Erro ao gerar um título e uma descrição." }),
       { status: 500 }
     );
   }

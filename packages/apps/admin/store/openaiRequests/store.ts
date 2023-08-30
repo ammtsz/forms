@@ -25,10 +25,19 @@ const store = create<FormCreationStore>((set, get) => ({
   },
 
   generateTitleAndDescription: async (lang) => {
+    const messages = [
+      ...get().messages,
+      {
+        role: "user",
+        content: "Give me a title and a description based on existing fields.",
+      },
+    ];
+
     const data = await fetch("/api/openai/title", {
       method: "POST",
       body: JSON.stringify({
         content: get().topic,
+        messages: get().messages.length ? messages : [],
         lang,
       }),
     });
@@ -44,12 +53,30 @@ const store = create<FormCreationStore>((set, get) => ({
     return titleAndDescription;
   },
 
-  generateField: async (lang) => {
+  generateField: async (lang, description) => {
+    const formDescription = description
+      ? [
+          {
+            role: "user",
+            content: `form description: ${description}`,
+          },
+        ]
+      : [];
+
+    const messages = [
+      ...formDescription,
+      ...get().messages,
+      {
+        role: "user",
+        content: "Give me a new field, different from previous ones.",
+      },
+    ];
+
     const data = await fetch("/api/openai/field", {
       method: "POST",
       body: JSON.stringify({
         content: get().topic,
-        messages: get().messages,
+        messages: get().messages.length ? messages : [...formDescription],
         lang,
       }),
     });
@@ -64,7 +91,7 @@ const store = create<FormCreationStore>((set, get) => ({
 
     const field = JSON.parse(response);
 
-    field.id = `${field.type}--${uuid()}`;
+    field.id = `${field.type || "text"}--${uuid()}`;
 
     return field;
   },
@@ -74,7 +101,7 @@ const store = create<FormCreationStore>((set, get) => ({
       messages: [
         ...messages,
         {
-          role: "assistant",
+          role: "user",
           content,
         },
       ],
@@ -87,20 +114,15 @@ const store = create<FormCreationStore>((set, get) => ({
 
     currentFields.forEach((field) => {
       if (field.label) {
-        const options = isOptionTypeField(field.type)
-          ? { options: (field as OptionsField).options }
-          : {};
+        const options =
+          isOptionTypeField(field.type) &&
+          (field as OptionsField).options?.map(({ label }) => label).join(", ");
 
         messages.push({
-          role: "assistant",
-          content: JSON.stringify({
-            type: field.type,
-            label: field.label,
-            isRequired: field.isRequired,
-            placeholder: field.placeholder,
-            description: field.description,
-            ...options,
-          }),
+          role: "user",
+          content: `just created a field of type '${field.type}' with label: '${
+            field.label
+          }' ${options ? `and options: ${options}` : ""}`,
         });
       }
     });

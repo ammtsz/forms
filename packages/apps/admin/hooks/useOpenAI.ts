@@ -23,7 +23,7 @@ const useOpenAI = (): OpenAIReturn => {
 
   const { t, i18n } = useTranslation();
 
-  const { addFields, updateTitle, updateDescription, fields } =
+  const { addFields, updateTitle, updateDescription, fields, description } =
     useFormCreation();
 
   const {
@@ -60,7 +60,10 @@ const useOpenAI = (): OpenAIReturn => {
       updateTopic(topic.trim());
       updateMessages(fields);
 
-      const response = await generateField(i18n.resolvedLanguage || "en");
+      const response = await generateField(
+        i18n.resolvedLanguage || "en",
+        JSON.stringify(description)
+      );
 
       if (response.error) {
         errorToast(`${response.error} ${t("feedbacks.retry")}`);
@@ -79,6 +82,7 @@ const useOpenAI = (): OpenAIReturn => {
     t,
     topic,
     fields,
+    description,
     i18n.resolvedLanguage,
     setDisabled,
     updateTopic,
@@ -92,7 +96,9 @@ const useOpenAI = (): OpenAIReturn => {
     try {
       setTitleLoading(true);
       setDisabled(true);
+
       updateTopic(topic.trim());
+      updateMessages(fields);
 
       const response = await generateTitleAndDescription(
         i18n.resolvedLanguage || "en"
@@ -117,9 +123,11 @@ const useOpenAI = (): OpenAIReturn => {
   }, [
     t,
     topic,
+    fields,
     i18n.resolvedLanguage,
     setDisabled,
     updateTopic,
+    updateMessages,
     generateTitleAndDescription,
     errorToast,
     updateTitle,

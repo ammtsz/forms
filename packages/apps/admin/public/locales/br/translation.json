@@ -81,7 +81,7 @@
       "topicInputLabelPt2": "para gerar um título e uma descrição ou novos campos:",
       "topicInputPlaceholder": "Digite um tema",
       "topicInputHint": "O tema deve ter de 3 a 100 caracteres.",
-      "fieldTip": "Crie um campo com base no tema e nos campos existentes.",
+      "fieldTip": "Crie um campo com base no tema, na descrição e nos campos existentes.",
       "titleTip": "Crie um título e uma descrição com base no tema indicado.",
       "disabledFieldTip": "Digite um tema e depois clique aqui para gerar um campo com a ajuda de uma IA.",
       "disabledTitleTip": "Digite um tema e depois clique aqui para gerar um título e uma descrição com a ajuda de uma IA.",
