@@ -21,7 +21,7 @@ const IsSignedIn: React.FC<{ children: React.ReactElement }> = ({
   ) : (
     <main className="flex flex-col w-100 h-[80vh] max-h-[800px] justify-center items-center">
       <p className="font-bold mb-4">{t("feedbacks.loginRequired")}</p>
-      <SignInButton session={session} />
+      <SignInButton />
     </main>
   );
 };
