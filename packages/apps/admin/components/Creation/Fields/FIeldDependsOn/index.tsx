@@ -22,12 +22,14 @@ import useFieldDependsOn from "./hooks/useFieldsDependsOn";
 interface FieldDependsOnProps {
   fieldId: string;
   initialDependsOn?: DependsOnProps;
+  isDisabled?: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   handleDependsOn: (dependsOn?: DependsOnProps) => void;
 }
 
 const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
   fieldId,
+  isDisabled = false,
   setVisible,
   handleDependsOn,
   initialDependsOn,
@@ -55,9 +57,12 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
           size={["sm", "sm", "md"]}
           onChange={(e) => handleOptionsSelect(true, e)}
           value={initialDependsOn?.optionsValues?.[0].toString() || ""}
+          color={isDisabled ? "blackAlpha.500" : "black"}
         >
-          <Radio value="true">{t("commons.yes")}</Radio>
-          <Radio value="false" ml={4}>
+          <Radio value="true" disabled={isDisabled}>
+            {t("commons.yes")}
+          </Radio>
+          <Radio value="false" disabled={isDisabled} ml={4}>
             {t("commons.no")}
           </Radio>
         </RadioGroup>
@@ -76,6 +81,8 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
         onChange={(e) => handleOptionsSelect(e.target.checked, option.value)}
         colorScheme="telegram"
         isChecked={initialDependsOn?.optionsValues?.includes(option.value)}
+        disabled={isDisabled}
+        color={isDisabled ? "blackAlpha.500" : "black"}
       >
         {option.label}
       </Checkbox>
@@ -97,7 +104,10 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
         direction={"column"}
       >
         <FormControl>
-          <FormLabel fontSize={["sm", "sm", "md"]}>
+          <FormLabel
+            fontSize={["sm", "sm", "md"]}
+            color={isDisabled ? "blackAlpha.500" : "black"}
+          >
             {`${t("create.labels.visibleOnlyWhen")} :`}
           </FormLabel>
           <Select
@@ -109,6 +119,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
             onChange={handleFieldSelect}
             placeholder={t("create.placeholders.selectQuestion")}
             value={selectedField || ""}
+            isDisabled={isDisabled}
           >
             {dependsOnOptions &&
               Object.keys(dependsOnOptions).map((id) => {
@@ -131,6 +142,7 @@ const FieldDependsOn: React.FC<FieldDependsOnProps> = ({
           m="auto"
           mt={4}
           size={["sm", "sm", "md"]}
+          isDisabled={isDisabled}
         >
           {t("commons.cancel")}
         </Button>

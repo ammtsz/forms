@@ -44,6 +44,7 @@
     "days": "Days"
   },
   "feedbacks": {
+    "unableToEditForm": "Unable to edit fields. This form has already been answered.",
     "loginRequired": "Log in to continue",
     "errorToLoadPage": "Error loading page.",
     "retry": "Retry later.",

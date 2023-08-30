@@ -27,6 +27,7 @@ import { useDateLimitPicker } from "./hooks/useDateLimitPicker";
 interface DateLimitPickerProps {
   min?: string;
   max?: string;
+  isDisabled?: boolean;
   handleInputChange: React.ChangeEventHandler<HTMLInputElement>;
   handleLimitsChange: (max: string, min: string) => void;
 }
@@ -34,6 +35,7 @@ interface DateLimitPickerProps {
 const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
   max,
   min,
+  isDisabled = false,
   handleInputChange,
   handleLimitsChange,
 }: DateLimitPickerProps) => {
@@ -100,11 +102,13 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
             value="today"
             gridArea={"1 / 1 / 2 / 1"}
             colorScheme="telegram"
+            isDisabled={isDisabled}
           />
           <Radio
             value="calendar"
             gridArea={"3 / 1 / 3 / 1"}
             colorScheme="telegram"
+            isDisabled={isDisabled}
           />
         </RadioGroup>
         {GRID_AREAS.map((area, index) => {
@@ -122,14 +126,17 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                 {selectedDate(index, dateLimitType, "today")}
               </FormLabel>
               <Flex alignItems={"center"} gap={2} gridArea={area.today}>
-                <Kbd fontSize="md" opacity={dateType === "today" ? 1 : 0.4}>
+                <Kbd
+                  fontSize="md"
+                  opacity={dateType === "today" && !isDisabled ? 1 : 0.4}
+                >
                   {t("date.today")}
                 </Kbd>
                 <Text fontWeight={600}>+</Text>
                 <FormControl isInvalid={dateType === "today" && !max && !min}>
                   <NumberInput
                     bg="white"
-                    isDisabled={dateType !== "today"}
+                    isDisabled={dateType !== "today" || isDisabled}
                     max={getLimit("max", dateLimitType, date)}
                     min={getLimit("min", dateLimitType, date)}
                     onChange={handleDaysChange(dateLimitType)}
@@ -143,7 +150,10 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                     </NumberInputStepper>
                   </NumberInput>
                 </FormControl>
-                <Kbd fontSize="md" opacity={dateType === "today" ? 1 : 0.4}>
+                <Kbd
+                  fontSize="md"
+                  opacity={dateType === "today" && !isDisabled ? 1 : 0.4}
+                >
                   {t("date.days").toLowerCase()}
                 </Kbd>
               </Flex>
@@ -152,7 +162,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
                   alignSelf={"center"}
                   fontWeight={600}
                   gridArea={area.or}
-                  opacity={dateType ? 1 : 0.4}
+                  opacity={dateType && !isDisabled ? 1 : 0.4}
                   textAlign={"center"}
                 >
                   {t("commons.or")}
@@ -171,7 +181,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
               <Input
                 bg={"white"}
                 gridArea={area.calendar}
-                isDisabled={dateType !== "calendar"}
+                isDisabled={dateType !== "calendar" || isDisabled}
                 max={max}
                 min={min}
                 onChange={handleDateChange}
@@ -191,6 +201,7 @@ const DateLimitPicker: React.FC<DateLimitPickerProps> = ({
         mt={[4, 8, 8]}
         width={"auto"}
         size={["sm", "sm", "md"]}
+        isDisabled={isDisabled}
       >
         {t("create.buttons.cleanDates")}
       </Button>

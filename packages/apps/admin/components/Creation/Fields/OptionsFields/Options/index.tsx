@@ -32,6 +32,7 @@ interface FieldOptionsProps {
   fieldErrors: string[] | null;
   value: ValueProps;
   type: FieldsType;
+  isDisabled?: boolean;
 }
 
 const FieldOptions: React.FC<FieldOptionsProps> = ({
@@ -43,6 +44,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
   fieldErrors,
   type,
   value,
+  isDisabled = false,
 }) => {
   const { t } = useTranslation();
 
@@ -69,6 +71,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               placeholder={t("create.placeholders.addOption")}
               value={label}
               variant="flushed"
+              isDisabled={isDisabled}
             />
             {getOptionError(index) && (
               <FormErrorMessage mt={0} fontSize={["xs", "xs", "sm"]}>
@@ -85,6 +88,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               onClick={handleDeleteOption}
               py="3"
               _hover={{ backgroundColor: "transparent", color: "red.700" }}
+              isDisabled={isDisabled}
             >
               <XIcon />
             </Button>
@@ -97,6 +101,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
         mr="auto"
         mt="3"
         onClick={handleAddOption}
+        isDisabled={isDisabled}
       >
         {t("create.buttons.addOption")}
       </Button>
@@ -104,7 +109,12 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
         <>
           <Flex alignItems="center">
             <FieldIcon type={type} />
-            <Text mt="3" mr="auto" fontSize={["xs", "xs", "sm"]}>
+            <Text
+              mt="3"
+              mr="auto"
+              fontSize={["xs", "xs", "sm"]}
+              color={isDisabled ? "blackAlpha.500" : "black"}
+            >
               {t("commons.other")}
             </Text>
           </Flex>
@@ -119,6 +129,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               placeholder={t("create.placeholders.addOptionOther")}
               value={(value.optionOther as OptionOtherProps).placeholder}
               color="blackAlpha.600"
+              isDisabled={isDisabled}
             />
             <Tooltip hasArrow label={t("create.buttons.deleteOption")}>
               <Button
@@ -128,6 +139,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
                 onClick={toggleOtherOption}
                 py="3"
                 _hover={{ backgroundColor: "transparent", color: "red.700" }}
+                isDisabled={isDisabled}
               >
                 <XIcon />
               </Button>
@@ -141,6 +153,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
           mr="auto"
           mt={[1, 1, 3]}
           onClick={toggleOtherOption}
+          isDisabled={isDisabled}
         >
           {t("create.buttons.addOptionOther")}
         </Button>

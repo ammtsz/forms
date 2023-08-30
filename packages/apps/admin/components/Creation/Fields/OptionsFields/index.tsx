@@ -6,6 +6,7 @@ import { FieldsType } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
 import { useFormCreation } from "@app/store/formCreation";
+import { FieldComponentProps } from "@app/types";
 
 import FieldBase from "../FieldBase";
 import FieldFooter from "../FieldFooter";
@@ -13,11 +14,10 @@ import FieldHeader from "../FieldHeader";
 import { useOptions } from "../hooks/useOptions";
 import Options from "./Options";
 
-interface SelectProps {
-  id: string;
-}
-
-const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
+const OptionsFieldsCreation: React.FC<FieldComponentProps> = ({
+  id,
+  isDisabled,
+}) => {
   const {
     handleInputChange,
     handleCheckbox,
@@ -41,11 +41,13 @@ const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
         handleDependsOn={handleDependsOnChange}
         type={getPrefixFromString(id)}
         initialDependsOn={value.dependsOn}
+        isDisabled={isDisabled}
       />
       <FieldBase
         handleInputChange={handleInputChange}
         fieldErrors={errors && errors[id]}
         value={value}
+        isDisabled={isDisabled}
       />
       <Options
         handleAddOption={handleAddOption}
@@ -56,10 +58,12 @@ const OptionsFieldsCreation: React.FC<SelectProps> = ({ id }) => {
         fieldErrors={errors && errors[id]}
         type={getPrefixFromString(id) as FieldsType}
         value={value}
+        isDisabled={isDisabled}
       />
       <FieldFooter
         handleCheckbox={handleCheckbox}
         isRequired={value.isRequired}
+        isDisabled={isDisabled}
       />
     </>
   );

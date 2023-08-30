@@ -8,6 +8,7 @@ import { FieldsType } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
 import { useFormCreation } from "@app/store/formCreation";
+import { FieldComponentProps } from "@app/types";
 
 import FieldBase from "../FieldBase";
 import FieldFooter from "../FieldFooter";
@@ -16,7 +17,10 @@ import FieldIcon from "../FieldIcon";
 import { useDates } from "../hooks/useDates";
 import DateLimitPicker from "./DateLimitPicker";
 
-const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
+const DateFieldsCreation: React.FC<FieldComponentProps> = ({
+  id,
+  isDisabled,
+}) => {
   const {
     handleCheckbox,
     handleDelete,
@@ -42,6 +46,7 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         handleDependsOn={handleDependsOnChange}
         type={getPrefixFromString(id)}
         initialDependsOn={value.dependsOn}
+        isDisabled={isDisabled}
       />
       <Flex flexDir={"row"}>
         <FieldIcon type={type} />
@@ -50,6 +55,7 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
             handleInputChange={handleInputChange}
             fieldErrors={errors && errors[id]}
             value={value}
+            isDisabled={isDisabled}
           />
           <Text
             color={"blackAlpha.600"}
@@ -70,6 +76,7 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
               min={value.min}
               handleInputChange={handleInputChange}
               handleLimitsChange={handleLimitsChange}
+              isDisabled={isDisabled}
             />
           </Flex>
         </Flex>
@@ -77,6 +84,7 @@ const DateFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
       <FieldFooter
         handleCheckbox={handleCheckbox}
         isRequired={value.isRequired}
+        isDisabled={isDisabled}
       />
     </>
   );

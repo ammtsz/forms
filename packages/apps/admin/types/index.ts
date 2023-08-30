@@ -13,3 +13,8 @@ export interface User {
   email: string;
   picture: string;
 }
+
+export interface FieldComponentProps {
+  id: string;
+  isDisabled?: boolean;
+}

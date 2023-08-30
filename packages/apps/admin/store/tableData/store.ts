@@ -92,6 +92,7 @@ const store = create<TableDataStore>((set, get) => ({
     );
 
     set({ responses: availableResponses });
+
     get().generateTableData();
   },
 

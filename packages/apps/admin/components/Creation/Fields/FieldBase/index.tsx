@@ -12,12 +12,14 @@ interface FieldBaseProps {
   >;
   fieldErrors: string[] | null;
   value: Partial<FieldProps>;
+  isDisabled?: boolean;
 }
 
 const FieldBase: React.FC<FieldBaseProps> = ({
   handleInputChange,
   fieldErrors,
   value,
+  isDisabled = false,
 }) => {
   const hasLabelError = !!(fieldErrors && fieldErrors.includes("label"));
 
@@ -36,6 +38,7 @@ const FieldBase: React.FC<FieldBaseProps> = ({
           _placeholder={{ color: "inherit" }}
           value={value.label}
           variant={hasLabelError ? "flushed" : "unstyled"}
+          isDisabled={isDisabled}
         />
         {hasLabelError && (
           <FormErrorMessage fontSize={["xs", "xs", "sm"]} mt={0}>
@@ -52,6 +55,7 @@ const FieldBase: React.FC<FieldBaseProps> = ({
         _placeholder={{ color: "inherit" }}
         value={value.description || ""}
         variant={"unstyled"}
+        isDisabled={isDisabled}
       />
     </>
   );

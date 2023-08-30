@@ -7,6 +7,7 @@ import { FieldsType } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
 import { useFormCreation } from "@app/store/formCreation";
+import { FieldComponentProps } from "@app/types";
 
 import FieldBase from "../FieldBase";
 import FieldFooter from "../FieldFooter";
@@ -14,7 +15,10 @@ import FieldHeader from "../FieldHeader";
 import FieldIcon from "../FieldIcon";
 import { ValueProps, useFieldsBase } from "../hooks/useFieldsBase";
 
-const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
+const ToggleFieldsCreation: React.FC<FieldComponentProps> = ({
+  id,
+  isDisabled,
+}) => {
   const [value, setValue] = useState<ValueProps>({
     label: "",
     description: "",
@@ -44,6 +48,7 @@ const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         handleDependsOn={handleDependsOnChange}
         type={getPrefixFromString(id)}
         initialDependsOn={value.dependsOn}
+        isDisabled={isDisabled}
       />
       <Flex flexDir={"row"}>
         <FieldIcon type={type} />
@@ -52,12 +57,14 @@ const ToggleFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
             handleInputChange={handleInputChange}
             fieldErrors={errors && errors[id]}
             value={value}
+            isDisabled={isDisabled}
           />
         </Flex>
       </Flex>
       <FieldFooter
         handleCheckbox={handleCheckbox}
         isRequired={value.isRequired}
+        isDisabled={isDisabled}
       />
     </>
   );

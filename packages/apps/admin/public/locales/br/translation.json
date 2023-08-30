@@ -44,6 +44,7 @@
     "days": "Dias"
   },
   "feedbacks": {
+    "unableToEditForm": "Não é possível editar os campos, pois este formulário já possui respostas salvas.",
     "loginRequired": "Faça o login para continuar",
     "errorToLoadPage": "Não foi possível carregar a página.",
     "retry": "Tente novamente.",

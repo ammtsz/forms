@@ -8,13 +8,17 @@ import { FieldsType } from "@forms/types/interfaces/field";
 import { Fields, getPrefixFromString } from "@forms/utils";
 
 import { useFormCreation } from "@app/store/formCreation";
+import { FieldComponentProps } from "@app/types";
 
 import FieldBase from "../FieldBase";
 import FieldFooter from "../FieldFooter";
 import FieldHeader from "../FieldHeader";
 import { ValueProps, useFieldsBase } from "../hooks/useFieldsBase";
 
-const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
+const TextsFieldsCreation: React.FC<FieldComponentProps> = ({
+  id,
+  isDisabled,
+}) => {
   const [value, setValue] = useState<ValueProps>({
     label: "",
     description: "",
@@ -48,11 +52,13 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         fieldId={id}
         handleDependsOn={handleDependsOnChange}
         initialDependsOn={value.dependsOn}
+        isDisabled={isDisabled}
       />
       <FieldBase
         handleInputChange={handleInputChange}
         fieldErrors={errors && errors[id]}
         value={value}
+        isDisabled={isDisabled}
       />
       <Text
         bg="white"
@@ -65,10 +71,12 @@ const TextsFieldsCreation: React.FC<{ id: string }> = ({ id }) => {
         placeholder={t("create.placeholders.addPlaceholder")}
         _placeholder={{ color: "inherit" }}
         value={value.placeholder || ""}
+        isDisabled={isDisabled}
       />
       <FieldFooter
         handleCheckbox={handleCheckbox}
         isRequired={value.isRequired}
+        isDisabled={isDisabled}
       />
     </>
   );

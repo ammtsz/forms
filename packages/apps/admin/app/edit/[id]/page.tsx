@@ -1,7 +1,7 @@
 "use client";
 
 import { Flex, Box, Textarea, useDisclosure } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { getPrefixFromString } from "@forms/utils";
@@ -15,6 +15,7 @@ import IsSignedIn from "@app/components/IsSignedIn";
 import useInitialData from "@app/hooks/useInitialData";
 import useOpenAI from "@app/hooks/useOpenAI";
 import useSubmitForm from "@app/hooks/useSubmitForm";
+import { useAlert } from "@app/store/alert";
 import { useFormCreation } from "@app/store/formCreation";
 import { useOpenaiRequest } from "@app/store/openaiRequests";
 import { getFieldComponent } from "@app/utils/getFieldComponent";
@@ -49,12 +50,24 @@ const FormCreationPage = () => {
     handleAITitleButton,
   } = useOpenAI();
 
+  const { setMessage, reset: cleanAlert } = useAlert();
+
   const { isVisible: isAIVisible, isDisabled: isAIDisabled } =
     useOpenaiRequest();
 
-  const { isLoadingForm, isValidForm } = useInitialData();
+  const { isLoadingForm, isValidForm, hasResponses } = useInitialData();
 
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (hasResponses) {
+      setMessage(t("feedbacks.unableToEditForm"));
+    }
+  }, [hasResponses, setMessage, t]);
+
+  useEffect(() => {
+    return () => cleanAlert();
+  }, [cleanAlert]);
 
   return (
     <IsSignedIn>
@@ -71,7 +84,7 @@ const FormCreationPage = () => {
             onAIOpen={onAIOpen}
             onAIClose={onAIClose}
             isAIOpen={isAIOpen}
-            isDisabled={isDisabled}
+            isDisabled={isDisabled || hasResponses}
           />
           <Form as={"form"} onSubmit={handleSubmit}>
             <Box mb={8}>
@@ -115,17 +128,19 @@ const FormCreationPage = () => {
                     borderRadius="10"
                     width="100%"
                   >
-                    <Component id={fieldId} />
+                    <Component id={fieldId} isDisabled={hasResponses} />
                   </Flex>
                 );
               })}
             </React.Fragment>
-            <AddFieldButton
-              handleAIFieldButton={handleAIFieldButton}
-              isAILoading={isFieldLoading}
-              isAIDisabled={isAIDisabled}
-              isAIVisible={isAIVisible}
-            />
+            {!hasResponses && (
+              <AddFieldButton
+                handleAIFieldButton={handleAIFieldButton}
+                isAILoading={isFieldLoading}
+                isAIDisabled={isAIDisabled}
+                isAIVisible={isAIVisible}
+              />
+            )}
             <button
               type="submit"
               className="primary_btn"

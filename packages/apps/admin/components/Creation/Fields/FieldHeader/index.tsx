@@ -26,6 +26,7 @@ interface FieldHeaderProps {
   fieldId: string;
   type: FieldsType;
   initialDependsOn?: DependsOnProps;
+  isDisabled?: boolean;
 }
 
 const FieldHeader: React.FC<FieldHeaderProps> = ({
@@ -34,6 +35,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
   fieldId,
   type,
   initialDependsOn,
+  isDisabled = false,
 }) => {
   const [visible, setVisible] = useState(false);
 
@@ -60,6 +62,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
             w="40px"
             p="10px"
             ml="auto"
+            isDisabled={isDisabled}
           >
             <MoreIcon size="20px" />
           </MenuButton>
@@ -80,6 +83,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
           fieldId={fieldId}
           handleDependsOn={handleDependsOn}
           initialDependsOn={initialDependsOn}
+          isDisabled={isDisabled}
         />
       )}
     </>
