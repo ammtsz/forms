@@ -36,7 +36,7 @@ const FormCard: React.FC<FormCardProps> = ({
   ) : (
     <>
       <div className="btn_card_back light_scheme">
-        <div className="flex m-2 mt-0 gap-4">
+        <div className="flex m-2 mt-0 mb-4 gap-4">
           <i className="whitespace-nowrap overflow-hidden text-ellipsis">
             {title}
           </i>
@@ -44,8 +44,8 @@ const FormCard: React.FC<FormCardProps> = ({
             <XIcon size={16} />
           </button>
         </div>
-        <div className="flex flex-wrap gap-4 font-bold">
-          <div className="flex justify-between w-full gap-4">
+        <div className="flex flex-wrap gap-2 font-bold">
+          <div className="flex justify-between w-full gap-2">
             <Link href={`/responses/${id}`} className="sub_btn_card">
               <p className="whitespace-break-spaces overflow-hidden">
                 {t("commons.responses")}
@@ -62,7 +62,7 @@ const FormCard: React.FC<FormCardProps> = ({
               </p>
             </Link>
           </div>
-          <div className="flex justify-between w-full gap-4">
+          <div className="flex justify-between w-full gap-2">
             <Link href={`/edit/${id}`} className="sub_btn_card">
               <p className="whitespace-break-spaces overflow-hidden">
                 {t("commons.edit")}

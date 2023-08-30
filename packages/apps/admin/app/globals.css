@@ -67,7 +67,7 @@ body {
 }
 
 .sub_btn_card {
-  @apply h-14 w-36 bg-white hover:bg-gray-50 justify-center items-center rounded-2xl shadow-md flex p-4 font-bold text-center;
+  @apply h-14 w-36 bg-white hover:bg-gray-50 justify-center items-center rounded-lg shadow-md flex p-4 font-medium text-center leading-5;
 }
 
 .black_scheme {
