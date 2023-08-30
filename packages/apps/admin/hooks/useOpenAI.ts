@@ -11,7 +11,6 @@ interface OpenAIReturn {
   isFieldLoading: boolean;
   isTitleLoading: boolean;
   topic: string;
-  hasError: boolean;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleAIFieldButton: () => void;
   handleAITitleButton: () => void;
@@ -21,7 +20,6 @@ const useOpenAI = (): OpenAIReturn => {
   const [isTitleLoading, setTitleLoading] = useState(false);
   const [isFieldLoading, setFieldLoading] = useState(false);
   const [topic, setTopic] = useState("");
-  const [hasError, setError] = useState(false);
 
   const { t, i18n } = useTranslation();
 
@@ -33,6 +31,7 @@ const useOpenAI = (): OpenAIReturn => {
     generateTitleAndDescription,
     updateTopic,
     updateMessages,
+    setDisabled,
   } = useOpenaiRequest();
 
   const { openToast } = useToast();
@@ -48,14 +47,15 @@ const useOpenAI = (): OpenAIReturn => {
       const { value } = event.target;
 
       setTopic(value);
-      setError(value.length < 3 || value.length > 100);
+      setDisabled(value.length < 3 || value.length > 100);
     },
-    []
+    [setDisabled]
   );
 
   const handleAIFieldButton = useCallback(async () => {
     try {
       setFieldLoading(true);
+      setDisabled(true);
 
       updateTopic(topic.trim());
       updateMessages(fields);
@@ -73,12 +73,14 @@ const useOpenAI = (): OpenAIReturn => {
       );
     } finally {
       setFieldLoading(false);
+      setDisabled(false);
     }
   }, [
     t,
-    i18n,
-    fields,
     topic,
+    fields,
+    i18n.resolvedLanguage,
+    setDisabled,
     updateTopic,
     updateMessages,
     generateField,
@@ -89,8 +91,9 @@ const useOpenAI = (): OpenAIReturn => {
   const handleAITitleButton = useCallback(async () => {
     try {
       setTitleLoading(true);
-
+      setDisabled(true);
       updateTopic(topic.trim());
+
       const response = await generateTitleAndDescription(
         i18n.resolvedLanguage || "en"
       );
@@ -109,11 +112,13 @@ const useOpenAI = (): OpenAIReturn => {
       );
     } finally {
       setTitleLoading(false);
+      setDisabled(false);
     }
   }, [
     t,
     topic,
     i18n.resolvedLanguage,
+    setDisabled,
     updateTopic,
     generateTitleAndDescription,
     errorToast,
@@ -125,7 +130,6 @@ const useOpenAI = (): OpenAIReturn => {
     isTitleLoading,
     isFieldLoading,
     topic,
-    hasError,
     handleInputChange,
     handleAIFieldButton,
     handleAITitleButton,

@@ -11,6 +11,8 @@
     "cancel": "Cancelar",
     "clean": "Limpar",
     "open": "Abrir",
+    "enable": "Habilitar",
+    "disable": "Desabilitar",
     "see": "Ver",
     "optional": "Opcional",
     "or": "ou",
@@ -22,7 +24,8 @@
     "settings": "Configurações",
     "language": "Idioma",
     "form": "Formulário",
-    "more": "main"
+    "more": "main",
+    "ai": "IA"
   },
   "fields": {
     "text": "Texto curto",
@@ -74,11 +77,15 @@
   },
   "create": {
     "ai": {
-      "topicInputLabel": "Informe o tema do formulário para crie um título, uma descrição e novos campos com a ajuda de uma IA.",
+      "topicInputLabelPt1": "Digite um tema, depois clique nos botões de",
+      "topicInputLabelPt2": "para gerar um título e uma descrição ou novos campos:",
       "topicInputPlaceholder": "Digite um tema",
       "topicInputHint": "O tema deve ter de 3 a 100 caracteres.",
-      "titleAndDescriptionTip": "O título e a descrição são criados com base no tema.",
-      "fieldTip": "Os campos são criados com base no tema e nos campos existentes.",
+      "fieldTip": "Crie um campo com base no tema e nos campos existentes.",
+      "titleTip": "Crie um título e uma descrição com base no tema indicado.",
+      "disabledFieldTip": "Digite um tema e depois clique aqui para gerar um campo com a ajuda de uma IA.",
+      "disabledTitleTip": "Digite um tema e depois clique aqui para gerar um título e uma descrição com a ajuda de uma IA.",
+      "creatingTip": "Aguardando IA...",
       "feedbacks": {
         "unableCreateTitleAndDescription": "Não foi possível gerar um título e uma descrição.",
         "unableCreateField": "Não foi possível gerar um novo campo."
@@ -95,7 +102,8 @@
     },
     "labels": {
       "visibleOnlyWhen": "Visível apenas quando",
-      "dependency": "Dependência"
+      "dependency": "Dependência",
+      "addField": "Adicionar campo"
     },
     "buttons": {
       "showAIOptions": "Mostrar opções de IA",
@@ -108,8 +116,7 @@
       "saveChanges": "Salvar alterações",
       "createForm": "Criar formulário",
       "cleanForm": "Limpar formulário",
-      "cleanDates": "Limpar datas",
-      "addField": "+ Adicionar campo"
+      "cleanDates": "Limpar datas"
     },
     "loading": {
       "creatingTitleAndDescription": "Criando título e descrição...",

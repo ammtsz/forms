@@ -8,12 +8,16 @@ import { FormCreationState, FormCreationStore, Message } from "./types";
 const INITIAL_STATE: FormCreationState = {
   topic: "",
   messages: [],
+  isVisible: false,
+  isDisabled: true,
   interval: [],
 };
 
 const store = create<FormCreationStore>((set, get) => ({
   topic: INITIAL_STATE.topic,
   messages: INITIAL_STATE.messages,
+  isVisible: INITIAL_STATE.isVisible,
+  isDisabled: INITIAL_STATE.isDisabled,
   interval: INITIAL_STATE.interval,
 
   updateTopic: (topic: string) => {
@@ -102,6 +106,14 @@ const store = create<FormCreationStore>((set, get) => ({
     });
 
     set({ messages });
+  },
+
+  setVisible: (isVisible) => {
+    set({ isVisible });
+  },
+
+  setDisabled: (isDisabled) => {
+    set({ isDisabled });
   },
 
   reset: () => set((state) => ({ ...state, ...INITIAL_STATE })),

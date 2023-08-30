@@ -1,18 +1,29 @@
 "use client";
 
-import { Button, Flex } from "@chakra-ui/react";
-import { useCallback, useState } from "react";
+import { Button, Flex, Spinner } from "@chakra-ui/react";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { uuid } from "@forms/utils";
 
+import Tooltip from "@app/components/Tooltip";
 import { useFormCreation } from "@app/store/formCreation";
 import { getFieldLabel, getFields } from "@app/utils/fieldsLabels";
 
-const AddFieldButton: React.FC = () => {
-  const [isSelected, setSelected] = useState<boolean>(false);
+interface AddFieldButtonProps {
+  handleAIFieldButton: () => void;
+  isAILoading: boolean;
+  isAIDisabled: boolean;
+  isAIVisible: boolean;
+}
 
+const AddFieldButton: React.FC<AddFieldButtonProps> = ({
+  handleAIFieldButton,
+  isAILoading,
+  isAIDisabled,
+  isAIVisible,
+}) => {
   const { addField } = useFormCreation();
 
   const { t } = useTranslation();
@@ -24,7 +35,6 @@ const AddFieldButton: React.FC = () => {
         label: "",
         type,
       });
-      setSelected(false);
     },
     [addField]
   );
@@ -34,38 +44,41 @@ const AddFieldButton: React.FC = () => {
       key={value}
       bg="whiteAlpha.900"
       fontSize={["sm", "sm", "md"]}
-      my="1"
       onClick={() => handleNewFieldClick(value)}
+      flexGrow={1}
     >
       {label}
     </Button>
   );
 
-  return isSelected ? (
-    <Flex
-      bg="blackAlpha.100"
-      direction={"column"}
-      p={8}
-      borderRadius={10}
-      mt="4"
-      mb="16"
-    >
-      {getFields().map((type) => renderButton(getFieldLabel(type), type))}
+  const aiTip = isAIDisabled
+    ? t("create.ai.disabledFieldTip")
+    : isAILoading
+    ? t("create.ai.creatingTip")
+    : t("create.ai.fieldTip");
+
+  return (
+    <Flex bg="blackAlpha.100" flexDir={"column"} p={8} borderRadius={10} my="4">
+      <i className="mr-auto mb-4">{t("create.labels.addField")}</i>
+      <div className="flex flex-wrap gap-4">
+        {isAIVisible && (
+          <Tooltip label={aiTip}>
+            <Button
+              bg="whiteAlpha.900"
+              border="1px solid gray"
+              fontSize={["sm", "sm", "md"]}
+              flexGrow={1}
+              onClick={handleAIFieldButton}
+              px={1}
+              isDisabled={isAIDisabled}
+            >
+              {isAILoading ? <Spinner h={4} w={4} /> : "AI"}
+            </Button>
+          </Tooltip>
+        )}
+        {getFields().map((type) => renderButton(getFieldLabel(type), type))}
+      </div>
     </Flex>
-  ) : (
-    <Button
-      bg="blackAlpha.100"
-      w={"100%"}
-      h={60}
-      _hover={{ bg: "blackAlpha.300" }}
-      color="white"
-      fontSize={"lg"}
-      onClick={() => setSelected(true)}
-      mt="4"
-      mb="16"
-    >
-      {t("create.buttons.addField")}
-    </Button>
   );
 };
 

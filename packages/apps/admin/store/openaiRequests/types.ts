@@ -21,6 +21,8 @@ type Fields = MakeOptional<FieldProps, "id">[];
 export interface FormCreationState {
   topic: string;
   messages: Message[];
+  isVisible: boolean;
+  isDisabled: boolean;
   interval: string[];
 }
 
@@ -30,10 +32,10 @@ export interface FormCreationStore extends FormCreationState {
   generateField: (lang: string) => Promise<Field>;
   addMessage: (content: string) => void;
   updateMessages: (fields: Fields) => void;
+  setVisible: (isOpen: boolean) => void;
+  setDisabled: (isOpen: boolean) => void;
   // TODO:
   // calculateInterval: () => number; // [123131231, 131231231231, 1231312312]
   // updateIntervals: (interval: number) => void;
-  // isAIDisabled: () => boolean;
-
   reset: () => void;
 }

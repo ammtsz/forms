@@ -1,38 +1,56 @@
 "use client";
 
-import {
-  Input,
-  Flex,
-  Box,
-  Textarea,
-  FormControl,
-  FormErrorMessage,
-} from "@chakra-ui/react";
-import React from "react";
+import { Flex, Box, Textarea, useDisclosure } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { getPrefixFromString } from "@forms/utils";
 
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
+import AISection from "@app/components/Creation/AISection";
+import FormMenu from "@app/components/Creation/FormMenu";
+import Title from "@app/components/Creation/Title";
 import Feedback from "@app/components/Feedback";
 import IsSignedIn from "@app/components/IsSignedIn";
 import useInitialData from "@app/hooks/useInitialData";
+import useOpenAI from "@app/hooks/useOpenAI";
 import useSubmitForm from "@app/hooks/useSubmitForm";
 import { useFormCreation } from "@app/store/formCreation";
+import { useOpenaiRequest } from "@app/store/openaiRequests";
 import { getFieldComponent } from "@app/utils/getFieldComponent";
 
 import { Container, Form } from "../../create/styles";
 
 const FormCreationPage = () => {
+  const [isDisabled, setDisabled] = useState(false);
+
+  const { fieldsIds, description } = useFormCreation();
+
+  const {
+    isOpen: isAIOpen,
+    onClose: onAIClose,
+    onOpen: onAIOpen,
+  } = useDisclosure();
+
   const {
     handleSubmit,
     handleTitle,
     handleDescription,
-    isLoading,
+    isLoading: isSubmitting,
     hasTitleError,
   } = useSubmitForm();
 
-  const { fieldsIds, description, title } = useFormCreation();
+  const {
+    isTitleLoading,
+    isFieldLoading,
+    topic,
+    handleInputChange,
+    handleAIFieldButton,
+    handleAITitleButton,
+  } = useOpenAI();
+
+  const { isVisible: isAIVisible, isDisabled: isAIDisabled } =
+    useOpenaiRequest();
 
   const { isLoadingForm, isValidForm } = useInitialData();
 
@@ -49,26 +67,27 @@ const FormCreationPage = () => {
           boxShadow={["none", "none", "dark-lg"]}
           p={[6, 8, 12]}
         >
+          <FormMenu
+            onAIOpen={onAIOpen}
+            onAIClose={onAIClose}
+            isAIOpen={isAIOpen}
+            isDisabled={isDisabled}
+          />
           <Form as={"form"} onSubmit={handleSubmit}>
             <Box mb={8}>
-              <FormControl isInvalid={hasTitleError} mb={8}>
-                <Input
-                  id="create-title"
-                  variant={hasTitleError ? "flushed" : "unstyled"}
-                  size="lg"
-                  color="blackAlpha.900"
-                  placeholder={t("create.placeholders.addTitle")}
-                  textAlign="center"
-                  fontSize={["lg", "xl", "2xl"]}
-                  onChange={handleTitle}
-                  value={title}
-                />
-                {hasTitleError && (
-                  <FormErrorMessage mt={0}>
-                    {t("commons.requiredField")}
-                  </FormErrorMessage>
-                )}
-              </FormControl>
+              <AISection
+                handleInputChange={handleInputChange}
+                isLoading={isTitleLoading || isFieldLoading}
+                isOpen={isAIOpen}
+                setFormDisabled={setDisabled}
+                topic={topic}
+              />
+              <Title
+                handleAITitleButton={handleAITitleButton}
+                isAILoading={isTitleLoading}
+                hasTitleError={hasTitleError}
+                handleTitle={handleTitle}
+              />
               <Textarea
                 bg={"white"}
                 color="blackAlpha.900"
@@ -101,9 +120,18 @@ const FormCreationPage = () => {
                 );
               })}
             </React.Fragment>
-            <AddFieldButton />
-            <button type="submit" className="primary_btn" disabled={isLoading}>
-              {isLoading
+            <AddFieldButton
+              handleAIFieldButton={handleAIFieldButton}
+              isAILoading={isFieldLoading}
+              isAIDisabled={isAIDisabled}
+              isAIVisible={isAIVisible}
+            />
+            <button
+              type="submit"
+              className="primary_btn"
+              disabled={isSubmitting || isDisabled}
+            >
+              {isSubmitting
                 ? t("create.loading.savingChanges")
                 : t("create.buttons.saveChanges")}
             </button>

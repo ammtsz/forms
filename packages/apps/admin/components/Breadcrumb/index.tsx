@@ -65,39 +65,45 @@ const Breadcrumb: React.FC = () => {
           <BreadcrumbLink fontWeight={"medium"}>{pageName}</BreadcrumbLink>
         </BreadcrumbItem>
       </ChakraBreadcrumb>
-      <Menu>
-        <MenuButton
-          as={IconButton}
-          aria-label={t("commons.more")}
-          icon={<MenuIcon />}
-          variant="unstyled"
-          h={8}
-        />
-        <MenuList>
-          {path === "responses" && (
-            <MenuItem onClick={() => router.push(`/edit/${formId}`)}>
-              {`${t("commons.edit")} ${t("commons.form").toLocaleLowerCase()}`}
-            </MenuItem>
-          )}
-          {formId && path !== "responses" && (
-            <MenuItem onClick={() => router.push(`/responses/${formId}`)}>
-              {`${t("commons.see")} ${t(
-                "commons.responses"
-              ).toLocaleLowerCase()}`}
-            </MenuItem>
-          )}
-          {formId && (
-            <MenuItem
-              as={Link}
-              href={`${process.env.NEXT_PUBLIC_FORMS_URL}/${formId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {`${t("commons.open")} ${t("commons.form").toLocaleLowerCase()}`}
-            </MenuItem>
-          )}
-        </MenuList>
-      </Menu>
+      {path !== "create" && (
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label={t("commons.more")}
+            icon={<MenuIcon />}
+            variant="unstyled"
+            h={8}
+          />
+          <MenuList>
+            {path === "responses" && (
+              <MenuItem onClick={() => router.push(`/edit/${formId}`)}>
+                {`${t("commons.edit")} ${t(
+                  "commons.form"
+                ).toLocaleLowerCase()}`}
+              </MenuItem>
+            )}
+            {formId && path !== "responses" && (
+              <MenuItem onClick={() => router.push(`/responses/${formId}`)}>
+                {`${t("commons.see")} ${t(
+                  "commons.responses"
+                ).toLocaleLowerCase()}`}
+              </MenuItem>
+            )}
+            {formId && (
+              <MenuItem
+                as={Link}
+                href={`${process.env.NEXT_PUBLIC_FORMS_URL}/${formId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {`${t("commons.open")} ${t(
+                  "commons.form"
+                ).toLocaleLowerCase()}`}
+              </MenuItem>
+            )}
+          </MenuList>
+        </Menu>
+      )}
     </div>
   ) : null;
 };
