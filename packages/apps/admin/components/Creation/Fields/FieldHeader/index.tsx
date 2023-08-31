@@ -1,9 +1,7 @@
 "use client";
 
 import {
-  Flex,
   Button,
-  Text,
   Menu,
   MenuButton,
   MenuList,
@@ -16,13 +14,13 @@ import { useTranslation } from "react-i18next";
 
 import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
 
-import { getFieldLabel } from "@app/utils/fieldsLabels";
-
 import FieldDependsOn from "../FieldDependsOn";
+import DraggableArea from "./DraggableArea";
 
 interface FieldHeaderProps {
   handleDelete: React.MouseEventHandler<HTMLButtonElement>;
   handleDependsOn: (dependsOn?: DependsOnProps) => void;
+  setDraggable?: (isDraggable: boolean) => void;
   fieldId: string;
   type: FieldsType;
   initialDependsOn?: DependsOnProps;
@@ -32,6 +30,7 @@ interface FieldHeaderProps {
 const FieldHeader: React.FC<FieldHeaderProps> = ({
   handleDelete,
   handleDependsOn,
+  setDraggable,
   fieldId,
   type,
   initialDependsOn,
@@ -49,10 +48,12 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
 
   return (
     <>
-      <Flex alignItems={"center"} mb={4}>
-        <Text color="blackAlpha.500" fontSize="sm" as="i">
-          {getFieldLabel(type)}
-        </Text>
+      <div className="flex items-center mb-4 relative">
+        <DraggableArea
+          setDraggable={setDraggable}
+          type={type}
+          isEditable={!isDisabled}
+        />
         <Menu>
           <MenuButton
             as={Button}
@@ -61,7 +62,6 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
             h="40px"
             w="40px"
             p="10px"
-            ml="auto"
             isDisabled={isDisabled}
           >
             <MoreIcon size="20px" />
@@ -76,7 +76,7 @@ const FieldHeader: React.FC<FieldHeaderProps> = ({
             </MenuItem>
           </MenuList>
         </Menu>
-      </Flex>
+      </div>
       {visible && (
         <FieldDependsOn
           setVisible={setVisible}

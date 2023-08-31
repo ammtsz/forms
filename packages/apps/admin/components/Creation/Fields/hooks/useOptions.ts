@@ -89,7 +89,7 @@ const useOptions = ({ id }: SelectProps) => {
   const toggleOtherOption = useCallback(() => {
     const optionOther = {
       ...value.optionOther,
-      isVisible: !(value.optionOther as OptionOtherProps).isVisible,
+      isVisible: !(value.optionOther as OptionOtherProps)?.isVisible,
     } as OptionOtherProps;
 
     setValue((prev) => ({

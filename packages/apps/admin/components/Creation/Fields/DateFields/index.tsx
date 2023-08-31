@@ -20,6 +20,7 @@ import DateLimitPicker from "./DateLimitPicker";
 const DateFieldsCreation: React.FC<FieldComponentProps> = ({
   id,
   isDisabled,
+  setDraggable,
 }) => {
   const {
     handleCheckbox,
@@ -47,6 +48,7 @@ const DateFieldsCreation: React.FC<FieldComponentProps> = ({
         type={getPrefixFromString(id)}
         initialDependsOn={value.dependsOn}
         isDisabled={isDisabled}
+        setDraggable={setDraggable}
       />
       <Flex flexDir={"row"}>
         <FieldIcon type={type} />

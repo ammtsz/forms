@@ -126,12 +126,12 @@ const useSubmitForm = () => {
             router.push("/");
 
             openToast({
-              description: t("create.feedbacks.formCreated"),
+              description: t("create.feedbacks.formSubmitted"),
               status: "success",
             });
           } else {
             openToast({
-              description: `${t("create.feedbacks.errorCreateForm")} ${t(
+              description: `${t("create.feedbacks.errorSubmitForm")} ${t(
                 "feedbacks.retry"
               )}`,
               status: "error",

@@ -129,8 +129,8 @@
       "addTitle": "Adicione um título ao formulário",
       "oneFieldAtLeast": "Adicione pelo menos um campo ao formulário",
       "fillRequiredFields": "Preencha os campos obrigatórios",
-      "formCreated": "Formulário criado com sucesso",
-      "errorCreateForm": "Não foi possível criar o formulário",
+      "formSubmitted": "Formulário salvo com sucesso",
+      "errorSubmitForm": "Não foi possível salvar o formulário",
       "loginRequired": "Faça o login para criar um formulário"
     }
   },

@@ -3,6 +3,8 @@ import { create } from "zustand";
 import { OptionsField } from "@forms/types/interfaces/field";
 import { isOptionTypeField, uuid } from "@forms/utils";
 
+import { getFields } from "@app/utils/fieldsLabels";
+
 import { FormCreationState, FormCreationStore, Message } from "./types";
 
 const INITIAL_STATE: FormCreationState = {
@@ -91,7 +93,9 @@ const store = create<FormCreationStore>((set, get) => ({
 
     const field = JSON.parse(response);
 
-    field.id = `${field.type || "text"}--${uuid()}`;
+    const fieldType = getFields().includes(field.type) ? field.type : "text";
+
+    field.id = `${fieldType}--${uuid()}`;
 
     return field;
   },

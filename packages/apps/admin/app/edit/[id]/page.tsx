@@ -1,13 +1,12 @@
 "use client";
 
-import { Flex, Box, Textarea, useDisclosure } from "@chakra-ui/react";
+import { Box, Textarea, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { getPrefixFromString } from "@forms/utils";
-
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
 import AISection from "@app/components/Creation/AISection";
+import FieldsContainer from "@app/components/Creation/FieldsContainer";
 import FormMenu from "@app/components/Creation/FormMenu";
 import Title from "@app/components/Creation/Title";
 import Feedback from "@app/components/Feedback";
@@ -18,14 +17,13 @@ import useSubmitForm from "@app/hooks/useSubmitForm";
 import { useAlert } from "@app/store/alert";
 import { useFormCreation } from "@app/store/formCreation";
 import { useOpenaiRequest } from "@app/store/openaiRequests";
-import { getFieldComponent } from "@app/utils/getFieldComponent";
 
 import { Container, Form } from "../../create/styles";
 
 const FormCreationPage = () => {
   const [isDisabled, setDisabled] = useState(false);
 
-  const { fieldsIds, description } = useFormCreation();
+  const { description } = useFormCreation();
 
   const {
     isOpen: isAIOpen,
@@ -110,29 +108,7 @@ const FormCreationPage = () => {
                 value={description || ""}
               />
             </Box>
-            <React.Fragment>
-              {fieldsIds.map((fieldId) => {
-                const Component = getFieldComponent(
-                  getPrefixFromString(fieldId)
-                );
-
-                return (
-                  <Flex
-                    key={fieldId}
-                    direction="column"
-                    pt={[4, 6, 8]}
-                    pb={[8, 8, 12]}
-                    px={[4, 6, 8]}
-                    my={[4, 6, 8]}
-                    bg="blackAlpha.100"
-                    borderRadius="10"
-                    width="100%"
-                  >
-                    <Component id={fieldId} isDisabled={hasResponses} />
-                  </Flex>
-                );
-              })}
-            </React.Fragment>
+            <FieldsContainer isDisabled={hasResponses} />
             {!hasResponses && (
               <AddFieldButton
                 handleAIFieldButton={handleAIFieldButton}

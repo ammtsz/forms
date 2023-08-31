@@ -18,6 +18,7 @@ import { ValueProps, useFieldsBase } from "../hooks/useFieldsBase";
 const ToggleFieldsCreation: React.FC<FieldComponentProps> = ({
   id,
   isDisabled,
+  setDraggable,
 }) => {
   const [value, setValue] = useState<ValueProps>({
     label: "",
@@ -49,6 +50,7 @@ const ToggleFieldsCreation: React.FC<FieldComponentProps> = ({
         type={getPrefixFromString(id)}
         initialDependsOn={value.dependsOn}
         isDisabled={isDisabled}
+        setDraggable={setDraggable}
       />
       <Flex flexDir={"row"}>
         <FieldIcon type={type} />

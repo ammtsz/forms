@@ -17,4 +17,5 @@ export interface User {
 export interface FieldComponentProps {
   id: string;
   isDisabled?: boolean;
+  setDraggable?: (isDraggable: boolean) => void;
 }

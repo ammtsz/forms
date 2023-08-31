@@ -49,6 +49,7 @@ const AISection = ({
             value={topic}
             onChange={handleInputChange}
             variant={"flushed"}
+            autoFocus
           />
         </div>
         <FormErrorMessage>{t("create.ai.topicInputHint")}</FormErrorMessage>

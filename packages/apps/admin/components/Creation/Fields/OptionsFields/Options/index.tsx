@@ -127,7 +127,7 @@ const FieldOptions: React.FC<FieldOptionsProps> = ({
               name="optionOther"
               onChange={handleOtherOption}
               placeholder={t("create.placeholders.addOptionOther")}
-              value={(value.optionOther as OptionOtherProps).placeholder}
+              value={(value.optionOther as OptionOtherProps).placeholder || ""}
               color="blackAlpha.600"
               isDisabled={isDisabled}
             />

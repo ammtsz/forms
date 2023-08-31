@@ -129,8 +129,8 @@
       "addTitle": "Add a title to the form",
       "oneFieldAtLeast": "Add at least one field to the form",
       "fillRequiredFields": "Fill in the required fields",
-      "formCreated": "Form successfully created",
-      "errorCreateForm": "Unable to create form",
+      "formSubmitted": "Form successfully submitted",
+      "errorSubmitForm": "Unable to submit form",
       "loginRequired": "Log in to create a form"
     }
   },

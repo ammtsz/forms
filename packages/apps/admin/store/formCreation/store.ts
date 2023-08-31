@@ -117,7 +117,7 @@ const store = create<FormCreationStore>((set, get) => ({
 
     hasError = !!(await postForm({ title, id, fields, description, lang }, id));
 
-    if (!hasError) {
+    if (!hasError && !get().id) {
       const formsIds = forms ? [...forms, id] : [id];
       hasError = !!(await updateUserForms(email, formsIds));
     }
@@ -148,6 +148,20 @@ const store = create<FormCreationStore>((set, get) => ({
         },
       }));
     }
+  },
+
+  sortFields: (fieldId, newIndex) => {
+    const { fields, fieldsIds } = get();
+
+    const newFieldsIds = fieldsIds.filter((id) => id !== fieldId);
+
+    newFieldsIds.splice(newIndex, 0, fieldId);
+
+    const sortedFields = newFieldsIds.map(
+      (fieldId) => fields.find((field) => field.id === fieldId) as FieldProps
+    );
+
+    set({ fields: sortedFields, fieldsIds: newFieldsIds });
   },
 
   setErrors: (errors: FieldErrors) => set(() => ({ errors })),

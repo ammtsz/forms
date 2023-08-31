@@ -18,6 +18,7 @@ import { ValueProps, useFieldsBase } from "../hooks/useFieldsBase";
 const TextsFieldsCreation: React.FC<FieldComponentProps> = ({
   id,
   isDisabled,
+  setDraggable,
 }) => {
   const [value, setValue] = useState<ValueProps>({
     label: "",
@@ -53,6 +54,7 @@ const TextsFieldsCreation: React.FC<FieldComponentProps> = ({
         handleDependsOn={handleDependsOnChange}
         initialDependsOn={value.dependsOn}
         isDisabled={isDisabled}
+        setDraggable={setDraggable}
       />
       <FieldBase
         handleInputChange={handleInputChange}

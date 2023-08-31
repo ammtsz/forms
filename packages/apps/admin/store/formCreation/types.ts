@@ -39,6 +39,7 @@ export interface FormCreationStore extends FormCreationState {
     forms?: string[]
   ) => Promise<{ formId: string; hasError: boolean }>;
   setDependsOnOptions: (field: FieldProps) => void;
+  sortFields: (fieldId: string, newIndex: number) => void;
   setErrors: (errors: FieldErrors) => void;
   reset: () => void;
 }

@@ -17,6 +17,7 @@ import Options from "./Options";
 const OptionsFieldsCreation: React.FC<FieldComponentProps> = ({
   id,
   isDisabled,
+  setDraggable,
 }) => {
   const {
     handleInputChange,
@@ -42,6 +43,7 @@ const OptionsFieldsCreation: React.FC<FieldComponentProps> = ({
         type={getPrefixFromString(id)}
         initialDependsOn={value.dependsOn}
         isDisabled={isDisabled}
+        setDraggable={setDraggable}
       />
       <FieldBase
         handleInputChange={handleInputChange}
