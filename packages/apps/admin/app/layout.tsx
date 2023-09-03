@@ -8,20 +8,24 @@ import Breadcrumb from "@app/components/Breadcrumb";
 import Feedback from "@app/components/Feedback";
 import Navbar from "@app/components/Navbar";
 import Providers from "@app/components/Providers";
+import { languages } from "@app/i18n/settings";
 
 import "./globals.css";
-
-import "../i18n";
 
 export const metadata: Metadata = {
   title: "Forms | Admin",
 };
 
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
+
 const RootLayout: React.FC<{
   children: React.ReactNode;
-}> = ({ children }) => {
+  params: { lng: string };
+}> = ({ children, params: { lng } }) => {
   return (
-    <html>
+    <html lang={lng}>
       <body>
         <Suspense fallback={<Feedback isLoading />}>
           <Providers>

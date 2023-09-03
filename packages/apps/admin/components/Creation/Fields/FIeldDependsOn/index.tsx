@@ -11,10 +11,10 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
 
 import { DependsOnProps, OptionProps } from "@forms/types/interfaces/field";
 
+import { useTranslation } from "@app/i18n/client";
 import { useFormCreation } from "@app/store/formCreation";
 
 import useFieldDependsOn from "./hooks/useFieldsDependsOn";

@@ -2,7 +2,6 @@
 
 import { Text } from "@chakra-ui/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import {
   formatDateAndHour,
@@ -12,6 +11,7 @@ import {
 
 import { TableCell } from "@app/components/Responses/Table/styles";
 import Tooltip from "@app/components/Tooltip";
+import { useTranslation } from "@app/i18n/client";
 
 interface TextCellProps {
   text: string;

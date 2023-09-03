@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useCallback } from "react";
 import { X as XIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import {
   FieldsType,
@@ -19,6 +18,7 @@ import {
 } from "@forms/types/interfaces/field";
 
 import Tooltip from "@app/components/Tooltip";
+import { useTranslation } from "@app/i18n/client";
 
 import FieldIcon from "../../FieldIcon";
 import { ValueProps } from "../../hooks/useOptions";

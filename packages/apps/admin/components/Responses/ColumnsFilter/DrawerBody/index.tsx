@@ -6,8 +6,8 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
 
+import { useTranslation } from "@app/i18n/client";
 import { useTableData } from "@app/store/tableData";
 
 interface DrawerBodyProps {

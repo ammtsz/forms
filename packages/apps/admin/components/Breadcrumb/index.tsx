@@ -17,21 +17,21 @@ import {
   ChevronRight as ChevronRightIcon,
   Menu as MenuIcon,
 } from "react-feather";
-import { useTranslation } from "react-i18next";
+
+import { useTranslation } from "@app/i18n/client";
 
 const Breadcrumb: React.FC = () => {
   const pathname = usePathname();
 
   const { status } = useSession();
 
+  const [_, _lng, path, formId] = pathname.split("/");
+
   const { t } = useTranslation();
 
   const router = useRouter();
 
   const isLoading = status === "loading";
-
-  const path = pathname.split("/")[1];
-  const formId = pathname.split("/")[2];
 
   const getPageName = () => {
     switch (path) {

@@ -2,12 +2,12 @@
 
 import { Button, Flex, Spinner } from "@chakra-ui/react";
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { uuid } from "@forms/utils";
 
 import Tooltip from "@app/components/Tooltip";
+import { useTranslation } from "@app/i18n/client";
 import { useFormCreation } from "@app/store/formCreation";
 import { getFieldLabel, getFields } from "@app/utils/fieldsLabels";
 

@@ -10,9 +10,10 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { MoreHorizontal as MoreIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
+
+import { useTranslation } from "@app/i18n/client";
 
 import FieldDependsOn from "../FieldDependsOn";
 import DraggableArea from "./DraggableArea";

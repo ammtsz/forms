@@ -9,7 +9,8 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react";
 import { Filter as FilterIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
+
+import { useTranslation } from "@app/i18n/client";
 
 import DrawerBody from "./DrawerBody";
 import useColumnsFilter from "./hooks";

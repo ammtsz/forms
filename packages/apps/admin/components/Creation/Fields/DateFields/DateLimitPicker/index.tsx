@@ -19,7 +19,8 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
+
+import { useTranslation } from "@app/i18n/client";
 
 import { GRID_AREAS, INPUT_PROPS, getLimit, getSelectedDate } from "../utils";
 import { useDateLimitPicker } from "./hooks/useDateLimitPicker";

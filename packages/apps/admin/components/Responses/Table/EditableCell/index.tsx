@@ -11,10 +11,10 @@ import {
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { Check as CheckIcon, Edit as EditIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import { TableCell } from "@app/components/Responses/Table/styles";
 import Tooltip from "@app/components/Tooltip";
+import { useTranslation } from "@app/i18n/client";
 import { useTableData } from "@app/store/tableData";
 
 interface EditableCellProps {

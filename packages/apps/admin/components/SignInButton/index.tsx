@@ -1,9 +1,9 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { useTranslation } from "react-i18next";
 
 import useSessionProvider from "@app/hooks/useSessionProvider";
+import { useTranslation } from "@app/i18n/client";
 
 interface SignInButtonProps {
   isPrimary?: boolean;

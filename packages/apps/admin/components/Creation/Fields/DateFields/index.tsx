@@ -2,11 +2,11 @@
 
 import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import { FieldsType } from "@forms/types/interfaces/field";
 import { getPrefixFromString } from "@forms/utils";
 
+import { useTranslation } from "@app/i18n/client";
 import { useFormCreation } from "@app/store/formCreation";
 import { FieldComponentProps } from "@app/types";
 

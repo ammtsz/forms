@@ -7,9 +7,9 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import Tooltip from "@app/components/Tooltip";
+import { useTranslation } from "@app/i18n/client";
 import { useFormCreation } from "@app/store/formCreation";
 import { useOpenaiRequest } from "@app/store/openaiRequests";
 

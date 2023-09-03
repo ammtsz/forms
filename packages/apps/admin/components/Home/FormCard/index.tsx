@@ -4,9 +4,9 @@ import { useDisclosure } from "@chakra-ui/react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { X as XIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import ConfirmationModal from "@app/components/ConfirmationModal";
+import { useTranslation } from "@app/i18n/client";
 
 interface FormCardProps {
   title: string;

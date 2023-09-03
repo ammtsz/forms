@@ -2,7 +2,6 @@
 
 import { Box, Textarea, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import AddFieldButton from "@app/components/Creation/AddFieldButton";
 import AISection from "@app/components/Creation/AISection";
@@ -14,6 +13,7 @@ import IsSignedIn from "@app/components/IsSignedIn";
 import useInitialData from "@app/hooks/useInitialData";
 import useOpenAI from "@app/hooks/useOpenAI";
 import useSubmitForm from "@app/hooks/useSubmitForm";
+import { useTranslation } from "@app/i18n/client";
 import { useAlert } from "@app/store/alert";
 import { useFormCreation } from "@app/store/formCreation";
 import { useOpenaiRequest } from "@app/store/openaiRequests";

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <html lang="pt-br">
+    <html lang="pt-BR">
       <body>
         <Providers>{children}</Providers>
       </body>

@@ -3,10 +3,10 @@
 import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 import { useCallback } from "react";
 import { Search as SearchIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import { debounce } from "@forms/utils";
 
+import { useTranslation } from "@app/i18n/client";
 import { useTableData } from "@app/store/tableData";
 
 const SearchBar: React.FC = () => {

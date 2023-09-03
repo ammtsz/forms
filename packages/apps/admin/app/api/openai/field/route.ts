@@ -8,9 +8,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export const POST = async (request: Request): Promise<Response | void> => {
-  const { content, messages, lang } = await request.json();
+  const { content, messages, lng } = await request.json();
 
-  const language = lang === "br" ? "Portuguese (Brazil)" : "English";
+  const language = lng === "pt" ? "Portuguese (Brazil)" : "English";
 
   const messagesBase = [
     {

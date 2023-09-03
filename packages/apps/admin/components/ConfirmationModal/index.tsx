@@ -10,9 +10,9 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
 
 import { StatusTypes } from "@app/constants/status";
+import { useTranslation } from "@app/i18n/client";
 import { useCheckedRows } from "@app/store/checkedRows";
 
 export interface ConfirmationTexts {

@@ -3,10 +3,10 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import FormCard from "@app/components/Home/FormCard";
 import useToast from "@app/hooks/useToast";
+import { useTranslation } from "@app/i18n/client";
 import { useFormsManagement } from "@app/store/formsManagement";
 import { UserSession } from "@app/types";
 

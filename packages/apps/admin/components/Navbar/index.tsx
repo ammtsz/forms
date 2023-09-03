@@ -4,10 +4,10 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Loader as HomeIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 
+import { useTranslation } from "@app/i18n/client";
 import { useTableData } from "@app/store/tableData";
 import { UserSession } from "@app/types";
 
@@ -21,6 +21,8 @@ const Navbar: React.FC = () => {
 
   const { title } = useTableData();
 
+  const [_, _lng, page] = pathname.split("/");
+
   const { t } = useTranslation();
 
   const isLoading = status === "loading";
@@ -28,7 +30,6 @@ const Navbar: React.FC = () => {
   const getPageTitle = () => {
     if (isLoading) return "";
 
-    const page = pathname.split("/")[1];
     if (!session) return t("home.navbar.admin");
     if (page === "create") return t("home.navbar.create");
     if (page === "responses")

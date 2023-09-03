@@ -8,7 +8,8 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import React, { useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
+
+import { useTranslation } from "@app/i18n/client";
 
 const AISection = ({
   setFormDisabled,

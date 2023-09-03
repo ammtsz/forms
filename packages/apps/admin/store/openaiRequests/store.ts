@@ -26,7 +26,7 @@ const store = create<FormCreationStore>((set, get) => ({
     set({ topic });
   },
 
-  generateTitleAndDescription: async (lang) => {
+  generateTitleAndDescription: async (lng) => {
     const messages = [
       ...get().messages,
       {
@@ -40,7 +40,7 @@ const store = create<FormCreationStore>((set, get) => ({
       body: JSON.stringify({
         content: get().topic,
         messages: get().messages.length ? messages : [],
-        lang,
+        lng,
       }),
     });
 
@@ -55,7 +55,7 @@ const store = create<FormCreationStore>((set, get) => ({
     return titleAndDescription;
   },
 
-  generateField: async (lang, description) => {
+  generateField: async (lng, description) => {
     const formDescription = description
       ? [
           {
@@ -79,7 +79,7 @@ const store = create<FormCreationStore>((set, get) => ({
       body: JSON.stringify({
         content: get().topic,
         messages: get().messages.length ? messages : [...formDescription],
-        lang,
+        lng,
       }),
     });
 

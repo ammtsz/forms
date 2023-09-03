@@ -14,9 +14,9 @@ import {
   Eye as EyeIcon,
   EyeOff as EyeOffIcon,
 } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import ConfirmationModal from "@app/components/ConfirmationModal";
+import { useTranslation } from "@app/i18n/client";
 import { useOpenaiRequest } from "@app/store/openaiRequests";
 
 interface FormMenuProps {

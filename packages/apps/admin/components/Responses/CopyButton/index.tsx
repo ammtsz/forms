@@ -2,9 +2,9 @@
 
 import { useCallback } from "react";
 import { Copy as CopyIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import Tooltip from "@app/components/Tooltip";
+import { useTranslation } from "@app/i18n/client";
 import { useTableData } from "@app/store/tableData";
 
 const CopyButton: React.FC = () => {

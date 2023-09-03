@@ -109,13 +109,13 @@ const store = create<FormCreationStore>((set, get) => ({
     get().setDependsOnOptions(field);
   },
 
-  createUserForm: async (email, lang, forms) => {
+  createUserForm: async (email, lng, forms) => {
     const { fields, title, description } = get();
     const id = get().id || uuid();
 
     let hasError = false;
 
-    hasError = !!(await postForm({ title, id, fields, description, lang }, id));
+    hasError = !!(await postForm({ title, id, fields, description, lng }, id));
 
     if (!hasError && !get().id) {
       const formsIds = forms ? [...forms, id] : [id];

@@ -8,9 +8,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import { Status, StatusTypes } from "@app/constants/status";
+import { useTranslation } from "@app/i18n/client";
 import { useCheckedRows } from "@app/store/checkedRows";
 import { useTableData } from "@app/store/tableData";
 

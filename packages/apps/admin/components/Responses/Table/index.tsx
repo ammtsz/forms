@@ -1,8 +1,8 @@
 "use client";
 
 import BaseTable, { AutoResizer } from "react-base-table";
-import { useTranslation } from "react-i18next";
 
+import { useTranslation } from "@app/i18n/client";
 import { useTableData } from "@app/store/tableData";
 import "react-base-table/styles.css";
 

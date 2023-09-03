@@ -28,8 +28,8 @@ export interface FormCreationState {
 
 export interface FormCreationStore extends FormCreationState {
   updateTopic: (topic: string) => void;
-  generateTitleAndDescription: (lang: string) => Promise<TitleAndDescription>;
-  generateField: (lang: string, description?: string) => Promise<Field>;
+  generateTitleAndDescription: (lng: string) => Promise<TitleAndDescription>;
+  generateField: (lng: string, description?: string) => Promise<Field>;
   addMessage: (content: string) => void;
   updateMessages: (fields: Fields) => void;
   setVisible: (isOpen: boolean) => void;

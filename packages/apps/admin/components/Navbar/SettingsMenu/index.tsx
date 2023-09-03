@@ -15,10 +15,10 @@ import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { LogOut as LogOutIcon } from "react-feather";
-import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 
+import { useTranslation } from "@app/i18n/client";
 import { UserSession } from "@app/types";
 
 interface SettingsMenuProps {
@@ -27,7 +27,7 @@ interface SettingsMenuProps {
 }
 
 const SettingsMenu: React.FC<SettingsMenuProps> = ({ session }) => {
-  const [lang, setLang] = useState("en");
+  const [lng, setLng] = useState("");
 
   const { t, i18n } = useTranslation();
 
@@ -36,7 +36,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ session }) => {
   };
 
   useEffect(() => {
-    setLang(i18n.language);
+    setLng(i18n.language);
   }, [i18n.language]);
 
   return (
@@ -62,13 +62,13 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ session }) => {
             />
           </MenuButton>
           <MenuList>
-            <RadioGroup onChange={handleLanguageChange} value={lang}>
+            <RadioGroup onChange={handleLanguageChange} value={lng}>
               <MenuGroup title={t("commons.language")}>
                 <MenuItem onClick={() => handleLanguageChange("en")}>
                   <Radio value="en">English</Radio>
                 </MenuItem>
-                <MenuItem onClick={() => handleLanguageChange("br")}>
-                  <Radio value="br">Português (Brasil)</Radio>
+                <MenuItem onClick={() => handleLanguageChange("pt")}>
+                  <Radio value="pt">Português (Brasil)</Radio>
                 </MenuItem>
               </MenuGroup>
             </RadioGroup>

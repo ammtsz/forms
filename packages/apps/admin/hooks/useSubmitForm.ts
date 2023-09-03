@@ -3,7 +3,6 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
@@ -13,6 +12,7 @@ import {
 } from "@forms/types/interfaces/field";
 import { Fields } from "@forms/utils";
 
+import { useTranslation } from "@app/i18n/client";
 import { useFormCreation } from "@app/store/formCreation";
 import { useFormsManagement } from "@app/store/formsManagement";
 import { UserSession } from "@app/types";

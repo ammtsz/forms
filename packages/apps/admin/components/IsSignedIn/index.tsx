@@ -2,10 +2,10 @@
 
 import { useSession } from "next-auth/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import Feedback from "@app/components/Feedback";
 import SignInButton from "@app/components/SignInButton";
+import { useTranslation } from "@app/i18n/client";
 
 const IsSignedIn: React.FC<{ children: React.ReactElement }> = ({
   children,

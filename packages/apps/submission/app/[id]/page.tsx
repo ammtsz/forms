@@ -23,7 +23,7 @@ const FormSubmissionPage = () => {
     if (id) {
       const form = await getForm(id);
 
-      form?.lang && i18n.changeLanguage(form.lang);
+      form?.lng && i18n.changeLanguage(form.lng);
 
       setValidForm(!!form);
     }
