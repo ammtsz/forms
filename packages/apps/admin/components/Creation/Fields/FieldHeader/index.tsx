@@ -15,7 +15,7 @@ import { DependsOnProps, FieldsType } from "@forms/types/interfaces/field";
 
 import { useTranslation } from "@app/i18n/client";
 
-import FieldDependsOn from "../FieldDependsOn";
+import FieldDependsOn from "../FieldDependsOn1";
 import DraggableArea from "./DraggableArea";
 
 interface FieldHeaderProps {
