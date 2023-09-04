@@ -8,8 +8,6 @@ import Feedback from "@app/components/Feedback";
 import Navbar from "@app/components/Navbar";
 import Providers from "@app/components/Providers";
 
-import "./globals.css";
-
 const ClientComponent: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
