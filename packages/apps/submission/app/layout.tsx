@@ -2,15 +2,24 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 import "../i18n";
+import { languages } from "@app/i18n/settings";
+
 import ClientComponent from "./client";
 
 export const metadata: Metadata = {
   title: "Forms",
 };
 
-const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
+
+const RootLayout: React.FC<{
+  children: React.ReactNode;
+  params: { lng: string };
+}> = ({ children, params: { lng } }) => {
   return (
-    <html lang="pt-BR">
+    <html lang={lng}>
       <body>
         <ClientComponent>{children}</ClientComponent>
       </body>

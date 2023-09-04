@@ -2,11 +2,11 @@
 
 import { ToastId, ToastProps, useToast } from "@chakra-ui/react";
 import { useCallback, useRef } from "react";
-import { useTranslation } from "react-i18next";
 
 import { FormValuesProps } from "@forms/types/interfaces/formResponse";
 import { isToggleTypeField, uuid } from "@forms/utils";
 
+import { useTranslation } from "@app/i18n/client";
 import { useFormSubmission } from "@app/store/formSubmission";
 
 interface SubmitFormProps {

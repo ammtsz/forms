@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 
+import { useTranslation } from "@app/i18n/client";
 import { useFormSubmission } from "@app/store/formSubmission";
 
 interface MultiOptionsProps {

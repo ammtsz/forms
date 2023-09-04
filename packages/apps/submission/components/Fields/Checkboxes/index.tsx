@@ -2,11 +2,11 @@
 
 import { Checkbox, Stack } from "@chakra-ui/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import { OptionsFieldProps } from "@forms/types/interfaces/field";
 
+import { useTranslation } from "@app/i18n/client";
 import { useFormSubmission } from "@app/store/formSubmission";
 
 import useMultiOptions from "../hooks/useMultiOptions";

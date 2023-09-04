@@ -2,7 +2,6 @@
 
 import { Button, Heading, Text, useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import { MakeRequired } from "@forms/types/global/makeRequired";
 import {
@@ -22,6 +21,7 @@ import SwitchField from "@app/components/Fields/Switch";
 import TextField from "@app/components/Fields/Text";
 import TextareaField from "@app/components/Fields/Textarea";
 import useSubmitForm from "@app/hooks/useSubmitForm";
+import { useTranslation } from "@app/i18n/client";
 import { useFormSubmission } from "@app/store/formSubmission";
 
 import FeedbackModal from "../FeedbackModal";

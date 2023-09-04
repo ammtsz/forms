@@ -2,7 +2,8 @@
 
 import { Flex, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
+
+import { useTranslation } from "@app/i18n/client";
 
 interface OtherOptionProps {
   handleOtherInput: React.ChangeEventHandler<HTMLInputElement>;

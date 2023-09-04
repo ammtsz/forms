@@ -2,10 +2,10 @@
 
 import { FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import { BasicFieldProps } from "@forms/types/interfaces/field";
 
+import { useTranslation } from "@app/i18n/client";
 import { useFormSubmission } from "@app/store/formSubmission";
 
 import useTexts from "../hooks/useTexts";

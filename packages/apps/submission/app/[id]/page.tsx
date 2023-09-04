@@ -3,11 +3,11 @@
 import { Flex } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import FormSubmission from "@app/components/Form";
 import Loading from "@app/components/Loading";
 import PageMessage from "@app/components/PageMessage";
+import { useTranslation } from "@app/i18n/client";
 import { useFormSubmission } from "@app/store/formSubmission";
 
 const FormSubmissionPage = () => {
