@@ -8,7 +8,7 @@ export function getOptions(
   ns: string | string[] = defaultNS
 ) {
   return {
-    debug: true,
+    debug: process.env.NODE_ENV === "development",
     supportedLngs: languages,
     fallbackLng,
     lng,

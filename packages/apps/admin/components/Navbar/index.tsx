@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
 
   const { title } = useTableData();
 
-  const [_, _lng, page] = pathname.split("/");
+  const [_, page] = pathname.split("/");
 
   const { t } = useTranslation();
 

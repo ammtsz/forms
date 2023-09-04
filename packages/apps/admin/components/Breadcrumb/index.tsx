@@ -25,7 +25,7 @@ const Breadcrumb: React.FC = () => {
 
   const { status } = useSession();
 
-  const [_, _lng, path, formId] = pathname.split("/");
+  const [_, path, formId] = pathname.split("/");
 
   const { t } = useTranslation();
 
