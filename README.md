@@ -16,8 +16,7 @@ This platform provides an easy-to-use interface for creating and managing forms.
 - **Form Sharing:** Share a link to your form with others;
 - **Language Support:** Switch between English and Portuguese (Brazil) languages on the admin page.
 
-![admin-en](https://github.com/ammtsz/forms/assets/66788932/363d8d77-987e-4a51-b217-2df85eb4cf9a)
-
+![admin-en](https://github.com/ammtsz/forms/assets/66788932/7d636c0b-9d0f-4a80-acb6-a7bd2fe959b9)
 
 ## Tech Stack
 
@@ -39,7 +38,7 @@ Main libraries:
 
 The project had some relevant stack and structure changes since it was first started which caused some redundances and it is still being improved.
 
-## Tree Structure
+## Structure
 ```
 └───packages
     ├───apps
