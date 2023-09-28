@@ -89,10 +89,19 @@ The project had some relevant stack and structure changes since it was first sta
 
 The first front-end application is designed for management tasks. It provides an interface where users can create forms with the assistance of an AI. Once a form is created, users can edit it as per their requirements. The application also provides a feature to view the responses submitted through these forms. The responses are displayed in a customized table, providing a clear and concise view of the data.
 
+#### AI
+To create a new form, users can create fields manually or with the help of an AI:
+![ai_demo](https://github.com/ammtsz/forms/assets/66788932/c51a6103-a271-4031-b077-b7c273a501d2)
+
+
+Sometimes errors may occur when using AI features. It can happen for many reasons, but usually because of timeout (must be less than 10 seconds) or too many requests in less than a minute (no more than 3 requests per minute).
+![error](https://github.com/ammtsz/forms/assets/66788932/d5f6b3df-304c-4454-b94a-7c0f993238d1)
 
 ### Submission Application
 
 The second front-end application serves as a public interface where users can answer the forms created through the admin application. It ensures smooth navigation and an easy-to-use interface for users to submit their responses.
+
+![response](https://github.com/ammtsz/forms/assets/66788932/724abd47-ea75-4c44-a4dc-8073813633ed)
 
 ## Getting Started
 
