@@ -6,7 +6,9 @@
 
 # Form Platform
 
-This platform provides an easy-to-use interface for creating and managing forms. Users can create, with help of OpenAI, and edit forms, as well as view responses in a customizable table.
+> 📌 **Portfolio Project (2023)** - A full-stack learning project demonstrating modern web development with Next.js, Firebase, and monorepo architecture. This project showcases form builder functionality with AI-assisted creation, real-time data management, and internationalization.
+
+This platform provides an easy-to-use interface for creating and managing forms. Users can create forms with help of OpenAI, edit them, and view responses in a customizable table.
 
 ## Features
 - **User Login:** Users can log in to access their forms and responses;
@@ -18,102 +20,94 @@ This platform provides an easy-to-use interface for creating and managing forms.
 
 ![admin-en](https://github.com/ammtsz/forms/assets/66788932/7d636c0b-9d0f-4a80-acb6-a7bd2fe959b9)
 
+## Technical Highlights
+- **Custom Drag-and-Drop Form Builder** using @dnd-kit for intuitive field reordering
+- **Real-time Form Validation** with dependent field logic and conditional rendering
+- **AI-Assisted Form Generation** integrated with OpenAI API for automated field creation
+- **Internationalization (i18n)** with dynamic language switching between English and Portuguese
+- **Zustand State Management** for lightweight and scalable application state
+- **Monorepo Architecture** using Lerna powered by Nx for efficient multi-package management
+- **Customizable Data Tables** using react-base-table for response visualization
+
 ## Tech Stack
 
-A monorepo project that uses Lerna powered by Nx. Front-ends are React applications built with Next.js and TypeScript, data are stored on Firestore.
+- **Next.js 13** (App Router) - Server-side rendering and routing
+- **TypeScript** - Type safety across the monorepo
+- **Firebase/Firestore** - Real-time database and authentication
+- **OpenAI API** - AI-assisted form generation
+- **Chakra-UI + Tailwind CSS** - Component library and utility styling
+- **Zustand** - Lightweight state management
+- **i18next** - English/Portuguese internationalization
+- **Lerna + Nx** - Monorepo orchestration
+- **Next-Auth** - Google OAuth authentication
 
-Main libraries:
+## Architecture
 
-- **Lerna powered by Nx**: Lerna is a tool for managing JavaScript projects with multiple packages. Nx is a set of extensible dev tools for monorepos. Lerna uses Nx to detect packages in the workspace and dependencies between them;
-- **Next.js**: A React-based framework for building server-rendered or statically-exported web applications. This application uses version 13 with App Router;
-- **TypeScript**: A strict syntactical superset of JavaScript that adds optional type-checking to the language;
-- **Next-Auth**: An easy-to-use authentication library for Next.js applications, with support for various providers and authentication methods. So far, this application makes use of Google Provider only;
-- **Firestore**: A flexible, scalable NoSQL cloud database from Firebase that allows you to store and sync data in real-time;
-- **OpenAI API**: It provides developers with access to advanced AI models for tasks such as natural language processing. It is easy to integrate, scalable, and customizable. The use of OpenAI API in this project was limited due to the use of a free plan;
-- **Chakra-UI**: A simple, modular, and accessible component library for React that provides developers with all the building and responsive blocks needed to build applications;
-- **Tailwind CSS**: A utility-first CSS framework that provides a set of pre-defined CSS classes for rapidly building custom designs;
-- **i18next**: An internationalization framework for JavaScript, providing an easy way to add multi-language support to your applications;
-- **Zustand**: A small, fast, and scalable state-management solution using simplified flux principles. It allows developers to manage their application's state in a simple and intuitive way without the need for complex reducers or action creators like Redux;
-- **Husky, Commitlint, Commitizen**: The use of those 3 libraries together ensures that commit messages are consistent, readable, and follow best practices. This can make it easier to review code changes, generate changelogs, and understand the history of the project.
+Monorepo structure with two Next.js applications and shared packages:
 
-The project had some relevant stack and structure changes since it was first started which caused some redundances and it is still being improved.
+- **`packages/apps/admin`** - Form builder and management dashboard (port 3000)
+  - Create/edit forms with drag-and-drop interface
+  - AI-assisted field generation
+  - View and manage form responses in customizable tables
+  
+- **`packages/apps/submission`** - Public form submission interface (port 3001)
+  - Dynamic form rendering based on form ID
+  - Real-time validation and conditional field logic
+  
+- **`packages/commons`** - Shared TypeScript types and utility functions
+- **`packages/configs`** - Shared ESLint, TypeScript, and test configurations
 
-## Structure
-```
-└───packages
-    ├───apps
-    │   ├───admin
-    │   │   ├───api
-    │   │   ├───app
-    │   │   │   ├───api
-    │   │   │   │   ├───auth
-    │   │   │   │   └───openai
-    │   │   │   ├───create
-    │   │   │   ├───edit
-    │   │   │   │   └───[id]
-    │   │   │   └───responses
-    │   │   │       └───[id]
-    │   │   ├───components
-    │   │   ├───constants
-    │   │   ├───hooks
-    │   │   ├───i18n
-    │   │   ├───store
-    │   │   ├───types
-    │   │   └───utils
-    │   └───submission
-    │       ├───api
-    │       ├───app
-    │       │   └───[id]
-    │       ├───components
-    │       ├───hooks
-    │       ├───i18n
-    │       └───store
-    ├───commons
-    │   ├───types
-    │   │   ├───declarations
-    │   │   ├───global
-    │   │   └───interfaces
-    │   └───utils
-    │       └───src
-    │           ├───constants
-    │           └───functions
-    └───configs
-        ├───eslint
-        ├───test
-        └───tsconfig
-```
+## Demo
 
-## Front-end Applications
+### AI-Assisted Form Creation
 
-### Admin Application
-
-The first front-end application is designed for management tasks. It provides an interface where users can create forms with the assistance of an AI. Once a form is created, users can edit it as per their requirements. The application also provides a feature to view the responses submitted through these forms. The responses are displayed in a customized table, providing a clear and concise view of the data.
-
-#### AI
-To create a new form, users can create fields manually or with the help of an AI:
 ![ai_demo](https://github.com/ammtsz/forms/assets/66788932/c51a6103-a271-4031-b077-b7c273a501d2)
 
+*Note: OpenAI API usage was limited to free tier (3 requests/minute, 10 second timeout)*
 
-Sometimes errors may occur when using AI features. It can happen for many reasons, but usually because of timeout (must be less than 10 seconds) or too many requests in less than a minute (no more than 3 requests per minute).
-![error](https://github.com/ammtsz/forms/assets/66788932/d5f6b3df-304c-4454-b94a-7c0f993238d1)
-
-### Submission Application
-
-The second front-end application serves as a public interface where users can answer the forms created through the admin application. It ensures smooth navigation and an easy-to-use interface for users to submit their responses.
+### Form Submission Interface
 
 ![response](https://github.com/ammtsz/forms/assets/66788932/724abd47-ea75-4c44-a4dc-8073813633ed)
 
 ## Getting Started
 
-To get started with this project:
+### Prerequisites
+- Node.js (v16+)
+- pnpm (v7.0.0)
+- Firebase project
+- Google OAuth credentials
+- (Optional) OpenAI API key for AI features
+
+### Environment Setup
 
 1. Clone the repository to your local machine
 2. Install the dependencies: `pnpm install`
-3. Run `pnpm dev` to start the development server for both applications\
-            i.  Alternatively you can run `pnpm dev:admin` to start *Admin* application on port `3000`\
-            ii. Alternatively you can run `pnpm dev:submission` to start *Submission* application on port `3001`
-4. Run `pnpm commit` to commit changes
-5. To build the applications for production, run `pnpm build`
+3. Copy `.env.example` to `.env` in the root directory
+4. Configure the following environment variables:
 
-## Tests
-Unit tests were configured already, but haven't been created yet.   
+**Required:**
+- `GOOGLE_ID` and `GOOGLE_CLIENT_SECRET` - Get from [Google Cloud Console](https://console.cloud.google.com/)
+- `NEXT_PUBLIC_FIREBASE_API_KEY`, `NEXT_PUBLIC_FIREBASE_PROJECT_ID`, `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`, `NEXT_PUBLIC_FIREBASE_APP_ID` - Get from [Firebase Console](https://console.firebase.google.com/)
+- `NEXTAUTH_URL` - Your application URL (e.g., `http://localhost:3000` for local development)
+- `NEXTAUTH_SECRET` - Generate with: `openssl rand -base64 32`
+- `NEXT_PUBLIC_FORMS_URL` - Submission app URL (e.g., `http://localhost:3001` for local development)
+
+**Optional:**
+- `OPENAI_API_KEY` - Get from [OpenAI Platform](https://platform.openai.com/) (AI features will be disabled if not provided)
+
+### Running the Application
+
+1. Run `pnpm dev` to start the development server for both applications
+   - **Admin App** will run on `http://localhost:3000`
+   - **Submission App** will run on `http://localhost:3001`
+   
+   Alternatively:
+   - Run `pnpm dev:admin` to start only the Admin application on port `3000`
+   - Run `pnpm dev:submission` to start only the Submission application on port `3001`
+
+2. Run `pnpm commit` to commit changes (uses Commitizen for conventional commits)
+3. To build the applications for production, run `pnpm build`
+
+## License
+
+MIT License - Feel free to use this for learning purposes.   
